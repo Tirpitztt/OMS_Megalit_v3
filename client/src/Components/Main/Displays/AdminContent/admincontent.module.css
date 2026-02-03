@@ -1,0 +1,54 @@
+.admin_wrap{
+    width: 100%;
+}
+.hide{
+    display: none;
+}
+.admin_modal_wrap{
+
+}
+.title_wrap{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    background-color: gainsboro;
+    height: 1.5rem;
+    padding: 5px;
+}
+.title{
+    width: 60%;
+    font-weight: bold;
+    font-family: inglobal;
+}
+.button_wrap{
+    width: 15%;
+    display: flex;
+    flex-flow: row nowrap;
+    align-content: end;
+}
+.button{
+    width: 40%;
+    margin-left: 10px;
+    cursor: pointer;
+    border: 1px dotted gray;
+    border-radius: 5px;
+    text-align: center;
+    background-color: lightgray;
+}
+.button:hover{
+    background-color: gainsboro;
+}
+
+.add_article_box{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    min-height: 5rem;
+    border: 1px solid gray;
+    border-radius: 5px;
+    background-color: honeydew;
+    padding: 10px;
+
+
+
+}

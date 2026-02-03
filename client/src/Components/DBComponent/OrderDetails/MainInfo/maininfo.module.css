@@ -1,0 +1,48 @@
+.main_section{
+    grid-area: main;
+    margin: 1rem;
+    padding: 20px;
+    border-right: 1px solid gray;
+}
+
+.wrapper{
+    display: grid;
+    grid-template-areas: 'left right';
+    grid-template-rows: 2rem 1fr;
+    grid-template-columns: 5fr 7fr;
+    width:100%;
+}
+.red{
+    color:red;
+}
+.green{
+    color:forestgreen;
+}
+.label_left{
+    grid-area: left;
+    font-size: .8rem;
+}
+.value_right{
+    grid-area: right;
+    font-weight: bold;
+}
+.paybut{
+    color: blue;
+    font-size: .7rem;
+    font-weight: normal;
+    margin-left: 20px;
+    cursor: pointer;
+}
+.text_wrap{
+    width: 100%;
+    margin-top: 2rem;
+}
+.title_text{
+    border-bottom: 1px solid gray;
+    text-align: center;
+    border-top: 2px solid gray;
+}
+.epitaf{
+    padding: .5rem;
+
+}

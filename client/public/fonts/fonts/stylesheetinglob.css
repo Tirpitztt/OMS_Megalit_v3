@@ -1,0 +1,48 @@
+@font-face {
+    font-family: 'inglobal';
+    src: url('inglobal-BoldItalic.eot');
+    src: url('inglobal-BoldItalic.eot?#iefix') format('embedded-opentype'),
+        url('inglobal-BoldItalic.woff2') format('woff2'),
+        url('inglobal-BoldItalic.woff') format('woff'),
+        url('inglobal-BoldItalic.ttf') format('truetype');
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'inglobal';
+    src: url('inglobal-Bold.eot');
+    src: url('inglobal-Bold.eot?#iefix') format('embedded-opentype'),
+        url('inglobal-Bold.woff2') format('woff2'),
+        url('inglobal-Bold.woff') format('woff'),
+        url('inglobal-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'inglobal';
+    src: url('inglobal.eot');
+    src: url('inglobal.eot?#iefix') format('embedded-opentype'),
+        url('inglobal.woff2') format('woff2'),
+        url('inglobal.woff') format('woff'),
+        url('inglobal.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'inglobal';
+    src: url('inglobal-Italic.eot');
+    src: url('inglobal-Italic.eot?#iefix') format('embedded-opentype'),
+        url('inglobal-Italic.woff2') format('woff2'),
+        url('inglobal-Italic.woff') format('woff'),
+        url('inglobal-Italic.ttf') format('truetype');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+}
+

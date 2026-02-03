@@ -1,0 +1,219 @@
+.wrap{
+    width: 100%;
+    max-height: 84vh;
+    overflow-y: scroll;
+}
+.wrap::-webkit-scrollbar {
+    width: 7px;
+}
+.wrap::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+.wrap::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 3px;
+}
+.wrap::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+
+
+.hide{
+    display: none;
+}
+.title_box{
+
+}
+.title{
+
+}
+.admin_info_box{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+}
+.admin_info_sec{
+    width: 30%;
+    padding: 5px;
+    position: relative;
+}
+.link_monitor{
+    position: absolute;
+    top: 6px;
+    right: 100px;
+    cursor: pointer;
+    font-style: italic;
+    font-size: 14px;
+    color: mediumblue;
+}
+.info_sec{
+
+}
+.content_wrap{
+    width: 100%;
+    display: flex;
+    flex-flow: row;
+    justify-content: start;
+}
+.card_wrap_statistic{
+    width: 100%;
+    min-height: 12.5rem;
+    border: 1px dotted black;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 2px;
+    background-color: honeydew;
+    color: black;
+
+}
+.card_wrap{
+    width: 100%;
+    min-height: 9rem;
+    border: 1px dotted black;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+    margin: 10px 2px;
+    background-color: honeydew;
+    color: black;
+
+}
+.info_row{
+    width: 95%;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    border-bottom: 1px dotted gray;
+    border-top: 1px dotted gray;
+    margin: .2rem auto;
+}
+.info_item{
+    width: 20%;
+    font-family: inglobal;
+    font-size: .8rem;
+}
+.info_item:first-of-type{
+    width: 58%;
+}
+.info_item_red{
+    color: firebrick;
+    font-weight: 500;
+}
+.info_item_orange{
+    color: #D2691E;
+    font-weight: 500;
+}
+.info_item:last-of-type{
+    text-align: right;
+}
+
+.news_wrap{
+    width: 80%;
+    display: flex;
+    flex-flow: column nowrap;
+
+}
+
+.title_card{
+    font-size: 1.1rem;
+    font-family: inglobal;
+    margin-left: 10px;
+    font-weight: bold;
+}
+.card_content{
+    min-height: 3rem;
+    overflow-x: paged-x-controls;
+    padding: 5px;
+    margin: 5px;
+    background-color: gainsboro;
+}
+.card_footer{
+    width: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    margin-bottom: 5px;
+}
+
+.footer_info_box{
+    display: flex;
+    flex-flow: row nowrap;
+    width: 50%;
+}
+.footer_info_box>div{
+    margin-left: 10px;
+    color: dimgrey;
+    font-size: .8rem;
+}
+.footer_info_box>div>span{
+    font-weight: bold;
+}
+.footer_info_box>div:nth-of-type(3){
+    cursor: pointer;
+}
+.admin_button_box{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: end;
+    width: 15%;
+}
+.admin_button_box>div{
+    cursor: pointer;
+    font-size: .9rem;
+    margin-right: 10px;
+}
+
+.file_navbar{
+    width: 20%;
+    display: flex;
+    flex-flow: column nowrap;
+}
+.hide_comment_button{
+    width: 100%;
+    background-color: gainsboro;
+    text-align: center;
+    cursor: pointer;
+    color: dimgrey;
+    font-size: .8rem;
+}
+.comment_box{
+    display: flex;
+    flex-flow: column nowrap;
+    margin: 5px;
+}
+
+.comment_content_box{
+    max-height: 10rem;
+    overflow-y: scroll;
+}
+.add_comment_box{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+}
+.add_comment_box>input{
+    height: 1.2rem;
+    border:1px dotted gray;
+    border-radius: 5px;
+}
+.comment_card{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    margin-top: 5px;
+}
+.comment_author{
+    width: 20%;
+    font-weight: 500;
+}
+.comment_author>div:nth-of-type(2){
+    font-size: .7rem;
+    font-weight: normal;
+}
+.comment_text{
+    width: 70%;
+    background-color: aliceblue;
+}

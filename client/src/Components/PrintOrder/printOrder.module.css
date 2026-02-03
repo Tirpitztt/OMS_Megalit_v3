@@ -1,0 +1,48 @@
+.printbut_box{
+    display: flex;
+    flex-flow: row nowrap;
+    height: 2.2rem;
+    width: 50%;
+    align-items: center;
+    justify-content: left;
+}
+
+.navlink{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 120px;
+    height: 2rem;
+    border:2px solid gray;
+    border-radius: 5px;
+    background-color: #C0C0C0;
+    margin-right: 10px;
+    cursor: pointer;
+}
+.navlink:first-child{
+    border-radius: 50%;
+    width: 2rem;
+}
+.navlink>p{
+    color: black;
+    font-size: .9rem;
+    font-weight: 500;
+}
+.navlink:hover{
+    background-color: #DCDCDC;
+}
+.select_rate{
+    width: 70px;
+    height: 1.8rem;
+    margin-left: 30px;
+}
+.print_wrap{
+    margin-top: 1rem;
+}
+
+.button_back:hover{
+    background-color: #DCDCDC;
+}
+.button_back>div{
+
+}

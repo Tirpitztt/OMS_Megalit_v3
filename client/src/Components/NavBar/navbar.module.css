@@ -1,0 +1,60 @@
+.butt_container{
+    margin-top: 2rem;
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-around;
+    align-items: center;
+    height: 40vh;
+}
+.adminMenu{
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    width: 4.6rem;
+    padding: 5px;
+    background-color: rgba(0,0,255,0.1);
+    box-shadow: 1px 1px 3px 2px rgba(0,0,255,0.2);
+}
+.adminMenuHide{
+    display: none;
+}
+
+a{
+    text-decoration: none;
+    color: #696969;
+}
+a>p{
+    font-family: inglobal;
+    margin: 3px;
+    font-weight: bold;
+}
+.user_box{
+    width: 100%;
+
+}
+.user_avatar_box{
+    width: 80px;
+    height: 80px;
+    background-color: lightgrey;
+    border-radius: 5px;
+    margin: 15px auto;
+    overflow: hidden;
+}
+.user_avatar_box>img{
+    width: 100%;
+}
+.user_name_box{
+    width: 100%;
+    text-align: center;
+    cursor: pointer;
+    color: beige;
+    font-family: inglobal;
+    font-weight: bold;
+}
+.version_box{
+    text-align: center;
+    margin-top: 100px;
+}
+

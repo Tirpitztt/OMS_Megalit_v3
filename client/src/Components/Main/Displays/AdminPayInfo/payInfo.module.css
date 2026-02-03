@@ -1,0 +1,236 @@
+.wrapper{
+
+}
+.main_title{
+    display: flex;
+    flex-flow: row nowrap;
+    align-content: center;
+    justify-content: space-between;
+    height: 2.3rem;
+    border-bottom: 1px solid gray;
+}
+
+.navlink{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 120px;
+    height: 2rem;
+    border:2px solid gray;
+    border-radius: 5px;
+    background-color: #C0C0C0;
+    margin-right: 10px;
+    cursor: pointer;
+}
+.navlink:first-child{
+    border-radius: 50%;
+    width: 2rem;
+}
+.navlink>p{
+    color: black;
+    font-size: .9rem;
+    font-weight: 500;
+}
+.navlink:hover{
+    background-color: #DCDCDC;
+}
+.title{
+    width: 50%;
+    text-align: center;
+}
+.title>p{
+    font-family: inglobal;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 3px auto;
+}
+.sel{
+    width: 70px;
+}
+
+.work_space{
+    width: 100%;
+    height: 80vh;
+    overflow-y: scroll;
+}
+.display_wrap{
+    margin-top: 1rem;
+    width: 99%;
+    min-height: 40%;
+    border: 1px solid black;
+    background-color: beige;
+}
+.display_title{
+    width: 100%;
+    height: 1.8rem;
+    border-bottom: 1px solid black;
+    background-color: #4682B4;
+}
+.display_title>p{
+    color: white;
+    font-family: inglobal;
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin: 0 1rem;
+}
+.display_content_wrap{
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    align-items: center;
+}
+.monitor_wrap{
+    margin-top: .8rem;
+    margin-bottom: .8rem;
+    width: 19%;
+    height: 150px;
+    border: 1px solid black;
+}
+.monitor_title{
+    width: 100%;
+    height: 1rem;
+    border-bottom: 1px solid black;
+    background-color: cornflowerblue;
+}
+.monitor_title>p{
+    color: white;
+    font-family: inglobal;
+    font-weight: bold;
+    font-size: .8rem;
+    margin: 0 auto;
+}
+.monitor_content{
+    display: flex;
+    flex-flow: column;
+    justify-items: center;
+
+}
+.monitor_content>p{
+    font-family: inglobal;
+    font-weight: bold;
+    font-size: 3rem;
+    margin: 0 auto;
+}
+.table_column_wrap{
+    width: 30%;
+}
+.table_column_title{
+    width: 100%;
+    height: 1.2rem;
+    border-bottom: 1px solid black;
+    background-color: cornflowerblue;
+    text-align: center;
+}
+.table_column_title>p{
+    color: white;
+    font-family: inglobal;
+    font-weight: bold;
+    font-size: .9rem;
+    margin: 0 auto;
+}
+.table_column_content{
+    display: flex;
+    flex-flow: column;
+    width: 100%;
+
+}
+.table_column_content_row{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    border-bottom: 1px solid black;
+    font-weight: bold;
+}
+.table_column_content_row_min{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    border-bottom: 1px solid black;
+    font-size: .8rem;
+}
+.table_column_content_row:hover, .table_column_content_row_min:hover{
+    background-color: #C0C0C0;
+}
+.table_column_content_row_month_name{
+    text-align: center;
+    background-color: #B0E0E6;
+    color: #00008B;
+    font-size: 1.2rem;
+}
+.table_shop_wrap{
+    width: 100%;
+
+}
+.table_shop_title{
+    width: 100%;
+    height: 1.2rem;
+    border-bottom: 1px solid black;
+    background-color: cornflowerblue;
+    text-align: center;
+
+}
+.table_shop_title>p{
+    color: white;
+    font-family: inglobal;
+    font-weight: bold;
+    font-size: .9rem;
+    margin: 0 auto;
+}
+.table_shop_content{
+    width: 100%;
+    min-height: 8rem;
+    border:1px solid black
+}
+.table_shop_title_row{
+    display: flex;
+    flex-flow:row nowrap;
+    border-bottom: 1px solid black;
+}
+.table_shop_title_item{
+    width: 20%;
+    text-align: center;
+    font-weight: bold;
+}
+.table_shop_month_row_wrap{
+    width: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+    border-bottom: 1px solid black;
+}
+.table_shop_month_row_wrap:hover{
+    background-color: #C0C0C0;
+}
+.table_shop_month{
+    display: flex;
+    flex-flow: row nowrap;
+    width: 20%;
+}
+.table_shop_month>div{
+    width: 50%;
+}
+.table_shop_month>div:first-of-type{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+.table_shop_month>div>div{
+    margin: auto 0;
+}
+.table_shop_sort_row{
+    text-align: right;
+    border-bottom: 1px dotted black;
+    border-left: 1px dotted black;
+    padding-right: 3px;
+}
+.table_shop_sort_row>span{
+    font-size: .8rem;
+}
+.table_shop_data_box{
+    width: 20%;
+}
+.table_shop_data_row{
+    text-align: center;
+    border-bottom: 1px dotted black;
+    border-left: 1px dotted black;
+}

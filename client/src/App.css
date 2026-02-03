@@ -1,0 +1,141 @@
+.App {
+  display: grid;
+  grid-template-areas: 'h h' 'n c';
+  grid-template-rows: 5rem ;
+  grid-template-columns: 1fr 11fr;
+  width:100%;
+  background-image: linear-gradient(to top,#87CEFA,#E0FFFF);
+}
+
+.nav{
+  grid-area: n;
+  width: 7rem;
+  background-image: url(./Static/img/background/backNav1.png);
+  background-size: cover;
+  border-radius: 7px;
+  margin: 5px;
+  min-height: 87vh;
+  position: fixed;
+  top: 5rem;
+  box-shadow: 5px 5px 5px #696969;
+  z-index: 9999;
+}
+
+.content{
+  grid-area: c;
+  margin: 5px;
+  position: relative;
+  /*background-image: url(./Static/img/background/klipartz.png);*/
+  min-height: 86vh;
+  overflow: hidden;
+}
+
+.container{
+  grid-area: h;
+  text-align: center;
+  background-image: url(./Static/img/background/header.png);
+  width: 100%;
+  position: fixed;
+  height: 5rem;
+  z-index: 9999;
+}
+.logincard{
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  border-radius: 20px;
+  justify-content: space-around;
+  width: 100%;
+  height: 100%;
+  box-shadow: 5px 5px 5px #696969;
+  background-image: url(./Static/img/background/loginfon.png);
+  z-index: 10000;
+}
+/*.logincard:before{*/
+/*  content: '';*/
+/*  width: 200px;*/
+/*  height: 150px;*/
+/*  position: absolute;*/
+/*  top: -100px;*/
+/*  left: -100px;*/
+/*  background-image: url(./Static/img/background/klaksa.png);*/
+/*  z-index: 0;*/
+/*}*/
+.klaks{
+  content: '';
+  width: 200px;
+  height: 150px;
+  position: absolute;
+  top: -100px;
+  left: -100px;
+  background-image: url(./Static/img/background/klaksa.png);
+  z-index: 0;
+}
+.main_title{
+  font-family: Souses;
+  font-size: 1.2rem;
+}
+.main_title>span{
+  color: brown;
+}
+.form_box{
+  width: 35%;
+  height: 90%;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: space-around;
+}
+.final_wrapper, .complect_wrapper, .handlings_wrapper,
+.montaz_wrapper{
+  height: 80vh;
+  margin-top: 2px;
+}
+.complect_wrapper{
+  background-image: url(./Static/img/background/compl.png);
+}
+/*.handlings_wrapper{*/
+/*  background-image: url(./Static/img/background/squear.png);*/
+
+/*}*/
+.montaz_wrapper{
+  background-image: url(./Static/img/background/montaz2.png);
+}
+.final_wrapper{
+  background-image: url(./Static/img/background/final2.png);
+}
+
+.compl_pic{
+  background-image: url(./Static/img/background/verticalredwave.png);
+  background-position: right;
+  background-repeat: no-repeat;
+  background-clip: border-box;
+  background-size: contain;
+}
+.handel_pic{
+  background-image: url(./Static/img/background/verticalgreenwave.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: right;
+}
+.montaz_pic{
+  background-image: url(./Static/img/background/verticalbluewave.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: right;
+}
+@media print{
+  body{
+    visibility: hidden;
+  }
+  .print{
+    visibility: visible;
+    width:100%;
+    /*height:1580px;*/
+    min-height: 1580px;
+  }
+  .content{
+    position: absolute;
+    top: 0;
+  }
+}

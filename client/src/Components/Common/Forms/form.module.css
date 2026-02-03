@@ -1,0 +1,245 @@
+.title{
+    font-family: inglobal;
+    font-weight: bold;
+    font-size: 1rem;
+}
+.block{
+    display: flex;
+}
+.hide{
+    display: none;
+}
+
+.title_sec, .title_sec_art{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 10px;
+}
+.title_sec>div:first-of-type{
+    width: 70%;
+    font-size: .8rem;
+}
+.add_but_wrap{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.add_but_sec, .add_but_slab{
+    width: 15%;
+    height: 1.5rem;
+    cursor: pointer;
+    border: 1px solid gray;
+    border-radius: 3px;
+    text-align: center;
+    background-color: dodgerblue;
+}
+.add_but_slab{
+    width: 7%;
+    height: 1rem;
+    border-radius: 50%;
+    position: relative;
+}
+.add_but_slab:before{
+    content: '+';
+    position: absolute;
+    left: 15%;
+    top:-30%;
+}
+.form_box{
+    display: flex;
+    flex-flow: row nowrap;
+    width: 50%;
+}
+.form_box_row_100{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    width: 100%;
+    margin: 15px 0;
+}
+.label_form{
+    width:40%;
+    text-align: right;
+    padding: 1%;
+}
+.label_form_col{
+    width:100%;
+    text-align: center;
+    padding: 1%;
+}
+.form_box_mat{
+    display: flex;
+    flex-flow: column;
+    justify-items: center;
+}
+.form_box_up{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+    margin: 6px 0;
+    padding: 6px 0;
+    border-bottom: 1px solid gray;
+}
+.form_group_col_30{
+    display: flex;
+    flex-flow: column nowrap;
+    justify-items: center;
+    width: 30%;
+}
+.form_group_col_30>select{
+    height: 2rem;
+}
+
+.label_form_mat{
+    width: 45%;
+    text-align: right;
+}
+.form_gabarit_sec{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    border: 1px solid gray;
+}
+
+.form_group{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    width: 100%;
+}
+.form_group_footer{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    width: 40%;
+}
+.form_group_col{
+    display: flex;
+    flex-flow: column;
+    justify-content: space-around;
+    align-items: center;
+    font-size: .9rem;
+}
+.form_group_col>select{
+    height: 2rem;
+    width: 100%;
+}
+.form_box_down{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+
+}
+.table_box_list{
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: start;
+    width: 60%;
+}
+.table_box_list_bd{
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: start;
+    width: 30%;
+}
+.table_row_operation{
+    display: flex;
+    flex-flow: column nowrap;
+}
+.table_row_ingred, .table_row_stone{
+    display: flex;
+    flex-flow: row nowrap;
+    margin: 6px auto;
+    justify-content: space-between;
+}
+.table_row_stone>input{
+    width:35%;
+    height: 1.1rem;
+}
+.table_row_ingred>select{
+    width: 70%;
+}
+.table_row_ingred>input{
+    width: 20%;
+}
+.button_form{
+    height: 2rem;
+    cursor: pointer;
+}
+
+.price_div{
+    display:flex;
+    width: 4rem;
+    align-content: center;
+}
+.form_notation{
+    font-size: .8rem;
+    width: 30%;
+}
+.form_stone_notation{
+    font-size: .8rem;
+}
+.form_footer{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+}
+.error{
+    font-size: .7rem;
+    margin: 0;
+    color: orangered;
+}
+.form_box_art{
+    display: flex;
+    flex-flow: row nowrap;
+    width: 100%;
+    margin-bottom: 10px;
+}
+/*.form_box_art>input:nth-of-type(1){*/
+
+/*}*/
+.form_box_art>input:nth-of-type(2){
+    text-align: center;
+    width: 170px;
+    height: 2.5rem;
+    border:1px solid gray;
+    border-radius: 7px;
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.19) 0 10px 20px, rgba(0, 0, 0, 0.23) 0 6px 6px;
+    font-family: inglobal;
+    color: dimgrey;
+    font-weight: bold;
+
+}
+.art_form{
+    width: 45%;
+    padding: 10px;
+}
+.art_label{
+    width: 15%;
+
+}
+.text_arr_art{
+    width: 85%;
+    height: 9rem;
+}
+.input_arr{
+    width: 85%;
+    height: 1.2rem;
+}
+.size_group{
+    display: flex;
+    flex-flow: column nowrap;
+}
+.size_group_row{
+    display: flex;
+    flex-flow: row nowrap;
+}
+.size_input_box_col{
+    display: flex;
+    flex-flow: column nowrap;
+}

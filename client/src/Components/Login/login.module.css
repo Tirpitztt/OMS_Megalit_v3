@@ -1,0 +1,22 @@
+.container{
+    width:300px;
+    height: 350px;
+    position: absolute;
+    top: 10rem;
+    left: 35vw;
+    z-index: 1000;
+}
+.title{
+    font-family: inglobal;
+    font-weight: bold;
+    font-size: 1.3rem;
+    color: brown;
+    text-shadow: 5px 5px 6px white,5px 5px 6px white;
+}
+.button_wrap>button{
+    font-family: inglobal;
+    font-weight: bold;
+    height: 2rem;
+    width: 100px;
+    background-color: #3CB371;
+}

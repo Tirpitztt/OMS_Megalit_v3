@@ -1,0 +1,213 @@
+.button_big{
+    width:100px;
+    height: 2.5rem;
+    margin: 1rem auto;
+}
+.edit_order_sec_button, .edit_order_sec_button_nonact{
+    width:150px;
+    height: 1.5rem;
+    background-color: cornflowerblue;
+    border-top: 1px solid black;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    border-radius: 3px;
+    cursor: pointer;
+    text-align: center;
+}
+.edit_order_sec_button_nonact{
+    background-color: salmon;
+}
+.delete_button{
+    width: 100%;
+    height: 100%;
+    border: 2px solid red;
+    border-radius: 7px;
+    text-align: center;
+    cursor: pointer;
+}
+.delete_button:hover{
+    background-color: white;
+}
+.delete_button>p{
+    margin-top: 5%;
+    color: red;
+}
+.delete_button>p>span{
+    color: red;
+    font-weight: bold;
+    margin-right: 8px;
+}
+.add_button, .add_button_db{
+    width: 85px;
+    height: 2rem;
+    border-radius: 7px;
+    text-align: center;
+    color: beige;
+    background:radial-gradient(farthest-side ellipse at top left,#AFEEEE,#1E90FF);
+    box-shadow: 2px 5px 10px rgba(0,0,0,0.3), -2px -5px 10px rgba(255,255,255,0.5);
+    cursor: pointer;
+}
+.add_button, .add_button_db:hover{
+    background:radial-gradient(farthest-side ellipse at top left,#4682B4,#1E90FF);
+    box-shadow: 4px 10px 20px rgba(0,0,0,0.3), -4px -10px 20px rgba(255,255,255,0.5);
+}
+.add_button_db{
+    width: 70px;
+    height: 1rem;
+    border-radius: 7px;
+    font-size: .8rem;
+}
+
+.delete_cyr_button{
+    height: 20px;
+    width: 20px;
+    border:1px solid #B22222;
+    border-radius: 50%;
+    text-align: center;
+    font-weight: bold;
+    color: #B22222;
+    background-color: white;
+    margin: auto;
+    cursor: pointer;
+    position: relative;
+    box-shadow: rgba(0, 0, 0, 0.19) 0 10px 20px, rgba(0, 0, 0, 0.23) 0 6px 6px;
+}
+.delete_cyr_button::after{
+    content: "X";
+    position: absolute;
+    top: -2px;
+    left: 5px;
+    color: #B22222;
+
+}
+.delete_cyr_button:hover{
+    border:2px solid #B22222;
+    box-shadow: rgba(0, 0, 0, 0.39) 0 15px 25px, rgba(0, 0, 0, 0.46) 0 9px 9px;
+}
+.delete_cyr_button:active{
+    box-shadow: none;
+}
+.edit_cyr_button{
+    height: 20px;
+    width: 20px;
+    border:2px solid #228B22;
+    border-radius: 50%;
+    text-align: center;
+    font-weight: bold;
+    background-image: url('../../../Static/img/icons8-edit.png');
+    background-size: cover;
+    margin: auto;
+    cursor: pointer;
+    position: relative;
+}
+.edit_cyr_button:hover{
+    border:1px solid #228B22;
+}
+.open_button{
+    height: 15px;
+    width: 15px;
+    border: 1px solid lightgrey;
+    border-radius: 3px;
+    background:radial-gradient(farthest-side ellipse at top left,#AFEEEE,#1E90FF);
+    position: relative;
+    cursor:pointer;
+    margin: 3px 2px;
+}
+.open_button::after{
+    content: "+";
+    position: absolute;
+    top:-9px;
+    left: 0px;
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: beige;
+}
+.hide_button{
+    height: 15px;
+    width: 15px;
+    border: 1px solid lightgrey;
+    border-radius: 3px;
+    background:radial-gradient(farthest-side ellipse at top left,#AFEEEE,#1E90FF);
+    position: relative;
+    cursor:pointer;
+    margin: 3px 2px;
+}
+.hide_button::after{
+    content: "_";
+    position: absolute;
+    top:-13px;
+    left: 2px;
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: beige;
+}
+
+.info_button{
+    height: 14px;
+    width: 14px;
+    border: 1px solid gray;
+    border-radius: 50%;
+    position: relative;
+    background-color: #00BFFF;
+    color: beige;
+    cursor: pointer;
+}
+.info_button::after{
+    content: "i";
+    position: absolute;
+    top:-2px;
+    left:5px;
+    font-size: 16px !important;
+}
+.navbar_button, .admin_path_button, .standard_button{
+    width: 5rem;
+    height: 2rem;
+    margin-top: 1rem;
+    border:1px solid gray;
+    border-radius: 7px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.19) 0 10px 20px, rgba(0, 0, 0, 0.23) 0 6px 6px;
+    background-color: beige;
+
+}
+.admin_path_button, .standard_button{
+    width: 7rem;
+    margin-top: 0;
+    margin-left: 2rem;
+    box-shadow: rgba(40, 50, 50, 0.19) 0 8px 15px, rgba(47, 79, 79, 0.23) 0 6px 6px;
+}
+
+.navbar_button:hover{
+    text-shadow: 1px 1px beige;
+}
+.navbar_button:active{
+    box-shadow: 1px 1px 2px 2px darkslategrey;
+}
+.admin_path_button>a{
+    width: 100%;
+    text-decoration: none;
+    color: #696969;
+}
+.navbar_button>a{
+    width: 100%;
+    text-decoration: none;
+    color: #696969;
+
+}
+/*a{*/
+/*    text-decoration: none;*/
+/*    color: #696969;*/
+/*}*/
+/*a>p{*/
+/*    font-family: inglobal;*/
+/*    margin: 3px;*/
+/*    font-weight: bold;*/
+/*}*/
+.navbar_button>p{
+    margin: 3px;
+    color: #696969;
+}

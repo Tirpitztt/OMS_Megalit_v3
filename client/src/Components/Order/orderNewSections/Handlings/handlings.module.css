@@ -1,0 +1,94 @@
+.handlings_box{
+    padding: 10px;
+    width: 40%;
+    border-left: 1px solid gray;
+}
+.hand_title_box{
+    display: flex;
+    flex-flow: column nowrap;
+}
+.title_up{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    height: 5rem;
+    position: relative;
+}
+.title_hydro_box{
+    display: flex;
+    flex-flow: row nowrap;
+    width: 40%;
+    justify-content: start;
+}
+.title_hydro_box>input{
+    width: 40%;
+    height: 1.5rem;
+}
+.title_text{
+    width: 60%;
+    position: absolute;
+    right: 5px;
+    top: -3rem;
+}
+.text_grav{
+    width: 100%;
+    height: 6rem;
+}
+.del_compl_but{
+    margin-left: 100px;
+    margin-right: 20px;
+    width:100px;
+    height: 2rem;
+    border:1px solid gray;
+    text-align: center;
+    cursor: pointer;
+}
+.del_compl_but>p{
+    margin-top:0;
+}
+.del_compl_but>p>span{
+    font-weight: bold;
+    color:red;
+}
+.handel_box>form{
+    width:100%;
+    background-color: #C0C0C0;
+}
+.title_compl{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+}
+.form_section{
+    display:flex;
+    flex-flow: column;
+    width:20%;
+    padding: 5px;
+}
+.form_section>select{
+    height: 2rem;
+    margin: 1px 3px;
+}
+.form_section>input{
+    height: 1.8rem;
+    border: 1px solid gray;
+}
+.form_section>button{
+    height: 2rem;
+    width: 65%;
+}
+.form_section:last-of-type{
+    justify-content: center;
+    align-items: center;
+}
+.form_body{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+    align-items: center;
+}
+.handel_box>table{
+    width:90%;
+    margin-top: 15px;
+}

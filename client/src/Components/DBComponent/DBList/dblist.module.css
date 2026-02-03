@@ -1,0 +1,189 @@
+.db_content_wrap{
+
+}
+.db_content_header{
+    height: 2.2rem;
+    /*background-color: #708090;*/
+    background-image: linear-gradient(#708090,#C0C0C0);
+    display: flex;
+    flex-flow: row nowrap;
+    font-family: inglobal;
+    color: beige;
+}
+.db_search{
+    width: 20%;
+}
+.db_search>input{
+    height: 1.5rem;
+}
+.db_table_wrap{
+    height: 74vh;
+    overflow-y: scroll;
+    background-color: #E0FFFF;
+}
+.db_table_wrap::-webkit-scrollbar {
+    width: 7px;
+}
+.db_table_wrap::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+.db_table_wrap::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 3px;
+}
+.db_table_wrap::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+
+.db_table_head{
+    text-align: center;
+    border: 1px dotted gray;
+    align-items: start;
+}
+.db_table_head:first-of-type{
+    width: 3%;
+}
+.db_table_head:nth-of-type(2){
+    width: 20%;
+}
+.db_table_head:nth-of-type(3){
+    width: 5%;
+}
+.db_table_head:nth-of-type(4){
+    width: 5%;
+}
+.db_table_head:nth-of-type(5){
+    width: 5%;
+}
+.db_table_head:nth-of-type(6){
+    width: 12%;
+}
+.db_table_head:nth-of-type(7){
+    width: 7%;
+}
+.db_table_head:nth-of-type(8){
+    width: 3%;
+}
+.db_table_head:nth-of-type(9){
+    width: 15%;
+}
+.db_table_head:nth-of-type(10){
+    width: 32%;
+}
+
+.db_table_body_row{
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: start;
+    cursor: pointer;
+}
+.db_table_body_row:hover{
+    background-color: #cccccc;
+}
+.db_table_body{
+    text-align: center;
+    border:1px dotted gray;
+    font-size: .8rem;
+    height: 1rem;
+    margin-bottom: 3px;
+}
+.db_table_body:nth-of-type(1){
+    width:3%
+}
+.db_table_body:nth-of-type(2){
+    position:relative;
+    width:20%
+}
+.db_hide_text{
+    display: none;
+    position: absolute;
+    z-index: 9999;
+    background-color: beige;
+    padding: 4px;
+}
+.db_table_body:nth-of-type(2):hover>.db_hide_text{
+    display: flex;
+}
+
+.db_table_body:nth-of-type(3){
+    width:5%;
+    color: darkblue;
+}
+.db_table_body:nth-of-type(4){
+    width:5%;
+}
+.db_table_body:nth-of-type(5){
+    width:5%;
+    color: firebrick;
+}
+.db_table_body:nth-of-type(6){
+    width:12%
+}
+.db_table_body:nth-of-type(7){
+    width:7%
+}
+.db_table_body:nth-of-type(8){
+    width:3%
+}
+.db_table_body:nth-of-type(9){
+    width:15%
+}
+.db_table_body:nth-of-type(10){
+    overflow: hidden;
+    width:30%
+}
+.color_red{
+    color: firebrick;
+    font-weight: 500;
+}
+.color_orange{
+    color: #D2691E;
+    font-weight: 500;
+}
+
+
+
+
+
+.order{
+    width: 100%;
+    height: 2.5rem;
+}
+.ourstyle{
+    display: inline-block;
+    text-align: center;
+}
+.num_wr{
+    width: 3%;
+}
+.customer{
+    text-align: left;
+    width: 27%;
+}
+.phone{
+    width: 20%;
+}
+.num_item{
+    display: inline-block;
+    width: 49%;
+    cursor: pointer;
+}
+.rank{
+    width: 10%;
+}
+.number_wrp{
+    width: 20%;
+}
+.icons{
+    display: inline-block;
+    width: 10%;
+}
+.edit{
+    display: inline-block;
+    width: 50%;
+}
+.del{
+    display: inline-block;
+    width: 50%;
+}

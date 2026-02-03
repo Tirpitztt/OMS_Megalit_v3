@@ -1,0 +1,64 @@
+.wrapper{
+    width: 1050px;
+    height: 3000px;
+    margin-top: 50px;
+    margin-left: 70px;
+    padding: 10px;
+    text-align: justify;
+    overflow: hidden;
+}
+.title{
+    text-align: center;
+    font-weight: bold;
+}
+.punkt{
+    text-align: center;
+}
+.wrapper ol{
+    padding-left: 10px;
+    list-style: none;
+    counter-reset: li;
+}
+li:before{
+    counter-increment: li;
+    content: counters(li,".")". ";
+}
+
+.req_box{
+    border-top: 2px solid gray;
+    display: flex;
+    flex-flow: row nowrap;
+}
+.maker_box, .customer_box{
+    width: 50%;
+}
+.req_box span{
+    font-size: .7rem;
+    color: gray;
+}
+.sign_box{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+}
+.sign{
+    width: 25%;
+    display: flex;
+    flex-flow: row nowrap;
+}
+.sign>p{
+margin-bottom: 0;
+}
+.sign:before{
+    content: ' ';
+    width: 120px;
+    border-bottom: 1px solid gray;
+}
+.custom_info{
+    margin-top: 60px;
+    font-weight: bold;
+}
+.ramka{
+    padding: 1px;
+    border: 2px solid gray;
+}

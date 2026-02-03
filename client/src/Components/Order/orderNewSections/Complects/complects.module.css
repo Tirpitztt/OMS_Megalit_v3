@@ -1,0 +1,80 @@
+.compl_box{
+    width:60%;
+    padding: 10px;
+}
+.complects_box{
+    border:1px solid gray;
+    margin-top: 10px;
+}
+.title_compl{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+}
+.del_compl_but{
+    margin-left: 100px;
+    margin-right: 20px;
+    width:100px;
+    height: 2rem;
+    border:1px solid gray;
+    text-align: center;
+    cursor: pointer;
+}
+.del_compl_but>p{
+    margin-top:0;
+}
+.del_compl_but>p>span{
+    font-weight: bold;
+    color:red;
+}
+.details_box{
+    display:flex;
+    flex-flow: column;
+    justify-content: space-around;
+    align-items: center;
+    width:100%;
+}
+.details_box>table{
+    width:90%;
+    margin-top: 15px;
+}
+.details_box>table>tbody>tr>td{
+    border-right: 1px solid gray;
+    border-bottom: 1px solid gray;
+}
+.details_box>table>thead>tr>th{
+    text-align: center;
+}
+.details_box>form{
+    width: 100%;
+    background-color: #C0C0C0;
+}
+.form_section{
+    display:flex;
+    flex-flow: column;
+    width:20%;
+    padding: 5px;
+}
+.form_section>select{
+    height: 2rem;
+    margin: 1px 3px;
+}
+.form_section>input{
+    height: 1.8rem;
+    border: 1px solid gray;
+}
+.form_section>button{
+    height: 2rem;
+    width: 65%;
+}
+.form_section:last-of-type{
+    justify-content: center;
+    align-items: center;
+}
+.form_body{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+    align-items: center;
+}

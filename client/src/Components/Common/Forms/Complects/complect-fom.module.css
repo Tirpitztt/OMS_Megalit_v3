@@ -1,0 +1,93 @@
+form{
+    width: 100%;
+}
+.complect_sec{
+    width: 100%;
+    padding: 5px;
+}
+.form_row{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    margin: 10px auto;
+}
+.detail_sec_row{
+    display: flex;
+    flex-flow: row nowrap;
+}
+.form_box_row{
+    width: 30%;
+    display: flex;
+    flex-flow: row nowrap;
+}
+.form_box_col{
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    margin: 8px auto;
+}
+.form_box_col>input, select{
+    width: 95%;
+}
+.detail_sec_row>div{
+    text-align: center;
+    font-size: .7rem;
+    border:1px dotted gray;
+}
+.detail_sec_row>div>select,.detail_sec_row>div>input{
+    height: 1.2rem;
+}
+.detail_sec_row>div:nth-of-type(1){
+    width: 20%;
+}
+.detail_sec_row>div:nth-of-type(2){
+    width: 20%;
+}
+.detail_sec_row>div:nth-of-type(3){
+    width: 20%;
+}
+.detail_sec_row>div:nth-of-type(4){
+    width: 5%;
+}
+.detail_sec_row>div:nth-of-type(5){
+    width: 5%;
+}
+.detail_sec_row>div:nth-of-type(6){
+    width: 5%;
+}
+.detail_sec_row>div:nth-of-type(7){
+    width: 10%;
+}
+.detail_sec_row>div:nth-of-type(8){
+    width: 5%;
+}
+.detail_sec_row>div:nth-of-type(9){
+    width: 10%;
+}
+.list_block{
+    display: block;
+    position: absolute;
+    top: 20%;
+    left: 46%;
+    width: 250px;
+    height: 300px;
+    overflow: auto;
+    background-color: #F0FFF0;
+}
+.drop_list{
+    margin: 5px 15px;
+    cursor:pointer;
+    border-bottom:1px dotted gray;
+}
+.drop_list>p{
+    margin: 0;
+}
+.hidden{
+    display: none;
+}
+.add_button_det{
+    cursor: pointer;
+    font-size: .8rem;
+    color: darkblue;
+}

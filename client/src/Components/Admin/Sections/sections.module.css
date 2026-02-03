@@ -1,0 +1,130 @@
+
+
+.user_box{
+
+}
+.notation>p{
+    margin: 5px;
+    font-size: .7rem;
+}
+.title_row{
+    display: flex;
+    flex-flow: row nowrap;
+    border:1px dotted grey;
+    padding: 3px;
+}
+.title:first-of-type{
+    flex-grow: 1;
+}
+.user_form_wrap{
+    display: block;
+    height: 250px;
+    background-color: rgba(0,0,0,0.2);
+}
+.user_form_wrap>form{
+
+    height: inherit;
+}
+.hide_box{
+    display:none;
+}
+.form_box{
+    height: 220px;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+}
+.field_box{
+    width:50%;
+    alignment: center;
+}
+.field_box>select{
+    height: 2rem;
+    width: 100%;
+}
+.field_box>input{
+    width: 100%;
+}
+.field_box>button{
+    margin: auto;
+}
+
+
+
+
+.table_rate{
+    height: 98%;
+    width:100%;
+    margin:auto;
+}
+.thead_rate{
+    height: 10%;
+    width: 100%;
+}
+.tbody_rate{
+    height: 90%;
+    width: 100%;
+}
+.table_row_rate{
+    width: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    margin-bottom: 3px;
+}
+.table_item_head_rate{
+    border:1px solid gray;
+    text-align: center;
+    font-style: italic;
+}
+.table_item_body_rate{
+    border:1px dotted gray;
+    padding: .6% 0;
+    text-align: center;
+}
+.table_item_head_rate:first-of-type{
+    width: 5%;
+}
+.table_item_head_rate:nth-of-type(2){
+    width: 45%;
+}
+.table_item_head_rate:nth-of-type(3){
+    width: 13%;
+}
+.table_item_head_rate:nth-of-type(4){
+    width: 13%;
+}
+.table_item_head_rate:nth-of-type(5){
+    width: 13%;
+}
+.table_item_head_rate:nth-of-type(6){
+    width: 13%;
+}
+
+.table_item_body_rate:first-of-type{
+    width: 5%;
+}
+.table_item_body_rate:nth-of-type(2){
+    width: 45%;
+}
+.table_item_body_rate:nth-of-type(3){
+    width: 13%;
+}
+.table_item_body_rate:nth-of-type(4){
+    width: 13%;
+}
+.table_item_body_rate:nth-of-type(5){
+    width: 13%;
+}
+.table_item_body_rate:nth-of-type(6){
+    width: 13%;
+}
+
+
+.button_form{
+    height: 2rem;
+    cursor: pointer;
+    margin-left: 35%;
+}

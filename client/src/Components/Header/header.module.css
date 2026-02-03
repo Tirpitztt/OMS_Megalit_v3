@@ -1,0 +1,12 @@
+
+h3{
+    display: inline-block;
+}
+.exit_button{
+    position: absolute;
+    right: 20px;
+    top:-10px;
+    display: inline-block;
+    color: red;
+    cursor: pointer;
+}

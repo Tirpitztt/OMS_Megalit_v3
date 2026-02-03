@@ -1,0 +1,92 @@
+.orders_wrap{
+    margin-top: 3rem;
+}
+.inst_item{
+    display: flex;
+    flex-flow: row nowrap;
+    height: 3rem;
+    align-items: center;
+    justify-content: end;
+    position: fixed;
+    top: 5rem;
+    width: 100%;
+    background-color: #C0C0C0;
+}
+/*.spinner:after{*/
+/*    content: '';*/
+/*    height: 200px;*/
+/*    width: 200px;*/
+/*    background-image: url("./../../../public/spinner200px-200px.svg");*/
+/*}*/
+.search_f{
+    display:flex;
+    width: 80%;
+}
+.search_f>input{
+    height: 1rem;
+}
+.db_hidden{
+    display:none;
+}
+.db_wrap{
+    width: 100%;
+    height: 86vh;
+}
+.db_header{
+    height: 2rem;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    margin-bottom: 6px;
+    align-items: center;
+}
+.db_title{
+    width: 30%;
+}
+.db_title>p{
+    font-family: inglobal;
+    font-weight: bold;
+    margin: 0;
+}
+.db_button_wrap{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+    align-items: start;
+    width: 30%;
+}
+.db_back{
+    display:flex;
+    width: 15%;
+    border:1px solid gray;
+    border-radius: 3px;
+    cursor:pointer;
+    justify-content: center;
+    align-items: center;
+    background-color: darkgrey;
+}
+.db_search{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: end;
+    align-items: end;
+    width: 30%;
+}
+.sort_box{
+    display: flex;
+    flex-flow: row nowrap;
+    width: 50%;
+    justify-content: space-between;
+}
+.sort_box>label{
+    width: 40%;
+}
+.sort_box>select{
+    width:60%;
+}
+
+
+.db_content{
+    height: 79vh;
+}
+

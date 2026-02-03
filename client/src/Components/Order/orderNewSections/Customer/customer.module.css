@@ -1,0 +1,23 @@
+.customer_box{
+    width:65%;
+    display: flex;
+    flex-flow: row nowrap;
+}
+.customer_box>form{
+    width:50%;
+}
+.varic_name{
+    width:50%;
+    padding: 20px;
+    overflow: hidden;
+}
+.form_box{
+    display:flex;
+    align-items: center;
+    flex-flow: row nowrap;
+    margin-top: 5px;
+    justify-content: end;
+}
+.customer_list_item{
+    cursor: pointer;
+}

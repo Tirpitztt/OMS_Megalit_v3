@@ -1,0 +1,27 @@
+.input_form{
+    width:65%;
+    height: 2rem;
+    margin-left: 20px;
+}
+.wrap{
+    width:100%;
+    padding: 3px;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    min-height: 2.5rem;
+    align-items: center;
+}
+.items{
+    width: 48%;
+    height: 2.2rem;
+}
+.items>label{
+    height: 2.2rem;
+}
+.items>input{
+    height: 2.2rem;
+    width: 95%;
+    border: none;
+    border-radius: 3px;
+}

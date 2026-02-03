@@ -1,0 +1,45 @@
+{
+  "name": "megalit_OMS",
+  "version": "3.2.0.",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "server": "nodemon server.js",
+    "client": "npm run start --prefix client",
+    "dev": "cross-env NODE_ENV=development concurrently \"npm run server\" \"npm run client\" "
+  },
+  "keywords": [],
+  "engines": {
+    "node": "18.17.0"
+  },
+  "author": "Tirpitz <siroga.tt@mail.ru>",
+  "license": "ISC",
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.48.0",
+    "@aws-sdk/lib-storage": "^3.623.0",
+    "aws-sdk": "^2.1062.0",
+    "axios": "^0.24.0",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "config": "^3.3.6",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.17.1",
+    "express-validator": "^6.13.0",
+    "formidable": "^3.5.1",
+    "fs": "^0.0.1-security",
+    "jsonwebtoken": "^8.5.1",
+    "mysql2": "^2.3.3-rc.0",
+    "path": "^0.12.7",
+    "react-to-print": "^3.0.5",
+    "sequelize": "^6.9.0",
+    "sequelize-cli": "^6.3.0",
+    "stream": "^0.0.3"
+  },
+  "devDependencies": {
+    "concurrently": "^6.3.0",
+    "cross-env": "^7.0.3",
+    "nodemon": "^2.0.15"
+  }
+}

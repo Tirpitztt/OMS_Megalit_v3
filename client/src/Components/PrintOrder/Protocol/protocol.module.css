@@ -1,0 +1,102 @@
+.wrapper{
+    margin-top: 50px;
+    width: 1050px;
+    height: 1500px;
+    margin-left: 70px;
+    border:1px solid gray;
+    overflow: hidden;
+}
+.head{
+    border:1px solid gray;
+    padding: 5px;
+    text-align: center;
+}
+.head p{
+    margin: 0;
+    font-family: inglobal;
+}
+.footer{
+    display: flex;
+    flex-flow: row nowrap;
+}
+.sign{
+    height: 30px;
+    width: 50%;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+}
+.sign>div{
+    width: 30%;
+    border-bottom: 1px solid gray;
+}
+.protocol_table{
+    width: 99%;
+    border: 1px solid gray;
+    margin: 0 5px;
+}
+.protocol_table_row{
+    display: flex;
+    flex-flow: row nowrap;
+    border-bottom: 1px solid gray;
+    justify-content: space-between;
+    height: 1.3rem;
+}
+.protocol_table_endrow{
+    display: flex;
+    flex-flow: row nowrap;
+    border-bottom: 1px solid gray;
+    justify-content: right;
+    height: 1.4rem;
+}
+
+.protocol_table_item{
+    border-right: 1px solid gray;
+    text-align: center;
+
+}
+.protocol_table_item:nth-of-type(1){
+    width:5%;
+}
+.protocol_table_item:nth-of-type(2){
+    width:39%;
+    text-align: left;
+}
+.protocol_table_item:nth-of-type(3){
+    width:10%;
+}
+.protocol_table_item:nth-of-type(4){
+    width:10%;
+}
+.protocol_table_item:nth-of-type(5){
+    width:15%;
+}
+.protocol_table_item:nth-of-type(6){
+    width:5%;
+}
+.protocol_table_item:nth-of-type(7){
+    width:15%;
+}
+
+.protocol_table_item_total{
+    width: 15%;
+    border-right: 1px solid gray;
+    text-align: center;
+    font-weight: 500;
+}
+
+.table_box{
+    margin-top: 70px;
+    height: 700px;
+}
+.info_box{
+    padding: 5px;
+    margin-bottom: 30px;
+}
+.info_box>div>p{
+    font-size: .8rem;
+    margin-left: 15px;
+}
+.cost_bold{
+    font-weight: bold;
+}

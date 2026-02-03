@@ -1,0 +1,47 @@
+.hide{
+    display:none;
+}
+.title_section{
+    position:fixed;
+    top:5.1rem;
+    width: 100%;
+    background-color: #C0C0C0;
+    height: 3.8rem;
+    z-index: 1000;
+}
+.title_info_section{
+    display: flex;
+    flex-flow: row nowrap;
+    border-bottom: 1px solid gray;
+}
+.info_item{
+    display: flex;
+    align-items: center;
+    width: 33%;
+    text-align: center;
+}
+.title{
+    text-align: left;
+    font-weight: bold;
+    font-family: sans-serif;
+}
+
+.info_item>button{
+    width: 65%;
+    height: 2rem;
+    color:green;
+    font-family: sans-serif;
+    font-weight: bold;
+    cursor: pointer;
+}
+.cost_box>span{
+    font-weight: bold;
+    color: forestgreen;
+    font-size: 1.3rem;
+}
+
+.upper_section{
+    margin-top: 3rem;
+    display:flex;
+    flex-flow: row nowrap;
+}
