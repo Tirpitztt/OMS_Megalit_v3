@@ -5,11 +5,7 @@ const { S3Client } = require("@aws-sdk/client-s3");
 
 
 // на сервере создать переменные среды, здесь заменить на proccess.env
-// const accessKeyId = "AKIAXOSR3AYDKDAZK2MF";
-// const secretAccessKey = "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";
-//
-// const region = "eu-central-1";
-// const Bucket = 'elasticbeanstalk-eu-central-1-512346490374';
+
 const accessKeyId = process.env.REACT_APP_ACCESS_KEY_ID
 const secretAccessKey = process.env.REACT_APP_SECRET_ACCESS_KEY
 const region = process.env.REACT_APP_REGION

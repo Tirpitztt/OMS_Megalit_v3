@@ -1,3 +1,4 @@
 .env
 config.json
 default.json
+/client-sso-oidc
