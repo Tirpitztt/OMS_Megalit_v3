@@ -17,6 +17,9 @@ const AddUserForm = (props) => {
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className={c.form_box}>
                     <div className={c.field_box}>
+                        <input {...register('login')} placeholder='login' />
+                    </div>
+                    <div className={c.field_box}>
                         <input {...register('name')} placeholder='name'/>
                     </div>
                     <div className={c.field_box}>

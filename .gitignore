@@ -2,3 +2,4 @@
 config.json
 default.json
 /client-sso-oidc
+/.vs
