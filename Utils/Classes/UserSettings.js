@@ -7,6 +7,7 @@ class UserSettings {
         this.dbView = 0
         this.phone = ''
         this.workPhone = ''
+        this.adress = ''
     }
 }
 

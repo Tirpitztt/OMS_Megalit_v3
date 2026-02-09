@@ -95,7 +95,12 @@ const UserItem = (props) => {
                     </div>
                 </div>
                 <div className={c.user_card_block}>
-                    <div className={c.user_card_info}></div>
+                    <div className={c.user_card_info}>
+                        <InputBlock label='Адрес' value={props.state.user.settings.adress} changeF={props.setUserAdress} type='text' />
+                        <InputBlock label='Телефон' value={props.state.user.settings.phone} changeF={props.setUserPhone} type='text' />
+                        <InputBlock label='раб Телефон' value={props.state.user.settings.workPhone} changeF={props.setUserWorkPhone} type='text' />
+                        
+                    </div>
                     <div className={c.user_card_info}></div>
                 </div>
                 <div className={c.user_card_block}>

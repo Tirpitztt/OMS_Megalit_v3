@@ -32,6 +32,9 @@ const EmployeesPage = (props) => {
                             clearUserState={props.clearUserState}
                             setUserPassword={props.setUserPassword}
                             setUserAvatar={props.setUserAvatar}
+                            setUserAdress={props.setUserAdress}
+                            setUserPhone={props.setUserPhone}
+                            setUserWorkPhone={props.setUserWorkPhone}
                             />
     }
 

@@ -8,7 +8,10 @@ import {SET_USER_EDIT,
     SET_NEW_USER,
     SET_USER_PASSWORD,
     SET_USER_AVATARS_LIST,
-    SET_USER_AVATAR
+    SET_USER_AVATAR,
+    SET_USER_ADRESS,
+    SET_USER_PHONE,
+    SET_USER_WORKPHONE
 } from "../../Utils/variables-const"
 import {supportAPI} from "../../Api/api";
 
@@ -77,6 +80,21 @@ const UserReduser = (state = initialState,action)=>{
             newState.user.settings.avatar = action.data
             return newState
         }
+        case SET_USER_ADRESS: {
+            let newState = { ...state }
+            newState.user.settings.adress = action.data
+            return newState
+        }
+        case SET_USER_PHONE: {
+            let newState = { ...state }
+            newState.user.settings.phone = action.data
+            return newState
+        }
+        case SET_USER_WORKPHONE: {
+            let newState = { ...state }
+            newState.user.settings.workPhone = action.data
+            return newState
+        }
         default: return state
     }
 }
@@ -90,7 +108,10 @@ export const clearUserState = ()=>({type:CLEAR_USER_STATE})
 export const setNewUser = (bool)=>({type:SET_NEW_USER,bool})
 export const setUserPassword = (data)=>({type:SET_USER_PASSWORD,data})
 export const setUserAvatarList = (data)=>({type:SET_USER_AVATARS_LIST,data})
-export const setUserAvatar = (data)=>({type:SET_USER_AVATAR,data})
+export const setUserAvatar = (data) => ({ type: SET_USER_AVATAR, data })
+export const setUserAdress = (data) => ({ type: SET_USER_ADRESS, data })
+export const setUserPhone = (data) => ({ type: SET_USER_PHONE, data })
+export const setUserWorkPhone = (data) => ({ type: SET_USER_WORKPHONE, data })
 
 export const getAvatarsThunkCreator = () => {
     return(dispatch)=>{

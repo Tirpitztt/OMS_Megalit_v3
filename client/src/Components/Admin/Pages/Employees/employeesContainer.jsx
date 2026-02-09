@@ -8,7 +8,7 @@ import {
     setUserFatherName,
     setUserLastName,
     setUserLogin,
-    setUserName, setUserPassword
+    setUserName, setUserPassword, setUserAdress, setUserPhone, setUserWorkPhone
 } from "../../../../Redux/Redusers/user-reduser";
 
 class EmployeesContainer extends React.Component{
@@ -17,16 +17,19 @@ class EmployeesContainer extends React.Component{
     }
     render(){
         return(
-            <EmployeesPage  state={this.props.state.employeesPage}
-                            setUserEdit={this.props.setUserEdit}
-                            setUserLogin={this.props.setUserLogin}
-                            setUserLastName={this.props.setUserLastName}
-                            setUserName={this.props.setUserName}
-                            setUserFatherName={this.props.setUserFatherName}
-                            clearUserState={this.props.clearUserState}
-                            setNewUser={this.props.setNewUser}
-                            setUserPassword={this.props.setUserPassword}
-                            setUserAvatar={this.props.setUserAvatar}
+            <EmployeesPage state={this.props.state.employeesPage}
+                setUserEdit={this.props.setUserEdit}
+                setUserLogin={this.props.setUserLogin}
+                setUserLastName={this.props.setUserLastName}
+                setUserName={this.props.setUserName}
+                setUserFatherName={this.props.setUserFatherName}
+                clearUserState={this.props.clearUserState}
+                setNewUser={this.props.setNewUser}
+                setUserPassword={this.props.setUserPassword}
+                setUserAvatar={this.props.setUserAvatar}
+                setUserAdress={this.props.setUserAdress}
+                setUserPhone={this.props.setUserPhone}
+                setUserWorkPhone={this.props.setUserWorkPhone}
 
             />
         )
@@ -67,6 +70,15 @@ let mapDispatchToProps = (dispatch)=>{
         },
         setUserAvatar:(data)=>{
             dispatch(setUserAvatar(data))
+        },
+        setUserAdress: (data) => {
+            dispatch(setUserAdress(data))
+        },
+        setUserPhone: (data) => {
+            dispatch(setUserPhone(data))
+        },
+        setUserWorkPhone: (data) => {
+            dispatch(setUserWorkPhone(data))
         }
 
     }
