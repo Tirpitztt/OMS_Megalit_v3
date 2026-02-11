@@ -95,4 +95,4 @@ export const SET_USER_ADRESS = 'SET_USER_ADRESS'
 export const SET_USER_PHONE = 'SET_USER_PHONE'
 export const SET_USER_WORKPHONE = 'SET_USER_WORKPHONE'
 
-
+export const SET_US_TT = 'SET_USER_WORKPHONE'
