@@ -35,6 +35,8 @@ const EmployeesPage = (props) => {
                             setUserAdress={props.setUserAdress}
                             setUserPhone={props.setUserPhone}
                             setUserWorkPhone={props.setUserWorkPhone}
+                            saveUser={props.saveUser}
+                            updateUser={props.updateUser}
                             />
     }
 

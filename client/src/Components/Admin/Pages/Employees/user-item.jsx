@@ -3,9 +3,13 @@ import c from './employees.module.css'
 import InputBlock from "../../../UI/Inputs/input-block";
 import StandardButton7 from "../../../UI/Buttons/standard-button-7";
 import UsersAvatarsModal from "../../../Common/users-avatars-modal";
+import SelectBlock from "../../../UI/Inputs/select-block";
+import {DEPARTMENT_NAMES} from "../../../../Utils/variables-const";
 
 const UserItem = (props) => {
-    console.log(props.user)
+    //console.log(props.user)
+    const tempDate = new Date()
+    const tempVaric = 'Temporal Data'
     const [error,setError] = useState(false)
     const [passRepeat,setPassRepeat] = useState('')
     const [active,setActive] = useState(false)
@@ -37,6 +41,7 @@ const UserItem = (props) => {
         if(props.state.isNewUser){
             if(props.state.user.password === passRepeat){
                 //console.log('saveNewUser')
+                props.saveUser(props.state.user)
                 props.setUser(null)
                 props.clearUserState()
             }else {
@@ -45,6 +50,7 @@ const UserItem = (props) => {
 
         }else {
             //console.log('changeUser')
+            props.updateUser(props.state.user)
             props.setUser(null)
             props.clearUserState()
         }
@@ -59,8 +65,8 @@ const UserItem = (props) => {
         props.setUserAvatar(path)
         setActive(false)
     }
-    const changeInputValue = (val) => {
-        // console.log(val)
+    const tempFunc = () => {
+         console.log('foo')
         // props.setUserLogin(val)
     }
     return (
@@ -99,9 +105,16 @@ const UserItem = (props) => {
                         <InputBlock label='Адрес' value={props.state.user.settings.adress} changeF={props.setUserAdress} type='text' />
                         <InputBlock label='Телефон' value={props.state.user.settings.phone} changeF={props.setUserPhone} type='text' />
                         <InputBlock label='раб Телефон' value={props.state.user.settings.workPhone} changeF={props.setUserWorkPhone} type='text' />
-                        
+                        <InputBlock label='e-mail' value={props.state.user.email} changeF={props.setUserWorkPhone} type='text' />
                     </div>
-                    <div className={c.user_card_info}></div>
+                    <div className={c.user_card_info}>
+                        <InputBlock label='дата приемки' value={tempDate} changeF={tempFunc} type='date' />
+                        <SelectBlock label='Отдел'
+                                     options={DEPARTMENT_NAMES}
+                                     defaultValue={tempVaric}
+                                     selectFunction={tempFunc} />
+                        <SelectBlock label='Должность' />
+                    </div>
                 </div>
                 <div className={c.user_card_block}>
                     <div className={c.user_card_info}></div>

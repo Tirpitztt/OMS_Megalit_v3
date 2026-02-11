@@ -8,7 +8,8 @@ import {
     setUserFatherName,
     setUserLastName,
     setUserLogin,
-    setUserName, setUserPassword, setUserAdress, setUserPhone, setUserWorkPhone
+    setUserName, setUserPassword, setUserAdress, setUserPhone, setUserWorkPhone, saveUserThunkCreator,
+    updateUserThunkCreator
 } from "../../../../Redux/Redusers/user-reduser";
 
 class EmployeesContainer extends React.Component{
@@ -30,6 +31,8 @@ class EmployeesContainer extends React.Component{
                 setUserAdress={this.props.setUserAdress}
                 setUserPhone={this.props.setUserPhone}
                 setUserWorkPhone={this.props.setUserWorkPhone}
+                saveUser={this.props.saveUser}
+                updateUser={this.props.updateUser}
 
             />
         )
@@ -79,6 +82,12 @@ let mapDispatchToProps = (dispatch)=>{
         },
         setUserWorkPhone: (data) => {
             dispatch(setUserWorkPhone(data))
+        },
+        saveUser:(data)=>{
+            dispatch(saveUserThunkCreator(data))
+        },
+        updateUser:(user)=>{
+            dispatch(updateUserThunkCreator(user))
         }
 
     }

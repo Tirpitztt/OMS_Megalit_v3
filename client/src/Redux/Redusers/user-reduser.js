@@ -120,5 +120,15 @@ export const getAvatarsThunkCreator = () => {
         })
     }
 }
+export const saveUserThunkCreator = (user) => {
+    return(dispatch)=>{
+        console.log(user);
+    }
+}
+export const updateUserThunkCreator = (user) => {
+    return(dispatch)=>{
+        console.log(user);
+    }
+}
 
 export default UserReduser;

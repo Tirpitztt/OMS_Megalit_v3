@@ -25,6 +25,8 @@ class UserController {
             })
            // console.log(candidate);
             if(candidate==null){
+                //проверить наличие полей в БД,
+                // settings - добавить метод в классе, создающий настройки по шаблону
                 const settings = new UserSettings()
                 const hashPass = bcrypt.hashSync(req.body.password,5);
                 const result = await Model.users.create({
@@ -97,7 +99,19 @@ class UserController {
            return res.status(500).json({message:'router say: '+ e.message});
         }
     }
-    async getUserOfId(req,res){
+    async updateUserById(req,res){
+        try{
+            const user = await Model.users.findOne({
+                where:{
+                    id:req.body.id
+                }
+            })
+            return res.status(201).json(user);
+        }catch (e) {
+            return res.status(500).json({message:'updateUser error: '+ e.message});
+        }
+    }
+    async getUserById(req,res){
         try{
             const user = await Model.users.findOne({
                 where:{

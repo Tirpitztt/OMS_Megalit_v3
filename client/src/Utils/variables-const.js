@@ -80,6 +80,20 @@ export const DETAIL_NAMES = [
     {value:'доп деталь',text:'доп деталь'},
 
 ]
+export const DEPARTMENT_NAMES = [
+    {value:'administration',text:'администрация'},
+    {value:'workers',text:'рабочие'},
+]
+export const WORKERS_NAMES = [
+    {value:'administration',text:'разнорабочий'},
+    {value:'workers',text:'заливщик'},
+]
+export const ADMIN_NAMES = [
+    {value:'boss',text:'директор'},
+    {value:'engineer',text:'руководитель отдела'},
+    {value:'master',text:'мастер'},
+    {value:'top',text:'менеджер'},
+]
 
 export const CLEAR_USER_STATE = 'CLEAR_USER_STATE'
 export const SET_USER_EDIT = 'SET_USER_EDIT'

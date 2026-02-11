@@ -19,7 +19,7 @@
 .items>label{
     height: 2.2rem;
 }
-.items>input{
+.items>input,select{
     height: 2.2rem;
     width: 95%;
     border: none;
