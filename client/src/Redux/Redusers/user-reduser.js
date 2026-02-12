@@ -1,5 +1,6 @@
 import User from "../../Utils/Classes/User";
-import {SET_USER_EDIT,
+import {
+    SET_USER_EDIT,
     SET_USER_LOGIN,
     SET_USER_NAME,
     SET_USER_FATHERNAME,
@@ -12,9 +13,10 @@ import {SET_USER_EDIT,
     SET_USER_ADRESS,
     SET_USER_PHONE,
     SET_USER_WORKPHONE,
-    SET_USER_DATE_ACCEPT
+    SET_USER_DATE_ACCEPT, SET_USER_DEPARTMENT, SET_USER_POSITION, SET_USER_MAIL, SET_USER_ROLE
 } from "../../Utils/variables-const"
-import {supportAPI} from "../../Api/api";
+import {supportAPI, usersAPI} from "../../Api/api";
+import userItem from "../../Components/Admin/Pages/Employees/user-item";
 
 
 let initialState = {
@@ -48,6 +50,16 @@ const UserReduser = (state = initialState,action)=>{
         case SET_USER_FATHERNAME:{
             let newState = {...state}
             newState.user.fatherName = action.data
+            return newState
+        }
+        case SET_USER_ROLE:{
+            let newState = {...state}
+            newState.user.role = action.data
+            return newState
+        }
+        case SET_USER_MAIL:{
+            let newState = {...state}
+            newState.user.email = action.data
             return newState
         }
         case CLEAR_USER_STATE:{
@@ -101,6 +113,16 @@ const UserReduser = (state = initialState,action)=>{
             newState.user.dateAccept = action.data
             return newState
         }
+        case SET_USER_DEPARTMENT: {
+            let newState = { ...state }
+            newState.user.department = action.data
+            return newState
+        }
+        case SET_USER_POSITION: {
+            let newState = { ...state }
+            newState.user.position = action.data
+            return newState
+        }
         default: return state
     }
 }
@@ -110,6 +132,8 @@ export const setUserLogin = (data)=>({type:SET_USER_LOGIN,data})
 export const setUserLastName = (data)=>({type:SET_USER_LASTNAME,data})
 export const setUserName = (data)=>({type:SET_USER_NAME,data})
 export const setUserFatherName = (data)=>({type:SET_USER_FATHERNAME,data})
+export const setUserRole = (data)=>({type:SET_USER_ROLE,data})
+export const setUserMail = (data) =>({type:SET_USER_MAIL,data})
 export const clearUserState = ()=>({type:CLEAR_USER_STATE})
 export const setNewUser = (bool)=>({type:SET_NEW_USER,bool})
 export const setUserPassword = (data)=>({type:SET_USER_PASSWORD,data})
@@ -119,6 +143,8 @@ export const setUserAdress = (data) => ({ type: SET_USER_ADRESS, data })
 export const setUserPhone = (data) => ({ type: SET_USER_PHONE, data })
 export const setUserWorkPhone = (data) => ({ type: SET_USER_WORKPHONE, data })
 export const setUserDateAccept = (data) => ({ type: SET_USER_DATE_ACCEPT, data })
+export const setUserDepartment = (data) => ({type:SET_USER_DEPARTMENT,data})
+export const setUserPosition = (data) => ({type:SET_USER_POSITION,data})
 
 export const getAvatarsThunkCreator = () => {
     return(dispatch)=>{
@@ -129,11 +155,13 @@ export const getAvatarsThunkCreator = () => {
 }
 export const saveUserThunkCreator = (user) => {
     return(dispatch)=>{
+        usersAPI.registrationUser(user)
         console.log(user);
     }
 }
 export const updateUserThunkCreator = (user) => {
     return(dispatch)=>{
+        //usersAPI.registrationUser(user)
         console.log(user);
     }
 }

@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import c from './inp.module.css';
 
 const SelectBlock = ({ label, options, defaultValue, selectFunction }) => {
-    console.log(options)
+    //console.log(options)
     const [selectedOption,setSelectedOption] = useState(defaultValue)
     const optionsResult = options.map((item,i)=>{
         return <option key={i} value={item.value}>{item.text}</option>

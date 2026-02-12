@@ -10,7 +10,7 @@ const EmployeesPage = (props) => {
     const users = useContext(UserContext)
     const [user,setUser] = useState(null)
 
-    console.log(props.state)
+    //console.log(props.state)
 
     let display = null
 
@@ -29,6 +29,8 @@ const EmployeesPage = (props) => {
             setUserLastName={props.setUserLastName}
             setUserName={props.setUserName}
             setUserFatherName={props.setUserFatherName}
+                            setUserMail={props.setUserMail}
+                            setUserRole={props.setUserRole}
             clearUserState={props.clearUserState}
             setUserPassword={props.setUserPassword}
             setUserAvatar={props.setUserAvatar}
@@ -38,6 +40,8 @@ const EmployeesPage = (props) => {
             saveUser={props.saveUser}
             updateUser={props.updateUser}
             setUserDateAccept={props.setUserDateAccept}
+                            setUserDepartment={props.setUserDepartment}
+                            setUserPosition={props.setUserPosition}
                             />
     }
 

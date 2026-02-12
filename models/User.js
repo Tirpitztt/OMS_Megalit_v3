@@ -34,8 +34,11 @@ module.exports = (sequelize,DataTypes)=>{
         settings:{
             type:DataTypes.STRING
         },
-        positionId: {
-            type: DataTypes.INTEGER
+        department:{
+            type:DataTypes.STRING
+        },
+        position: {
+            type: DataTypes.STRING
         },
         full_name:{
             type:DataTypes.VIRTUAL,
@@ -45,9 +48,7 @@ module.exports = (sequelize,DataTypes)=>{
         }
     }, { timestamps: false });
 
-    User.associate = Model => {
-        User.belongsTo(Model.positions)
-    }
+
 
     return User;
 }

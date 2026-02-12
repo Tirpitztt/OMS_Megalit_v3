@@ -27,14 +27,21 @@ class UserController {
             if(candidate==null){
                 //проверить наличие полей в БД,
                 // settings - добавить метод в классе, создающий настройки по шаблону
-                const settings = new UserSettings()
+                const settings = new UserSettings(req.body.settings)
+                settings.setSettings(req.body.settings)
                 const hashPass = bcrypt.hashSync(req.body.password,5);
+                console.log(settings)
                 const result = await Model.users.create({
                     login:req.body.login,
                     name:req.body.name,
-                    email:req.body.mail,
+                    last_name:req.body.lastName,
+                    father_name:req.body.fatherName,
+                    email:req.body.email,
                     role:req.body.role,
                     password:hashPass,
+                    date_accept:req.body.dateAccept,
+                    department: req.body.department,
+                    position:req.body.position,
                     settings:JSON.stringify(settings)
                 })
               return  res.status(201).json({message:'router say: create good'});
@@ -75,7 +82,6 @@ class UserController {
         let result = [];
         try{
             const users = await Model.users.findAll();
-            const positions = await Model.positions.findAll()
             if(users){
                 for (let it of users) {
                     let user = {
@@ -88,15 +94,11 @@ class UserController {
                         role:it.role,
                         fullName: it.full_name,
                         dateAccept: it.date_accept,
-                        positionId: it.positionId,
-                        position:'',
+                        department:it.department,
+                        position:it.position,
                         settings:JSON.parse(it.settings)
                     }
-                    for (let pos of positions) {
-                        if (pos.id === it.positionId) {
-                            user.position = pos
-                        }
-                    }
+
                     result.push(user);
                 }
 
@@ -132,19 +134,7 @@ class UserController {
             return res.status(500).json({message:'getUser error: '+ e.message});
         }
     }
-    async getPositions(req, res) {
-        try {
-            const positions = await Model.positions.findAll({
-                include: [{
-                    model:Model.users
-                }]
-            })
 
-            return res.status(200).json(positions)
-        } catch (e) {
-            return res.status(500).json({ message: 'getPositions error: ' + e.message });
-        }
-    }
 
 }
 

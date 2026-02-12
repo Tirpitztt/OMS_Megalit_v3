@@ -81,18 +81,30 @@ export const DETAIL_NAMES = [
 
 ]
 export const DEPARTMENT_NAMES = [
-    {value:'administration',text:'администрация'},
-    {value:'workers',text:'рабочие'},
+    {value:'администрация',text:'администрация'},
+    {value:'рабочие',text:'рабочие'},
 ]
 export const WORKERS_NAMES = [
-    {value:'administration',text:'разнорабочий'},
-    {value:'workers',text:'заливщик'},
+    {value:'разнорабочий',text:'разнорабочий'},
+    {value:'заливщик',text:'заливщик'},
+    {value:'установщик',text:'установщик'},
+    {value:'установщик-водитель',text:'установщик-водитель'},
+    {value:'шлифовщик',text:'шлифовщик'},
+    {value:'резчик',text:'резчик'},
+    {value:'художник',text:'художник'},
+    {value:'продавец-консультант',text:'продавец-консультант'},
 ]
 export const ADMIN_NAMES = [
-    {value:'boss',text:'директор'},
-    {value:'engineer',text:'руководитель отдела'},
-    {value:'master',text:'мастер'},
-    {value:'top',text:'менеджер'},
+    {value:'директор',text:'директор'},
+    {value:'руководитель отдела',text:'руководитель отдела'},
+    {value:'мастер',text:'мастер'},
+    {value:'менеджер',text:'менеджер'},
+]
+export const ROLES_NAMES = [
+    {value:'konung',text:'администратор'},
+    {value:'yarl',text:'менеджер'},
+    {value:'huskarl',text:'продавец-консультант'},
+    {value:'karl',text:'сотрудник'},
 ]
 
 export const CLEAR_USER_STATE = 'CLEAR_USER_STATE'
@@ -101,6 +113,7 @@ export const SET_USER_LOGIN = 'SET_USER_LOGIN'
 export const SET_USER_LASTNAME = 'SET_USER_LASTNAME'
 export const SET_USER_NAME = 'SET_USER_NAME'
 export const SET_USER_FATHERNAME = 'SET_USER_FATHERNAME'
+export const SET_USER_ROLE = 'SET_USER_ROLE'
 export const SET_NEW_USER = 'SET_NEW_USER'
 export const SET_USER_PASSWORD = 'SET_USER_PASSWORD'
 export const SET_USER_AVATARS_LIST = 'SET_USER_AVATARS_LIST'
@@ -109,4 +122,7 @@ export const SET_USER_ADRESS = 'SET_USER_ADRESS'
 export const SET_USER_PHONE = 'SET_USER_PHONE'
 export const SET_USER_WORKPHONE = 'SET_USER_WORKPHONE'
 export const SET_USER_DATE_ACCEPT = 'SET_USER_DATE_ACCEPT'
+export const SET_USER_DEPARTMENT = 'SET_USER_DEPARTMENT'
+export const SET_USER_POSITION = 'SET_USER_POSITION'
+export const SET_USER_MAIL = 'SET_USER_MAIL'
 

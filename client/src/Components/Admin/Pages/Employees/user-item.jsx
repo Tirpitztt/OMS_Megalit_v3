@@ -4,7 +4,8 @@ import InputBlock from "../../../UI/Inputs/input-block";
 import StandardButton7 from "../../../UI/Buttons/standard-button-7";
 import UsersAvatarsModal from "../../../Common/users-avatars-modal";
 import SelectBlock from "../../../UI/Inputs/select-block";
-import {DEPARTMENT_NAMES, WORKERS_NAMES} from "../../../../Utils/variables-const";
+import {ADMIN_NAMES, DEPARTMENT_NAMES, ROLES_NAMES, WORKERS_NAMES} from "../../../../Utils/variables-const";
+import {setUserPosition} from "../../../../Redux/Redusers/user-reduser";
 
 const UserItem = (props) => {
     //console.log(props.user)
@@ -32,6 +33,7 @@ const UserItem = (props) => {
                         value={passRepeat}
                         changeF={setPassRepeat}
                         type='password' />
+
         </div>
         if(error){
             errorText = <div className={c.error_password}><p>Пароль не совпадает</p></div>
@@ -64,6 +66,10 @@ const UserItem = (props) => {
         //console.log(path)
         props.setUserAvatar(path)
         setActive(false)
+    }
+    let positionNames = ADMIN_NAMES
+    if(props.state.user.department === 'рабочие'){
+        positionNames = WORKERS_NAMES
     }
     const tempFunc = () => {
          console.log('foo')
@@ -105,19 +111,23 @@ const UserItem = (props) => {
                         <InputBlock label='Адрес' value={props.state.user.settings.adress} changeF={props.setUserAdress} type='text' />
                         <InputBlock label='Телефон' value={props.state.user.settings.phone} changeF={props.setUserPhone} type='text' />
                         <InputBlock label='раб Телефон' value={props.state.user.settings.workPhone} changeF={props.setUserWorkPhone} type='text' />
-                        <InputBlock label='e-mail' value={props.state.user.email} changeF={props.setUserWorkPhone} type='text' />
+                        <InputBlock label='e-mail' value={props.state.user.email} changeF={props.setUserMail} type='text' />
                     </div>
                     <div className={c.user_card_info}>
                         <InputBlock label='дата приемки' value={props.state.user.dateAccept} changeF={props.setUserDateAccept} type='date' />
                         <SelectBlock label='Отдел'
                                      options={DEPARTMENT_NAMES}
-                                     defaultValue={tempVaric}
-                                     selectFunction={tempFunc} />
+                                     defaultValue={props.state.user.department}
+                                     selectFunction={props.setUserDepartment} />
                         <SelectBlock label='Должность'
-                            options={WORKERS_NAMES}
-                            defaultValue={tempVaric}
-                            selectFunction={tempFunc }
+                            options={positionNames}
+                            defaultValue={props.state.user.position}
+                            selectFunction={props.setUserPosition}
                         />
+                        <SelectBlock label='Роль'
+                                     selectFunction={props.setUserRole}
+                                     options={ROLES_NAMES}
+                                     defaultValue={props.state.user.role} />
                     </div>
                 </div>
                 <div className={c.user_card_block}>

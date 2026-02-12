@@ -10,7 +10,7 @@ import {
     setUserLogin,
     setUserName, setUserPassword, setUserAdress, setUserPhone, setUserWorkPhone, saveUserThunkCreator,
     updateUserThunkCreator,
-    setUserDateAccept
+    setUserDateAccept, setUserDepartment, setUserPosition, setUserMail, setUserRole
 } from "../../../../Redux/Redusers/user-reduser";
 
 class EmployeesContainer extends React.Component{
@@ -25,6 +25,8 @@ class EmployeesContainer extends React.Component{
                 setUserLastName={this.props.setUserLastName}
                 setUserName={this.props.setUserName}
                 setUserFatherName={this.props.setUserFatherName}
+                           setUserMail={this.props.setUserMail}
+                           setUserRole={this.props.setUserRole}
                 clearUserState={this.props.clearUserState}
                 setNewUser={this.props.setNewUser}
                 setUserPassword={this.props.setUserPassword}
@@ -35,6 +37,8 @@ class EmployeesContainer extends React.Component{
                 saveUser={this.props.saveUser}
                 updateUser={this.props.updateUser}
                 setUserDateAccept={this.props.setUserDateAccept}
+                           setUserDepartment={this.props.setUserDepartment}
+                           setUserPosition={this.props.setUserPosition}
 
             />
         )
@@ -60,6 +64,12 @@ let mapDispatchToProps = (dispatch)=>{
         },
         setUserFatherName:(data)=>{
             dispatch(setUserFatherName(data))
+        },
+        setUserRole:(data)=>{
+            dispatch(setUserRole(data))
+        },
+        setUserMail:(data)=>{
+            dispatch(setUserMail(data))
         },
         clearUserState:()=>{
             dispatch(clearUserState())
@@ -93,6 +103,12 @@ let mapDispatchToProps = (dispatch)=>{
         },
         setUserDateAccept: (data) => {
             dispatch(setUserDateAccept(data))
+        },
+        setUserDepartment:(data)=>{
+            dispatch(setUserDepartment(data))
+        },
+        setUserPosition:(data)=>{
+            dispatch(setUserPosition(data))
         }
 
     }
