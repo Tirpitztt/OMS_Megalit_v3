@@ -75,8 +75,9 @@ class UserController {
         let result = [];
         try{
             const users = await Model.users.findAll();
+            const positions = await Model.positions.findAll()
             if(users){
-                for(let it of users){
+                for (let it of users) {
                     let user = {
                         id:it.id,
                         login:it.login,
@@ -86,8 +87,15 @@ class UserController {
                         fatherName:it.father_name,
                         role:it.role,
                         fullName: it.full_name,
-                        dateAccept:it.date_accept,
+                        dateAccept: it.date_accept,
+                        positionId: it.positionId,
+                        position:'',
                         settings:JSON.parse(it.settings)
+                    }
+                    for (let pos of positions) {
+                        if (pos.id === it.positionId) {
+                            user.position = pos
+                        }
                     }
                     result.push(user);
                 }
@@ -122,6 +130,19 @@ class UserController {
             return res.status(201).json(user);
         }catch (e) {
             return res.status(500).json({message:'getUser error: '+ e.message});
+        }
+    }
+    async getPositions(req, res) {
+        try {
+            const positions = await Model.positions.findAll({
+                include: [{
+                    model:Model.users
+                }]
+            })
+
+            return res.status(200).json(positions)
+        } catch (e) {
+            return res.status(500).json({ message: 'getPositions error: ' + e.message });
         }
     }
 

@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-    const Position = sequelize.define('work_positions', {
+    const Position = sequelize.define('positions', {
         department: {
             type: DataTypes.STRING,
         },
@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
     }, { timestamps: false })
     Position.associate = Model => {
         Position.hasMany(Model.users, {
-            foreignKey:'work_position_id'
+            foreignKey:'positionId'
         })
     }
 

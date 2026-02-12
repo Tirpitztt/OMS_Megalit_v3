@@ -11,6 +11,8 @@ class User {
         this.fullName = ''
         this.password = ''
         this.dateAccept = ''
+        this.positionId = ''
+        this.position = ''
         this.settings = {
 
         }
@@ -25,6 +27,8 @@ class User {
         this.role = user.role
         this.fullName = user.fullName
         this.dateAccept = user.dateAccept
+        this.positionId = user.positionId
+        this.position = user.position
         this.settings = {...user.settings}
     }
 }
