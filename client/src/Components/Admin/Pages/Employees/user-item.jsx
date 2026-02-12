@@ -4,7 +4,7 @@ import InputBlock from "../../../UI/Inputs/input-block";
 import StandardButton7 from "../../../UI/Buttons/standard-button-7";
 import UsersAvatarsModal from "../../../Common/users-avatars-modal";
 import SelectBlock from "../../../UI/Inputs/select-block";
-import {DEPARTMENT_NAMES} from "../../../../Utils/variables-const";
+import {DEPARTMENT_NAMES, WORKERS_NAMES} from "../../../../Utils/variables-const";
 
 const UserItem = (props) => {
     //console.log(props.user)
@@ -108,12 +108,16 @@ const UserItem = (props) => {
                         <InputBlock label='e-mail' value={props.state.user.email} changeF={props.setUserWorkPhone} type='text' />
                     </div>
                     <div className={c.user_card_info}>
-                        <InputBlock label='дата приемки' value={tempDate} changeF={tempFunc} type='date' />
+                        <InputBlock label='дата приемки' value={props.state.user.dateAccept} changeF={props.setUserDateAccept} type='date' />
                         <SelectBlock label='Отдел'
                                      options={DEPARTMENT_NAMES}
                                      defaultValue={tempVaric}
                                      selectFunction={tempFunc} />
-                        <SelectBlock label='Должность' />
+                        <SelectBlock label='Должность'
+                            options={WORKERS_NAMES}
+                            defaultValue={tempVaric}
+                            selectFunction={tempFunc }
+                        />
                     </div>
                 </div>
                 <div className={c.user_card_block}>

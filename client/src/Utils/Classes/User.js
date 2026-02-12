@@ -10,6 +10,7 @@ class User {
         this.role = ''
         this.fullName = ''
         this.password = ''
+        this.dateAccept = ''
         this.settings = {
 
         }
@@ -23,6 +24,7 @@ class User {
         this.email = user.email
         this.role = user.role
         this.fullName = user.fullName
+        this.dateAccept = user.dateAccept
         this.settings = {...user.settings}
     }
 }

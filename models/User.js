@@ -28,8 +28,14 @@ module.exports = (sequelize,DataTypes)=>{
             type:DataTypes.STRING,
 
         },
+        date_accept: {
+            type: DataTypes.DATEONLY
+        },
         settings:{
             type:DataTypes.STRING
+        },
+        work_position_id: {
+            type: DataTypes.INTEGER
         },
         full_name:{
             type:DataTypes.VIRTUAL,
@@ -37,7 +43,11 @@ module.exports = (sequelize,DataTypes)=>{
                 return `${this.last_name} ${this.name} ${this.father_name}`;
             }
         }
-    },{timestamps:false});
+    }, { timestamps: false });
+
+    User.associate = Model => {
+        User.belongsTo(Model.work_positions)
+    }
 
     return User;
 }

@@ -85,7 +85,8 @@ class UserController {
                         lastName:it.last_name,
                         fatherName:it.father_name,
                         role:it.role,
-                        fullName:it.full_name,
+                        fullName: it.full_name,
+                        dateAccept:it.date_accept,
                         settings:JSON.parse(it.settings)
                     }
                     result.push(user);

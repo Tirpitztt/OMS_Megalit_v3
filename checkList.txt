@@ -1,0 +1,15 @@
+Изменить основную базу:
+Таблица users добавить:
+- login VARCHAR(45) NN
+- last_name VARCHAR(45) NULL
+- father_name VARCHAR(45) NULL
+- settings VARCHAR(5000) NULL
+- date_accept DATETIME
+- positionId INT
+
+
+Добавить таблицу work_positions с полями:
+- department VARCHAR(45) NULL
+- work_shop VARCHAR(45) NULL
+- position_name VARCHAR(45) NULL
+

@@ -23,20 +23,21 @@ const EmployeesPage = (props) => {
     }
     if(user){
         display = <UserItem user={user}
-                            state={props.state}
-                            setUser={setUser}
-                            setUserLogin={props.setUserLogin}
-                            setUserLastName={props.setUserLastName}
-                            setUserName={props.setUserName}
-                            setUserFatherName={props.setUserFatherName}
-                            clearUserState={props.clearUserState}
-                            setUserPassword={props.setUserPassword}
-                            setUserAvatar={props.setUserAvatar}
-                            setUserAdress={props.setUserAdress}
-                            setUserPhone={props.setUserPhone}
-                            setUserWorkPhone={props.setUserWorkPhone}
-                            saveUser={props.saveUser}
-                            updateUser={props.updateUser}
+            state={props.state}
+            setUser={setUser}
+            setUserLogin={props.setUserLogin}
+            setUserLastName={props.setUserLastName}
+            setUserName={props.setUserName}
+            setUserFatherName={props.setUserFatherName}
+            clearUserState={props.clearUserState}
+            setUserPassword={props.setUserPassword}
+            setUserAvatar={props.setUserAvatar}
+            setUserAdress={props.setUserAdress}
+            setUserPhone={props.setUserPhone}
+            setUserWorkPhone={props.setUserWorkPhone}
+            saveUser={props.saveUser}
+            updateUser={props.updateUser}
+            setUserDateAccept={props.setUserDateAccept}
                             />
     }
 

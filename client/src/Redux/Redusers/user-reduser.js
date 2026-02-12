@@ -11,7 +11,8 @@ import {SET_USER_EDIT,
     SET_USER_AVATAR,
     SET_USER_ADRESS,
     SET_USER_PHONE,
-    SET_USER_WORKPHONE
+    SET_USER_WORKPHONE,
+    SET_USER_DATE_ACCEPT
 } from "../../Utils/variables-const"
 import {supportAPI} from "../../Api/api";
 
@@ -95,6 +96,11 @@ const UserReduser = (state = initialState,action)=>{
             newState.user.settings.workPhone = action.data
             return newState
         }
+        case SET_USER_DATE_ACCEPT: {
+            let newState = { ...state }
+            newState.user.dateAccept = action.data
+            return newState
+        }
         default: return state
     }
 }
@@ -112,6 +118,7 @@ export const setUserAvatar = (data) => ({ type: SET_USER_AVATAR, data })
 export const setUserAdress = (data) => ({ type: SET_USER_ADRESS, data })
 export const setUserPhone = (data) => ({ type: SET_USER_PHONE, data })
 export const setUserWorkPhone = (data) => ({ type: SET_USER_WORKPHONE, data })
+export const setUserDateAccept = (data) => ({ type: SET_USER_DATE_ACCEPT, data })
 
 export const getAvatarsThunkCreator = () => {
     return(dispatch)=>{
