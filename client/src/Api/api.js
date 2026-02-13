@@ -400,6 +400,20 @@ export const usersAPI = {
                 return response.data
             }
         )
+    },
+    updateUser(body) {
+        return instance.post('/auth/updateUser', body).then(
+            response => {
+                return response.data
+            }
+        )
+    },
+    deleteUser(body) {
+        return instance.post('/auth/deleteUser', body).then(
+            response => {
+                return response.data
+            }
+        )
     }
 }
 

@@ -111,15 +111,40 @@ class UserController {
         }
     }
     async updateUserById(req,res){
-        try{
-            const user = await Model.users.findOne({
-                where:{
+        try {
+            const settings = new UserSettings(req.body.settings)
+            settings.setSettings(req.body.settings)
+            await Model.users.update({
+                login:req.body.login,
+                name: req.body.name,
+                last_name: req.body.lastName,
+                father_name: req.body.fatherName,
+                email: req.body.email,
+                role: req.body.role,
+                date_accept: req.body.dateAccept,
+                department: req.body.department,
+                position: req.body.position,
+                settings: JSON.stringify(settings)
+            }, {
+                where: {
+                    id: req.body.id
+                }
+            })
+            return res.status(201).json({message:'is good'});
+        }catch (e) {
+            return res.status(500).json({message:'updateUser error: '+ e.message});
+        }
+    }
+    async deleteUser(req, res) {
+        try {
+            await Model.users.destroy({
+                where: {
                     id:req.body.id
                 }
             })
-            return res.status(201).json(user);
-        }catch (e) {
-            return res.status(500).json({message:'updateUser error: '+ e.message});
+            return res.status(201).json({ message: 'user is deleted' });
+        } catch (e) {
+            return res.status(500).json({ message: 'deleteUser error: ' + e.message });
         }
     }
     async getUserById(req,res){

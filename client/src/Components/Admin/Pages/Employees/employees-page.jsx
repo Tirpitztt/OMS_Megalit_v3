@@ -23,6 +23,7 @@ const EmployeesPage = (props) => {
     }
     if(user){
         display = <UserItem user={user}
+            users={users }
             state={props.state}
             setUser={setUser}
             setUserLogin={props.setUserLogin}
@@ -39,6 +40,7 @@ const EmployeesPage = (props) => {
             setUserWorkPhone={props.setUserWorkPhone}
             saveUser={props.saveUser}
             updateUser={props.updateUser}
+            deleteUser={props.deleteUser }
             setUserDateAccept={props.setUserDateAccept}
                             setUserDepartment={props.setUserDepartment}
                             setUserPosition={props.setUserPosition}
@@ -50,9 +52,7 @@ const EmployeesPage = (props) => {
         <div className={c.content_box}>
             <div className={c.header}>
                 <div className={c.header_title}><p>Сотрудники</p></div>
-                <div className={c.header_button_box}>
-
-                </div>
+                <div className={c.header_button_box}></div>
             </div>
             <div className={c.content}>
                 {display}

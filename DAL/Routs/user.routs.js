@@ -15,6 +15,7 @@ router.post('/registration',urlencodedParser,[
 router.post('/login',urlencodedParser,controller.login);
 router.get('/allUsers',controller.getUsers);
 router.post('/getUser',urlencodedParser,controller.getUserById)
-router.post('/updateUser',urlencodedParser,controller.updateUserById)
+router.post('/updateUser', urlencodedParser, controller.updateUserById)
+router.post('/deleteUser', urlencodedParser, controller.deleteUser)
 
 module.exports = router;

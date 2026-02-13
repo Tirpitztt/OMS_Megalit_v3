@@ -5,7 +5,7 @@ import StandardButton7 from "../../../UI/Buttons/standard-button-7";
 import UsersAvatarsModal from "../../../Common/users-avatars-modal";
 import SelectBlock from "../../../UI/Inputs/select-block";
 import {ADMIN_NAMES, DEPARTMENT_NAMES, ROLES_NAMES, WORKERS_NAMES} from "../../../../Utils/variables-const";
-import {setUserPosition} from "../../../../Redux/Redusers/user-reduser";
+import ConfirmModal from '../../../Common/confirmModal';
 
 const UserItem = (props) => {
     //console.log(props.user)
@@ -13,7 +13,8 @@ const UserItem = (props) => {
     const tempVaric = 'Temporal Data'
     const [error,setError] = useState(false)
     const [passRepeat,setPassRepeat] = useState('')
-    const [active,setActive] = useState(false)
+    const [active, setActive] = useState(false)
+    const [activeConfirm, setActiveConfirm] = useState(false)
     const backToList = () => {
         props.setUser(null)
         props.clearUserState()
@@ -46,6 +47,7 @@ const UserItem = (props) => {
                 props.saveUser(props.state.user)
                 props.setUser(null)
                 props.clearUserState()
+                
             }else {
                 setError(true)
             }
@@ -71,6 +73,11 @@ const UserItem = (props) => {
     if(props.state.user.department === 'рабочие'){
         positionNames = WORKERS_NAMES
     }
+    const deleteUser = () => {
+        props.deleteUser(props.state.user)
+        props.setUser(null)
+        props.clearUserState()
+    }
     const tempFunc = () => {
          console.log('foo')
         // props.setUserLogin(val)
@@ -83,6 +90,7 @@ const UserItem = (props) => {
                 <div className={c.user_title}><p>{props.user.fullName}</p></div>
                 <div className={c.user_title}>
                     <StandardButton7 text={buttonSaveText} f={clickFunction} />
+                    <StandardButton7 text='Удалить' f={()=>setActiveConfirm(true)} />
                 </div>
             </div>
             <div className={c.user_card_box}>
@@ -139,6 +147,11 @@ const UserItem = (props) => {
                                content={props.state.avatarsList}
                                select={selectAvatar}
                                isActive={active} />
+            <ConfirmModal active={activeConfirm}
+                            setActive={setActiveConfirm}
+                            txt='Хотите уволить этого пассажира?'
+                            func={deleteUser} />
+
         </div>
     );
 };

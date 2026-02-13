@@ -16,7 +16,7 @@ import {
     SET_USER_DATE_ACCEPT, SET_USER_DEPARTMENT, SET_USER_POSITION, SET_USER_MAIL, SET_USER_ROLE
 } from "../../Utils/variables-const"
 import {supportAPI, usersAPI} from "../../Api/api";
-import userItem from "../../Components/Admin/Pages/Employees/user-item";
+
 
 
 let initialState = {
@@ -155,14 +155,25 @@ export const getAvatarsThunkCreator = () => {
 }
 export const saveUserThunkCreator = (user) => {
     return(dispatch)=>{
-        usersAPI.registrationUser(user)
-        console.log(user);
+        usersAPI.registrationUser(user).then(data => {
+            console.log(user,data);
+        })
+        
     }
 }
 export const updateUserThunkCreator = (user) => {
-    return(dispatch)=>{
-        //usersAPI.registrationUser(user)
-        console.log(user);
+    return (dispatch) => {
+        usersAPI.updateUser(user).then(data => {
+            console.log(user,data);
+        })
+        
+    }
+}
+export const deleteUserThunkCreator = (user) => {
+    return (dispatch) => {
+        usersAPI.deleteUser(user).then(data => {
+            console.log(user,data)
+        })
     }
 }
 

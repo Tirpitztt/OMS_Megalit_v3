@@ -10,7 +10,7 @@ import {
     setUserLogin,
     setUserName, setUserPassword, setUserAdress, setUserPhone, setUserWorkPhone, saveUserThunkCreator,
     updateUserThunkCreator,
-    setUserDateAccept, setUserDepartment, setUserPosition, setUserMail, setUserRole
+    setUserDateAccept, setUserDepartment, setUserPosition, setUserMail, setUserRole, deleteUserThunkCreator
 } from "../../../../Redux/Redusers/user-reduser";
 
 class EmployeesContainer extends React.Component{
@@ -36,6 +36,7 @@ class EmployeesContainer extends React.Component{
                 setUserWorkPhone={this.props.setUserWorkPhone}
                 saveUser={this.props.saveUser}
                 updateUser={this.props.updateUser}
+                deleteUser={this.props.deleteUser }
                 setUserDateAccept={this.props.setUserDateAccept}
                            setUserDepartment={this.props.setUserDepartment}
                            setUserPosition={this.props.setUserPosition}
@@ -100,6 +101,9 @@ let mapDispatchToProps = (dispatch)=>{
         },
         updateUser:(user)=>{
             dispatch(updateUserThunkCreator(user))
+        },
+        deleteUser: (user) => {
+            dispatch(deleteUserThunkCreator(user))
         },
         setUserDateAccept: (data) => {
             dispatch(setUserDateAccept(data))

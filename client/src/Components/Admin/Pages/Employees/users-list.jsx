@@ -19,7 +19,7 @@ const UsersList = ({users,state,setNewUser,setUserEdit,setUser}) => {
             return <div key={i} className={c.table_row} onClick={()=>setUserOfId(item.id)} >
                 <div className={c.table_item}><p>{item.id}</p></div>
                 <div className={c.table_item}><p>{item.fullName}</p></div>
-                <div className={c.table_item}><p>{item.role}</p></div>
+                <div className={c.table_item}><p>{item.position}</p></div>
                 <div className={c.table_item}><p>{item.settings.phone}</p></div>
                 <div className={c.table_item}><p>{item.settings.workPhone}</p></div>
             </div>
