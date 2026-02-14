@@ -26,7 +26,7 @@ function App(props) {
       }}>
           <div className="App">
               <Header  />
-              <UserContext.Provider value={users}>
+              <UserContext.Provider value={users} >
                   {navBar}
                   <div className="content">
                     {routs}

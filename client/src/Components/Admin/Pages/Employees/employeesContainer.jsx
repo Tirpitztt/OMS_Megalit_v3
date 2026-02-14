@@ -10,12 +10,13 @@ import {
     setUserLogin,
     setUserName, setUserPassword, setUserAdress, setUserPhone, setUserWorkPhone, saveUserThunkCreator,
     updateUserThunkCreator,
-    setUserDateAccept, setUserDepartment, setUserPosition, setUserMail, setUserRole, deleteUserThunkCreator
+    setUserDateAccept, setUserDepartment, setUserPosition, setUserMail, setUserRole, deleteUserThunkCreator, setUsersListThunkCreator
 } from "../../../../Redux/Redusers/user-reduser";
 
 class EmployeesContainer extends React.Component{
     componentDidMount() {
         this.props.getUserAvatarsList()
+        this.props.setUsersList()
     }
     render(){
         return(
@@ -50,7 +51,10 @@ let mapStateToProps = (state)=>{
     return {state}
 }
 let mapDispatchToProps = (dispatch)=>{
-    return{
+    return {
+        setUsersList: () => {
+            dispatch(setUsersListThunkCreator())
+        },
         setUserEdit:(data)=>{
             dispatch(setUserEdit(data))
         },

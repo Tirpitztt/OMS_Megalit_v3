@@ -22,6 +22,7 @@ const UserItem = (props) => {
     let buttonSaveText = 'Изменить'
     let errorText = null
     let passwordBlock = null
+    let buttonDelete = <StandardButton7 text='Удалить' f={() => setActiveConfirm(true)} />
 
     if(props.state.isNewUser){
         buttonSaveText = 'Сохранить'
@@ -34,8 +35,8 @@ const UserItem = (props) => {
                         value={passRepeat}
                         changeF={setPassRepeat}
                         type='password' />
-
-        </div>
+            </div>
+        buttonDelete = null
         if(error){
             errorText = <div className={c.error_password}><p>Пароль не совпадает</p></div>
         }
@@ -90,7 +91,7 @@ const UserItem = (props) => {
                 <div className={c.user_title}><p>{props.user.fullName}</p></div>
                 <div className={c.user_title}>
                     <StandardButton7 text={buttonSaveText} f={clickFunction} />
-                    <StandardButton7 text='Удалить' f={()=>setActiveConfirm(true)} />
+                    {buttonDelete}
                 </div>
             </div>
             <div className={c.user_card_box}>

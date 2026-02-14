@@ -107,6 +107,7 @@ export const ROLES_NAMES = [
     {value:'karl',text:'сотрудник'},
 ]
 
+export const SET_USERS_LIST = 'SET_USERS_LIST'
 export const CLEAR_USER_STATE = 'CLEAR_USER_STATE'
 export const SET_USER_EDIT = 'SET_USER_EDIT'
 export const SET_USER_LOGIN = 'SET_USER_LOGIN'

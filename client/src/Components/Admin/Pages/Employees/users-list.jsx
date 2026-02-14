@@ -2,9 +2,9 @@ import React from 'react';
 import c from './employees.module.css'
 import StandardButton7 from "../../../UI/Buttons/standard-button-7";
 
-const UsersList = ({users,state,setNewUser,setUserEdit,setUser}) => {
+const UsersList = ({state,setNewUser,setUserEdit,setUser}) => {
     const setUserOfId = (id)=>{
-        users.forEach((user,i)=>{
+        state.users.forEach((user,i)=>{
             if(user.id === id){
                 setUser(user)
                 setUserEdit(user)
@@ -15,7 +15,7 @@ const UsersList = ({users,state,setNewUser,setUserEdit,setUser}) => {
         setUser(state.user)
         setNewUser(true)
     }
-    const userContent =  users.map((item,i)=>{
+    const userContent =  state.users.map((item,i)=>{
             return <div key={i} className={c.table_row} onClick={()=>setUserOfId(item.id)} >
                 <div className={c.table_item}><p>{item.id}</p></div>
                 <div className={c.table_item}><p>{item.fullName}</p></div>

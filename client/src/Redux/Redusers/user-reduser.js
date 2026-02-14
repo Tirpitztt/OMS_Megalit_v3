@@ -13,13 +13,14 @@ import {
     SET_USER_ADRESS,
     SET_USER_PHONE,
     SET_USER_WORKPHONE,
-    SET_USER_DATE_ACCEPT, SET_USER_DEPARTMENT, SET_USER_POSITION, SET_USER_MAIL, SET_USER_ROLE
+    SET_USER_DATE_ACCEPT, SET_USER_DEPARTMENT, SET_USER_POSITION, SET_USER_MAIL, SET_USER_ROLE, SET_USERS_LIST
 } from "../../Utils/variables-const"
 import {supportAPI, usersAPI} from "../../Api/api";
 
 
 
 let initialState = {
+    users:[],
     user: new User(),
     isNewUser:false,
     avatarsList:[]
@@ -27,6 +28,11 @@ let initialState = {
 
 const UserReduser = (state = initialState,action)=>{
     switch (action.type) {
+        case SET_USERS_LIST: {
+            let newState = { ...state }
+            newState.users = [...action.data]
+            return newState
+        }
         case SET_USER_EDIT:{
             let newState = {...state}
             newState.user.setUser(action.data)
@@ -127,6 +133,7 @@ const UserReduser = (state = initialState,action)=>{
     }
 }
 
+export const setUsersList = (data) => ({ type: SET_USERS_LIST,data })
 export const setUserEdit = (data)=>({type:SET_USER_EDIT,data})
 export const setUserLogin = (data)=>({type:SET_USER_LOGIN,data})
 export const setUserLastName = (data)=>({type:SET_USER_LASTNAME,data})
@@ -146,6 +153,13 @@ export const setUserDateAccept = (data) => ({ type: SET_USER_DATE_ACCEPT, data }
 export const setUserDepartment = (data) => ({type:SET_USER_DEPARTMENT,data})
 export const setUserPosition = (data) => ({type:SET_USER_POSITION,data})
 
+export const setUsersListThunkCreator = () => {
+    return (dispatch) => {
+        usersAPI.getAllUsers().then(data => {
+            dispatch(setUsersList(data))
+        })
+    }
+}
 export const getAvatarsThunkCreator = () => {
     return(dispatch)=>{
         supportAPI.getAvatars().then(data=>{
@@ -156,6 +170,9 @@ export const getAvatarsThunkCreator = () => {
 export const saveUserThunkCreator = (user) => {
     return(dispatch)=>{
         usersAPI.registrationUser(user).then(data => {
+            usersAPI.getAllUsers().then(data => {
+                dispatch(setUsersList(data))
+            })
             console.log(user,data);
         })
         
@@ -164,6 +181,9 @@ export const saveUserThunkCreator = (user) => {
 export const updateUserThunkCreator = (user) => {
     return (dispatch) => {
         usersAPI.updateUser(user).then(data => {
+            usersAPI.getAllUsers().then(data => {
+                dispatch(setUsersList(data))
+            })
             console.log(user,data);
         })
         
@@ -172,6 +192,9 @@ export const updateUserThunkCreator = (user) => {
 export const deleteUserThunkCreator = (user) => {
     return (dispatch) => {
         usersAPI.deleteUser(user).then(data => {
+            usersAPI.getAllUsers().then(data => {
+                dispatch(setUsersList(data))
+            })
             console.log(user,data)
         })
     }

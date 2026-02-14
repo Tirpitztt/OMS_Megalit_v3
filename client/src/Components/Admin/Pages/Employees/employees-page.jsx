@@ -7,15 +7,15 @@ import UserItem from "./user-item";
 
 const EmployeesPage = (props) => {
 
-    const users = useContext(UserContext)
+    //const users = useContext(UserContext)
     const [user,setUser] = useState(null)
 
     //console.log(props.state)
 
     let display = null
 
-    if(users.length){
-        display = <UsersList users={users}
+    if(props.state.users.length){
+        display = <UsersList 
                              state={props.state}
                              setNewUser={props.setNewUser}
                              setUserEdit={props.setUserEdit}
@@ -23,7 +23,7 @@ const EmployeesPage = (props) => {
     }
     if(user){
         display = <UserItem user={user}
-            users={users }
+            
             state={props.state}
             setUser={setUser}
             setUserLogin={props.setUserLogin}
