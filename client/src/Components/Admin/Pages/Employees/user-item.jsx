@@ -6,26 +6,41 @@ import UsersAvatarsModal from "../../../Common/users-avatars-modal";
 import SelectBlock from "../../../UI/Inputs/select-block";
 import {ADMIN_NAMES, DEPARTMENT_NAMES, ROLES_NAMES, WORKERS_NAMES} from "../../../../Utils/variables-const";
 import ConfirmModal from '../../../Common/confirmModal';
+import PasswordChangeModal from "../../../Common/passwordChange-modal";
 
 const UserItem = (props) => {
     //console.log(props.user)
     const tempDate = new Date()
     const tempVaric = 'Temporal Data'
     const [error,setError] = useState(false)
-    const [passRepeat,setPassRepeat] = useState('')
+    const [passRepeat,setPassRepeat] = useState('') //повтор пароля нового пользователя
     const [active, setActive] = useState(false)
     const [activeConfirm, setActiveConfirm] = useState(false)
+    const [activePassModal,setActivePassModal] = useState(false)
+    // const [userPassRepeat,setUserPassRepeat] = useState('') //повтор нового пароля
+    // const [adminPass,setAdminPass] =useState('') // админ пароль
     const backToList = () => {
         props.setUser(null)
         props.clearUserState()
     }
+    // const updateUserPass = () => {
+    //     props.updatePass()
+    // }
     let buttonSaveText = 'Изменить'
     let errorText = null
     let passwordBlock = null
     let buttonDelete = <StandardButton7 text='Удалить' f={() => setActiveConfirm(true)} />
+    let changePassButton = <StandardButton7 text='Поменять пароль' f={() => setActivePassModal(true)} />
+    // let passBlock = <div className={c.user_card_info}>
+    //     <InputBlock label='Новый пароль' value={userPass} changeF={setUserPass} type='password' />
+    //     <InputBlock label='Повторить новый пароль' value={userPassRepeat} changeF={setUserPassRepeat} type='password' />
+    //     <InputBlock label='Админ пароль' value={adminPass} changeF={setAdminPass} type='password' />
+    //     <StandardButton7 text='Отправить' f={updateUserPass} />
+    // </div>
 
     if(props.state.isNewUser){
         buttonSaveText = 'Сохранить'
+        // пароль для нового пользователя
         passwordBlock = <div>
             <InputBlock label='Пароль'
                         value={props.state.user.password}
@@ -37,6 +52,8 @@ const UserItem = (props) => {
                         type='password' />
             </div>
         buttonDelete = null
+        changePassButton = null
+        // passBlock = <div className={c.user_card_info}></div>
         if(error){
             errorText = <div className={c.error_password}><p>Пароль не совпадает</p></div>
         }
@@ -90,6 +107,7 @@ const UserItem = (props) => {
                 <div className={c.user_title}><p>Карточка сотрудника: </p></div>
                 <div className={c.user_title}><p>{props.user.fullName}</p></div>
                 <div className={c.user_title}>
+                    {changePassButton}
                     <StandardButton7 text={buttonSaveText} f={clickFunction} />
                     {buttonDelete}
                 </div>
@@ -152,6 +170,10 @@ const UserItem = (props) => {
                             setActive={setActiveConfirm}
                             txt='Хотите уволить этого пассажира?'
                             func={deleteUser} />
+            <PasswordChangeModal active={activePassModal}
+                                 close={setActivePassModal}
+                                 upload={props.updatePass}
+                                 userId={props.state.user.id} />
 
         </div>
     );

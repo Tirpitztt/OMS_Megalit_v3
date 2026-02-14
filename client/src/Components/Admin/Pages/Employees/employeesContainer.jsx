@@ -3,14 +3,29 @@ import EmployeesPage from "./employees-page";
 import {compose} from "redux";
 import {connect} from "react-redux";
 import {
-    clearUserState, getAvatarsThunkCreator, setNewUser, setUserAvatar,
+    clearUserState,
+    getAvatarsThunkCreator,
+    setNewUser,
+    setUserAvatar,
     setUserEdit,
     setUserFatherName,
     setUserLastName,
     setUserLogin,
-    setUserName, setUserPassword, setUserAdress, setUserPhone, setUserWorkPhone, saveUserThunkCreator,
+    setUserName,
+    setUserPassword,
+    setUserAdress,
+    setUserPhone,
+    setUserWorkPhone,
+    saveUserThunkCreator,
     updateUserThunkCreator,
-    setUserDateAccept, setUserDepartment, setUserPosition, setUserMail, setUserRole, deleteUserThunkCreator, setUsersListThunkCreator
+    setUserDateAccept,
+    setUserDepartment,
+    setUserPosition,
+    setUserMail,
+    setUserRole,
+    deleteUserThunkCreator,
+    setUsersListThunkCreator,
+    updatePasswordThunkCreator
 } from "../../../../Redux/Redusers/user-reduser";
 
 class EmployeesContainer extends React.Component{
@@ -41,6 +56,7 @@ class EmployeesContainer extends React.Component{
                 setUserDateAccept={this.props.setUserDateAccept}
                            setUserDepartment={this.props.setUserDepartment}
                            setUserPosition={this.props.setUserPosition}
+                           updatePass={this.props.updatePass}
 
             />
         )
@@ -117,6 +133,9 @@ let mapDispatchToProps = (dispatch)=>{
         },
         setUserPosition:(data)=>{
             dispatch(setUserPosition(data))
+        },
+        updatePass:(body)=>{
+            dispatch(updatePasswordThunkCreator(body))
         }
 
     }

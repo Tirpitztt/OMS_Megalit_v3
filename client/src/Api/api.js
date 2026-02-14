@@ -414,6 +414,13 @@ export const usersAPI = {
                 return response.data
             }
         )
+    },
+    updatePassword(body){
+        return instance.post('/auth/updatePassword', body).then(
+            response => {
+                return response.data
+            }
+        )
     }
 }
 

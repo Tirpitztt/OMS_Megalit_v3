@@ -199,5 +199,12 @@ export const deleteUserThunkCreator = (user) => {
         })
     }
 }
+export const updatePasswordThunkCreator = (body) => {
+    return(dispatch)=>{
+        usersAPI.updatePassword(body).then(data=>{
+            console.log(data)
+        })
+    }
+}
 
 export default UserReduser;

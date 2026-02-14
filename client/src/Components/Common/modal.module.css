@@ -558,3 +558,10 @@
 .avatars_card>img{
     width: 100%;
 }
+/*------------------password form-----------------------------*/
+
+.form_box_pass{
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+}

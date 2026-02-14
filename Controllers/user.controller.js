@@ -30,7 +30,6 @@ class UserController {
                 const settings = new UserSettings(req.body.settings)
                 settings.setSettings(req.body.settings)
                 const hashPass = bcrypt.hashSync(req.body.password,5);
-                console.log(settings)
                 const result = await Model.users.create({
                     login:req.body.login,
                     name:req.body.name,
@@ -48,8 +47,6 @@ class UserController {
             }else{
               return  res.status(400).json({message:'router say: user used'});
             }
-
-
         }catch (e) {
            return res.status(500).json({message:'samething huinia...'+ e.message});
         }
@@ -145,6 +142,35 @@ class UserController {
             return res.status(201).json({ message: 'user is deleted' });
         } catch (e) {
             return res.status(500).json({ message: 'deleteUser error: ' + e.message });
+        }
+    }
+    async updatePassword(req,res){
+        try{
+            const errors = validationResult(req);
+            if(!errors.isEmpty()){
+                return res.status(400).json({message:'error validation',errors})
+            }
+            const {adminPassword,userPassword,userId} = req.body;
+            const admin = await Model.users.findOne({
+                where:{
+                    id:1
+                }
+            })
+            const validPass = bcrypt.compareSync(adminPassword,admin.password);
+            if(!validPass){
+                return res.status(200).json({message:'router say: admin password not valid'});
+            }
+            const userNewPass = bcrypt.hashSync(userPassword,5);
+            await Model.users.update({
+                password:userNewPass
+            },{
+                where:{
+                    id:userId
+                }
+            })
+            return res.status(201).json({ message: 'user password is updated' });
+        }catch (e) {
+            return res.status(500).json({ message: 'update password error: ' + e.message });
         }
     }
     async getUserById(req,res){

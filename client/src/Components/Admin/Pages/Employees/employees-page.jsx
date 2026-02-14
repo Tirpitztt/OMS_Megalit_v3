@@ -44,6 +44,7 @@ const EmployeesPage = (props) => {
             setUserDateAccept={props.setUserDateAccept}
                             setUserDepartment={props.setUserDepartment}
                             setUserPosition={props.setUserPosition}
+                            updatePass={props.updatePass}
                             />
     }
 

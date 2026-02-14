@@ -10,12 +10,15 @@ let urlencodedParser = body_parser.urlencoded({extended:false})
 router.post('/registration',urlencodedParser,[
      check('name','field is empty').notEmpty(),
     check('login','field is empty').notEmpty(),
-    check('password','password hui').isLength({min:4,max:25})
+    check('password','password hui').isLength({min:8,max:25})
 ],controller.registration);
 router.post('/login',urlencodedParser,controller.login);
 router.get('/allUsers',controller.getUsers);
 router.post('/getUser',urlencodedParser,controller.getUserById)
 router.post('/updateUser', urlencodedParser, controller.updateUserById)
 router.post('/deleteUser', urlencodedParser, controller.deleteUser)
+router.post('/updatePassword', urlencodedParser,[
+    check('userPassword','password is short').isLength({min:8,max:25})
+], controller.updatePassword)
 
 module.exports = router;
