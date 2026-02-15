@@ -565,3 +565,11 @@
     flex-flow: column;
     justify-content: center;
 }
+.errors_row{
+    color: darkred;
+
+}
+.errors_row>p{
+    text-align: end;
+    margin: 0;
+}

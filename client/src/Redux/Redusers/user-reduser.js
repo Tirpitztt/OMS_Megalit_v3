@@ -13,7 +13,8 @@ import {
     SET_USER_ADRESS,
     SET_USER_PHONE,
     SET_USER_WORKPHONE,
-    SET_USER_DATE_ACCEPT, SET_USER_DEPARTMENT, SET_USER_POSITION, SET_USER_MAIL, SET_USER_ROLE, SET_USERS_LIST
+    SET_USER_DATE_ACCEPT, SET_USER_DEPARTMENT, SET_USER_POSITION, SET_USER_MAIL, SET_USER_ROLE, SET_USERS_LIST,
+
 } from "../../Utils/variables-const"
 import {supportAPI, usersAPI} from "../../Api/api";
 
@@ -23,7 +24,8 @@ let initialState = {
     users:[],
     user: new User(),
     isNewUser:false,
-    avatarsList:[]
+    avatarsList:[],
+
 }
 
 const UserReduser = (state = initialState,action)=>{
@@ -129,6 +131,7 @@ const UserReduser = (state = initialState,action)=>{
             newState.user.position = action.data
             return newState
         }
+
         default: return state
     }
 }
@@ -152,6 +155,7 @@ export const setUserWorkPhone = (data) => ({ type: SET_USER_WORKPHONE, data })
 export const setUserDateAccept = (data) => ({ type: SET_USER_DATE_ACCEPT, data })
 export const setUserDepartment = (data) => ({type:SET_USER_DEPARTMENT,data})
 export const setUserPosition = (data) => ({type:SET_USER_POSITION,data})
+
 
 export const setUsersListThunkCreator = () => {
     return (dispatch) => {
@@ -202,7 +206,11 @@ export const deleteUserThunkCreator = (user) => {
 export const updatePasswordThunkCreator = (body) => {
     return(dispatch)=>{
         usersAPI.updatePassword(body).then(data=>{
-            console.log(data)
+            if(data.error){
+                body.setError(true)
+            }else{
+                body.closeModal(false)
+            }
         })
     }
 }

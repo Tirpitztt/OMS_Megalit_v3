@@ -146,9 +146,17 @@ class UserController {
     }
     async updatePassword(req,res){
         try{
+            let result = {
+                error:null,
+                message:'password is updated successfully',
+                status:200
+            }
             const errors = validationResult(req);
             if(!errors.isEmpty()){
-                return res.status(400).json({message:'error validation',errors})
+                result.error = errors
+                result.message = 'error validation'
+                result.status = 400
+                return res.status(200).json({result})
             }
             const {adminPassword,userPassword,userId} = req.body;
             const admin = await Model.users.findOne({
@@ -158,7 +166,9 @@ class UserController {
             })
             const validPass = bcrypt.compareSync(adminPassword,admin.password);
             if(!validPass){
-                return res.status(200).json({message:'router say: admin password not valid'});
+                result.message = 'router say: admin password not valid'
+                result.error = true
+                return res.status(200).json(result);
             }
             const userNewPass = bcrypt.hashSync(userPassword,5);
             await Model.users.update({
