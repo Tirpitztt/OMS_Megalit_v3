@@ -1,0 +1,73 @@
+const Model = require('../models')
+
+class WorkShiftController {
+    async workShiftCreate(req,res){
+        try{
+            const workShift = await Model.work_shifts.create({
+                userId:req.body.userId,
+                employerId:req.body.employerId,
+                date:req.body.date,
+                start:req.body.start,
+                end:req.body.end,
+                hooky:req.body.hooky,
+                outlet:req.body.outlet,
+                absence:req.body.absence,
+                sick:req.body.sick,
+                rate:req.body.rate
+            })
+            if(req.body.mandat){
+                await Model.mandates.create({
+                    workShiftId:workShift.id,
+                    employerName:req.body.mandat.employerName,
+                    notice:req.body.mandat.notice,
+                    summa:req.body.mandat.summa
+                })
+            }
+            if(req.body.salary.length){
+                for(const item of req.body.salary){
+                    const salary = await Model.salarys.create({
+                        workShiftId:workShift.id,
+                        workId:item.workId,
+                        workName:item.workName,
+                        cost:item.cost,
+                        amount:item.amount,
+                        summa:item.summa
+                    })
+                }
+            }
+            return res.status(200).json(workShift)
+        }catch (e) {
+            return res.status(500).json({message:'shift create error' + e.message})
+        }
+    }
+    async mandateCreate(req,res){
+        try{
+            await Model.mandates.create({
+                workShiftId:req.body.workShiftId,
+                employerName:req.body.employerName,
+                notice:req.body.notice,
+                summa:req.body.summa
+            })
+
+        }catch (e) {
+            return res.status(500).json({message:'mandate create error' + e.message})
+        }
+    }
+    async salaryCreate(req,res){
+        try{
+            await Model.salarys.create({
+                workShiftId:req.body.workShiftId,
+                workId:req.body.workId,
+                workName:req.body.workName,
+                cost:req.body.cost,
+                amount:req.body.amount,
+                summa:req.body.summa
+            })
+
+        }catch (e) {
+            return res.status(500).json({message:'mandate create error' + e.message})
+        }
+    }
+}
+
+module.exports = new WorkShiftController()

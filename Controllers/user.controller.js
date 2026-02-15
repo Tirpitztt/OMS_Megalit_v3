@@ -78,7 +78,16 @@ class UserController {
     async getUsers(req,res){
         let result = [];
         try{
-            const users = await Model.users.findAll();
+            const users = await Model.users.findAll({
+                include:[{
+                    model:Model.work_shifts,
+                    include:[{
+                        model:Model.mandates
+                    },{
+                        model:Model.salarys
+                    }]
+                }]
+            });
             if(users){
                 for (let it of users) {
                     let user = {
@@ -93,7 +102,8 @@ class UserController {
                         dateAccept: it.date_accept,
                         department:it.department,
                         position:it.position,
-                        settings:JSON.parse(it.settings)
+                        settings:JSON.parse(it.settings),
+                        workShifts:it.work_shifts
                     }
 
                     result.push(user);

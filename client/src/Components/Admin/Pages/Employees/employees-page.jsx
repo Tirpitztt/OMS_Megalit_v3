@@ -1,7 +1,5 @@
-import React, {useContext, useState} from 'react';
+import React, {useState} from 'react';
 import c from './employees.module.css'
-import {UserContext} from './../../../../Context/user.context'
-import {NavLink} from "react-router-dom";
 import UsersList from "./users-list";
 import UserItem from "./user-item";
 

@@ -48,7 +48,11 @@ module.exports = (sequelize,DataTypes)=>{
         }
     }, { timestamps: false });
 
-
+    User.associate = Model => {
+        User.hasMany(Model.work_shifts,{
+            foreignKey:'userId'
+        })
+    }
 
     return User;
 }

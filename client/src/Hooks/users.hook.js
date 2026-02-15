@@ -9,6 +9,6 @@ export const useUsers = ()=>{
             setUsers(data);
         })
     },[])
-    //console.log('hook users:',users);
+    console.log('hook users:',users);
     return {users};
 }
