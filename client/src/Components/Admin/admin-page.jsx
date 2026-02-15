@@ -20,6 +20,7 @@ const AdminPage = (props) => {
                     <AdminPathButton path={props.state.adminButtons.employees.path} text={props.state.adminButtons.employees.text} />
                     <AdminPathButton path={props.state.adminButtons.beton.path} text={props.state.adminButtons.beton.text} />
                     <AdminPathButton path={props.state.adminButtons.tokar.path} text={props.state.adminButtons.tokar.text} />
+                    <AdminPathButton path={props.state.adminButtons.salary.path} text={props.state.adminButtons.salary.text} />
                 </div>
             </div>
            <div className={c.admin_content}>

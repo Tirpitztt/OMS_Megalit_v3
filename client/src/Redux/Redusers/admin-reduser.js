@@ -18,6 +18,7 @@ let initialState = {
         employees:{path:'/admin/employees',text:'Сотрудники'},
         beton:{path:'/admin/beton',text:'Бетон'},
         tokar:{path:'/admin/tokar',text:'Токарка'},
+        salary:{path:'/admin/salary',text:'Зарплата'},
     }
 
 }

@@ -11,6 +11,7 @@ import EditableReduser from "./Redusers/editable-reduser";
 import thunkMiddleware from 'redux-thunk';
 import AdminStatisticsReduser from "./Redusers/admin-statistics-reduser";
 import UserReduser from "./Redusers/user-reduser"
+import SalaryReduser from './Redusers/salary-reduser'
 
 
 
@@ -26,7 +27,8 @@ let redusers = combineReducers({
     formState:FormReduser,
     editablePage:EditableReduser,
     statisticsPage:AdminStatisticsReduser,
-    employeesPage:UserReduser
+    employeesPage:UserReduser,
+    salaryPage:SalaryReduser
 })
 
 let store = createStore(redusers,applyMiddleware(thunkMiddleware));

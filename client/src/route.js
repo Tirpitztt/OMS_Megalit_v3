@@ -14,6 +14,7 @@ import WorkPagesContainer from "./Components/PrintOrder/WorkPages/workPagesConta
 import AdminPayContainer from "./Components/Main/Displays/AdminPayInfo/adminPayContainer";
 import EmployeesContainer from "./Components/Admin/Pages/Employees/employeesContainer";
 import TokarContainer from "./Components/Admin/Pages/Tokar/tokarContainer";
+import SalaryContainer from "./Components/Admin/Pages/Salary/salaryContainer";
 
 
 
@@ -36,6 +37,7 @@ export const useRouts = (isAuth,userRole,props) =>{
                     <Route path="/print-add/:orderId" element={<AdditionalAgreePage />} />
                     <Route path="/print-work-pages/:orderId" element={<WorkPagesContainer />} />
                     <Route path="/home/statistics" element={<AdminPayContainer />} />
+                    <Route path="/admin/salary" element={<SalaryContainer />} />
                 </Routes>
             )
         }
