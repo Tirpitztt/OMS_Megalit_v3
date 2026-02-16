@@ -6,7 +6,10 @@ import { getShiftsByMonthThunkCreator } from '../../../../Redux/Redusers/salary-
 
 class SalaryContainer extends React.Component{
     componentDidMount() {
-
+        const today = new Date()
+        const currentYear = today.getFullYear()
+        const currentMonth = today.getMonth()+1
+        this.props.getShiftsByMonth({dateStart:currentYear + '-' + currentMonth + '-' + 31,dateEnd:currentYear + '-' + currentMonth + '-' + 1})
     }
     render() {
         return(

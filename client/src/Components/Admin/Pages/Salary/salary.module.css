@@ -48,20 +48,57 @@
     justify-content:space-between;
 }
 .table_users{
-    width:40%;
+    width:30%;
     border:1px solid gray;
 }
 .table_timesheet {
-    width: 60%;
+    width: 70%;
     border: 1px solid gray;
 }
 .table_row{
     display:flex;
     flex-flow:row nowrap;
+    height: 21px;
+}
+.table_title_row{
+    display:flex;
+    flex-flow: column;
+    height: 68px;
+}
+.table_title_month_row{
+    width: 100%;
+    display:flex;
+    flex-flow:row nowrap;
+    text-align: center;
+    height: 26px;
+}
+.table_title_month_row>div:nth-of-type(1){
+    width: 10%;
+}
+.table_title_month_row>div:nth-of-type(2){
+    width: 80%;
+}
+.table_title_month_row>div:nth-of-type(3){
+    width: 10%;
+}
+.table_title_days_row{
+    width: 100%;
+    display:flex;
+    flex-flow:row nowrap;
+}
+.table_title_day_box{
+    width:3.2%;
+    text-align: center;
+    font-size: 12px;
 }
 .table_row_id {
     width: 5%;
 }
 .table_row_name {
     width: 95%;
+}
+.table_day_box{
+    width: 3.1%;
+    height: 21px;
+    border: 1px solid gray;
 }
