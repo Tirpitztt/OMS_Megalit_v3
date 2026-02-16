@@ -11,7 +11,8 @@ const orderRouter = require('./DAL/Routs/order.routs')
 const supportRouter=require('./DAL/Routs/support.routs')
 const betonRouter=require('./DAL/Routs/beton.routs')
 const mainRouter=require('./DAL/Routs/main.routs')
-const stoneRouter=require('./DAL/Routs/stone.routs')
+const stoneRouter = require('./DAL/Routs/stone.routs')
+const salaryRouter = require('./DAL/Routs/work-shifts.routs')
 
 const db = require('./models');
 const app = express();
@@ -26,7 +27,8 @@ app.use('/order',orderRouter);
 app.use('/support',supportRouter);
 app.use('/beton',betonRouter);
 app.use('/main',mainRouter)
-app.use('/stone',stoneRouter)
+app.use('/stone', stoneRouter)
+app.use('/salary', salaryRouter)
 
 db.sequelize.sync().then((req)=>{
     app.listen(PORT,()=>{

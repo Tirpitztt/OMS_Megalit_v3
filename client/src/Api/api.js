@@ -423,6 +423,15 @@ export const usersAPI = {
         )
     }
 }
+export const salaryAPI = {
+    getShiftsByMonth(body) {
+        return instance.post('/salary/getShiftsByMonth', body).then(
+            response => {
+                return response.data
+            }
+        )
+    }
+}
 
 export const betonAPI = {
     getBetonState(){

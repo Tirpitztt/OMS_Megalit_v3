@@ -1,4 +1,4 @@
-.content_box{
+﻿.content_box{
     width: 100%;
 }
 .header{
@@ -40,4 +40,28 @@
 }
 .content::-webkit-scrollbar-thumb:hover {
     background: #555;
+}
+.table_container{
+    width:100%;
+    display:flex;
+    flex-flow:row nowrap;
+    justify-content:space-between;
+}
+.table_users{
+    width:40%;
+    border:1px solid gray;
+}
+.table_timesheet {
+    width: 60%;
+    border: 1px solid gray;
+}
+.table_row{
+    display:flex;
+    flex-flow:row nowrap;
+}
+.table_row_id {
+    width: 5%;
+}
+.table_row_name {
+    width: 95%;
 }

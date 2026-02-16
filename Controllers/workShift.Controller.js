@@ -1,4 +1,5 @@
 const Model = require('../models')
+const {Op } = require('sequelize')
 
 class WorkShiftController {
     async workShiftCreate(req,res){
@@ -66,6 +67,37 @@ class WorkShiftController {
 
         }catch (e) {
             return res.status(500).json({message:'mandate create error' + e.message})
+        }
+    }
+    async getShiftsByMonth(req, res) {
+        try {
+            let result = []
+            const users = await Model.users.findAll()
+            const shifts = await Model.work_shifts.findAll({
+                where: {
+                    date: {
+                        [Op.lt]: req.body.dateStart,
+                        [Op.gt]: req.body.dateEnd
+                    }
+                }
+            })
+            users.forEach ((item,i)=> {
+                let user = {
+                    userId:item.id,
+                    userName: item.full_name,
+                    shifts:[] 
+                }
+                shifts.forEach ((shift,i)=> {
+                    if (user.userId === shift.userId) {
+                        user.shifts.push(shift)
+                    }
+                })
+                result.push(user)
+            })
+            return res.status(200).json(result)
+
+        } catch (e) {
+            return res.status(500).json({ message: 'get shifts error' + e.message })
         }
     }
 }
