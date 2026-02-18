@@ -1,4 +1,4 @@
-﻿.content_box{
+.content_box{
     width: 100%;
 }
 .header{
@@ -44,12 +44,21 @@
 .table_container{
     width:100%;
     display:flex;
-    flex-flow:row nowrap;
+    flex-flow:column nowrap;
     justify-content:space-between;
+}
+.table_title_row {
+    width:100%;
+    display: flex;
+    flex-flow: row nowrap;
+    height: 68px;
 }
 .table_users{
     width:30%;
     border:1px solid gray;
+}
+.table_user_box{
+    width:30%;
 }
 .table_timesheet {
     width: 70%;
@@ -60,11 +69,7 @@
     flex-flow:row nowrap;
     height: 21px;
 }
-.table_title_row{
-    display:flex;
-    flex-flow: column;
-    height: 68px;
-}
+
 .table_title_month_row{
     width: 100%;
     display:flex;
@@ -85,6 +90,7 @@
     width: 100%;
     display:flex;
     flex-flow:row nowrap;
+    justify-content:space-around;
 }
 .table_title_day_box{
     width:3.2%;
@@ -97,8 +103,16 @@
 .table_row_name {
     width: 95%;
 }
-.table_day_box{
-    width: 3.1%;
-    height: 21px;
-    border: 1px solid gray;
+
+.dayShift{
+    width:2.2%;
+    text-align:center;
+}
+.full_row{
+    display:flex;
+    flex-flow:row nowrap;
+    justify-content:space-around;
+}
+.table_content{
+    width:100%;
 }
