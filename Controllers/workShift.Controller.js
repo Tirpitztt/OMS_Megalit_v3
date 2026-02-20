@@ -1,3 +1,4 @@
+const getMonthDays = require('../Utils/month-days')
 const Model = require('../models')
 const {Op } = require('sequelize')
 
@@ -71,13 +72,22 @@ class WorkShiftController {
     }
     async getShiftsByMonth(req, res) {
         try {
-            let result = []
+
+            const monthDays = getMonthDays(req.body.year,(req.body.month)-1)
+            let result = {
+                year: req.body.year,
+                month: req.body.month,
+                monthDays,
+                users:[]
+            }
+            const dateStart = req.body.year + '-' + req.body.month + '-' + monthDays.length
+            const dateEnd = req.body.year + '-' + req.body.month + '-' + 1
             const users = await Model.users.findAll()
             const shifts = await Model.work_shifts.findAll({
                 where: {
                     date: {
-                        [Op.lt]: req.body.dateStart,
-                        [Op.gt]: req.body.dateEnd
+                        [Op.lt]: dateStart,
+                        [Op.gt]: dateEnd
                     }
                 }
             })
@@ -92,7 +102,7 @@ class WorkShiftController {
                         user.shifts.push(shift)
                     }
                 })
-                result.push(user)
+                result.users.push(user)
             })
             return res.status(200).json(result)
 

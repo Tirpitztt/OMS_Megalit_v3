@@ -1,22 +1,30 @@
-import React from 'react';
+import React, { useState } from 'react';
 import c from './salary.module.css'
 import TimeSheetPage from './timesheet-page';
 
 
 const SalaryPage = (props) => {
-    console.log(props.state)
+    console.log(props.state.dataMonth.month)
     const today = new Date()
     const currentYear = today.getFullYear()
-    const currentMonth = today.getMonth()+1
-
-
-    const getShiftsByMonth = (year, month) => {
-        let body = {
-            dateStart: year + '-' + month +'-' + 31,
-            dateEnd: year + '-' + month + '-' + 1
+    const currentMonth = today.getMonth() + 1
+    
+    const getNextData = () => {
+        const bodyReq = { year: currentYear, month: props.state.dataMonth.month + 1 }
+        if (bodyReq.month > 0 && bodyReq.month <= 12) {
+            props.getShiftsByMonth(bodyReq)
+        } else {
+            console.log('baza')
         }
-        //console.log(body)
-        props.getShiftsByMonth(body)
+}
+    const getPrewData = () => {
+        const bodyReq = { year: currentYear, month: props.state.dataMonth.month - 1 }
+        if (bodyReq.month > 0 && bodyReq.month <= 12) {
+            props.getShiftsByMonth(bodyReq)
+        } else {
+            console.log('baza')
+        }
+        
     }
 
     return (
@@ -26,8 +34,10 @@ const SalaryPage = (props) => {
                 <div className={c.header_button_box}></div>
             </div>
             <div className={c.content}>
-                <div onClick={() => getShiftsByMonth(currentYear,currentMonth-1)} >get</div>
-                <TimeSheetPage state={props.state } />
+               <TimeSheetPage  state={props.state}
+                                nextMonthData={getNextData}
+                                prewMonthData={getPrewData}
+                />
             </div>
 
         </div>

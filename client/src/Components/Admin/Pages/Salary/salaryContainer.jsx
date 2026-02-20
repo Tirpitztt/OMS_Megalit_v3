@@ -2,22 +2,22 @@ import * as React from 'react'
 import {compose} from "redux";
 import {connect} from "react-redux";
 import SalaryPage from "./salary-page";
-import { getShiftsByMonthThunkCreator, setMonthTitleDays } from '../../../../Redux/Redusers/salary-reduser';
-import { getMonthDays} from '../../../../Utils/dateTermin';
+import { getShiftsByMonthThunkCreator } from '../../../../Redux/Redusers/salary-reduser';
+//import { getMonthDays} from '../../../../Utils/dateTermin';
 
 class SalaryContainer extends React.Component{
     componentDidMount() {
         const today = new Date()
         const currentYear = today.getFullYear()
-        const currentMonth = today.getMonth()+1
-        this.props.getShiftsByMonth({ dateStart: currentYear + '-' + currentMonth + '-' + 31, dateEnd: currentYear + '-' + currentMonth + '-' + 1 })
-        this.props.setMonthTitleDays({ month: currentMonth, days: getMonthDays(currentYear, currentMonth-1) })
+        const currentMonth = today.getMonth() + 1
+        this.props.getShiftsByMonth({ year: currentYear, month: currentMonth })
+        
     }
     render() {
         return(
             <SalaryPage state={this.props.state.salaryPage}
-                getShiftsByMonth={this.props.getShiftsByMonth}
-                setMonthTitleDays={this.props.setMonthTitleDays}
+                        getShiftsByMonth={this.props.getShiftsByMonth}
+                
 
             />
         )
@@ -31,9 +31,7 @@ let mapDispatchToProps = (dispatch) => {
         getShiftsByMonth: (body) => {
             dispatch(getShiftsByMonthThunkCreator(body))
         },
-        setMonthTitleDays: (body) => {
-            dispatch(setMonthTitleDays(body))
-        }
+        
 
     }
 }

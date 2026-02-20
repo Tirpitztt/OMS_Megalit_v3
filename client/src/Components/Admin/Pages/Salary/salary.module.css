@@ -108,6 +108,31 @@
     width:2.2%;
     text-align:center;
 }
+.absence_day {
+    width: 2.2%;
+    text-align: center;
+    background-color:aquamarine;
+}
+.hooky_day {
+    width: 2.2%;
+    text-align: center;
+    background-color: red;
+}
+.outlet_day {
+    width: 2.2%;
+    text-align: center;
+    background-color: yellow
+}
+.sick_day {
+    width: 2.2%;
+    text-align: center;
+    background-color: blue
+}
+.full_day {
+    width: 2.2%;
+    text-align: center;
+    background-color: forestgreen
+}
 .full_row{
     display:flex;
     flex-flow:row nowrap;

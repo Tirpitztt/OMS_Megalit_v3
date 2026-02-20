@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import c from './salary.module.css'
 import TableTimeSheet from './tableTimeSheet';
 
@@ -10,7 +10,10 @@ const TimeSheetPage = (props) => {
                 <div className={c.table_title_item}><p>Табель учета рабочего времени</p></div>
                 <div className={c.table_title_item}></div>
             </div>
-            <TableTimeSheet state={props.state } />
+            <TableTimeSheet state={props.state}
+                            nextMonthData={props.nextMonthData}
+                            prewMonthData={props.prewMonthData}
+            />
         </div>
     )
 }
