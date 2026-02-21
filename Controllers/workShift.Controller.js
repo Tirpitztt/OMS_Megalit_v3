@@ -80,6 +80,9 @@ class WorkShiftController {
                 monthDays,
                 users:[]
             }
+            //if (result.month < 1) {
+            //    result.month = 12 - result.month
+            //}
             const dateStart = req.body.year + '-' + req.body.month + '-' + monthDays.length
             const dateEnd = req.body.year + '-' + req.body.month + '-' + 1
             const users = await Model.users.findAll()

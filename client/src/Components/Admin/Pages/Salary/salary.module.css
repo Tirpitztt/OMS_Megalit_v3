@@ -77,14 +77,19 @@
     text-align: center;
     height: 26px;
 }
-.table_title_month_row>div:nth-of-type(1){
-    width: 10%;
-}
+
 .table_title_month_row>div:nth-of-type(2){
     width: 80%;
 }
-.table_title_month_row>div:nth-of-type(3){
-    width: 10%;
+
+.arrows{
+    width:10%;
+    height:26px;
+    cursor:pointer;
+}
+.arrows>img{
+    width: 34%;
+    height: 26px;
 }
 .table_title_days_row{
     width: 100%;
@@ -97,6 +102,9 @@
     text-align: center;
     font-size: 12px;
 }
+.dayOutlet{
+    background-color:red;
+}
 .table_row_id {
     width: 5%;
 }
@@ -105,39 +113,54 @@
 }
 
 .dayShift{
+    display:flex;
+    justify-content:center;
+    align-items:center;
     width:2.2%;
-    text-align:center;
+    cursor:pointer;
 }
 .absence_day {
-    width: 2.2%;
+    width: 70%;
     text-align: center;
-    background-color:aquamarine;
+    background-color: aquamarine;
+    border: 1px solid gray;
 }
 .hooky_day {
-    width: 2.2%;
+    width: 70%;
     text-align: center;
     background-color: red;
+    border: 1px solid gray;
 }
 .outlet_day {
-    width: 2.2%;
+    width: 70%;
     text-align: center;
-    background-color: yellow
+    background-color: yellow;
+    border:1px solid gray;
 }
 .sick_day {
-    width: 2.2%;
+    width: 70%;
     text-align: center;
-    background-color: blue
+    background-color: blue;
+    border: 1px solid gray;
 }
 .full_day {
-    width: 2.2%;
+    width: 70%;
     text-align: center;
-    background-color: forestgreen
+    background-color: forestgreen;
+    border: 1px solid gray;
+}
+.all_day {
+    width: 70%;
+    text-align: center;
 }
 .full_row{
     display:flex;
     flex-flow:row nowrap;
     justify-content:space-around;
+    height:36px;
+    
 }
-.table_content{
-    width:100%;
+.table_content {
+    width: 100%;
+    margin-top: 1rem;
 }

@@ -10,19 +10,23 @@ const SalaryPage = (props) => {
     const currentMonth = today.getMonth() + 1
     
     const getNextData = () => {
-        const bodyReq = { year: currentYear, month: props.state.dataMonth.month + 1 }
+        const bodyReq = { year: props.state.dataMonth.year, month: props.state.dataMonth.month + 1 }
         if (bodyReq.month > 0 && bodyReq.month <= 12) {
             props.getShiftsByMonth(bodyReq)
-        } else {
-            console.log('baza')
+        } else if (bodyReq.month === 13) {
+            bodyReq.month = 1
+            bodyReq.year = bodyReq.year + 1
+            props.getShiftsByMonth(bodyReq)
         }
 }
     const getPrewData = () => {
-        const bodyReq = { year: currentYear, month: props.state.dataMonth.month - 1 }
+        const bodyReq = { year: props.state.dataMonth.year, month: props.state.dataMonth.month - 1 }
         if (bodyReq.month > 0 && bodyReq.month <= 12) {
             props.getShiftsByMonth(bodyReq)
-        } else {
-            console.log('baza')
+        } else if (bodyReq.month === 0) {
+            bodyReq.month = 12 
+            bodyReq.year = bodyReq.year - 1
+            props.getShiftsByMonth(bodyReq)
         }
         
     }
