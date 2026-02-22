@@ -1,13 +1,21 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import c from './salary.module.css'
 import TimeSheetPage from './timesheet-page';
+import {useMaterials, useMatState} from "../../../../Hooks/material.hook";
 
 
 const SalaryPage = (props) => {
     console.log(props.state.dataMonth.month)
-    const today = new Date()
-    const currentYear = today.getFullYear()
-    const currentMonth = today.getMonth() + 1
+    const [rate,setRate] = useState(0)
+    const [materials] = useMaterials()
+    useEffect(()=>{
+        if(Object.entries(materials).length){
+            setRate(materials.rate[0].USD)
+        }
+    })
+    //const today = new Date()
+    // const currentYear = today.getFullYear()
+    // const currentMonth = today.getMonth() + 1
     
     const getNextData = () => {
         const bodyReq = { year: props.state.dataMonth.year, month: props.state.dataMonth.month + 1 }
@@ -39,8 +47,9 @@ const SalaryPage = (props) => {
             </div>
             <div className={c.content}>
                <TimeSheetPage  state={props.state}
-                                nextMonthData={getNextData}
-                                prewMonthData={getPrewData}
+                               rate={rate}
+                               nextMonthData={getNextData}
+                               prewMonthData={getPrewData}
                 />
             </div>
 

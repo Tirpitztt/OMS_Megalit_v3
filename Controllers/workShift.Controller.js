@@ -5,19 +5,40 @@ const {Op } = require('sequelize')
 class WorkShiftController {
     async workShiftCreate(req,res){
         try{
-            const workShift = await Model.work_shifts.create({
-                userId:req.body.userId,
-                employerId:req.body.employerId,
-                date:req.body.date,
-                start:req.body.start,
-                end:req.body.end,
-                hooky:req.body.hooky,
-                outlet:req.body.outlet,
-                absence:req.body.absence,
-                sick:req.body.sick,
-                rate:req.body.rate
-            })
-            if(req.body.mandat){
+            let result = {}
+            if(req.body.shiftId){
+                await Model.work_shifts.update({
+                    userId:req.body.userId,
+                    employerId:req.body.data.employerId,
+                    date:req.body.data.date,
+                    start:req.body.data.start,
+                    end:req.body.data.end,
+                    hooky:req.body.data.hooky,
+                    outlet:req.body.data.outlet,
+                    absence:req.body.data.absence,
+                    sick:req.body.data.sick,
+                    rate:req.body.data.rate
+                },{
+                    where:{
+                        id:req.body.shiftId
+                    }
+                })
+            }else{
+                const workShift = await Model.work_shifts.create({
+                    userId:req.body.userId,
+                    employerId:req.body.data.employerId,
+                    date:req.body.data.date,
+                    start:req.body.data.start,
+                    end:req.body.data.end,
+                    hooky:req.body.data.hooky,
+                    outlet:req.body.data.outlet,
+                    absence:req.body.data.absence,
+                    sick:req.body.data.sick,
+                    rate:req.body.data.rate
+                })
+            }
+
+            if(req.body.data.mandat){
                 await Model.mandates.create({
                     workShiftId:workShift.id,
                     employerName:req.body.mandat.employerName,
@@ -25,7 +46,7 @@ class WorkShiftController {
                     summa:req.body.mandat.summa
                 })
             }
-            if(req.body.salary.length){
+            if(req.body.data.salary.length){
                 for(const item of req.body.salary){
                     const salary = await Model.salarys.create({
                         workShiftId:workShift.id,

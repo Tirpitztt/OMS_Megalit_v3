@@ -14,6 +14,7 @@ const TimeSheetPage = (props) => {
                 <div className={c.table_title_item}></div>
             </div>
             <TableTimeSheet state={props.state}
+                            rate={props.rate}
                             nextMonthData={props.nextMonthData}
                             prewMonthData={props.prewMonthData}
             />

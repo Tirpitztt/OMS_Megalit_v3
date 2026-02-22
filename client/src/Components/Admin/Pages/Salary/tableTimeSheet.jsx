@@ -3,6 +3,7 @@ import c from './salary.module.css'
 import { getMonthName } from '../../../../Utils/dateTermin';
 import arrowLeft from '../../../../Utils/img/arrow-left.png'
 import arrowRight from '../../../../Utils/img/arrow-right.png'
+import WorkShift from "../../../../Utils/Classes/workShift";
 
 
 const TableTimeSheet = (props) => {
@@ -18,8 +19,16 @@ const TableTimeSheet = (props) => {
     let fullRow = null
     let titleDaysBlock = null
 
-    const clickDay = (val) => {
-        console.log(val)
+    const clickDay = (val,day,shiftId=null) => {
+
+        const body = new WorkShift(val.userId,props.state.dataMonth.year,props.state.dataMonth.month,day)
+        if(shiftId){
+            body.setShiftId(shiftId)
+        }
+        body.setRate(props.rate)
+        body.setFull(true)
+        body.setEmployer(1)
+        console.log(body)
     }
 
     if (props.state.dataMonth.monthDays.length) {
@@ -35,25 +44,44 @@ const TableTimeSheet = (props) => {
             </div>
         })
         fullRow = props.state.dataMonth.users.map((item, i) => {
-            let daysMonth = new Array(props.state.dataMonth.monthDays.length)
-                .fill(<div className={c.dayShift} onClick={() => clickDay(item)}><div className={ALLDAY.class}>{ALLDAY.text}</div></div>)
+            let daysArray = new Array(props.state.dataMonth.monthDays.length).fill('.')
+            const daysMonth = daysArray.map((day,i)=>{
+                return <div className={c.dayShift} onClick={() => clickDay(item,i+1)} key={i}>
+                    <div className={ALLDAY.class}>{ALLDAY.text}</div>
+                </div>
+            })
             item.shifts.forEach((shift,i) => {
                 daysMonth.forEach((day,y) => {
                     if (y + 1 == shift.date.slice(-2)) {
                         if (shift.absence) {
-                            daysMonth.splice(y, 1, <div className={c.dayShift }><div className={ABSENCE.class}>{ABSENCE.text}</div></div>)
+                            daysMonth.splice(y, 1,
+                                <div className={c.dayShift } onClick={() => clickDay(item,y+1,shift.id)}>
+                                    <div className={ABSENCE.class}>{ABSENCE.text}</div>
+                                </div>)
                         }
                         if (shift.hooky) {
-                            daysMonth.splice(y, 1, <div className={c.dayShift}><div className={HOOKY.class}>{HOOKY.text}</div></div>)
+                            daysMonth.splice(y, 1,
+                                <div className={c.dayShift} onClick={() => clickDay(item,y+1,shift.id)}>
+                                    <div className={HOOKY.class}>{HOOKY.text}</div>
+                                </div>)
                         }
                         if (shift.outlet) {
-                            daysMonth.splice(y, 1, <div className={c.dayShift}><div className={OUTLET.class}>{OUTLET.text}</div></div>)
+                            daysMonth.splice(y, 1,
+                                <div className={c.dayShift} onClick={() => clickDay(item,y+1,shift.id)}>
+                                    <div className={OUTLET.class}>{OUTLET.text}</div>
+                                </div>)
                         }
                         if (shift.sick) {
-                            daysMonth.splice(y, 1, <div className={c.dayShift}><div className={SICK.class}>{SICK.text}</div></div>)
+                            daysMonth.splice(y, 1,
+                                <div className={c.dayShift} onClick={() => clickDay(item,y+1,shift.id)}>
+                                    <div className={SICK.class}>{SICK.text}</div>
+                                </div>)
                         }
                         if (shift.full) {
-                            daysMonth.splice(y, 1, <div className={c.dayShift}><div className={FULL.class}>{FULL.text}</div></div>)
+                            daysMonth.splice(y, 1,
+                                <div className={c.dayShift} onClick={() => clickDay(item,y+1,shift.id)}>
+                                    <div className={FULL.class}>{FULL.text}</div>
+                                </div>)
                         }
                         
                     }
