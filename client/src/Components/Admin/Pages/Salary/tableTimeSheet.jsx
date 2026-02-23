@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import c from './salary.module.css'
 import { getMonthName } from '../../../../Utils/dateTermin';
 import arrowLeft from '../../../../Utils/img/arrow-left.png'
 import arrowRight from '../../../../Utils/img/arrow-right.png'
 import WorkShift from "../../../../Utils/Classes/workShift";
+import WorkShiftModal from '../../../Common/work-shift-modal';
 
 
 const TableTimeSheet = (props) => {
@@ -14,21 +15,26 @@ const TableTimeSheet = (props) => {
     const SICK = { class: c.sick_day, text: 'Б' }
     const FULL = { class: c.full_day, text: '8' }
     const ALLDAY = { class: c.all_day, text: '.' }
+    const [activeDrop, setActiveDrop] = useState(false)
+    const [dataForm,setDataForm] = useState(null)
+
     
     let monthTitle = null
     let fullRow = null
     let titleDaysBlock = null
 
-    const clickDay = (val,day,shiftId=null) => {
-
+    const clickDay = (val, day, shiftId = null) => {
+        setActiveDrop(true)
         const body = new WorkShift(val.userId,props.state.dataMonth.year,props.state.dataMonth.month,day)
         if(shiftId){
             body.setShiftId(shiftId)
         }
+        body.setUserName(val.userName)
         body.setRate(props.rate)
         body.setFull(true)
         body.setEmployer(1)
         console.log(body)
+        setDataForm(body)
     }
 
     if (props.state.dataMonth.monthDays.length) {
@@ -45,8 +51,8 @@ const TableTimeSheet = (props) => {
         })
         fullRow = props.state.dataMonth.users.map((item, i) => {
             let daysArray = new Array(props.state.dataMonth.monthDays.length).fill('.')
-            const daysMonth = daysArray.map((day,i)=>{
-                return <div className={c.dayShift} onClick={() => clickDay(item,i+1)} key={i}>
+            const daysMonth = daysArray.map((day, i) => {
+                return <div className={c.dayShift} onClick={() => clickDay(item, i + 1)} key={i}>
                     <div className={ALLDAY.class}>{ALLDAY.text}</div>
                 </div>
             })
@@ -122,7 +128,7 @@ const TableTimeSheet = (props) => {
             <div className={c.table_content }>
                 {fullRow }
             </div>
-            
+            <WorkShiftModal active={activeDrop} data={dataForm } />
            
         </div>
     )

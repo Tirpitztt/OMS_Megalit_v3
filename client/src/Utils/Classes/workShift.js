@@ -3,6 +3,7 @@
 class WorkShift {
     constructor(userId,year,month,day) {
         this.userId = userId
+        this.userName = ''
         this.year = year
         this.month = month
         this.day = day
@@ -22,6 +23,9 @@ class WorkShift {
             salary:[]
 
         }
+    }
+    setUserName(name) {
+        this.userName = name
     }
     setShiftId(id){
         this.shiftId = id

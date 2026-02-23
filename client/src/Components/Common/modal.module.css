@@ -70,7 +70,13 @@
     width: 100vw;
     background-color: rgba(0,0,0,0.4);
     z-index: 99999;
-
+}
+.work_shift_content {
+    width: 35%;
+    background-color: beige;
+    border-radius: 15px;
+    position: relative;
+    padding: 1rem;
 }
 .content, .content_edit_order{
     display: flex;

@@ -1,6 +1,9 @@
 .content_box{
     width: 100%;
 }
+.hide_block{
+    display:none;
+}
 .header{
     height:3rem;
     display: flex;
