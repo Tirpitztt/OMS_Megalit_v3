@@ -46,10 +46,11 @@ const SalaryPage = (props) => {
                 <div className={c.header_button_box}></div>
             </div>
             <div className={c.content}>
-               <TimeSheetPage  state={props.state}
-                               rate={rate}
-                               nextMonthData={getNextData}
-                               prewMonthData={getPrewData}
+                <TimeSheetPage state={props.state}
+                    rate={rate}
+                    nextMonthData={getNextData}
+                    prewMonthData={getPrewData}
+                    saveShiftByUser={props.saveShiftByUser }
                 />
             </div>
 

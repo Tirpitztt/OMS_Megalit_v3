@@ -128,7 +128,10 @@ const TableTimeSheet = (props) => {
             <div className={c.table_content }>
                 {fullRow }
             </div>
-            <WorkShiftModal active={activeDrop} data={dataForm } />
+            <WorkShiftModal active={activeDrop}
+                close={setActiveDrop}
+                saveShiftByUser={props.saveShiftByUser}
+                data={dataForm} />
            
         </div>
     )

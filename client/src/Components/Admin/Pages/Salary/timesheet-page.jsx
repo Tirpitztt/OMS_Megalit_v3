@@ -16,7 +16,8 @@ const TimeSheetPage = (props) => {
             <TableTimeSheet state={props.state}
                             rate={props.rate}
                             nextMonthData={props.nextMonthData}
-                            prewMonthData={props.prewMonthData}
+                prewMonthData={props.prewMonthData}
+                saveShiftByUser={props.saveShiftByUser}
             />
         </div>
     )

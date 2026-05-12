@@ -34,6 +34,12 @@ export const getShiftsByMonthThunkCreator = (body) => { //создание со�
         })
     }
 }
+export const saveShiftByUserThunkCreator = (body) => {
+    return (dispatch) => {
+        console.log(body)
+    }
+    
+}
 
 
 export default SalaryReduser
