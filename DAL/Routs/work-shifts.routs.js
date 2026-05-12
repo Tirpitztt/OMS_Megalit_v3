@@ -8,5 +8,6 @@ const router = Router()
 let urlencodedParser = body_parser.urlencoded({ extended: false })
 
 router.post('/getShiftsByMonth', urlencodedParser, controller.getShiftsByMonth)
+router.post('/saveShiftByUser',urlencodedParser,controller.workShiftCreate)
 
 module.exports = router

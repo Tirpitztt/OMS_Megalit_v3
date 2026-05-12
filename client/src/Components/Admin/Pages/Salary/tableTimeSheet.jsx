@@ -29,6 +29,7 @@ const TableTimeSheet = (props) => {
         if(shiftId){
             body.setShiftId(shiftId)
         }
+        body.setDateShift()
         body.setUserName(val.userName)
         body.setRate(props.rate)
         body.setFull(true)

@@ -28,6 +28,7 @@ const WorkShiftModal = (props) => {
                 </div>
                 <DropDownWorkShiftForm data={props.data}
                     saveShiftByUser={props.saveShiftByUser}
+                                       close={props.close}
                 />
             </div>
             

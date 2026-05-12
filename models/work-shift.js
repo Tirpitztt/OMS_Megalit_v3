@@ -13,10 +13,10 @@ module.exports = (sequelize,DataTypes)=>{
             type:DataTypes.DATEONLY
         },
         start:{
-            type:DataTypes.TIME
+            type:DataTypes.INTEGER
         },
         end:{
-            type:DataTypes.TIME
+            type:DataTypes.INTEGER
         },
         hooky:{
             type:DataTypes.BOOLEAN
@@ -29,6 +29,9 @@ module.exports = (sequelize,DataTypes)=>{
         },
         sick:{
             type:DataTypes.BOOLEAN
+        },
+        full:{
+          type:DataTypes.BOOLEAN
         },
         rate:{
             type:DataTypes.FLOAT

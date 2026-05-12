@@ -28,6 +28,7 @@ export const getShiftsByMonth = (data) => ({ type: GET_SHIFTS_BY_MONTH, data })
 
 
 export const getShiftsByMonthThunkCreator = (body) => { //создание состояния
+    console.log(body)
     return (dispatch) => {
         salaryAPI.getShiftsByMonth(body).then(data => {
             dispatch(getShiftsByMonth(data))
@@ -36,7 +37,13 @@ export const getShiftsByMonthThunkCreator = (body) => { //создание со�
 }
 export const saveShiftByUserThunkCreator = (body) => {
     return (dispatch) => {
-        console.log(body)
+        salaryAPI.saveShiftByUser(body).then(data=>{
+            salaryAPI.getShiftsByMonth({year:body.year,month:body.month}).then(data => {
+                dispatch(getShiftsByMonth(data))
+            })
+            console.log(data)
+        })
+
     }
     
 }

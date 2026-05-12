@@ -430,6 +430,13 @@ export const salaryAPI = {
                 return response.data
             }
         )
+    },
+    saveShiftByUser(body){
+      return instance.post('/salary/saveShiftByUser',body).then(
+          response=>{
+              return response.data
+          }
+      )
     }
 }
 

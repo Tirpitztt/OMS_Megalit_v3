@@ -24,6 +24,18 @@ class WorkShift {
 
         }
     }
+    setDateShift(){
+
+        let month = this.month
+        let day = this.day
+        if(this.month<10){
+            month = '0'+this.month
+        }
+        if(this.day<10){
+            day = '0'+this.day
+        }
+        this.data.date = `${this.year}-${month}-${day}`
+    }
     setUserName(name) {
         this.userName = name
     }

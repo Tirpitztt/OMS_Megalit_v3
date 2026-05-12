@@ -5,9 +5,16 @@ const {Op } = require('sequelize')
 class WorkShiftController {
     async workShiftCreate(req,res){
         try{
-            let result = {}
+            let result = {
+                workShiftUpd:{},
+                workShift:{},
+                mandat:{},
+                salary:{}
+
+            }
+
             if(req.body.shiftId){
-                await Model.work_shifts.update({
+                result.workShiftUpd = await Model.work_shifts.update({
                     userId:req.body.userId,
                     employerId:req.body.data.employerId,
                     date:req.body.data.date,
@@ -17,6 +24,7 @@ class WorkShiftController {
                     outlet:req.body.data.outlet,
                     absence:req.body.data.absence,
                     sick:req.body.data.sick,
+                    full:req.body.data.full,
                     rate:req.body.data.rate
                 },{
                     where:{
@@ -24,7 +32,7 @@ class WorkShiftController {
                     }
                 })
             }else{
-                const workShift = await Model.work_shifts.create({
+                result.workShift = await Model.work_shifts.create({
                     userId:req.body.userId,
                     employerId:req.body.data.employerId,
                     date:req.body.data.date,
@@ -34,12 +42,13 @@ class WorkShiftController {
                     outlet:req.body.data.outlet,
                     absence:req.body.data.absence,
                     sick:req.body.data.sick,
+                    full:req.body.data.full,
                     rate:req.body.data.rate
                 })
             }
 
             if(req.body.data.mandat){
-                await Model.mandates.create({
+                result.mandat = await Model.mandates.create({
                     workShiftId:workShift.id,
                     employerName:req.body.mandat.employerName,
                     notice:req.body.mandat.notice,
@@ -48,7 +57,7 @@ class WorkShiftController {
             }
             if(req.body.data.salary.length){
                 for(const item of req.body.salary){
-                    const salary = await Model.salarys.create({
+                    result.salary = await Model.salarys.create({
                         workShiftId:workShift.id,
                         workId:item.workId,
                         workName:item.workName,
@@ -58,7 +67,8 @@ class WorkShiftController {
                     })
                 }
             }
-            return res.status(200).json(workShift)
+
+            return res.status(200).json(result)
         }catch (e) {
             return res.status(500).json({message:'shift create error' + e.message})
         }
