@@ -243,3 +243,43 @@
     display: flex;
     flex-flow: column nowrap;
 }
+/*----------FORM-SHIFT---------------------------------------*/
+.form_wrap{
+    width:100%;
+}
+.form_content{
+    width:100%;
+    display:flex;
+    flex-flow:row nowrap;
+    justify-content:space-around;
+}
+.select_wrap {
+    width: 30%;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+}
+.check_wrap {
+    width: 65%;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+}
+.select_box {
+    width: 50%;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+}
+.check_box {
+    width: 20%;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+}
+.check_box>label{
+    text-align:center;
+}
+.check_box>input{
+    height:2.2rem;
+}

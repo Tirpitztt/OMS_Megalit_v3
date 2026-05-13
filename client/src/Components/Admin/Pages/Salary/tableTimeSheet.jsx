@@ -28,13 +28,23 @@ const TableTimeSheet = (props) => {
         const body = new WorkShift(val.userId,props.state.dataMonth.year,props.state.dataMonth.month,day)
         if(shiftId){
             body.setShiftId(shiftId)
+            val.shifts.forEach(shift => {
+                if (shift.id === shiftId) {
+                    body.setStartTime(shift.start)
+                    body.setEndTime(shift.end)
+                    body.setHooky(shift.hooky)
+                    body.setAbsence(shift.absence)
+                    body.setOutlet(shift.outlet)
+                    body.setSick(shift.sick)
+                    body.setFull(shift.full)
+                }
+            })
         }
         body.setDateShift()
         body.setUserName(val.userName)
         body.setRate(props.rate)
-        body.setFull(true)
         body.setEmployer(1)
-        console.log(body)
+        //console.log(val)
         setDataForm(body)
     }
 
@@ -63,7 +73,7 @@ const TableTimeSheet = (props) => {
                         if (shift.absence) {
                             daysMonth.splice(y, 1,
                                 <div className={c.dayShift } onClick={() => clickDay(item,y+1,shift.id)}>
-                                    <div className={ABSENCE.class}>{ABSENCE.text}</div>
+                                    <div className={ABSENCE.class}>{shift.end - shift.start}</div>
                                 </div>)
                         }
                         if (shift.hooky) {
