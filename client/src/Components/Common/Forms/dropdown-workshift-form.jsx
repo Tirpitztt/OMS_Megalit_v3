@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import c from './form.module.css'
 
@@ -8,70 +8,99 @@ const DropDownWorkShiftForm = (props) => {
     let {register,handleSubmit,reset } = useForm()
     const [timeStart, setTimeStart] = useState(0)
     const [timeFinish, setTimeFinish] = useState(0)
-    //const [hooky,setHooky] = useState(false)
-    //const [outlet,setOutlet] = useState(false)
-    //const [absence,setAbsence] = useState(false)
-    //const [sick,setSick] = useState(false)
-    //const [full,setFull] = useState(false)
-    let hooky = false
-    let outlet = false
-    let absence = false
-    let sick = false
-    let full = false
-
+    const [hooky,setHooky] = useState(false)
+    const [outlet,setOutlet] = useState(false)
+    const [absence,setAbsence] = useState(false)
+    const [sick,setSick] = useState(false)
+    const [full, setFull] = useState(false)
+    const [mandates, setMandates] = useState([])
+    const [mandatTitle, setMandatTitle] = useState()
+    const [mandatNotice,setMandatNotice] = useState()
+    
+    useEffect(() => {
+        if (props.data) {
+            setHooky(props.data.data.hooky)
+            setOutlet(props.data.data.outlet)
+            setAbsence(props.data.data.absence)
+            setFull(props.data.data.full)
+            setSick(props.data.data.sick)
+            if (props.data.data.mandat.length) {
+                setMandates([...props.data.data.mandat])
+            }
+        }
+    },[props.data])
     let formData = {}
     if (props.data) {
         formData = { ...props.data }
-        hooky = props.data.data.hooky
-        outlet = props.data.data.outlet
-        absence = props.data.data.absence
-        sick = props.data.data.sick
-        full = props.data.data.full
+        
 
     }
     const selectSick = (e) => {
-        hooky = false
-        outlet = false
-        absence = false
-        sick = true
-        full = false
-
+        
+        setHooky(false)
+        setOutlet(false)
+        setAbsence(false)
+        setFull(false)
+        setSick(true)
     }
     const selectHook = (e) => {
-        hooky = true
-        outlet = false
-        absence = false
-        sick = false
-        full = false
+        
+        setHooky(true)
+        setOutlet(false)
+        setAbsence(false)
+        setFull(false)
+        setSick(false)
     }
     const selectAbsence = (e) => {
-        hooky = false
-        outlet = false
-        absence = true
-        sick = false
-        full = false
+        
+        setHooky(false)
+        setOutlet(false)
+        setAbsence(true)
+        setFull(false)
+        setSick(false)
     }
     const selectFull = (e) => {
-        hooky = false
-        outlet = false
-        absence = false
-        sick = false
-        full = true
+        
+        setHooky(false)
+        setOutlet(false)
+        setAbsence(false)
+        setFull(true)
+        setSick(false)
     }
     const selectOutlet = (e) => {
-        hooky = false
-        outlet = true
-        absence = false
-        sick = false
-        full = false
+        
+        setHooky(false)
+        setOutlet(true)
+        setAbsence(false)
+        setFull(false)
+        setSick(false)
     }
     const timeStartCheck = (e) => {
         setTimeStart(e.target.value)
-        //console.log(e.target.value)
+        
     }
     const timeFinishCheck = (e) => {
         setTimeFinish(e.target.value)
-        //console.log(e.target.value)
+        
+    }
+    const addMandat = () => {
+        const mandatBody = {
+            workShiftId: formData.data.shiftId,
+            employerName: formData.data.userName,
+            notice: mandatNotice,
+            summa:mandatTitle
+        }
+        setMandates([...mandates,mandatBody])
+    }
+    let mandatesBlock = <div>m</div>
+    if (mandates.length) {
+        mandatesBlock = mandates.map((item, i) => {
+            return <div className={c.mandates_title_wrap} key={i }>
+                <div className={c.mandates_title}>{item.summa}</div>
+                <div className={c.mandates_notice}>{item.notice}</div>
+                <div className={c.mandates_add_butt}>{item.id}</div>
+            </div>
+        })
     }
     const onSubmit = (body) => {
         if(full){
@@ -85,7 +114,7 @@ const DropDownWorkShiftForm = (props) => {
         formData.data.absence = absence
         formData.data.outlet = outlet
         formData.data.full = full
-        //console.log('form',props)
+        
         props.saveShiftByUser(formData)
         reset()
         props.close(false)
@@ -152,11 +181,28 @@ const DropDownWorkShiftForm = (props) => {
                         </div>
                     </div>
                 </div>
-                <button type='submit'>apply</button>
+                
+                <div className={c.mandates_block}>
+                    <div className={c.mandates_title_wrap}>
+                        <div className={c.mandates_title}><label>штраф/премия</label></div>
+                        <div className={c.mandates_notice}><label>описание</label></div>
+                        <div className={c.mandates_add_butt}><label></label></div>
+                    </div>
+                    <div className={c.mandates_title_wrap}>
+                        <div className={c.mandates_title}><input onChange={(e) => setMandatTitle(e.target.value)} /></div>
+                        <div className={c.mandates_notice}><input onChange={(e) => setMandatNotice(e.target.value)} /></div>
+                        <div className={c.mandates_add_butt} onClick={addMandat}>+</div>
+                    </div>
+                    {mandatesBlock}
+                </div>
+                <div className={c.button_wrap}>
+                    <button type='submit' className={c.button_tabel_form}>сохранить</button>
+                </div>
             </form>
             
-            
+
             <div>{JSON.stringify(props.data)}</div>
+            
         </div>
     )
 }

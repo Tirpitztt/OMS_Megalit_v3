@@ -123,7 +123,9 @@ class WorkShiftController {
                         [Op.lt]: dateStart,
                         [Op.gt]: dateEnd
                     }
-                }
+                }, include: [{
+                    model:Model.mandates
+                }]
             })
             users.forEach ((item,i)=> {
                 let user = {

@@ -19,7 +19,7 @@ class WorkShift {
             sick:false,
             full:true,
             rate:null,
-            mandat:null,
+            mandat:[],
             salary:[]
 
         }
@@ -69,6 +69,10 @@ class WorkShift {
     setRate(rate){
         this.data.rate = rate
     }
+    setMandate(array) {
+        this.data.mandat = [...array]
+    }
+
 }
 
 export default WorkShift;

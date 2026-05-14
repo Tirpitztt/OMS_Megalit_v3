@@ -270,6 +270,7 @@
     display: flex;
     flex-flow: column nowrap;
     justify-content: center;
+    cursor: pointer;
 }
 .check_box {
     width: 20%;
@@ -280,6 +281,48 @@
 .check_box>label{
     text-align:center;
 }
-.check_box>input{
-    height:2.2rem;
+.check_box > input {
+    height: 2.2rem;
+    cursor: pointer;
 }
+.button_wrap{
+    width:100%;
+    margin-top:5px;
+    display:flex;
+    justify-content:center;
+}
+.button_tabel_form{
+    width:40%;
+    border-radius:3px;
+    height:2.2rem;
+    cursor:pointer;
+}
+.mandates_block{
+    margin-top:1.5rem;
+    width:100%;
+    min-height:2.2rem;
+}
+.mandates_title_wrap{
+    width:100%;
+    display:flex;
+    flex-flow:row nowrap;
+    justify-content:space-around;
+}
+.mandates_title{
+    width:15%
+}
+.mandates_notice{
+    width:70%;
+}
+.mandates_add_butt{
+    width:15%;
+}
+
+
+
+
+
+
+
+
+

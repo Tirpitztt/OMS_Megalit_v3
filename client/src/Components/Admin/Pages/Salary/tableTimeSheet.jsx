@@ -37,6 +37,9 @@ const TableTimeSheet = (props) => {
                     body.setOutlet(shift.outlet)
                     body.setSick(shift.sick)
                     body.setFull(shift.full)
+                    if (shift.mandates && shift.mandates.length) {
+                        body.setMandate(shift.mandates)
+                    }
                 }
             })
         }
