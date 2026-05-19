@@ -47,13 +47,19 @@ class WorkShiftController {
                 })
             }
 
-            if(req.body.data.mandat){
-                result.mandat = await Model.mandates.create({
-                    workShiftId:workShift.id,
-                    employerName:req.body.mandat.employerName,
-                    notice:req.body.mandat.notice,
-                    summa:req.body.mandat.summa
-                })
+            if (req.body.data.mandat.length) {
+                for (const mandat of req.body.data.mandat) {
+                    if (!mandat.id) {
+                        console.log(mandat)
+                        result.mandat = await Model.mandates.create({
+                            workShiftId:result.workShift.id,
+                            employerName:mandat.employerName,
+                            notice:mandat.notice,
+                            summa:mandat.summa
+                        })
+                    }
+                }
+                
             }
             if(req.body.data.salary.length){
                 for(const item of req.body.salary){

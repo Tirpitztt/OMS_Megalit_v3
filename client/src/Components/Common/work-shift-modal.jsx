@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState } from 'react'
 import c from './modal.module.css'
 import DropDownWorkShiftForm from './Forms/dropdown-workshift-form';
 import WorkShift  from '../../Utils/Classes/workShift'
@@ -7,6 +7,7 @@ import WorkShift  from '../../Utils/Classes/workShift'
 const WorkShiftModal = (props) => {
     let shift = null
     let userName = null
+    //const [mandates,setMandates] = useState([])
     //let dataForm = new WorkShift(0,2000,1,1)
     if (props.data) {
         shift = props.data.data.date
@@ -26,9 +27,10 @@ const WorkShiftModal = (props) => {
                     <p>Рабочая смена - {shift}</p>
                     <p>{userName}</p>
                 </div>
-                <DropDownWorkShiftForm data={props.data}
+                <DropDownWorkShiftForm  data={props.data}
                     saveShiftByUser={props.saveShiftByUser}
-                                       close={props.close}
+                    
+                                        close={props.close}
                 />
             </div>
             

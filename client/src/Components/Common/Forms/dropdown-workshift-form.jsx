@@ -85,8 +85,8 @@ const DropDownWorkShiftForm = (props) => {
     }
     const addMandat = () => {
         const mandatBody = {
-            workShiftId: formData.data.shiftId,
-            employerName: formData.data.userName,
+            workShiftId: formData.shiftId,
+            employerName: formData.userName,
             notice: mandatNotice,
             summa:mandatTitle
         }
@@ -114,9 +114,11 @@ const DropDownWorkShiftForm = (props) => {
         formData.data.absence = absence
         formData.data.outlet = outlet
         formData.data.full = full
-        
+        formData.data.mandat = [...mandates]
+        console.log(formData)
         props.saveShiftByUser(formData)
         reset()
+        setMandates([])
         props.close(false)
     }
 
