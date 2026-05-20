@@ -8,7 +8,7 @@ import WorkShiftModal from '../../../Common/work-shift-modal';
 
 
 const TableTimeSheet = (props) => {
-    console.log(props)
+    //console.log(props)
     const ABSENCE = { class: c.absence_day, text: 'О' }
     const HOOKY = { class: c.hooky_day, text: 'П' }
     const OUTLET = { class: c.outlet_day, text: 'В' }
@@ -16,7 +16,7 @@ const TableTimeSheet = (props) => {
     const FULL = { class: c.full_day, text: '8' }
     const ALLDAY = { class: c.all_day, text: '.' }
     const [activeDrop, setActiveDrop] = useState(false)
-    const [dataForm,setDataForm] = useState(null)
+    const [dataForm,setDataForm] = useState(null) //данные формы для каждой смены
 
     
     let monthTitle = null
@@ -24,7 +24,9 @@ const TableTimeSheet = (props) => {
     let titleDaysBlock = null
 
     const clickDay = (val, day, shiftId = null) => {
+        //открываем форму
         setActiveDrop(true)
+        //создаем шаблон тела смены и заполняем его исходными данными
         const body = new WorkShift(val.userId,props.state.dataMonth.year,props.state.dataMonth.month,day)
         if(shiftId){
             body.setShiftId(shiftId)
@@ -48,12 +50,12 @@ const TableTimeSheet = (props) => {
         body.setRate(props.rate)
         body.setEmployer(1)
         //console.log(val)
-        setDataForm(body)
+        setDataForm(body) //создаем данные для формы на основе шаблона
     }
 
     if (props.state.dataMonth.monthDays.length) {
         monthTitle = getMonthName((props.state.dataMonth.month)-1)
-        titleDaysBlock = props.state.dataMonth.monthDays.map((item, i) => {
+        titleDaysBlock = props.state.dataMonth.monthDays.map((item, i) => { //создаем шапку таблицы
             let dayOfWeek = <div>{item.dayOfWeek}</div>
             if (item.dayOfWeek === 'СБ' || item.dayOfWeek === 'ВС') {
                 dayOfWeek = <div className={c.dayOutlet }>{item.dayOfWeek}</div>
@@ -63,13 +65,14 @@ const TableTimeSheet = (props) => {
                 <div>{dayOfWeek}</div>
             </div>
         })
-        fullRow = props.state.dataMonth.users.map((item, i) => {
+        fullRow = props.state.dataMonth.users.map((item, i) => { //создаем таблицу
             let daysArray = new Array(props.state.dataMonth.monthDays.length).fill('.')
-            const daysMonth = daysArray.map((day, i) => {
+            const daysMonth = daysArray.map((day, i) => {  //создается строка дней
                 return <div className={c.dayShift} onClick={() => clickDay(item, i + 1)} key={i}>
                     <div className={ALLDAY.class}>{ALLDAY.text}</div>
                 </div>
             })
+            //каждый день в строке сортируется по типу и окрашивается соответственно
             item.shifts.forEach((shift,i) => {
                 daysMonth.forEach((day,y) => {
                     if (y + 1 == shift.date.slice(-2)) {
@@ -107,7 +110,7 @@ const TableTimeSheet = (props) => {
                     }
                 })
             })
-            
+            //возвращается готовая строка с днями
             return <div key={i} className={c.full_row} >
                 <div className={c.table_user_box }>{item.userName}</div>
                 {daysMonth}

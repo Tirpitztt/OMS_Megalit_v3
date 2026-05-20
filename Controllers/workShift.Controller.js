@@ -6,14 +6,16 @@ class WorkShiftController {
     async workShiftCreate(req,res){
         try{
             let result = {
+                shiftID:null,
                 workShiftUpd:{},
                 workShift:{},
-                mandat:{},
+                mandat:[],
                 salary:{}
 
             }
 
-            if(req.body.shiftId){
+            if (req.body.shiftId) {
+                result.shiftID = req.body.shiftId
                 result.workShiftUpd = await Model.work_shifts.update({
                     userId:req.body.userId,
                     employerId:req.body.data.employerId,
@@ -45,14 +47,15 @@ class WorkShiftController {
                     full:req.body.data.full,
                     rate:req.body.data.rate
                 })
+                result.shiftID = result.workShift.id
             }
 
             if (req.body.data.mandat.length) {
                 for (const mandat of req.body.data.mandat) {
                     if (!mandat.id) {
-                        console.log(mandat)
+                        //console.log(mandat)
                         result.mandat = await Model.mandates.create({
-                            workShiftId:result.workShift.id,
+                            workShiftId:result.shiftID,
                             employerName:mandat.employerName,
                             notice:mandat.notice,
                             summa:mandat.summa

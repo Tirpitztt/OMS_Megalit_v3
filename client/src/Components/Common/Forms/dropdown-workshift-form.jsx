@@ -26,7 +26,7 @@ const DropDownWorkShiftForm = (props) => {
             setSick(props.data.data.sick)
             if (props.data.data.mandat.length) {
                 setMandates([...props.data.data.mandat])
-            }
+            }else(setMandates([]))
         }
     },[props.data])
     let formData = {}
@@ -92,7 +92,7 @@ const DropDownWorkShiftForm = (props) => {
         }
         setMandates([...mandates,mandatBody])
     }
-    let mandatesBlock = <div>m</div>
+    let mandatesBlock = <div></div>
     if (mandates.length) {
         mandatesBlock = mandates.map((item, i) => {
             return <div className={c.mandates_title_wrap} key={i }>
@@ -115,7 +115,7 @@ const DropDownWorkShiftForm = (props) => {
         formData.data.outlet = outlet
         formData.data.full = full
         formData.data.mandat = [...mandates]
-        console.log(formData)
+        //console.log(formData)
         props.saveShiftByUser(formData)
         reset()
         setMandates([])
@@ -188,12 +188,14 @@ const DropDownWorkShiftForm = (props) => {
                     <div className={c.mandates_title_wrap}>
                         <div className={c.mandates_title}><label>штраф/премия</label></div>
                         <div className={c.mandates_notice}><label>описание</label></div>
-                        <div className={c.mandates_add_butt}><label></label></div>
+                        <div className={c.mandates_add_butt_box}><label></label></div>
                     </div>
                     <div className={c.mandates_title_wrap}>
                         <div className={c.mandates_title}><input onChange={(e) => setMandatTitle(e.target.value)} /></div>
                         <div className={c.mandates_notice}><input onChange={(e) => setMandatNotice(e.target.value)} /></div>
-                        <div className={c.mandates_add_butt} onClick={addMandat}>+</div>
+                        <div className={c.mandates_add_butt_box} onClick={addMandat}>
+                            <div className={c.mandate_add_butt }>+</div>
+                        </div>
                     </div>
                     {mandatesBlock}
                 </div>
@@ -203,7 +205,7 @@ const DropDownWorkShiftForm = (props) => {
             </form>
             
 
-            <div>{JSON.stringify(props.data)}</div>
+            {/*<div>{JSON.stringify(props.data)}</div>*/}
             
         </div>
     )

@@ -5,7 +5,7 @@ import {useMaterials, useMatState} from "../../../../Hooks/material.hook";
 
 
 const SalaryPage = (props) => {
-    console.log(props.state.dataMonth.month)
+    //console.log(props.state.dataMonth.month)
     const [rate,setRate] = useState(0)
     const [materials] = useMaterials()
     useEffect(()=>{

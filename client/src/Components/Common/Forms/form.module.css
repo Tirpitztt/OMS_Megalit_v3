@@ -308,14 +308,36 @@
     flex-flow:row nowrap;
     justify-content:space-around;
 }
-.mandates_title{
-    width:15%
+.mandates_title {
+    width: 15%;
+    display:flex;
+    justify-content: center;
+}
+.mandates_title>input{
+    width:100%;
 }
 .mandates_notice{
     width:70%;
+    display:flex;
+    justify-content:center;
 }
-.mandates_add_butt{
-    width:15%;
+.mandates_notice>input{
+    width:95%;
+   
+}
+.mandates_add_butt_box {
+    width: 15%;
+    display: flex;
+    justify-content: center;
+}
+.mandate_add_butt {
+    width:50%;
+    border-radius:25%;
+    border: 1px solid gray;
+    cursor: pointer;
+    background-color:darkred;
+    text-align:center;
+    color:beige;
 }
 
 

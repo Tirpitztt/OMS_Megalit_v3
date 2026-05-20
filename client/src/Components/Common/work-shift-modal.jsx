@@ -13,12 +13,14 @@ const WorkShiftModal = (props) => {
         shift = props.data.data.date
         userName = props.data.userName
     }
+    // закрытие формы по клику на пространство вокруг формы
     const closeModal = () => {
         props.close(false)
     }
     const click = (e) => {
+        //убираем всплытие в самой форме
         e.stopPropagation()
-        //console.log('fuck')
+        
     }
     return (
         <div onClick={()=>closeModal() } className={props.active ? c.active : c.modalwr}>
