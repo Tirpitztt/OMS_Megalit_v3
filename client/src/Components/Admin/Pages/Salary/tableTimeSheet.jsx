@@ -133,7 +133,7 @@ const TableTimeSheet = (props) => {
                 </div>
                 <div className={c.table_timesheet}>
                     <div className={c.table_title_month_row}>
-                        <div onClick={() => props.prewMonthData()} className={c.arrows } ><img src={arrowLeft} alt='flaticon.com' /></div>
+                        <div onClick={() => props.prewMonthData()} className={c.arrows }><img src={arrowLeft} alt='flaticon.com' /></div>
                         <div>{monthTitle}</div>
                         <div onClick={() => props.nextMonthData()} className={c.arrows}><img src={arrowRight} alt='flaticon.com' /></div>
                             </div>

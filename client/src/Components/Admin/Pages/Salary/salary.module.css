@@ -1,5 +1,6 @@
 .content_box{
     width: 100%;
+    max-height:85vh;
 }
 .hide_block{
     display:none;
@@ -26,10 +27,9 @@
     align-items: center;
 }
 .content{
-    margin-top: 1rem;
     width: 100%;
-    height: 77vh;
-    overflow-y: scroll;
+    max-height: 85vh;
+    overflow: hidden;
 }
 .content::-webkit-scrollbar {
     width: 7px;
@@ -50,8 +50,11 @@
     flex-flow:column nowrap;
     justify-content:space-between;
 }
+.table_title_box{
+    height:2.2rem;
+}
 .table_title_row {
-    width:100%;
+    width:99%;
     display: flex;
     flex-flow: row nowrap;
     height: 68px;
@@ -158,7 +161,7 @@
 .full_day {
     width: 70%;
     text-align: center;
-    background-color: forestgreen;
+    background-color: #6B8E23;
     border: 1px solid gray;
     border-radius: 20%;
     color: beige;
@@ -174,10 +177,26 @@
     height:36px;
     
 }
-.full_row:hover{
-    background-color: #888888;
-}
+    .full_row:hover {
+        background-color: #D3D3D3;
+    }
 .table_content {
     width: 100%;
     margin-top: 1rem;
+    height:65vh;
+    overflow:hidden;
+    overflow-y:scroll;
 }
+.table_content::-webkit-scrollbar {
+    width: 7px;
+}
+.table_content::-webkit-scrollbar-track {
+        background: #f1f1f1;
+    }
+.table_content::-webkit-scrollbar-thumb {
+        background: #888;
+        border-radius: 3px;
+    }
+.table_content::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
