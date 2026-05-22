@@ -437,6 +437,13 @@ export const salaryAPI = {
               return response.data
           }
       )
+    },
+    destroyMandate(body) {
+        return instance.post('/salary/destroyMandate', body).then(
+            response => {
+                return response.data
+            }
+        )
     }
 }
 

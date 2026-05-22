@@ -17,6 +17,7 @@ const TimeSheetPage = (props) => {
                             rate={props.rate}
                             nextMonthData={props.nextMonthData}
                 prewMonthData={props.prewMonthData}
+                destroyMandate={props.destroyMandate}
                 saveShiftByUser={props.saveShiftByUser}
             />
         </div>

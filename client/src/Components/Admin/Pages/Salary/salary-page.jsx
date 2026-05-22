@@ -50,6 +50,7 @@ const SalaryPage = (props) => {
                     rate={rate}
                     nextMonthData={getNextData}
                     prewMonthData={getPrewData}
+                    destroyMandate={props.destroyMandate}
                     saveShiftByUser={props.saveShiftByUser }
                 />
             </div>

@@ -47,6 +47,13 @@ export const saveShiftByUserThunkCreator = (body) => {
     }
     
 }
+export const destroyMandate = (body) => {
+    return (dispatch) => {
+        salaryAPI.destroyMandate(body).then(data => {
+            console.log(data)
+        })
+    }
+}
 
 
 export default SalaryReduser

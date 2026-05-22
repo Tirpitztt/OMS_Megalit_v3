@@ -95,6 +95,18 @@ class WorkShiftController {
             return res.status(500).json({message:'mandate create error' + e.message})
         }
     }
+    async mandateDelete(req, res) {
+        try {
+            const resDel = await Model.mandates.destroy({
+                where: {
+                    id:req.body.id
+                }
+            })
+            return res.status(200).json(resDel)
+        } catch (e) {
+            return res.status(500).json({ message: 'mandate delete error' + e.message })
+        }
+    }
     async salaryCreate(req,res){
         try{
             await Model.salarys.create({

@@ -147,6 +147,7 @@ const TableTimeSheet = (props) => {
             </div>
             <WorkShiftModal active={activeDrop}
                 close={setActiveDrop}
+                destroyMandate={props.destroyMandate}
                 saveShiftByUser={props.saveShiftByUser}
                 data={dataForm} />
            

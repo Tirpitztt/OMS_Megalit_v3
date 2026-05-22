@@ -92,13 +92,27 @@ const DropDownWorkShiftForm = (props) => {
         }
         setMandates([...mandates,mandatBody])
     }
+    const deleteMandatOfId = (id) => {
+        let mandatTempArr = [...mandates]
+        if (!id) {
+            mandatTempArr.pop()
+            setMandates(mandatTempArr)
+        } else {
+            mandatTempArr = mandates.filter(item => item.id !== id)
+            setMandates(mandatTempArr)
+            props.destroyMandate({ id })
+        }
+        
+    }
     let mandatesBlock = <div></div>
     if (mandates.length) {
         mandatesBlock = mandates.map((item, i) => {
             return <div className={c.mandates_title_wrap} key={i }>
                 <div className={c.mandates_title}>{item.summa}</div>
                 <div className={c.mandates_notice}>{item.notice}</div>
-                <div className={c.mandates_add_butt}>{item.id}</div>
+                <div className={c.mandates_add_butt_box} >
+                    <div className={c.mandate_del_butt } onClick={() => deleteMandatOfId(item.id)}>X</div>
+                </div>
             </div>
         })
     }
