@@ -146,6 +146,8 @@ class WorkShiftController {
                     }
                 }, include: [{
                     model:Model.mandates
+                }, {
+                    model:Model.salarys
                 }]
             })
             users.forEach ((item,i)=> {

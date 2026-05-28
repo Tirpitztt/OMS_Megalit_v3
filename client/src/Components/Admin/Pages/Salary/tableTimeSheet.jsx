@@ -5,6 +5,7 @@ import arrowLeft from '../../../../Utils/img/arrow-left.png'
 import arrowRight from '../../../../Utils/img/arrow-right.png'
 import WorkShift from "../../../../Utils/Classes/workShift";
 import WorkShiftModal from '../../../Common/work-shift-modal';
+import SalarysMonthModal from '../../../Common/salarys-month-modal';
 
 
 const TableTimeSheet = (props) => {
@@ -16,6 +17,7 @@ const TableTimeSheet = (props) => {
     const FULL = { class: c.full_day, text: '8' }
     const ALLDAY = { class: c.all_day, text: '.' }
     const [activeDrop, setActiveDrop] = useState(false)
+    const [activeSalarysModal,setActiveSalarysModal] = useState(false)
     const [dataForm,setDataForm] = useState(null) //данные формы для каждой смены
 
     
@@ -51,6 +53,10 @@ const TableTimeSheet = (props) => {
         body.setEmployer(1)
         //console.log(val)
         setDataForm(body) //создаем данные для формы на основе шаблона
+    }
+    const clickName = (item) => {
+        setActiveSalarysModal(true)
+        console.log(item)
     }
 
     if (props.state.dataMonth.monthDays.length) {
@@ -112,7 +118,7 @@ const TableTimeSheet = (props) => {
             })
             //возвращается готовая строка с днями
             return <div key={i} className={c.full_row} >
-                <div className={c.table_user_box }>{item.userName}</div>
+                <div className={c.table_user_box} onClick={() => clickName(item)}>{item.userName}</div>
                 {daysMonth}
             </div>
         })
@@ -149,7 +155,14 @@ const TableTimeSheet = (props) => {
                 close={setActiveDrop}
                 destroyMandate={props.destroyMandate}
                 saveShiftByUser={props.saveShiftByUser}
-                data={dataForm} />
+                data={dataForm}
+            />
+            <SalarysMonthModal
+                active={activeSalarysModal}
+                close={setActiveSalarysModal}
+            />
+            
+
            
         </div>
     )
