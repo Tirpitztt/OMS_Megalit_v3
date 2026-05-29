@@ -14,11 +14,13 @@ const TimeSheetPage = (props) => {
                 <div className={c.table_title_item}></div>
             </div>
             <TableTimeSheet state={props.state}
-                            rate={props.rate}
-                            nextMonthData={props.nextMonthData}
+                rate={props.rate}
+                nextMonthData={props.nextMonthData}
                 prewMonthData={props.prewMonthData}
                 destroyMandate={props.destroyMandate}
                 saveShiftByUser={props.saveShiftByUser}
+                getIndividualSalaryState={props.getIndividualSalaryState}
+                changePage={props.changePage }
             />
         </div>
     )

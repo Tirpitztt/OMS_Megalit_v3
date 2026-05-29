@@ -1,10 +1,14 @@
 import { salaryAPI } from "../../Api/api"
-import { GET_SHIFTS_BY_MONTH } from "../../Utils/variables-const"
+import { GET_SHIFTS_BY_MONTH, SET_INDIVIDUAL_SALARY_STATE } from "../../Utils/variables-const"
 
 
 let initialState = {
     dataMonth: {
         monthDays:[]
+    },
+    individualSalaryState: {
+        user: null,
+        userShifts:[]
     }
     
     
@@ -15,7 +19,11 @@ const SalaryReduser = (state = initialState,action) => {
         case GET_SHIFTS_BY_MONTH: {
             let newState = { ...state }
             newState.dataMonth = { ...action.data }
-            
+            return newState
+        }
+        case SET_INDIVIDUAL_SALARY_STATE: {
+            let newState = { ...state }
+
             return newState
         }
         
@@ -24,6 +32,7 @@ const SalaryReduser = (state = initialState,action) => {
 }
 
 export const getShiftsByMonth = (data) => ({ type: GET_SHIFTS_BY_MONTH, data })
+export const getIndividualSalaryState = (data) => ({ type: SET_INDIVIDUAL_SALARY_STATE,data })
 
 
 

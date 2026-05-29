@@ -18,6 +18,9 @@ module.exports = (sequelize,DataTypes) => {
         summa:{
             type:DataTypes.FLOAT
         },
+        signature: {
+            type: DataTypes.BOOLEAN
+        }
 
     },{timestamps:false})
 

@@ -2,17 +2,21 @@ import React, {useEffect, useState} from 'react';
 import c from './salary.module.css'
 import TimeSheetPage from './timesheet-page';
 import {useMaterials, useMatState} from "../../../../Hooks/material.hook";
+import SalaryMonthPage from './salary-month-page';
 
 
 const SalaryPage = (props) => {
     //console.log(props.state.dataMonth.month)
     const [rate,setRate] = useState(0)
     const [materials] = useMaterials()
+    const [displayNum,setDisplayNum] = useState(0)
     useEffect(()=>{
         if(Object.entries(materials).length){
             setRate(materials.rate[0].USD)
         }
-    },[])
+    }, [])
+
+
     //const today = new Date()
     // const currentYear = today.getFullYear()
     // const currentMonth = today.getMonth() + 1
@@ -38,21 +42,33 @@ const SalaryPage = (props) => {
         }
         
     }
+    const displays = [
+        <TimeSheetPage state={props.state}
+            rate={rate}
+            nextMonthData={getNextData}
+            prewMonthData={getPrewData}
+            destroyMandate={props.destroyMandate}
+            saveShiftByUser={props.saveShiftByUser}
+            getIndividualSalaryState={props.getIndividualSalaryState}
+            changePage={setDisplayNum}
+        />,
+        <SalaryMonthPage state={props.state}
+            changePage={setDisplayNum }
+            rate={rate} />
+    ]
+
+    
 
     return (
         <div className={c.content_box}>
             <div className={c.header}>
                 <div className={c.header_title}><p>Зарплата</p></div>
-                <div className={c.header_button_box}></div>
+                <div className={c.header_button_box}>
+                    
+                </div>
             </div>
             <div className={c.content}>
-                <TimeSheetPage state={props.state}
-                    rate={rate}
-                    nextMonthData={getNextData}
-                    prewMonthData={getPrewData}
-                    destroyMandate={props.destroyMandate}
-                    saveShiftByUser={props.saveShiftByUser }
-                />
+                {displays[displayNum] }
             </div>
 
         </div>

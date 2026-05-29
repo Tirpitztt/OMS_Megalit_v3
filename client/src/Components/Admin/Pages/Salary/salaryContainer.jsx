@@ -2,7 +2,7 @@ import * as React from 'react'
 import {compose} from "redux";
 import {connect} from "react-redux";
 import SalaryPage from "./salary-page";
-import { getShiftsByMonthThunkCreator, saveShiftByUserThunkCreator, destroyMandate } from '../../../../Redux/Redusers/salary-reduser';
+import { getShiftsByMonthThunkCreator, saveShiftByUserThunkCreator, destroyMandate, getIndividualSalaryState } from '../../../../Redux/Redusers/salary-reduser';
 //import { getMonthDays} from '../../../../Utils/dateTermin';
 
 class SalaryContainer extends React.Component{
@@ -19,6 +19,7 @@ class SalaryContainer extends React.Component{
                 getShiftsByMonth={this.props.getShiftsByMonth}
                 saveShiftByUser={this.props.saveShiftByUser}
                 destroyMandate={this.props.destroyMandate}
+                getIndividualSalaryState={this.props.getIndividualSalaryState}
                 
 
             />
@@ -39,6 +40,9 @@ let mapDispatchToProps = (dispatch) => {
         destroyMandate: (body) => {
             dispatch(destroyMandate(body))
         },
+        getIndividualSalaryState: (data) => {
+            dispatch(getIndividualSalaryState(data))
+        }
         
 
     }
