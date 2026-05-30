@@ -200,3 +200,19 @@
 .table_content::-webkit-scrollbar-thumb:hover {
             background: #555;
         }
+
+
+/*------------------SALARY-PAGE------------------------------------*/
+.salaryRow {
+    width:100%;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content:start;
+    border-bottom:1px dotted gray;
+}
+.dateRow {
+    width:4%;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+}

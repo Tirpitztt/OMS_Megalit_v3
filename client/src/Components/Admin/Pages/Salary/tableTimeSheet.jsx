@@ -56,6 +56,7 @@ const TableTimeSheet = (props) => {
         setDataForm(body) //создаем данные для формы на основе шаблона
     }
     const goToIndividualSalaryPage = (obj) => {
+        props.getIndividualSalaryState(obj)
         console.log(obj)
         props.changePage(1)
     }

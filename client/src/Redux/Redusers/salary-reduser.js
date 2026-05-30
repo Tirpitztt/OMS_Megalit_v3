@@ -7,8 +7,9 @@ let initialState = {
         monthDays:[]
     },
     individualSalaryState: {
-        user: null,
-        userShifts:[]
+        period: null,
+        salaryOfPeriod: null,
+        monthDays:[]
     }
     
     
@@ -23,7 +24,9 @@ const SalaryReduser = (state = initialState,action) => {
         }
         case SET_INDIVIDUAL_SALARY_STATE: {
             let newState = { ...state }
-
+            newState.individualSalaryState.period = { year: newState.dataMonth.year, month: newState.dataMonth.month }
+            newState.individualSalaryState.salaryOfPeriod = { ...action.data }
+            newState.individualSalaryState.monthDays = [...newState.dataMonth.monthDays]
             return newState
         }
         

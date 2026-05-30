@@ -52,7 +52,7 @@ const SalaryPage = (props) => {
             getIndividualSalaryState={props.getIndividualSalaryState}
             changePage={setDisplayNum}
         />,
-        <SalaryMonthPage state={props.state}
+        <SalaryMonthPage state={props.state.individualSalaryState}
             changePage={setDisplayNum }
             rate={rate} />
     ]
