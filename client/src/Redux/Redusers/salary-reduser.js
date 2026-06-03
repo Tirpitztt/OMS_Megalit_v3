@@ -53,7 +53,7 @@ export const saveShiftByUserThunkCreator = (body) => {
             salaryAPI.getShiftsByMonth({year:body.year,month:body.month}).then(data => {
                 dispatch(getShiftsByMonth(data))
             })
-            console.log(data)
+            //console.log(data)
         })
 
     }
@@ -62,7 +62,7 @@ export const saveShiftByUserThunkCreator = (body) => {
 export const destroyMandate = (body) => {
     return (dispatch) => {
         salaryAPI.destroyMandate(body).then(data => {
-            console.log(data)
+            //console.log(data)
         })
     }
 }

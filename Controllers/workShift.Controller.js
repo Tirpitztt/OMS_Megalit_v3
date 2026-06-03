@@ -141,8 +141,8 @@ class WorkShiftController {
             const shifts = await Model.work_shifts.findAll({
                 where: {
                     date: {
-                        [Op.lt]: dateStart,
-                        [Op.gt]: dateEnd
+                        [Op.lte]: dateStart,
+                        [Op.gte]: dateEnd
                     }
                 }, include: [{
                     model:Model.mandates

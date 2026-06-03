@@ -81,6 +81,7 @@ const TableTimeSheet = (props) => {
                     <div className={ALLDAY.class}>{ALLDAY.text}</div>
                 </div>
             })
+            
             //каждый день в строке сортируется по типу и окрашивается соответственно
             item.shifts.forEach((shift,i) => {
                 daysMonth.forEach((day,y) => {

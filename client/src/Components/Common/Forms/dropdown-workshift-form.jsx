@@ -4,7 +4,7 @@ import c from './form.module.css'
 
 
 const DropDownWorkShiftForm = (props) => {
-    console.log('form', props)
+    //console.log('form', props)
     let {register,handleSubmit,reset } = useForm()
     const [timeStart, setTimeStart] = useState(0)
     const [timeFinish, setTimeFinish] = useState(0)
