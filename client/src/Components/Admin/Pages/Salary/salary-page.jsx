@@ -14,7 +14,7 @@ const SalaryPage = (props) => {
         if(Object.entries(materials).length){
             setRate(materials.rate[0].USD)
         }
-    }, [])
+    },)
 
 
     //const today = new Date()
