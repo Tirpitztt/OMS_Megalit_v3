@@ -203,16 +203,36 @@
 
 
 /*------------------SALARY-PAGE------------------------------------*/
+.content_salary_box{
+    width:100%;
+    display:flex;
+    flex-flow:row nowrap;
+}
 .salaryRow {
     width:100%;
     display: flex;
     flex-flow: row nowrap;
     justify-content:start;
     border-bottom:1px dotted gray;
+    position:relative;
+}
+.salaryRow:hover {
+        background-color: #D3D3D3;
 }
 .dateRow {
     width:4%;
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-around;
+}
+.row_item{
+    width:4%;
+    text-align:center;
+    margin-left:5px;
+}
+.row_salary_box{
+
+}
+.form_box{
+    width:50%;
 }

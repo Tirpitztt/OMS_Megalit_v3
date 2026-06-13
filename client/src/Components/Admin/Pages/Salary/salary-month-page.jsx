@@ -22,10 +22,11 @@ const SalaryMonthPage = (props) => {
                 if (shift.date.slice(-2) == item.day) {
                     shiftID = shift.id
                     if (shift.salarys.length) {
-                        shiftAccure = 0
+                        let accureCount = 0
                         shift.salarys.forEach((item, i) => {
-                            shiftAccure += item.summa
+                            accureCount += item.summa
                         })
+                        shiftAccure = accureCount
                     }
                 }
                 
@@ -37,8 +38,9 @@ const SalaryMonthPage = (props) => {
                     <div>{dayOfWeek }</div>
                     <div>{item.day }</div>
                 </div>
-                <div>{shiftID}</div>
-                <div>{shiftAccure}</div>
+                <div className={c.row_item }>{shiftID}</div>
+                <div className={c.row_item}>{shiftAccure}</div>
+                
             </div>
         })
     }
@@ -50,8 +52,12 @@ const SalaryMonthPage = (props) => {
                 <div>Сводная заработной платы сотрудника: {employee}, за период: {period.year} - {period.month}  </div>
 
             </div>
-            <div>
-                {monthDays} 
+            <div className={c.content_salary_box}>
+                <div className={c.row_salary_box}>
+                    {monthDays}
+                </div>
+                 
+                <div className={c.form_box }>form</div>
 
             </div>
             <div>{JSON.stringify(props.state) }</div>
