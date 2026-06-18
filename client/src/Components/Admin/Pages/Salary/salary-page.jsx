@@ -53,7 +53,9 @@ const SalaryPage = (props) => {
             changePage={setDisplayNum}
         />,
         <SalaryMonthPage state={props.state.individualSalaryState}
-            changePage={setDisplayNum }
+            changePage={setDisplayNum}
+            setSalaryFormState={props.setSalaryFormState}
+            setSalaryFormOptionChange={props.setSalaryFormOptionChange }
             rate={rate} />
     ]
 

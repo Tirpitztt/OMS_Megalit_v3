@@ -103,7 +103,7 @@ class UserController {
                         department:it.department,
                         position:it.position,
                         settings:JSON.parse(it.settings),
-                        workShifts:it.work_shifts
+                        //workShifts:it.work_shifts
                     }
 
                     result.push(user);

@@ -2,7 +2,14 @@ import * as React from 'react'
 import {compose} from "redux";
 import {connect} from "react-redux";
 import SalaryPage from "./salary-page";
-import { getShiftsByMonthThunkCreator, saveShiftByUserThunkCreator, destroyMandate, getIndividualSalaryState } from '../../../../Redux/Redusers/salary-reduser';
+import {
+    getShiftsByMonthThunkCreator,
+    saveShiftByUserThunkCreator,
+    destroyMandate,
+    getIndividualSalaryState,
+    setSalaryFormState,
+    setSalaryFormOptionChange
+} from '../../../../Redux/Redusers/salary-reduser';
 //import { getMonthDays} from '../../../../Utils/dateTermin';
 
 class SalaryContainer extends React.Component{
@@ -20,6 +27,8 @@ class SalaryContainer extends React.Component{
                 saveShiftByUser={this.props.saveShiftByUser}
                 destroyMandate={this.props.destroyMandate}
                 getIndividualSalaryState={this.props.getIndividualSalaryState}
+                setSalaryFormState={this.props.setSalaryFormState}
+                setSalaryFormOptionChange={this.props.setSalaryFormOptionChange}
                 
 
             />
@@ -42,6 +51,12 @@ let mapDispatchToProps = (dispatch) => {
         },
         getIndividualSalaryState: (data) => {
             dispatch(getIndividualSalaryState(data))
+        },
+        setSalaryFormState: (data) => {
+            dispatch(setSalaryFormState(data))
+        },
+        setSalaryFormOptionChange: (data) => {
+            dispatch(setSalaryFormOptionChange(data))
         }
         
 
