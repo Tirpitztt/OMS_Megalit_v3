@@ -1,12 +1,18 @@
 import React, { useState } from 'react';
 import c from './salary.module.css'
+import SalaryConcreateForm from '../../../Common/Forms/Adminka/salary-concreate-form';
+import SalaryMontazForm from '../../../Common/Forms/Adminka/salary-montaz-form';
+import SalaryPolishForm from '../../../Common/Forms/Adminka/salary-polish-form';
+import SalaryVariedForm from '../../../Common/Forms/Adminka/salary-varied-form';
+import SalaryBaseForm from '../../../Common/Forms/Adminka/salary-base-form';
+import { FORM_BASE, FORM_CONCREATE, FORM_MONTAZ, FORM_POLISH, FORM_VARIED } from '../../../../Utils/variables-const';
 
 const SalaryMonthPage = (props) => {
     console.log(props.state)
     const ROW = { normal: c.salaryRow, active: c.salaryRowAct }
     
     const [rowActive, setRowActive] = useState(0)
-    let formDisplay = <div>normal</div>
+    
     let employee = null
     let period = null
     let monthDays = null
@@ -66,17 +72,26 @@ const SalaryMonthPage = (props) => {
             </div>
         })
     }
-    const CONCREATE_FORM = <div>concreate</div>
-    const POLISH_FORM = <div>polirovka</div>
-    const MONTAZ_FORM = <div>montaz</div>
-    if (props.state.formOptions.workShop == 1) {
-        formDisplay = CONCREATE_FORM
-    } else if (props.state.formOptions.workShop == 2) {
-        formDisplay = POLISH_FORM
-    } else if (props.state.formOptions.workShop == 3) {
-        formDisplay = MONTAZ_FORM
-    }
     
+    const getSalaryFormType = (type) => {
+        switch (type) {
+            case FORM_CONCREATE: {
+                return <SalaryConcreateForm />
+            }
+            case FORM_MONTAZ: {
+                return <SalaryMontazForm />
+            }
+            case FORM_POLISH: {
+                return <SalaryPolishForm />
+            }
+            case FORM_VARIED: {
+                return <SalaryVariedForm />
+            }
+            default: return null
+        }
+    }
+    const formType = getSalaryFormType(props.state.formOptions.workShop)
+    const formDisplay = <SalaryBaseForm type={formType} />
     const selectOnChange = (val) => {
         props.setSalaryFormOptionChange(val)
 
@@ -98,15 +113,16 @@ const SalaryMonthPage = (props) => {
                     <div className={c.form_title_box}>
                         <div className={c.select_box }>
                             <label>Цех:</label>
-                            <select onChange={(e)=>selectOnChange(e.target.value) }>
-                                <option value={1}>заливка</option>
-                                <option value={2}>шлифовка</option>
-                                <option value={3}>распил</option>
-                                <option value={4}>монтаж</option>
-                                <option value={0}>повременка</option>
+                            <select onChange={(e) => selectOnChange(e.target.value)}>
+                                <option value={FORM_CONCREATE}>заливка</option>
+                                <option value={FORM_POLISH}>шлифовка</option>
+                                <option value={FORM_VARIED}>распил</option>
+                                <option value={FORM_MONTAZ}>монтаж</option>
+                                <option value={FORM_BASE}>повременка</option>
                             </select>
                         </div>
                         <div>Число: {props.state.salaryFormState.date}</div>
+                        <div>Статус: {props.state.salaryFormState.status }</div>
                     </div>
                     <div className={c.form_content_box}>
                         <div className={c.table_box }>

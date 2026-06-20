@@ -262,17 +262,17 @@
 
 }
 .table_box{
-
+    width:95%;
+    margin:auto;
 }
 .form_table_title_row, .table_work_operation {
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-around;
 }
-.form_table_title_row, .table_work_operation>div:nth-of-type(1) {
-    width:50%;
-   
-}
+    .form_table_title_row > div:nth-of-type(1), .table_work_operation > div:nth-of-type(1) {
+        width: 50%;
+    }
 .table_work_operation{
     
 }

@@ -133,5 +133,15 @@ export const getCalcStat = (orders) => {
 
     return stat
 }
+//определяем статус смены(выходной, больничный и тд)
+export const getShiftStatus = (shift) => {
+    if (shift.full) return 'полная смена'
+    if (shift.sick) return 'больничный'
+    if (shift.outlet) return 'выходной'
+    if (shift.absence) return 'не полный день'
+    if (shift.hooky) return 'прогул'
+}
+
+
 
 

@@ -1,4 +1,5 @@
 import { salaryAPI } from "../../Api/api"
+import { getShiftStatus } from "../../Utils/adminSupport"
 import {
     GET_SHIFTS_BY_MONTH,
     SET_INDIVIDUAL_SALARY_STATE,
@@ -18,6 +19,7 @@ let initialState = {
         salaryFormState: {
             date: '',
             shiftID: 0,
+            status:null,
             salary:[]
 
         },
@@ -56,7 +58,9 @@ const SalaryReduser = (state = initialState,action) => {
                 for (let shift of newState.individualSalaryState.salaryOfPeriod.shifts) {
                     if (shift.id === action.data.shiftID) {
                         shiftsTemp.push(shift)
+                        newState.individualSalaryState.salaryFormState.status = getShiftStatus(shift)
                     }
+                    
                 }
                 for (let item of shiftsTemp) {
                     if (item.salarys.length) {
