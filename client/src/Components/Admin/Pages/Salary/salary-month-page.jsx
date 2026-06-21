@@ -16,7 +16,7 @@ const SalaryMonthPage = (props) => {
     let employee = null
     let period = null
     let monthDays = null
-    let formModel = { shiftID: 'form', date: 'no data' }
+    let formModel = { shiftID: null, date: 'no data' }
     let shiftWorkData = []
     const activateRow = (i,shiftID,d) => {
         setRowActive(i)
@@ -91,7 +91,7 @@ const SalaryMonthPage = (props) => {
         }
     }
     const formType = getSalaryFormType(props.state.formOptions.workShop)
-    const formDisplay = <SalaryBaseForm type={formType} />
+    const formDisplay = <SalaryBaseForm type={formType} active={props.state.formOptions.baseActive} />
     const selectOnChange = (val) => {
         props.setSalaryFormOptionChange(val)
 
@@ -114,7 +114,7 @@ const SalaryMonthPage = (props) => {
                         <div className={c.select_box }>
                             <label>Цех:</label>
                             <select onChange={(e) => selectOnChange(e.target.value)}>
-                                <option value={FORM_CONCREATE}>заливка</option>
+                                <option value={FORM_CONCREATE} selected={true}>заливка</option>
                                 <option value={FORM_POLISH}>шлифовка</option>
                                 <option value={FORM_VARIED}>распил</option>
                                 <option value={FORM_MONTAZ}>монтаж</option>
@@ -125,6 +125,9 @@ const SalaryMonthPage = (props) => {
                         <div>Статус: {props.state.salaryFormState.status }</div>
                     </div>
                     <div className={c.form_content_box}>
+                        <div className={c.table_box}>
+                            {formDisplay}
+                        </div>
                         <div className={c.table_box }>
                             <div className={c.form_table_title_row}>
                                 <div>operation</div>
@@ -134,9 +137,7 @@ const SalaryMonthPage = (props) => {
                             </div>
                             {shiftWorkData}
                         </div>
-                        <div className={c.table_box}>
-                            {formDisplay}
-                        </div>
+
                         
                     </div>
                     

@@ -25,6 +25,7 @@ let initialState = {
         },
         formOptions: {
             workShop: 0,
+            baseActive:false
 
         }
     },
@@ -58,7 +59,11 @@ const SalaryReduser = (state = initialState,action) => {
                 for (let shift of newState.individualSalaryState.salaryOfPeriod.shifts) {
                     if (shift.id === action.data.shiftID) {
                         shiftsTemp.push(shift)
+                        newState.individualSalaryState.formOptions.baseActive = true
                         newState.individualSalaryState.salaryFormState.status = getShiftStatus(shift)
+                    }else if(!action.data.shiftID){
+                        newState.individualSalaryState.salaryFormState.status = 'нет смены'
+                        newState.individualSalaryState.formOptions.baseActive = false
                     }
                     
                 }
