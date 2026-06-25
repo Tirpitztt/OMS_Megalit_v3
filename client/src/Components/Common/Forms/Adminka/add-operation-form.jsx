@@ -3,6 +3,7 @@ import c from '../form.module.css'
 import {useForm} from "react-hook-form";
 import {buildFloat} from "../../../../Utils/buildNum";
 import {workOperationBodyBuilder} from "../../../../Utils/adminSupport";
+import {FORM_CONCREATE, FORM_MONTAZ, FORM_POLISH, FORM_VARIED} from "../../../../Utils/variables-const";
 
 const AddOperationForm = (props)=> {
 
@@ -20,7 +21,13 @@ const AddOperationForm = (props)=> {
             <div className={c.form_box_mat}>
                 <div className={c.form_group}>
                     <label className={c.label_form}>Цех</label>
-                    <input {...register('type')}/>
+                    <select {...register('type')}>
+                        <option value={FORM_CONCREATE}>Заливка</option>
+                        <option value={FORM_POLISH}>Шлифовка</option>
+                        <option value={FORM_VARIED}>Разный</option>
+                        <option value={FORM_MONTAZ}>Монтаж</option>
+                    </select>
+                    {/*<input {...register('type')}/>*/}
                 </div>
                 <div className={c.form_group}>
                     <label className={c.label_form}>наименование</label>

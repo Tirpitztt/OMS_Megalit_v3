@@ -1,6 +1,7 @@
 import {buildFloat, convertToInt} from "./buildNum";
 import {convertToDate, getDateEarlier} from "./dateTermin";
 import {dateFormat} from "./support";
+import {FORM_CONCREATE, FORM_MONTAZ, FORM_POLISH, FORM_VARIED} from "./variables-const";
 
 export const workOperationBodyBuilder = (body,rate,id=0)=> {
 
@@ -140,6 +141,16 @@ export const getShiftStatus = (shift) => {
     if (shift.outlet) return 'выходной'
     if (shift.absence) return 'не полный день'
     if (shift.hooky) return 'прогул'
+}
+
+export const getTypeOperationOnRus = (type) => {
+    switch(type){
+        case FORM_CONCREATE:{return 'заливка'}
+        case FORM_POLISH:{return 'шлифовка'}
+        case FORM_VARIED:{return 'разное'}
+        case FORM_MONTAZ:{return 'монтаж'}
+        default:return null
+    }
 }
 
 

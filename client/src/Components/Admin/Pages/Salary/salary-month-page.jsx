@@ -8,7 +8,7 @@ import SalaryBaseForm from '../../../Common/Forms/Adminka/salary-base-form';
 import { FORM_BASE, FORM_CONCREATE, FORM_MONTAZ, FORM_POLISH, FORM_VARIED } from '../../../../Utils/variables-const';
 
 const SalaryMonthPage = (props) => {
-    console.log(props.state)
+    console.log(props)
     const ROW = { normal: c.salaryRow, active: c.salaryRowAct }
     
     const [rowActive, setRowActive] = useState(0)
@@ -73,33 +73,30 @@ const SalaryMonthPage = (props) => {
         })
     }
     
-    const getSalaryFormType = (type) => {
-        switch (type) {
-            case FORM_CONCREATE: {
-                return <SalaryConcreateForm />
-            }
-            case FORM_MONTAZ: {
-                return <SalaryMontazForm />
-            }
-            case FORM_POLISH: {
-                return <SalaryPolishForm />
-            }
-            case FORM_VARIED: {
-                return <SalaryVariedForm />
-            }
-            default: return null
-        }
-    }
-    const formType = getSalaryFormType(props.state.formOptions.workShop)
-    const formDisplay = <SalaryBaseForm type={formType}
-        active={props.state.formOptions.baseActive}
-        setWorkOperationName={props.setWorkOperationName }
-    />
-    const selectOnChange = (val) => {
-        props.getWorkOperationsGroup({type:val})
-        props.setSalaryFormOptionChange(val)
+    // const getSalaryFormType = (type) => {
+    //     switch (type) {
+    //         case FORM_CONCREATE: {
+    //             return <SalaryConcreateForm />
+    //         }
+    //         case FORM_MONTAZ: {
+    //             return <SalaryMontazForm />
+    //         }
+    //         case FORM_POLISH: {
+    //             return <SalaryPolishForm />
+    //         }
+    //         case FORM_VARIED: {
+    //             return <SalaryVariedForm />
+    //         }
+    //         default: return null
+    //     }
+    // }
+    //const formType = getSalaryFormType(props.state.formOptions.workShop)
 
-    }
+    // const selectOnChange = (val) => {
+    //     props.getWorkOperationsGroup({type:val})
+    //     props.setSalaryFormOptionChange(val)
+    //
+    // }
 
     return (
         <div>
@@ -115,22 +112,26 @@ const SalaryMonthPage = (props) => {
                  
                 <div className={c.form_box}>
                     <div className={c.form_title_box}>
-                        <div className={c.select_box }>
-                            <label>Цех:</label>
-                            <select onChange={(e) => selectOnChange(e.target.value)}>
-                                <option value={FORM_CONCREATE} selected={true}>заливка</option>
-                                <option value={FORM_POLISH}>шлифовка</option>
-                                <option value={FORM_VARIED}>распил</option>
-                                <option value={FORM_MONTAZ}>монтаж</option>
-                                <option value={FORM_BASE}>повременка</option>
-                            </select>
-                        </div>
+                        {/*<div className={c.select_box }>*/}
+                        {/*    <label>Цех:</label>*/}
+                        {/*    <select onChange={(e) => selectOnChange(e.target.value)}>*/}
+                        {/*        <option value={FORM_CONCREATE} >заливка</option>*/}
+                        {/*        <option value={FORM_POLISH}>шлифовка</option>*/}
+                        {/*        <option value={FORM_VARIED}>распил</option>*/}
+                        {/*        <option value={FORM_MONTAZ}>монтаж</option>*/}
+                        {/*        <option value={FORM_BASE} selected={true}>повременка</option>*/}
+                        {/*    </select>*/}
+                        {/*</div>*/}
                         <div>Число: {props.state.salaryFormState.date}</div>
                         <div>Статус: {props.state.salaryFormState.status }</div>
                     </div>
                     <div className={c.form_content_box}>
                         <div className={c.table_box}>
-                            {formDisplay}
+                            <SalaryBaseForm state={props.state}
+                                            active={props.state.formOptions.baseActive}
+                                            setWorkOperationName={props.setWorkOperationName }
+                                            getWorkOperationsGroup={props.getWorkOperationsGroup}
+                            />
                         </div>
                         <div className={c.table_box }>
                             <div className={c.form_table_title_row}>

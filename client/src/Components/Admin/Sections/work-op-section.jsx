@@ -7,6 +7,7 @@ import AddMaterialModal from "../../Common/addMaterialModal";
 import WorkTable from "./work-table";
 import AddOperationForm from "../../Common/Forms/Adminka/add-operation-form";
 import EditOperationModal from "../../Common/edit-operation-modal";
+import {getTypeOperationOnRus} from "../../../Utils/adminSupport";
 
 const WorkOpSection = (props) => {
     const title = <p>Добавить опреацию</p>
@@ -26,7 +27,7 @@ const WorkOpSection = (props) => {
         workRow = props.state.worksOperations.map((item,i)=>{
 
             return <div className={c.table_row}>
-                <div key={i} className={c.table_item_body_work}>{item.type}</div>
+                <div key={i} className={c.table_item_body_work}>{getTypeOperationOnRus(item.type)}</div>
                 <div className={c.table_item_body_work}>{item.name}</div>
                 <div className={c.table_item_body_work}>{item.measure}</div>
                 <div className={c.table_item_body_work}>{item.BLR}</div>

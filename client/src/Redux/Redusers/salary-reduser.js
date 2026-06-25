@@ -6,7 +6,7 @@ import {
     SET_SALARY_FORM_STATE,
     FORM_OPTIONS_CHANGE,
     SET_WORK_OPERATION_NAME,
-    GET_WORK_OPERATIONS
+    GET_WORK_OPERATIONS, FORM_BASE
 } from "../../Utils/variables-const"
 
 
@@ -14,7 +14,7 @@ let initialState = {
     dataMonth: {
         monthDays:[]
     },
-    workOperations:[],
+
     individualSalaryState: {
         period: null,
         salaryOfPeriod: null,
@@ -27,8 +27,9 @@ let initialState = {
 
         },
         formOptions: {
-            workShop: 0,
-            baseActive:false
+            workShop: FORM_BASE,
+            baseActive:false,
+            workOperations:[],
 
         },
         salaryCalculateBody: {
@@ -91,7 +92,11 @@ const SalaryReduser = (state = initialState,action) => {
         }
         case GET_WORK_OPERATIONS: {
             let newState = { ...state }
-            newState.workOperations = [...action.data]
+            let tempArr = action.data.map((item,i)=>{
+                return <option key={i} value={item.id}>{item.name}</option>
+            })
+            newState.individualSalaryState.formOptions.workOperations = [...tempArr]
+
             return newState;
         }
         case FORM_OPTIONS_CHANGE: {
@@ -125,13 +130,16 @@ export const getShiftsByMonthThunkCreator = (body) => { //создание со�
         salaryAPI.getShiftsByMonth(body).then(data => {
             dispatch(getShiftsByMonth(data))
         })
+        supportAPI.getWorkOperations().then(data=>{
+            dispatch(getWorkOperations(data))
+        })
     }
 }
 export const getWorkOperationsThunkCreator = (body) => {
     return (dispatch) => {
-        console.log(body)
         supportAPI.getWorkOperationsGroup(body).then(data => {
             dispatch(getWorkOperations(data))
+            dispatch(setSalaryFormOptionChange(body.type))
         })
     }
 }
