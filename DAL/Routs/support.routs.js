@@ -18,7 +18,8 @@ router.post('/updateRates',urlencodedParser,controller.updateRates);
 router.get('/contures',urlencodedParser,awsController.getContures);
 router.post('/contures',urlencodedParser,awsController.getConturesFolder);
 router.post('/avatars',urlencodedParser,awsController.getAvatars)
-router.get('/getWorkOperations',urlencodedParser,controller.getWorkOperations);
+router.get('/getWorkOperations', urlencodedParser, controller.getWorkOperations);
+router.post('/getWorkOperationsGroup', urlencodedParser, controller.getWorkOperationsGroup)
 router.post('/getWorkOperation',urlencodedParser,controller.getWorkOperation);
 router.post('/addWorkOperation',urlencodedParser,controller.addWorkOperation);
 router.post('/updateWorkOperation',urlencodedParser,controller.updateWorkOperation);

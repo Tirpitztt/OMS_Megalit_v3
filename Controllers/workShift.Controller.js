@@ -122,6 +122,7 @@ class WorkShiftController {
             return res.status(500).json({message:'mandate create error' + e.message})
         }
     }
+    
     async getShiftsByMonth(req, res) {
         try {
 

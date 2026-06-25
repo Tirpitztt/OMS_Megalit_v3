@@ -1,10 +1,12 @@
-import { salaryAPI } from "../../Api/api"
+import { salaryAPI, supportAPI } from "../../Api/api"
 import { getShiftStatus } from "../../Utils/adminSupport"
 import {
     GET_SHIFTS_BY_MONTH,
     SET_INDIVIDUAL_SALARY_STATE,
     SET_SALARY_FORM_STATE,
-    FORM_OPTIONS_CHANGE
+    FORM_OPTIONS_CHANGE,
+    SET_WORK_OPERATION_NAME,
+    GET_WORK_OPERATIONS
 } from "../../Utils/variables-const"
 
 
@@ -12,6 +14,7 @@ let initialState = {
     dataMonth: {
         monthDays:[]
     },
+    workOperations:[],
     individualSalaryState: {
         period: null,
         salaryOfPeriod: null,
@@ -27,6 +30,15 @@ let initialState = {
             workShop: 0,
             baseActive:false
 
+        },
+        salaryCalculateBody: {
+            workOperationID: 0,
+            workOperationName: '',
+            workOperationNotice: '',
+            workShopID: 0,
+            workOperationCost: 0,
+            workOperationAmount: 0,
+            workOperationSumma:0
         }
     },
     
@@ -77,9 +89,20 @@ const SalaryReduser = (state = initialState,action) => {
             }
             return newState;
         }
+        case GET_WORK_OPERATIONS: {
+            let newState = { ...state }
+            newState.workOperations = [...action.data]
+            return newState;
+        }
         case FORM_OPTIONS_CHANGE: {
             let newState = { ...state }
             newState.individualSalaryState.formOptions.workShop = action.data
+            return newState
+        }
+        case SET_WORK_OPERATION_NAME: {
+            let newState = { ...state }
+            newState.individualSalaryState.salaryCalculateBody.workOperationID = action.data.wopID
+            newState.individualSalaryState.salaryCalculateBody.workOperationName = action.data.wopName 
             return newState
         }
         
@@ -90,15 +113,25 @@ const SalaryReduser = (state = initialState,action) => {
 export const getShiftsByMonth = (data) => ({ type: GET_SHIFTS_BY_MONTH, data })
 export const getIndividualSalaryState = (data) => ({ type: SET_INDIVIDUAL_SALARY_STATE, data })
 export const setSalaryFormState = (data) => ({ type: SET_SALARY_FORM_STATE, data })
-export const setSalaryFormOptionChange = (data) => ({ type: FORM_OPTIONS_CHANGE,data })
+export const setSalaryFormOptionChange = (data) => ({ type: FORM_OPTIONS_CHANGE, data })
+export const setWorkOperationName = (data) => ({ type: SET_WORK_OPERATION_NAME, data })
+export const getWorkOperations = (data) => ({ type: GET_WORK_OPERATIONS,data })
 
 
 
 export const getShiftsByMonthThunkCreator = (body) => { //создание состояния
-    console.log(body)
+    //console.log(body)
     return (dispatch) => {
         salaryAPI.getShiftsByMonth(body).then(data => {
             dispatch(getShiftsByMonth(data))
+        })
+    }
+}
+export const getWorkOperationsThunkCreator = (body) => {
+    return (dispatch) => {
+        console.log(body)
+        supportAPI.getWorkOperationsGroup(body).then(data => {
+            dispatch(getWorkOperations(data))
         })
     }
 }

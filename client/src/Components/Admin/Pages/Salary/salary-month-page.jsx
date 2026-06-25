@@ -91,8 +91,12 @@ const SalaryMonthPage = (props) => {
         }
     }
     const formType = getSalaryFormType(props.state.formOptions.workShop)
-    const formDisplay = <SalaryBaseForm type={formType} active={props.state.formOptions.baseActive} />
+    const formDisplay = <SalaryBaseForm type={formType}
+        active={props.state.formOptions.baseActive}
+        setWorkOperationName={props.setWorkOperationName }
+    />
     const selectOnChange = (val) => {
+        props.getWorkOperationsGroup({type:val})
         props.setSalaryFormOptionChange(val)
 
     }

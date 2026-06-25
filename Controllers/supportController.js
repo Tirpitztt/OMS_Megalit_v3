@@ -129,6 +129,14 @@ class SupportController {
             return res.status(500).json({message:'something problem...'+ e.message});
         }
     }
+    async getWorkOperationsGroup(req, res) {
+        try {
+            const operations = await Model.work_operations.findAll();
+            return res.json(operations);
+        } catch (e) {
+            return res.status(500).json({ message: 'something problem...' + e.message });
+        }
+    }
     async getWorkOperation(req,res){
         try{
             const operation = await Model.work_operations.findOne({

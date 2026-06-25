@@ -11,4 +11,5 @@ router.post('/getShiftsByMonth', urlencodedParser, controller.getShiftsByMonth)
 router.post('/saveShiftByUser', urlencodedParser, controller.workShiftCreate)
 router.post('/destroyMandate', urlencodedParser, controller.mandateDelete)
 
+
 module.exports = router

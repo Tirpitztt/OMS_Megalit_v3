@@ -4,6 +4,7 @@ import c from '../form.module.css'
 
 const SalaryBaseForm = (props) => {
     let fieldBox = <div>shift is not init</div>
+
     if(props.active){
         fieldBox = <div className={c.field_box}>
             <select>

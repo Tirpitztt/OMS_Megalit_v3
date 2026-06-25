@@ -9,7 +9,7 @@ export const nameSort = (array,substr,field)=>{
     return result;
 }
 export const nameOrdersSort = (array,substr,field,fieldText)=>{
-    console.log(array)
+    //console.log(array)
     let result = []
     if(substr === '') return array
     array.forEach(item=>{

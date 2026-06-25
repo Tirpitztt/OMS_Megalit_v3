@@ -51,6 +51,15 @@ export const setWeightOptions = (stoneArr,stoneID,setVal,setName) => {
     })
     setVal(optionRes)
 }
+export const setWorkOperationsOptions = (workArr,setValFunc,key) => {
+    let optionList = [];
+    workArr.forEach((item) => {
+        if (item.type === key) {
+            optionList.push(item.name)
+        }
+    })
+    return optionList;
+}
 
 export const setNameDetailList = (type,func)=>{
     let nameList;

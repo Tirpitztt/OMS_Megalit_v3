@@ -9,6 +9,9 @@ module.exports = (sequelize,DataTypes) => {
         workName:{
             type:DataTypes.STRING
         },
+        notice: {
+            type: DataTypes.STRING
+        },
         cost:{
             type:DataTypes.FLOAT
         },

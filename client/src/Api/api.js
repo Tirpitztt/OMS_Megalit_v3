@@ -322,6 +322,13 @@ export const supportAPI={
             }
         )
     },
+    getWorkOperationsGroup(body) {
+        return instance.post('/support/getWorkOperationsGroup', body).then(
+            response => {
+                return response.data
+            }
+        )
+    },
     getWorkOperation(body){
         return instance.post('/support/getWorkOperation',body).then(
             response=>{
