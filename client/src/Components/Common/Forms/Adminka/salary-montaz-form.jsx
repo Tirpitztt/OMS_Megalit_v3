@@ -1,11 +1,12 @@
 import React from 'react'
+import c from "../form.module.css";
 
 
 const SalaryMontazForm = (props) => {
 
 
     return (
-        <div>
+        <div className={c.field_box }>
             Montaz form
         </div>
 

@@ -451,6 +451,13 @@ export const salaryAPI = {
                 return response.data
             }
         )
+    },
+    getDetailsGroup(body){
+        return instance.post('/salary/getDetailsGroup',body).then(
+            response => {
+                return response.data
+            }
+        )
     }
 }
 

@@ -131,6 +131,7 @@ const SalaryMonthPage = (props) => {
                                             active={props.state.formOptions.baseActive}
                                             setWorkOperationName={props.setWorkOperationName }
                                             getWorkOperationsGroup={props.getWorkOperationsGroup}
+                                            getDetailsList={props.getDetailsList}
                             />
                         </div>
                         <div className={c.table_box }>

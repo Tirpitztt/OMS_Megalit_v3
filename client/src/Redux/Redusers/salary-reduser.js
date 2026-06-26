@@ -6,7 +6,7 @@ import {
     SET_SALARY_FORM_STATE,
     FORM_OPTIONS_CHANGE,
     SET_WORK_OPERATION_NAME,
-    GET_WORK_OPERATIONS, FORM_BASE
+    GET_WORK_OPERATIONS, FORM_BASE, SELECT_WORK_OPERATION
 } from "../../Utils/variables-const"
 
 
@@ -30,6 +30,7 @@ let initialState = {
             workShop: FORM_BASE,
             baseActive:false,
             workOperations:[],
+            detailsList:[]
 
         },
         salaryCalculateBody: {
@@ -110,6 +111,11 @@ const SalaryReduser = (state = initialState,action) => {
             newState.individualSalaryState.salaryCalculateBody.workOperationName = action.data.wopName 
             return newState
         }
+        case SELECT_WORK_OPERATION:{
+            let newState = {...state}
+            newState.individualSalaryState.formOptions.detailsList = [...action.data]
+            return newState
+        }
         
         default: return state
     }
@@ -121,6 +127,7 @@ export const setSalaryFormState = (data) => ({ type: SET_SALARY_FORM_STATE, data
 export const setSalaryFormOptionChange = (data) => ({ type: FORM_OPTIONS_CHANGE, data })
 export const setWorkOperationName = (data) => ({ type: SET_WORK_OPERATION_NAME, data })
 export const getWorkOperations = (data) => ({ type: GET_WORK_OPERATIONS,data })
+export const selectWorkOperation = (data) => ({type:SELECT_WORK_OPERATION,data})
 
 
 
@@ -153,7 +160,15 @@ export const saveShiftByUserThunkCreator = (body) => {
         })
 
     }
-    
+}
+export const getDetailsListThunkCreator = (body) => {
+    return(dispatch)=>{
+        salaryAPI.getDetailsGroup(body).then(data=>{
+            console.log(data)
+        })
+
+
+    }
 }
 export const destroyMandate = (body) => {
     return (dispatch) => {

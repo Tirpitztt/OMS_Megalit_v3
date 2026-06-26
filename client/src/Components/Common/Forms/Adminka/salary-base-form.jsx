@@ -22,11 +22,20 @@ const SalaryBaseForm = (props) => {
     }else if(props.state.formOptions.workShop === FORM_VARIED){
         accessorialFields = <SalaryVariedForm />
     }
+
+    const workOperationChange = (operationID) => {
+        let reqBody = {
+            workShop:props.state.formOptions.workShop,
+            operationID:operationID
+        }
+        console.log(reqBody)
+        props.getDetailsList(reqBody)
+    }
     if(props.active){
         fieldBox = <div className={c.field_box}>
             <div className={c.form_box_row_100}>
                 <label className={c.label_form }>Операция:</label>
-                <select>
+                <select onChange={(e)=>workOperationChange(e.target.value)}>
                     {props.state.formOptions.workOperations}
                 </select>
             </div>
