@@ -24,23 +24,26 @@ const SalaryBaseForm = (props) => {
     }
     if(props.active){
         fieldBox = <div className={c.field_box}>
-            <select>
-                {props.state.formOptions.workOperations}
-            </select>
-            <div>
-                <label>notice</label>
+            <div className={c.form_box_row_100}>
+                <label className={c.label_form }>Операция:</label>
+                <select>
+                    {props.state.formOptions.workOperations}
+                </select>
+            </div>
+            <div className={c.form_box_row_100}>
+                <label className={c.label_form}>Описание:</label>
                 <input />
             </div>
-            <div>
-                <label>cost</label>
+            <div className={c.form_box_row_100}>
+                <label className={c.label_form}>Стоимость:</label>
                 <input />
             </div>
-            <div>
-                <label>amount</label>
+            <div className={c.form_box_row_100}>
+                <label className={c.label_form}>Кол-во:</label>
                 <input />
             </div>
-            <div>
-                <label>summa</label>
+            <div className={c.form_box_row_100}>
+                <label className={c.label_form}>Сумма:</label>
                 <input />
             </div>
         </div>
@@ -65,7 +68,7 @@ const SalaryBaseForm = (props) => {
             <div className={c.form_content}>
                 {fieldBox}
                 {accessorialFields}
-                <div className={c.button_wrap}>
+                <div className={c.salary_button_wrap}>
                     <div>button</div>
                 </div>
             </div>

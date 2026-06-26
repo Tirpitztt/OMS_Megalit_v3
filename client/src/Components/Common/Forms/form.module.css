@@ -354,7 +354,10 @@
 
 /*--------------------SALARY FORM-----------------------------------*/
 .field_box{
-    width:50%;
+    width:38%;
+}
+.salary_button_wrap{
+    width:20%;
 }
 
 

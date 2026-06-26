@@ -1,11 +1,11 @@
 import React from 'react'
-
+import c from '../form.module.css'
 
 const SalaryConcreateForm = (props) => {
 
 
     return (
-        <div>
+        <div className={c.field_box }>
             Concreate form
         </div>
 
