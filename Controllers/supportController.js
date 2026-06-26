@@ -131,11 +131,17 @@ class SupportController {
     }
     async getWorkOperationsGroup(req, res) {
         try {
-            const operations = await Model.work_operations.findAll({
-                where:{
-                    type:req.body.type
-                }
-            });
+            let operations = []
+            if(req.body.type === 'FORM_BASE'){
+                operations = await Model.work_operations.findAll();
+            }else{
+                operations = await Model.work_operations.findAll({
+                    where:{
+                        type:req.body.type
+                    }
+                });
+            }
+
             return res.json(operations);
         } catch (e) {
             return res.status(500).json({ message: 'something problem...' + e.message });

@@ -6,7 +6,7 @@ import {
     SET_SALARY_FORM_STATE,
     FORM_OPTIONS_CHANGE,
     SET_WORK_OPERATION_NAME,
-    GET_WORK_OPERATIONS, FORM_BASE, SELECT_WORK_OPERATION
+    GET_WORK_OPERATIONS, FORM_BASE, SELECT_WORK_OPERATION, CLEAR_FORM_OPTIONS
 } from "../../Utils/variables-const"
 
 
@@ -97,7 +97,6 @@ const SalaryReduser = (state = initialState,action) => {
                 return <option key={i} value={item.id}>{item.name}</option>
             })
             newState.individualSalaryState.formOptions.workOperations = [...tempArr]
-
             return newState;
         }
         case FORM_OPTIONS_CHANGE: {
@@ -116,7 +115,12 @@ const SalaryReduser = (state = initialState,action) => {
             newState.individualSalaryState.formOptions.detailsList = [...action.data]
             return newState
         }
-        
+        case CLEAR_FORM_OPTIONS:{
+            let newState = {...state}
+            newState.individualSalaryState.salaryFormState.status = 'нет смены'
+            newState.individualSalaryState.formOptions.baseActive = false
+            return newState
+        }
         default: return state
     }
 }
@@ -128,6 +132,7 @@ export const setSalaryFormOptionChange = (data) => ({ type: FORM_OPTIONS_CHANGE,
 export const setWorkOperationName = (data) => ({ type: SET_WORK_OPERATION_NAME, data })
 export const getWorkOperations = (data) => ({ type: GET_WORK_OPERATIONS,data })
 export const selectWorkOperation = (data) => ({type:SELECT_WORK_OPERATION,data})
+export const clearFormOptions = ()=>({type:CLEAR_FORM_OPTIONS})
 
 
 

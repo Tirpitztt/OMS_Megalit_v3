@@ -16,6 +16,7 @@ const SalaryBaseForm = (props) => {
     if(props.state.formOptions.workShop === FORM_POLISH){
         accessorialFields = <SalaryPolishForm />
     }else if(props.state.formOptions.workShop === FORM_CONCREATE){
+        props.getDetailsList({operationID:'1'})
         accessorialFields = <SalaryConcreateForm />
     }else if(props.state.formOptions.workShop === FORM_MONTAZ){
         accessorialFields = <SalaryMontazForm />
@@ -24,12 +25,7 @@ const SalaryBaseForm = (props) => {
     }
 
     const workOperationChange = (operationID) => {
-        let reqBody = {
-            workShop:props.state.formOptions.workShop,
-            operationID:operationID
-        }
-        console.log(reqBody)
-        props.getDetailsList(reqBody)
+        props.getDetailsList({operationID})
     }
     if(props.active){
         fieldBox = <div className={c.field_box}>

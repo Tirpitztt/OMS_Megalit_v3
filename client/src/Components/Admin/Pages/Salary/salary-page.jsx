@@ -3,6 +3,7 @@ import c from './salary.module.css'
 import TimeSheetPage from './timesheet-page';
 import {useMaterials, useMatState} from "../../../../Hooks/material.hook";
 import SalaryMonthPage from './salary-month-page';
+import {FORM_BASE} from "../../../../Utils/variables-const";
 
 
 const SalaryPage = (props) => {
@@ -10,6 +11,12 @@ const SalaryPage = (props) => {
     const [rate,setRate] = useState(0)
     const [materials] = useMaterials()
     const [displayNum,setDisplayNum] = useState(0)
+    const setDisplayBack = () => {
+        props.setSalaryFormOptionChange({type:FORM_BASE})
+        props.getWorkOperationsGroup({type:FORM_BASE})
+        props.clearFormOptions()
+        setDisplayNum(0)
+    }
     useEffect(()=>{
         if(Object.entries(materials).length){
             setRate(materials.rate[0].USD)
@@ -54,7 +61,7 @@ const SalaryPage = (props) => {
         />,
         <SalaryMonthPage state={props.state.individualSalaryState}
                          workOperations={props.state.workOperations}
-            changePage={setDisplayNum}
+            changePage={setDisplayBack}
             setSalaryFormState={props.setSalaryFormState}
             getDetailsList={props.getDetailsList}
             setWorkOperationName={props.setWorkOperationName}

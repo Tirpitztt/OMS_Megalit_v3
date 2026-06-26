@@ -8,7 +8,7 @@ import SalaryBaseForm from '../../../Common/Forms/Adminka/salary-base-form';
 import { FORM_BASE, FORM_CONCREATE, FORM_MONTAZ, FORM_POLISH, FORM_VARIED } from '../../../../Utils/variables-const';
 
 const SalaryMonthPage = (props) => {
-    console.log(props)
+    //console.log(props)
     const ROW = { normal: c.salaryRow, active: c.salaryRowAct }
     
     const [rowActive, setRowActive] = useState(0)
@@ -19,6 +19,7 @@ const SalaryMonthPage = (props) => {
     let formModel = { shiftID: null, date: 'no data' }
     let shiftWorkData = []
     const activateRow = (i,shiftID,d) => {
+        console.log(shiftID)
         setRowActive(i)
         formModel.shiftID = shiftID
         formModel.date = d 
@@ -100,7 +101,7 @@ const SalaryMonthPage = (props) => {
 
     return (
         <div>
-            <div onClick={() => props.changePage(0)}>back</div>
+            <div onClick={props.changePage}>back</div>
             <div>
                 <div>Сводная заработной платы сотрудника: {employee}, за период: {period.year} - {period.month}  </div>
 
