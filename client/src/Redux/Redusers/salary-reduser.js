@@ -6,7 +6,8 @@ import {
     SET_SALARY_FORM_STATE,
     FORM_OPTIONS_CHANGE,
     SET_WORK_OPERATION_NAME,
-    GET_WORK_OPERATIONS, FORM_BASE, SELECT_WORK_OPERATION, CLEAR_FORM_OPTIONS, DETAILS_LIST_SORT
+    GET_WORK_OPERATIONS, FORM_BASE, SELECT_WORK_OPERATION, CLEAR_FORM_OPTIONS, DETAILS_LIST_SORT,
+    GET_WORK_OPERATIONS_INIT
 } from "../../Utils/variables-const"
 
 
@@ -29,6 +30,7 @@ let initialState = {
         formOptions: {
             workShop: FORM_BASE,
             baseActive:false,
+            workOperationsInit:[],
             workOperations:[],
             detailsList: [],
             detailsListSort:[]
@@ -92,10 +94,15 @@ const SalaryReduser = (state = initialState,action) => {
             }
             return newState;
         }
+        case GET_WORK_OPERATIONS_INIT:{
+            let newState = {...state}
+            newState.individualSalaryState.formOptions.workOperationsInit = [...action.data]
+            return newState
+        }
         case GET_WORK_OPERATIONS: {
             let newState = { ...state }
             let tempArr = action.data.map((item,i)=>{
-                return <option key={i} value={item.id}>{item.name}</option>
+                return <option key={i} value={item.id} >{item.name}</option>
             })
             newState.individualSalaryState.formOptions.workOperations = [...tempArr]
             return newState;
@@ -138,6 +145,7 @@ export const setSalaryFormState = (data) => ({ type: SET_SALARY_FORM_STATE, data
 export const setSalaryFormOptionChange = (data) => ({ type: FORM_OPTIONS_CHANGE, data })
 export const setWorkOperationName = (data) => ({ type: SET_WORK_OPERATION_NAME, data })
 export const getWorkOperations = (data) => ({ type: GET_WORK_OPERATIONS,data })
+export const getWorkOperationsInit = (data)=>({type:GET_WORK_OPERATIONS_INIT,data})
 export const selectWorkOperation = (data) => ({ type: SELECT_WORK_OPERATION, data })
 export const getDetailsListSort = (data) => ({ type: DETAILS_LIST_SORT,data })
 export const clearFormOptions = ()=>({type:CLEAR_FORM_OPTIONS})
@@ -152,6 +160,7 @@ export const getShiftsByMonthThunkCreator = (body) => { //создание со�
         })
         supportAPI.getWorkOperations().then(data=>{
             dispatch(getWorkOperations(data))
+            dispatch(getWorkOperationsInit(data))
         })
     }
 }

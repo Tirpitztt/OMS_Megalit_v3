@@ -4,6 +4,7 @@ import React from "react";
 import c from "../Components/PrintOrder/AdditionalAgreement/agree.module.css";
 import Detail from "./Classes/detail";
 import {DETAIL_NAMES, FENCE_NAMES, MONUMENT_NAMES, SHOP_NAMES} from "./variables-const";
+import SalaryCalculateBody from "./Classes/salaryCalaculateBody";
 
 
 
@@ -300,8 +301,18 @@ export const detailSort = (data) => {
         default: return sortArr
     }
 }
-export const checkOff = (checkArr,funcArr) => {
-
+export const setSalaryRowBody = (operations,id,costFunc) => {
+    const body = new SalaryCalculateBody()
+    if(operations.length){
+        operations.forEach(item=>{
+            if(item.id == id){
+                body.setOperationTitle(id,item.name)
+                body.setOperationCost(item.BLR)
+                costFunc(item.BLR)
+            }
+        })
+    }
+    return body
 }
 
 export const setMixName = (id,mixes) => {
