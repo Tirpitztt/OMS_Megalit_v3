@@ -1,11 +1,8 @@
 import React, { useState } from 'react';
 import c from './salary.module.css'
-import SalaryConcreateForm from '../../../Common/Forms/Adminka/salary-concreate-form';
-import SalaryMontazForm from '../../../Common/Forms/Adminka/salary-montaz-form';
-import SalaryPolishForm from '../../../Common/Forms/Adminka/salary-polish-form';
-import SalaryVariedForm from '../../../Common/Forms/Adminka/salary-varied-form';
+
 import SalaryBaseForm from '../../../Common/Forms/Adminka/salary-base-form';
-import { FORM_BASE, FORM_CONCREATE, FORM_MONTAZ, FORM_POLISH, FORM_VARIED } from '../../../../Utils/variables-const';
+
 
 const SalaryMonthPage = (props) => {
     //console.log(props)
@@ -19,7 +16,7 @@ const SalaryMonthPage = (props) => {
     let formModel = { shiftID: null, date: 'no data' }
     let shiftWorkData = []
     const activateRow = (i,shiftID,d) => {
-        console.log(shiftID)
+        //console.log(shiftID)
         setRowActive(i)
         formModel.shiftID = shiftID
         formModel.date = d 
@@ -73,31 +70,7 @@ const SalaryMonthPage = (props) => {
             </div>
         })
     }
-    
-    // const getSalaryFormType = (type) => {
-    //     switch (type) {
-    //         case FORM_CONCREATE: {
-    //             return <SalaryConcreateForm />
-    //         }
-    //         case FORM_MONTAZ: {
-    //             return <SalaryMontazForm />
-    //         }
-    //         case FORM_POLISH: {
-    //             return <SalaryPolishForm />
-    //         }
-    //         case FORM_VARIED: {
-    //             return <SalaryVariedForm />
-    //         }
-    //         default: return null
-    //     }
-    // }
-    //const formType = getSalaryFormType(props.state.formOptions.workShop)
-
-    // const selectOnChange = (val) => {
-    //     props.getWorkOperationsGroup({type:val})
-    //     props.setSalaryFormOptionChange(val)
-    //
-    // }
+   
 
     return (
         <div>
@@ -113,26 +86,18 @@ const SalaryMonthPage = (props) => {
                  
                 <div className={c.form_box}>
                     <div className={c.form_title_box}>
-                        {/*<div className={c.select_box }>*/}
-                        {/*    <label>Цех:</label>*/}
-                        {/*    <select onChange={(e) => selectOnChange(e.target.value)}>*/}
-                        {/*        <option value={FORM_CONCREATE} >заливка</option>*/}
-                        {/*        <option value={FORM_POLISH}>шлифовка</option>*/}
-                        {/*        <option value={FORM_VARIED}>распил</option>*/}
-                        {/*        <option value={FORM_MONTAZ}>монтаж</option>*/}
-                        {/*        <option value={FORM_BASE} selected={true}>повременка</option>*/}
-                        {/*    </select>*/}
-                        {/*</div>*/}
+                        
                         <div>Число: {props.state.salaryFormState.date}</div>
                         <div>Статус: {props.state.salaryFormState.status }</div>
                     </div>
                     <div className={c.form_content_box}>
                         <div className={c.table_box}>
                             <SalaryBaseForm state={props.state}
-                                            active={props.state.formOptions.baseActive}
-                                            setWorkOperationName={props.setWorkOperationName }
-                                            getWorkOperationsGroup={props.getWorkOperationsGroup}
-                                            getDetailsList={props.getDetailsList}
+                                active={props.state.formOptions.baseActive}
+                                setWorkOperationName={props.setWorkOperationName}
+                                getWorkOperationsGroup={props.getWorkOperationsGroup}
+                                getDetailsList={props.getDetailsList}
+                                getDetailsListSort={props.getDetailsListSort }
                             />
                         </div>
                         <div className={c.table_box }>

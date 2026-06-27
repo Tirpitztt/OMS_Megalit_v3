@@ -289,9 +289,21 @@ export const detailSort = (data) => {
             })
             return sortArr
         }
+        case 'другое': {
+            data.details.forEach(item => {
+                if (item.name !== 'стела' && item.name !== 'подставка') {
+                    sortArr.push(item)
+                }
+            })
+            return sortArr
+        }
         default: return sortArr
     }
 }
+export const checkOff = (checkArr,funcArr) => {
+
+}
+
 export const setMixName = (id,mixes) => {
     let name;
     if(mixes){

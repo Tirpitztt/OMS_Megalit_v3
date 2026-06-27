@@ -140,4 +140,10 @@ export const FORM_MONTAZ = 'FORM_MONTAZ'
 export const GET_WORK_OPERATIONS = 'GET_WORK_OPERATIONS'
 export const SET_WORK_OPERATION_NAME = 'SET_WORK_OPERATION_NAME'
 export const SELECT_WORK_OPERATION = 'SELECT_WORK_OPERATION'
+export const DETAILS_LIST_SORT = 'DETAILS_LIST_SORT'
 export const CLEAR_FORM_OPTIONS = 'CLEAR_FORM_OPTIONS'
+
+export const STELA_CHECK_ON = { value: 'стела', checked: false, checkOn: () => true, checkOff: () => false }
+export const TUMBA_CHECK_ON = { value: 'подставка', checked: false, checkOn: () => true, checkOff: () => false }
+export const OTHER_CHECK_ON = { value: 'другое', checked: false, checkOn: () => true, checkOff: () => false }
+export const ALL_CHECK_ON = { value: 'all', checked: false, checkOn: () => true, checkOff: () => false }

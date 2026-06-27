@@ -356,6 +356,32 @@
 .field_box{
     width:38%;
 }
+.details_list_box{
+    overflow-y:scroll;
+    height:12rem;
+    
+}
+.details_list_box::-webkit-scrollbar {
+    width: 5px;
+}
+.details_list_box::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.details_list_box::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 3px;
+}
+
+.details_list_box::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+.details_check_row{
+    
+    display:flex;
+    flex-flow:row nowrap;
+    justify-content:space-between;
+}
 .salary_button_wrap{
     width:20%;
 }

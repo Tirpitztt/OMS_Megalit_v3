@@ -6,7 +6,7 @@ import {
     SET_SALARY_FORM_STATE,
     FORM_OPTIONS_CHANGE,
     SET_WORK_OPERATION_NAME,
-    GET_WORK_OPERATIONS, FORM_BASE, SELECT_WORK_OPERATION, CLEAR_FORM_OPTIONS
+    GET_WORK_OPERATIONS, FORM_BASE, SELECT_WORK_OPERATION, CLEAR_FORM_OPTIONS, DETAILS_LIST_SORT
 } from "../../Utils/variables-const"
 
 
@@ -30,7 +30,8 @@ let initialState = {
             workShop: FORM_BASE,
             baseActive:false,
             workOperations:[],
-            detailsList:[]
+            detailsList: [],
+            detailsListSort:[]
 
         },
         salaryCalculateBody: {
@@ -113,6 +114,12 @@ const SalaryReduser = (state = initialState,action) => {
         case SELECT_WORK_OPERATION:{
             let newState = {...state}
             newState.individualSalaryState.formOptions.detailsList = [...action.data]
+            newState.individualSalaryState.formOptions.detailsListSort = [...action.data]
+            return newState
+        }
+        case DETAILS_LIST_SORT: {
+            let newState = { ...state }
+            newState.individualSalaryState.formOptions.detailsListSort = [...action.data]
             return newState
         }
         case CLEAR_FORM_OPTIONS:{
@@ -131,7 +138,8 @@ export const setSalaryFormState = (data) => ({ type: SET_SALARY_FORM_STATE, data
 export const setSalaryFormOptionChange = (data) => ({ type: FORM_OPTIONS_CHANGE, data })
 export const setWorkOperationName = (data) => ({ type: SET_WORK_OPERATION_NAME, data })
 export const getWorkOperations = (data) => ({ type: GET_WORK_OPERATIONS,data })
-export const selectWorkOperation = (data) => ({type:SELECT_WORK_OPERATION,data})
+export const selectWorkOperation = (data) => ({ type: SELECT_WORK_OPERATION, data })
+export const getDetailsListSort = (data) => ({ type: DETAILS_LIST_SORT,data })
 export const clearFormOptions = ()=>({type:CLEAR_FORM_OPTIONS})
 
 
@@ -168,8 +176,8 @@ export const saveShiftByUserThunkCreator = (body) => {
 }
 export const getDetailsListThunkCreator = (body) => {
     return(dispatch)=>{
-        salaryAPI.getDetailsGroup(body).then(data=>{
-            console.log(data)
+        salaryAPI.getDetailsGroup(body).then(data => {
+            dispatch(selectWorkOperation(data))
         })
 
 

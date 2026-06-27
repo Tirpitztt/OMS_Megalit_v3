@@ -9,15 +9,18 @@ import SalaryVariedForm from "./salary-varied-form";
 
 
 const SalaryBaseForm = (props) => {
-    console.log(props.state)
+    //console.log(props.state)
     let fieldBox = <div>shift is not init</div>
 
     let accessorialFields = null
     if(props.state.formOptions.workShop === FORM_POLISH){
         accessorialFields = <SalaryPolishForm />
     }else if(props.state.formOptions.workShop === FORM_CONCREATE){
-        props.getDetailsList({operationID:'1'})
-        accessorialFields = <SalaryConcreateForm />
+        
+        accessorialFields = <SalaryConcreateForm state={props.state}
+            getDetailsList={props.getDetailsList}
+            getDetailsListSort={props.getDetailsListSort}
+        />
     }else if(props.state.formOptions.workShop === FORM_MONTAZ){
         accessorialFields = <SalaryMontazForm />
     }else if(props.state.formOptions.workShop === FORM_VARIED){
@@ -25,7 +28,7 @@ const SalaryBaseForm = (props) => {
     }
 
     const workOperationChange = (operationID) => {
-        props.getDetailsList({operationID})
+        
     }
     if(props.active){
         fieldBox = <div className={c.field_box}>
