@@ -301,18 +301,34 @@ export const detailSort = (data) => {
         default: return sortArr
     }
 }
-export const setSalaryRowBody = (operations,id,costFunc) => {
-    const body = new SalaryCalculateBody()
-    if(operations.length){
+// export const setSalaryRowBody = (operations,id,costFunc) => {
+//     const body = new SalaryCalculateBody()
+//     if(operations.length){
+//         operations.forEach(item=>{
+//             if(item.id == id){
+//                 body.setOperationTitle(id,item.name)
+//                 body.setOperationCost(item.BLR)
+//                 costFunc(item.BLR)
+//             }
+//         })
+//     }
+//     return body
+// }
+export const setOperationsSum = (operations,data,amount,fieldKey,
+                                valueFunction,setNameFunction) => {
+    let sum = 0
+
+    if(operations.length && data !== undefined){
         operations.forEach(item=>{
-            if(item.id == id){
-                body.setOperationTitle(id,item.name)
-                body.setOperationCost(item.BLR)
-                costFunc(item.BLR)
+            if(item.id == data[0].id){
+                valueFunction(data[1].cost,item.BLR)
+                setNameFunction(item.name)
+                sum = item.BLR * amount
             }
         })
     }
-    return body
+    console.log(data)
+    return sum
 }
 
 export const setMixName = (id,mixes) => {
