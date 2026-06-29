@@ -67,6 +67,7 @@ const SalaryMonthPage = (props) => {
                 <div>{item.cost}</div>
                 <div>{item.amount}</div>
                 <div>{item.summa}</div>
+                <div>{item.signature?'V':'X'}</div>
             </div>
         })
     }
@@ -98,6 +99,7 @@ const SalaryMonthPage = (props) => {
                                 getWorkOperationsGroup={props.getWorkOperationsGroup}
                                 getDetailsList={props.getDetailsList}
                                 getDetailsListSort={props.getDetailsListSort }
+                                            pushSalaryRow={props.pushSalaryRow}
                             />
                         </div>
                         <div className={c.table_box }>
@@ -106,6 +108,7 @@ const SalaryMonthPage = (props) => {
                                 <div>cost</div>
                                 <div>amount</div>
                                 <div>summa</div>
+                                <div>sign</div>
                             </div>
                             {shiftWorkData}
                         </div>

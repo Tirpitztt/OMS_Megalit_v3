@@ -7,7 +7,7 @@ import {
     FORM_OPTIONS_CHANGE,
     SET_WORK_OPERATION_NAME,
     GET_WORK_OPERATIONS, FORM_BASE, SELECT_WORK_OPERATION, CLEAR_FORM_OPTIONS, DETAILS_LIST_SORT,
-    GET_WORK_OPERATIONS_INIT
+    GET_WORK_OPERATIONS_INIT, FORM_SALARY_ROW_PUSH
 } from "../../Utils/variables-const"
 
 
@@ -112,12 +112,12 @@ const SalaryReduser = (state = initialState,action) => {
             newState.individualSalaryState.formOptions.workShop = action.data
             return newState
         }
-        case SET_WORK_OPERATION_NAME: {
-            let newState = { ...state }
-            newState.individualSalaryState.salaryCalculateBody.workOperationID = action.data.wopID
-            newState.individualSalaryState.salaryCalculateBody.workOperationName = action.data.wopName 
-            return newState
-        }
+        // case SET_WORK_OPERATION_NAME: {
+        //     let newState = { ...state }
+        //     newState.individualSalaryState.salaryCalculateBody.workOperationID = action.data.wopID
+        //     newState.individualSalaryState.salaryCalculateBody.workOperationName = action.data.wopName
+        //     return newState
+        // }
         case SELECT_WORK_OPERATION:{
             let newState = {...state}
             newState.individualSalaryState.formOptions.detailsList = [...action.data]
@@ -127,6 +127,12 @@ const SalaryReduser = (state = initialState,action) => {
         case DETAILS_LIST_SORT: {
             let newState = { ...state }
             newState.individualSalaryState.formOptions.detailsListSort = [...action.data]
+            return newState
+        }
+        case FORM_SALARY_ROW_PUSH:{
+            let newState = {...state}
+            action.data.shiftID = newState.individualSalaryState.salaryFormState.shiftID
+            newState.individualSalaryState.salaryFormState.salary.push(action.data)
             return newState
         }
         case CLEAR_FORM_OPTIONS:{
@@ -148,6 +154,7 @@ export const getWorkOperations = (data) => ({ type: GET_WORK_OPERATIONS,data })
 export const getWorkOperationsInit = (data)=>({type:GET_WORK_OPERATIONS_INIT,data})
 export const selectWorkOperation = (data) => ({ type: SELECT_WORK_OPERATION, data })
 export const getDetailsListSort = (data) => ({ type: DETAILS_LIST_SORT,data })
+export const pushSalaryRow = (data)=>({type:FORM_SALARY_ROW_PUSH,data})
 export const clearFormOptions = ()=>({type:CLEAR_FORM_OPTIONS})
 
 
@@ -189,6 +196,11 @@ export const getDetailsListThunkCreator = (body) => {
             dispatch(selectWorkOperation(data))
         })
 
+
+    }
+}
+export const signSalaryOfShiftThunkCreator = (body) => {
+    return(dispatch) => {
 
     }
 }

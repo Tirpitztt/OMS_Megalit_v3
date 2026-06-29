@@ -67,6 +67,7 @@ const SalaryPage = (props) => {
             setWorkOperationName={props.setWorkOperationName}
             getWorkOperationsGroup={props.getWorkOperationsGroup}
             getDetailsListSort={props.getDetailsListSort}
+                         pushSalaryRow={props.pushSalaryRow}
             rate={rate} />
     ]
 

@@ -9,7 +9,12 @@ import {
     getIndividualSalaryState,
     setSalaryFormState,
     setWorkOperationName,
-    getWorkOperationsThunkCreator, getDetailsListThunkCreator, setSalaryFormOptionChange, clearFormOptions, getDetailsListSort
+    getWorkOperationsThunkCreator,
+    getDetailsListThunkCreator,
+    setSalaryFormOptionChange,
+    clearFormOptions,
+    getDetailsListSort,
+    pushSalaryRow
 } from '../../../../Redux/Redusers/salary-reduser';
 //import { getMonthDays} from '../../../../Utils/dateTermin';
 
@@ -34,6 +39,7 @@ class SalaryContainer extends React.Component{
                 getWorkOperationsGroup={this.props.getWorkOperationsGroup}
                 setSalaryFormOptionChange={this.props.setSalaryFormOptionChange}
                 clearFormOptions={this.props.clearFormOptions}
+                        pushSalaryRow={this.props.pushSalaryRow}
                 getDetailsListSort={this.props.getDetailsListSort }
 
             />
@@ -74,6 +80,9 @@ let mapDispatchToProps = (dispatch) => {
         },
         getDetailsListSort: (data) => {
             dispatch(getDetailsListSort(data))
+        },
+        pushSalaryRow:(data) => {
+          dispatch(pushSalaryRow(data))
         },
         clearFormOptions:()=>{
             dispatch(clearFormOptions())

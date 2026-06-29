@@ -7,7 +7,7 @@ import SalaryMontazForm from "./salary-montaz-form";
 import SalaryVariedForm from "./salary-varied-form";
 import {useForm} from 'react-hook-form'
 import {setOperationsSum} from "../../../../Utils/support";
-import SalaryCalculateBody from "../../../../Utils/Classes/salaryCalaculateBody";
+//import SalaryCalculateBody from "../../../../Utils/Classes/salaryCalaculateBody";
 
 
 
@@ -17,9 +17,9 @@ const SalaryBaseForm = (props) => {
     const {register,handleSubmit,setValue,watch,reset} = useForm()
     const dataSum = watch('dataSum')
 
-    const [operationID,setOperationID] = useState('1')
+    //const [operationID,setOperationID] = useState('1')
     const [operationName,setOperationName] = useState('')
-    const [operationCost,setOperationCost] = useState(0)
+   // const [operationCost,setOperationCost] = useState(0)
     const [operationAmount,setOperationAmount] = useState(1)
     const [operationSumma,setOperationSumma] = useState(0)
     const [operationNotice,setOperationNotice] = useState('')
@@ -47,24 +47,31 @@ const SalaryBaseForm = (props) => {
 
         //console.log(id)
     }
-    const workOperationNoticeChange = (value) => {
-        setOperationNotice(value)
-    }
-    const workOperationAmountChange = (value) => {
-        //setValue(value)
-
-    }
-    const workOperationCostChange = (value) => {
-        setOperationCost(value)
-    }
+    // const workOperationNoticeChange = (value) => {
+    //     setOperationNotice(value)
+    // }
+    // const workOperationAmountChange = (value) => {
+    //     //setValue(value)
+    //
+    // }
+    // const workOperationCostChange = (value) => {
+    //     setOperationCost(value)
+    // }
 
     const selectTypeForm = (val) => {
         props.getWorkOperationsGroup({type:val})
     }
     const onSubmit = (body) => {
-        body.name = operationName
+        body.workId = dataSum[0].id
+        body.workName = operationName
+        body.notice = operationNotice
+        body.cost = dataSum[1].cost
+        body.amount = operationAmount
         body.summa = operationSumma
+        body.signature = false
         console.log(body)
+        reset()
+        props.pushSalaryRow(body)
     }
 
     return (
