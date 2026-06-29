@@ -6,16 +6,17 @@ import SalaryConcreateForm from "./salary-concreate-form";
 import SalaryMontazForm from "./salary-montaz-form";
 import SalaryVariedForm from "./salary-varied-form";
 import {useForm} from 'react-hook-form'
-import {setOperationsSum, setSalaryRowBody} from "../../../../Utils/support";
+import {setOperationsSum} from "../../../../Utils/support";
 import SalaryCalculateBody from "../../../../Utils/Classes/salaryCalaculateBody";
 
 
 
 const SalaryBaseForm = (props) => {
     //console.log(props.state)
-    let fieldBox = <div>shift is not init</div>
+
     const {register,handleSubmit,setValue,watch,reset} = useForm()
-    const dataOfSumm = watch('dataSum')
+    const dataSum = watch('dataSum')
+
     const [operationID,setOperationID] = useState('1')
     const [operationName,setOperationName] = useState('')
     const [operationCost,setOperationCost] = useState(0)
@@ -23,9 +24,9 @@ const SalaryBaseForm = (props) => {
     const [operationSumma,setOperationSumma] = useState(0)
     const [operationNotice,setOperationNotice] = useState('')
     useEffect(()=>{
-        setOperationSumma(setOperationsSum(props.state.formOptions.workOperations,dataOfSumm,
-            operationAmount,'dataSum[1].cost',setValue,setOperationName))
-    },[JSON.stringify(dataOfSumm)])
+        setOperationSumma(setOperationsSum(props.state.formOptions.workOperationsInit,dataSum,
+            operationAmount,'dataSum.1.cost',setValue,setOperationName))
+    },[JSON.stringify(dataSum)])
 
     let accessorialFields = null
     if(props.state.formOptions.workShop === FORM_POLISH){
@@ -42,59 +43,27 @@ const SalaryBaseForm = (props) => {
     }
 
     const workOperationChange = (id) => {
-        setOperationID(id)
+        setValue('dataSum.0.id',id)
 
-        // console.log(body)
+        //console.log(id)
     }
     const workOperationNoticeChange = (value) => {
         setOperationNotice(value)
     }
     const workOperationAmountChange = (value) => {
-        setOperationAmount(value)
+        //setValue(value)
 
     }
     const workOperationCostChange = (value) => {
         setOperationCost(value)
     }
-    // if(props.active){
-    //     fieldBox = <div className={c.field_box}>
-    //         <div className={c.form_box_row_100}>
-    //
-    //             <select {...register('dataSum.0.id')}
-    //                 onChange={(e)=>
-    //                 workOperationChange(e.target.value)}>
-    //                 <option value="0">выбрать операцию</option>
-    //                 {props.state.formOptions.workOperations}
-    //             </select>
-    //         </div>
-    //         <div className={c.form_box_row_100}>
-    //             <label className={c.label_form}>Описание:</label>
-    //             <input {...register('notice',{onChange:(e)=>setOperationNotice(e.target.value)})}
-    //                   />
-    //         </div>
-    //         <div className={c.form_box_row_100}>
-    //             <label className={c.label_form}>Стоимость:</label>
-    //             <input {...register('dataSum.1.cost')}
-    //                  />
-    //         </div>
-    //         <div className={c.form_box_row_100}>
-    //             <label className={c.label_form}>Кол-во:</label>
-    //             <input {...register('dataSum.2.amount',{onChange:(e)=>setOperationAmount(e.target.value)})}
-    //                  />
-    //         </div>
-    //         <div className={c.form_box_row_100}>
-    //             <label className={c.label_form}>Сумма:</label>
-    //             <input {...register('summa',{onChange:(e)=>setOperationSumma(e.target.value)})}
-    //                  />
-    //         </div>
-    //     </div>
-    // }
+
     const selectTypeForm = (val) => {
         props.getWorkOperationsGroup({type:val})
     }
     const onSubmit = (body) => {
         body.name = operationName
-        body.sum = operationSumma
+        body.summa = operationSumma
         console.log(body)
     }
 
@@ -112,14 +81,14 @@ const SalaryBaseForm = (props) => {
                 </select>
             </div>
             <form onSubmit={handleSubmit(onSubmit)} className={c.form_content}>
-
+                <div className={props.active?c.hide:c.block}>shift is not init</div>
                 <div className={props.active?c.field_box:c.hide}>
                     <div className={c.form_box_row_100}>
 
                         <select {...register('dataSum.0.id')}
                                 onChange={(e)=>
                                     workOperationChange(e.target.value)}>
-                            <option value="0">выбрать операцию</option>
+                            <option value={0}>выбрать операцию</option>
                             {props.state.formOptions.workOperations}
                         </select>
                     </div>
@@ -141,6 +110,7 @@ const SalaryBaseForm = (props) => {
                     <div className={c.form_box_row_100}>
                         <label className={c.label_form}>Сумма:</label>
                         <input {...register('summa',{onChange:(e)=>setOperationSumma(e.target.value)})}
+                            value={operationSumma}
                         />
                     </div>
                 </div>
