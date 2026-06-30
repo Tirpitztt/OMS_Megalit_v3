@@ -54,11 +54,13 @@ let initialState = {
 const SalaryReduser = (state = initialState,action) => {
     switch (action.type) {
         case GET_SHIFTS_BY_MONTH: {
+            //console.log('month state:', action.data)
             let newState = { ...state }
             newState.dataMonth = { ...action.data }
             return newState
         }
         case SET_INDIVIDUAL_SALARY_STATE: {
+            //console.log('indsalarsnane',action.data)
             let newState = { ...state }
             newState.individualSalaryState.salaryFormState.salary = []
             newState.individualSalaryState.period = { year: newState.dataMonth.year, month: newState.dataMonth.month }
@@ -67,6 +69,7 @@ const SalaryReduser = (state = initialState,action) => {
             return newState
         }
         case SET_SALARY_FORM_STATE: {
+            //console.log('formstate',action.data)
             let newState = { ...state }
             newState.individualSalaryState.salaryFormState.salary = []//обнуляем массив работ
             newState.individualSalaryState.salaryFormState.date = action.data.date
@@ -163,6 +166,7 @@ export const getShiftsByMonthThunkCreator = (body) => { //создание со�
     //console.log(body)
     return (dispatch) => {
         salaryAPI.getShiftsByMonth(body).then(data => {
+            //console.log('main state',data)
             dispatch(getShiftsByMonth(data))
         })
         supportAPI.getWorkOperations().then(data=>{
@@ -200,8 +204,23 @@ export const getDetailsListThunkCreator = (body) => {
     }
 }
 export const signSalaryOfShiftThunkCreator = (body) => {
-    return(dispatch) => {
-
+    return (dispatch) => {
+        salaryAPI.signSalaryShift(body).then(data => {
+            console.log('res:',data)
+            if (data.length) {
+                salaryAPI.getShiftsByMonth(body.period).then(data => {
+                    let salaryDataUser = { shifts: [], userId: body.salaryOfPeriod.userId, userName: body.salaryOfPeriod.userName }
+                    dispatch(getShiftsByMonth(data))
+                    for (let user of data.users) {
+                        if (salaryDataUser.userId === user.userId) {
+                            salaryDataUser.shifts = [...user.shifts]
+                        }
+                    }
+                    dispatch(getIndividualSalaryState(salaryDataUser))
+                    dispatch(setSalaryFormState({shiftID:body.shiftID,date:body.date}))
+                })
+            }
+        })
     }
 }
 export const destroyMandate = (body) => {

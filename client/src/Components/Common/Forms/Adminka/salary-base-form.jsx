@@ -6,13 +6,14 @@ import SalaryConcreateForm from "./salary-concreate-form";
 import SalaryMontazForm from "./salary-montaz-form";
 import SalaryVariedForm from "./salary-varied-form";
 import {useForm} from 'react-hook-form'
-import {setOperationsSum} from "../../../../Utils/support";
+import { setOperationsSum } from "../../../../Utils/support";
+import { buildFloat } from "../../../../Utils/buildNum"
 //import SalaryCalculateBody from "../../../../Utils/Classes/salaryCalaculateBody";
 
 
 
 const SalaryBaseForm = (props) => {
-    //console.log(props.state)
+    console.log('form state:',props.state)
 
     const {register,handleSubmit,setValue,watch,reset} = useForm()
     const dataSum = watch('dataSum')
@@ -24,8 +25,8 @@ const SalaryBaseForm = (props) => {
     const [operationSumma,setOperationSumma] = useState(0)
     const [operationNotice,setOperationNotice] = useState('')
     useEffect(()=>{
-        setOperationSumma(setOperationsSum(props.state.formOptions.workOperationsInit,dataSum,
-            operationAmount,'dataSum.1.cost',setValue,setOperationName))
+        setOperationSumma(setOperationsSum(props.state.formOptions.workOperationsInit, dataSum,
+            operationAmount, 'dataSum.1.cost', setValue, setOperationName))
     },[JSON.stringify(dataSum)])
 
     let accessorialFields = null
@@ -66,12 +67,26 @@ const SalaryBaseForm = (props) => {
         body.workName = operationName
         body.notice = operationNotice
         body.cost = dataSum[1].cost
-        body.amount = operationAmount
-        body.summa = operationSumma
+        body.amount = buildFloat(operationAmount)
+        body.summa = buildFloat(operationSumma)
         body.signature = false
         console.log(body)
         reset()
         props.pushSalaryRow(body)
+    }
+    const signSalary = () => {
+        let body = {
+            salarys: [],
+            shiftID: props.state.salaryFormState.shiftID,
+            date: props.state.salaryFormState.date,
+            period: props.state.period,
+            salaryOfPeriod: props.state.salaryOfPeriod
+        }
+        if (props.state.salaryFormState.salary.length) {
+            body.salarys = [...props.state.salaryFormState.salary]
+            
+        }
+        props.signSalaryShift(body)
     }
 
     return (
@@ -123,10 +138,11 @@ const SalaryBaseForm = (props) => {
                 </div>
                     {accessorialFields}
                     <div className={c.salary_button_wrap}>
-                        <button type='submit' >button</button>
+                    <button type='submit' >add salary</button>
+                    
                     </div>
             </form>
-
+            <button onClick={signSalary}>sign</button>
         </div>
 
     )

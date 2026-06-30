@@ -11,6 +11,7 @@ let urlencodedParser = body_parser.urlencoded({ extended: false })
 router.post('/getShiftsByMonth', urlencodedParser, controller.getShiftsByMonth)
 router.post('/saveShiftByUser', urlencodedParser, controller.workShiftCreate)
 router.post('/destroyMandate', urlencodedParser, controller.mandateDelete)
-router.post('/getDetailsGroup',urlencodedParser,salaryController.getDetailsGroup)
+router.post('/getDetailsGroup', urlencodedParser, salaryController.getDetailsGroup)
+router.post('/signSalaryShift', urlencodedParser, salaryController.signSalaryOfShift)
 
 module.exports = router

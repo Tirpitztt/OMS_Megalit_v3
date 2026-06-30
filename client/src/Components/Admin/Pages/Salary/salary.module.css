@@ -232,6 +232,14 @@
 .salaryRow:hover {
         background-color: #D3D3D3;
 }
+.salary_row_table_title {
+    width: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: start;
+    border-bottom: 1px dotted gray;
+    position: relative;
+}
 .dateRow {
     width:5%;
     display: flex;
@@ -243,7 +251,7 @@
     
 }
 .row_item{
-    width:4%;
+    width:15%;
     text-align:center;
     margin-left:5px;
 }

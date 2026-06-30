@@ -75,6 +75,7 @@ const TableTimeSheet = (props) => {
             </div>
         })
         fullRow = props.state.dataMonth.users.map((item, i) => { //создаем таблицу
+            //console.log(item)
             let daysArray = new Array(props.state.dataMonth.monthDays.length).fill('.')
             const daysMonth = daysArray.map((day, i) => {  //создается строка дней
                 return <div className={c.dayShift} onClick={() => clickDay(item, i + 1)} key={i}>

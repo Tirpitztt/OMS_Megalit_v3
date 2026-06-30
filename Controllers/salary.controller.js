@@ -20,6 +20,34 @@ class SalaryController {
             return res.status(500).json({message:'shift create error' + e.message})
         }
     }
+    async signSalaryOfShift(req, res) {
+        try {
+            let result = []
+            if (req.body.salarys.length) {
+                for (let item of req.body.salarys) {
+                    if (!item.signature) {
+                        let salaryRow = await Model.salarys.create({
+                            workShiftId: item.shiftID,
+                            workId: item.workId,
+                            workName: item.workName,
+                            notice: item.notice,
+                            cost: item.cost,
+                            amount: item.amount,
+                            summa: item.summa,
+                            signature: true
+                        })
+                        if (salaryRow) {
+                            result.push(salaryRow)
+                        }
+                    }
+                    
+                }
+            }
+            return res.status(200).json(result)
+        } catch (e) {
+            return res.status(500).json({ message: 'sign shift error' + e.message })
+        }
+    }
 
 }
 

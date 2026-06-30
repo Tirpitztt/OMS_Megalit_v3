@@ -458,6 +458,13 @@ export const salaryAPI = {
                 return response.data
             }
         )
+    },
+    signSalaryShift(body) {
+        return instance.post('/salary/signSalaryShift', body).then(
+            response => {
+                return response.data
+            }
+        )
     }
 }
 

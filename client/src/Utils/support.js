@@ -316,7 +316,7 @@ export const setOperationsSum = (operations,data,amount,fieldKey,
         })
     }
     //console.log(data)
-    return sum
+    return buildFloat(sum).toFixed(2)
 }
 
 export const setMixName = (id,mixes) => {

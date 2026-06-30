@@ -14,6 +14,8 @@ const SalaryMonthPage = (props) => {
     let period = null
     let monthDays = null
     let formModel = { shiftID: null, date: 'no data' }
+    let monthAccure = 0
+    let monthMandates = 0
     let shiftWorkData = []
     const activateRow = (i,shiftID,d) => {
         //console.log(shiftID)
@@ -29,6 +31,7 @@ const SalaryMonthPage = (props) => {
             let dayOfWeek = <div className={c.day_week }>{item.dayOfWeek}</div>
             let shiftID = null
             let shiftAccure = 0
+            let shiftMandates = 0
             if (item.dayOfWeek === 'СБ' || item.dayOfWeek === 'ВС') {
                 dayOfWeek = <div className={c.dayOutlet }>{item.dayOfWeek}</div>
             }
@@ -43,10 +46,18 @@ const SalaryMonthPage = (props) => {
                         })
                         shiftAccure = accureCount
                     }
+                    if (shift.mandates.length) {
+                        let mandateCount = 0
+                        shift.mandates.forEach((item, i) => {
+                            mandateCount += item.summa
+                        })
+                        shiftMandates = mandateCount
+                    }
                 }
                 
             })
-
+            monthAccure += shiftAccure
+            monthMandates += shiftMandates
             return <div key={i} onClick={() => activateRow(i,shiftID,item.day)}
                 className={rowActive === i ? ROW.active : ROW.normal}> 
                 
@@ -54,14 +65,17 @@ const SalaryMonthPage = (props) => {
                     {dayOfWeek }
                     <div>{item.day }</div>
                 </div>
-                <div className={c.row_item }>{shiftID}</div>
-                <div className={c.row_item}>{shiftAccure}</div>
+                <div className={c.row_item}>{shiftID}</div>
+                <div className={c.row_item}>{shiftAccure === 0 ? null:shiftAccure.toFixed(2)}</div>
+                <div className={c.row_item}>{shiftMandates === 0 ? null : shiftMandates.toFixed(2)}</div>
+                <div className={c.row_item}>{(shiftAccure + shiftMandates).toFixed(2)}</div>
                 
             </div>
         })
     }
     if (props.state.salaryFormState.salary.length) {
         shiftWorkData = props.state.salaryFormState.salary.map((item, i) => {
+            
             return <div key={i} className={c.table_work_operation }>
                 <div>{item.workName}</div>
                 <div>{item.cost}</div>
@@ -71,17 +85,24 @@ const SalaryMonthPage = (props) => {
             </div>
         })
     }
-   
+    //console.log(props.state.salaryFormState.salary)
 
     return (
         <div>
             <div onClick={props.changePage}>back</div>
             <div>
-                <div>Сводная заработной платы сотрудника: {employee}, за период: {period.year} - {period.month}  </div>
+                <div>Сводная заработной платы сотрудника: {employee}, за период: {period.year} - {period.month} - {monthAccure.toFixed(2)}руб. </div>
 
             </div>
             <div className={c.content_salary_box}>
                 <div className={c.row_salary_box}>
+                    <div className={c.salary_row_table_title}>
+                        <div className={c.dateRow }>дата</div>
+                        <div className={c.row_item}>id</div>
+                        <div className={c.row_item}>начислено</div>
+                        <div className={c.row_item}>штраф/премия</div>
+                        <div className={c.row_item}>на руки</div>
+                    </div>
                     {monthDays}
                 </div>
                  
@@ -99,7 +120,8 @@ const SalaryMonthPage = (props) => {
                                 getWorkOperationsGroup={props.getWorkOperationsGroup}
                                 getDetailsList={props.getDetailsList}
                                 getDetailsListSort={props.getDetailsListSort }
-                                            pushSalaryRow={props.pushSalaryRow}
+                                pushSalaryRow={props.pushSalaryRow}
+                                signSalaryShift={props.signSalaryShift}
                             />
                         </div>
                         <div className={c.table_box }>
