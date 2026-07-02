@@ -3,7 +3,8 @@ import c from './salary.module.css'
 import TimeSheetPage from './timesheet-page';
 import {useMaterials, useMatState} from "../../../../Hooks/material.hook";
 import SalaryMonthPage from './salary-month-page';
-import {FORM_BASE} from "../../../../Utils/variables-const";
+import {FORM_BASE, WORKERS} from "../../../../Utils/variables-const";
+import SalaryAccurePage from './salary-accure-page';
 
 
 const SalaryPage = (props) => {
@@ -27,7 +28,10 @@ const SalaryPage = (props) => {
     //const today = new Date()
     // const currentYear = today.getFullYear()
     // const currentMonth = today.getMonth() + 1
-    
+    const setAccurePage = () => {
+        setDisplayNum(2)
+        props.getEmployeesList({ department: WORKERS })
+    }
     const getNextData = () => {
         const bodyReq = { year: props.state.dataMonth.year, month: props.state.dataMonth.month + 1 }
         if (bodyReq.month > 0 && bodyReq.month <= 12) {
@@ -69,7 +73,14 @@ const SalaryPage = (props) => {
             getDetailsListSort={props.getDetailsListSort}
             pushSalaryRow={props.pushSalaryRow}
             signSalaryShift={props.signSalaryShift}
-            rate={rate} />
+            rate={rate}
+        />,
+        <SalaryAccurePage
+            state={props.state}
+            accureState={props.accureState }
+            back={setDisplayBack}
+
+        />
     ]
 
     
@@ -79,7 +90,9 @@ const SalaryPage = (props) => {
             <div className={c.header}>
                 <div className={c.header_title}><p>Зарплата</p></div>
                 <div className={c.header_button_box}>
-                    
+                    <div className={c.salary_accure_button}
+                        onClick={setAccurePage}
+                    >Accure</div>
                 </div>
             </div>
             <div className={c.content}>

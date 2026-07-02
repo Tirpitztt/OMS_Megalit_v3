@@ -106,10 +106,17 @@ const SalaryBaseForm = (props) => {
                 <div className={props.active?c.hide:c.block}>shift is not init</div>
                 <div className={props.active?c.field_box:c.hide}>
                     <div className={c.form_box_row_100}>
-
+                        <select className={c.select_amount_masters }>
+                            <option value={1}>1</option>
+                            <option value={2}>2</option>
+                            <option value={3}>3</option>
+                            <option value={4}>4</option>
+                        </select>
                         <select {...register('dataSum.0.id')}
-                                onChange={(e)=>
-                                    workOperationChange(e.target.value)}>
+                            onChange={(e) =>
+                                workOperationChange(e.target.value)}
+                            className={c.select_work_op }
+                        >
                             <option value={0}>выбрать операцию</option>
                             {props.state.formOptions.workOperations}
                         </select>

@@ -401,6 +401,13 @@ export const usersAPI = {
             }
         )
     },
+    getUsersGroup(body) {
+        return instance.post('/auth/getUsersGroup', body).then(
+            response => {
+                return response.data
+            }
+        )
+    },
     getUserOfId(body){
         return instance.post('/auth/getUser',body).then(
             response=>{

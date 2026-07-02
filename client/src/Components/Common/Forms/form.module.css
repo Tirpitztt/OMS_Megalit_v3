@@ -376,6 +376,12 @@
 .details_list_box::-webkit-scrollbar-thumb:hover {
     background: #555;
 }
+.select_work_op{
+    width:60%;
+}
+.select_amount_masters{
+    width:20%;
+}
 .details_check_row{
     
     display:flex;

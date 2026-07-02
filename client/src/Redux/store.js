@@ -12,6 +12,7 @@ import thunkMiddleware from 'redux-thunk';
 import AdminStatisticsReduser from "./Redusers/admin-statistics-reduser";
 import UserReduser from "./Redusers/user-reduser"
 import SalaryReduser from './Redusers/salary-reduser'
+import AccureReduser from './Redusers/accure-reduser'
 
 
 
@@ -28,7 +29,8 @@ let redusers = combineReducers({
     editablePage:EditableReduser,
     statisticsPage:AdminStatisticsReduser,
     employeesPage:UserReduser,
-    salaryPage:SalaryReduser
+    salaryPage: SalaryReduser,
+    accurePage: AccureReduser
 })
 
 let store = createStore(redusers,applyMiddleware(thunkMiddleware));

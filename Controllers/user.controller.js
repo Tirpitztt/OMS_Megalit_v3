@@ -205,6 +205,36 @@ class UserController {
             return res.status(500).json({message:'getUser error: '+ e.message});
         }
     }
+    async getUsersGroup(req, res) {
+        try {
+            let result = []
+            const users = await Model.users.findAll({
+                include: [{
+                    model: Model.work_shifts,
+                    include: [{
+                        model: Model.mandates
+                    }, {
+                        model: Model.salarys
+                    }]
+                }],
+                where: {
+                    department:req.body.department
+                }
+            })
+            if (users) {
+                for (let us of users) {
+                    let user = {
+                        id: us.id,
+                        name:us.full_name
+                    }
+                    result.push(user)
+                }
+            }
+            return res.status(200).json(result)
+        } catch (e) {
+            return res.status(500).json({ message: 'getUser error: ' + e.message });
+        }
+    }
 
 
 }

@@ -17,6 +17,7 @@ import {
     pushSalaryRow,
     signSalaryOfShiftThunkCreator
 } from '../../../../Redux/Redusers/salary-reduser';
+import { getEmployeesListThunkCreator } from '../../../../Redux/Redusers/CommonFiles/thunks';
 //import { getMonthDays} from '../../../../Utils/dateTermin';
 
 class SalaryContainer extends React.Component{
@@ -26,11 +27,14 @@ class SalaryContainer extends React.Component{
         const currentMonth = today.getMonth() + 1
         this.props.getShiftsByMonth({ year: currentYear, month: currentMonth })
         
+        
     }
     render() {
         return(
             <SalaryPage state={this.props.state.salaryPage}
+                accureState={this.props.state.accurePage }
                 getShiftsByMonth={this.props.getShiftsByMonth}
+                getEmployeesList={this.props.getEmployeesList}
                 saveShiftByUser={this.props.saveShiftByUser}
                 destroyMandate={this.props.destroyMandate}
                 getIndividualSalaryState={this.props.getIndividualSalaryState}
@@ -58,6 +62,9 @@ let mapDispatchToProps = (dispatch) => {
         },
         saveShiftByUser: (body) => {
             dispatch(saveShiftByUserThunkCreator(body))
+        },
+        getEmployeesList: (body) => {
+            dispatch(getEmployeesListThunkCreator(body))
         },
         destroyMandate: (body) => {
             dispatch(destroyMandate(body))

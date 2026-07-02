@@ -1,5 +1,8 @@
 import React from "react";
 
+
+export const WORKERS = 'рабочие'
+
 export const GUARANTIES_OPTIONS = [
     {value:0,text:'нет'},
     {value:1,text:'1 год'},
@@ -143,6 +146,10 @@ export const SET_WORK_OPERATION_NAME = 'SET_WORK_OPERATION_NAME'
 export const SELECT_WORK_OPERATION = 'SELECT_WORK_OPERATION'
 export const DETAILS_LIST_SORT = 'DETAILS_LIST_SORT'
 export const CLEAR_FORM_OPTIONS = 'CLEAR_FORM_OPTIONS'
+
+export const GET_EMPLOYEES_LIST = 'GET_EMPLOYEES_LIST'
+export const ADD_EMPLOYEE_TO_GROUP = 'ADD_EMPLOYEE_TO_GROUP'
+export const DEL_EMPLOYEE_FROM_GROUP = 'DEL_EMPLOYEE_FROM_GROUP'
 
 export const FORM_SALARY_ROW_PUSH = 'FORM_SALARY_ROW_PUSH'
 export const SIGN_SALARY_OF_SHIFT = 'SIGN_SALARY_OF_SHIFT'
