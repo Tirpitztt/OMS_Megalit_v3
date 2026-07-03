@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import c from './salary.module.css'
 import { WORKSHOP_NAMES } from '../../../../Utils/variables-const'
+import {getShiftStatus} from "../../../../Utils/adminSupport";
 
 
 const SalaryAccurePage = (props) => {
@@ -9,14 +10,26 @@ const SalaryAccurePage = (props) => {
         return <option key={i } value={item.value }>{item.text }</option>
     })
     let employeesGroup = props.accureState.shiftData.employeesShiftGroup.map((item, i) => {
-        return <div>{item.name }</div>
+        return <div className={c.employee_info_block}>
+            <div className={c.row_title_info}>
+                <div onClick={()=>props.delEmployeeFromGroup({id:item.id})}>del</div>
+                <div>{item.id }</div><div>{item.name }</div>
+                <div>{getShiftStatus(item.shifts[0])}</div>
+                <div>sign</div>
+            </div>
+        </div>
     })
     const selectTypeForm = (val) => {
         props.getWorkOperationsGroup({ type: val })
         props.setWorkShopValue(val)
     }
     const selectEmployee = (val) => {
-        props.addEmployeeToGroup({id:val})
+        if(val && props.accureState.shiftData.date){
+            props.addEmployeeToGroup({id:val,date:props.accureState.shiftData.date})
+        }else{
+            alert("не выбрана дата, дятел!")
+        }
+
     }
     return (
         <div>
@@ -26,7 +39,9 @@ const SalaryAccurePage = (props) => {
                 <div className={c.select_title_wrap }>
                     <div className={c.select_title_box}>
                         <label>дата:</label>
-                        <input type='date' onChange={(e)=>props.setShiftDate(e.target.value) } />
+                        <input type='date'
+                               value={props.accureState.shiftData.date}
+                               onChange={(e)=>props.setShiftDate(e.target.value) } />
                     </div>
                     <div className={c.select_title_box}>
                         <label>цех:</label>
@@ -35,8 +50,10 @@ const SalaryAccurePage = (props) => {
                     <div className={c.select_title_box}>
                         <label>сотрудники:</label>
                         <select
-                            onChange={(e) => selectEmployee(e.target.value)}
-                        >{props.accureState.accureData.employeesListOP}</select>
+                            onChange={(e) => selectEmployee(e.target.value)}>
+                            <option value={null}>Выбрать сотрудника</option>
+                            {props.accureState.accureData.employeesListOP}
+                        </select>
                     </div>
                 </div>
                 

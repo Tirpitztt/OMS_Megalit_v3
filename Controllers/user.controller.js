@@ -225,7 +225,8 @@ class UserController {
                 for (let us of users) {
                     let user = {
                         id: us.id,
-                        name:us.full_name
+                        name:us.full_name,
+
                     }
                     result.push(user)
                 }
@@ -237,12 +238,31 @@ class UserController {
     }
     async getUserSalaryInfo(req, res) {
         try {
+            let result = null
             const user = await Model.users.findOne({
                 where: {
                     id: req.body.id
-                }
+                },
+                include:[{
+                    model: Model.work_shifts,
+                    where:{
+                        date:req.body.date
+                    },
+                    include: [{
+                        model: Model.mandates
+                    }, {
+                        model: Model.salarys
+                    }]
+                }]
             })
-            return res.status(200).json(user)
+            if(user){
+                 result = {
+                    id:user.id,
+                    name:user.full_name,
+                    shifts:user.work_shifts
+                }
+            }
+            return res.status(200).json(result)
         } catch (e) {
             return res.status(500).json({ message: 'getUserSalaryInfo error: ' + e.message });
         }

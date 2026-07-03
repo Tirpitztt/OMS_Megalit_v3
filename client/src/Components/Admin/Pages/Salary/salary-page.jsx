@@ -16,6 +16,7 @@ const SalaryPage = (props) => {
         props.setSalaryFormOptionChange({type:FORM_BASE})
         props.getWorkOperationsGroup({type:FORM_BASE})
         props.clearFormOptions()
+        props.clearAccureState()
         setDisplayNum(0)
     }
     useEffect(()=>{
@@ -82,7 +83,9 @@ const SalaryPage = (props) => {
             setWorkShopValue={props.setWorkShopValue}
             getWorkOperationsGroup={props.getWorkOperationsGroup}
             addEmployeeToGroup={props.addEmployeeToGroup}
+            delEmployeeFromGroup={props.delEmployeeFromGroup}
             back={setDisplayBack}
+
 
         />
     ]

@@ -18,7 +18,11 @@ import {
     signSalaryOfShiftThunkCreator
 } from '../../../../Redux/Redusers/salary-reduser';
 import { addEmployeeToGroupThunkCreator, getEmployeesListThunkCreator } from '../../../../Redux/Redusers/CommonFiles/thunks';
-import { setShiftDate, setWorkShopValue } from '../../../../Redux/Redusers/accure-reduser';
+import {
+    clearAccureState, delEmployeeFromGroup,
+    setShiftDate,
+    setWorkShopValue
+} from '../../../../Redux/Redusers/accure-reduser';
 //import { getMonthDays} from '../../../../Utils/dateTermin';
 
 class SalaryContainer extends React.Component{
@@ -40,6 +44,7 @@ class SalaryContainer extends React.Component{
                 setShiftDate={this.props.setShiftDate}
                 setWorkShopValue={this.props.setWorkShopValue}
                 addEmployeeToGroup={this.props.addEmployeeToGroup}
+                        delEmployeeFromGroup={this.props.delEmployeeFromGroup}
                 destroyMandate={this.props.destroyMandate}
                 getIndividualSalaryState={this.props.getIndividualSalaryState}
                 setSalaryFormState={this.props.setSalaryFormState}
@@ -47,11 +52,12 @@ class SalaryContainer extends React.Component{
                 setWorkOperationName={this.props.setWorkOperationName}
                 getWorkOperationsGroup={this.props.getWorkOperationsGroup}
                 setSalaryFormOptionChange={this.props.setSalaryFormOptionChange}
-                clearFormOptions={this.props.clearFormOptions}
+
                 pushSalaryRow={this.props.pushSalaryRow}
                 signSalaryShift={this.props.signSalaryShift}
                 getDetailsListSort={this.props.getDetailsListSort }
-
+                        clearFormOptions={this.props.clearFormOptions}
+                        clearAccureState={this.props.clearAccureState}
             />
         )
     }
@@ -78,6 +84,9 @@ let mapDispatchToProps = (dispatch) => {
         },
         addEmployeeToGroup: (data) => {
             dispatch(addEmployeeToGroupThunkCreator(data))
+        },
+        delEmployeeFromGroup:(data) => {
+          dispatch(delEmployeeFromGroup(data))
         },
         destroyMandate: (body) => {
             dispatch(destroyMandate(body))
@@ -111,6 +120,9 @@ let mapDispatchToProps = (dispatch) => {
         },
         clearFormOptions:()=>{
             dispatch(clearFormOptions())
+        },
+        clearAccureState:()=>{
+            dispatch(clearAccureState())
         }
         
 

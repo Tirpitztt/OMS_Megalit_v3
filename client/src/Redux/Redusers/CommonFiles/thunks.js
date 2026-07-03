@@ -13,7 +13,10 @@ export const addEmployeeToGroupThunkCreator = (body) => {
     return (dispatch) => {
         //console.log(body)
         usersAPI.getUserSalaryInfo(body).then(data => {
-            dispatch(addEmployeeToGroup(data))
+            if(data){
+                dispatch(addEmployeeToGroup(data))
+            }
+
         })
     }
 }
