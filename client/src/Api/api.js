@@ -435,6 +435,13 @@ export const usersAPI = {
                 return response.data
             }
         )
+    },
+    getUserSalaryInfo(body) {
+        return instance.post('/auth/getUserSalaryInfo', body).then(
+            response => {
+                return response.data
+            }
+        )
     }
 }
 export const salaryAPI = {

@@ -1,4 +1,4 @@
-import { ADD_EMPLOYEE_TO_GROUP, DEL_EMPLOYEE_FROM_GROUP, GET_EMPLOYEES_LIST } from "../../Utils/variables-const";
+import { ADD_EMPLOYEE_TO_GROUP, DEL_EMPLOYEE_FROM_GROUP, GET_EMPLOYEES_LIST, SET_SHIFT_DATE, SET_WORKSHOP_VALUE } from "../../Utils/variables-const";
 
 
 
@@ -29,9 +29,19 @@ const AccureReduser = (state = initialState, action) => {
             }
             return newState
         }
+        case SET_WORKSHOP_VALUE: {
+            let newState = { ...state }
+            newState.shiftData.workShop = action.data
+            return newState
+        }
         case ADD_EMPLOYEE_TO_GROUP: {
             let newState = { ...state }
-            newState.accureData.employeesShiftGroup.push(action.data)
+            newState.shiftData.employeesShiftGroup.push(action.data)
+            return newState
+        }
+        case SET_SHIFT_DATE: {
+            let newState = { ...state }
+            newState.shiftData.date = action.data
             return newState
         }
         case DEL_EMPLOYEE_FROM_GROUP: {
@@ -46,7 +56,10 @@ const AccureReduser = (state = initialState, action) => {
 }
 
 
-export const getEmployeesList = (data) => ({ type: GET_EMPLOYEES_LIST,data })
+export const getEmployeesList = (data) => ({ type: GET_EMPLOYEES_LIST, data })
+export const setShiftDate = (data) => ({ type: SET_SHIFT_DATE, data })
+export const setWorkShopValue = (data) => ({ type: SET_WORKSHOP_VALUE, data })
+export const addEmployeeToGroup = (data) => ({ type: ADD_EMPLOYEE_TO_GROUP,data })
 
 
 export default AccureReduser;

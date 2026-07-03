@@ -18,6 +18,7 @@ router.post('/getUsersGroup', urlencodedParser, controller.getUsersGroup)
 router.post('/getUser',urlencodedParser,controller.getUserById)
 router.post('/updateUser', urlencodedParser, controller.updateUserById)
 router.post('/deleteUser', urlencodedParser, controller.deleteUser)
+router.post('/getUserSalaryInfo', urlencodedParser, controller.getUserSalaryInfo)
 router.post('/updatePassword', urlencodedParser,[
     check('userPassword','password is short').isLength({min:8,max:25})
 ], controller.updatePassword)

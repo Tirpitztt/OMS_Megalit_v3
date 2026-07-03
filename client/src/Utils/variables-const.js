@@ -110,6 +110,21 @@ export const ROLES_NAMES = [
     {value:'karl',text:'сотрудник'},
 ]
 
+
+export const FORM_CONCREATE = 'FORM_CONCREATE'
+export const FORM_VARIED = 'FORM_VARIED'
+export const FORM_BASE = 'FORM_BASE'
+export const FORM_POLISH = 'FORM_POLISH'
+export const FORM_MONTAZ = 'FORM_MONTAZ'
+
+export const WORKSHOP_NAMES = [
+    { value: FORM_CONCREATE, text: 'заливка' },
+    { value: FORM_VARIED, text: 'разное' },
+    { value: FORM_BASE, text: 'повременка' },
+    { value: FORM_POLISH, text: 'шлифовка' },
+    { value: FORM_MONTAZ, text: 'установки' }
+]
+
 export const SET_USERS_LIST = 'SET_USERS_LIST'
 export const CLEAR_USER_STATE = 'CLEAR_USER_STATE'
 export const SET_USER_EDIT = 'SET_USER_EDIT'
@@ -135,11 +150,9 @@ export const GET_SHIFTS_BY_MONTH = 'GET_SHIFTS_BY_MONTH'
 export const SET_INDIVIDUAL_SALARY_STATE = 'SET_INDIVIDUAL_SALARY_STATE'
 export const SET_SALARY_FORM_STATE = 'SET_SALARY_FORM_STATE'
 export const FORM_OPTIONS_CHANGE = 'FORM_OPTIONS_CHANGE'
-export const FORM_CONCREATE = 'FORM_CONCREATE'
-export const FORM_VARIED = 'FORM_VARIED'
-export const FORM_BASE = 'FORM_BASE'
-export const FORM_POLISH = 'FORM_POLISH'
-export const FORM_MONTAZ = 'FORM_MONTAZ'
+
+
+export const SET_WORKSHOP_VALUE = 'SET_WORKSHOP_VALUE'
 export const GET_WORK_OPERATIONS_INIT = 'GET_WORK_OPERATIONS_INIT'
 export const GET_WORK_OPERATIONS = 'GET_WORK_OPERATIONS'
 export const SET_WORK_OPERATION_NAME = 'SET_WORK_OPERATION_NAME'
@@ -150,6 +163,7 @@ export const CLEAR_FORM_OPTIONS = 'CLEAR_FORM_OPTIONS'
 export const GET_EMPLOYEES_LIST = 'GET_EMPLOYEES_LIST'
 export const ADD_EMPLOYEE_TO_GROUP = 'ADD_EMPLOYEE_TO_GROUP'
 export const DEL_EMPLOYEE_FROM_GROUP = 'DEL_EMPLOYEE_FROM_GROUP'
+export const SET_SHIFT_DATE = 'SET_SHIFT_DATE'
 
 export const FORM_SALARY_ROW_PUSH = 'FORM_SALARY_ROW_PUSH'
 export const SIGN_SALARY_OF_SHIFT = 'SIGN_SALARY_OF_SHIFT'

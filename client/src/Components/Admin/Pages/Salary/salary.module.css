@@ -38,6 +38,9 @@
     height:2.5rem;
     margin-top:10px;
 }
+.page_title_box>div>p{
+    margin-top:0;
+}
 .select_title_wrap {
     width: 70%;
     display: flex;
@@ -313,5 +316,16 @@
 /*------------ACCURE PAGE------------------------------------*/
 .accure_form_box{
     width:100%;
+}
+.accure_form_content{
+    width:100%;
+    height:25vh;
+    border-bottom:1px dotted gray;
+    display:flex;
+    flex-flow:row nowrap;
+    justify-content:space-between;
+}
+.accure_form_block{
+    width:50%;
 }
 

@@ -77,7 +77,11 @@ const SalaryPage = (props) => {
         />,
         <SalaryAccurePage
             state={props.state}
-            accureState={props.accureState }
+            accureState={props.accureState}
+            setShiftDate={props.setShiftDate}
+            setWorkShopValue={props.setWorkShopValue}
+            getWorkOperationsGroup={props.getWorkOperationsGroup}
+            addEmployeeToGroup={props.addEmployeeToGroup}
             back={setDisplayBack}
 
         />

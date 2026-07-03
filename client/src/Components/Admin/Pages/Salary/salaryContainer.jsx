@@ -17,7 +17,8 @@ import {
     pushSalaryRow,
     signSalaryOfShiftThunkCreator
 } from '../../../../Redux/Redusers/salary-reduser';
-import { getEmployeesListThunkCreator } from '../../../../Redux/Redusers/CommonFiles/thunks';
+import { addEmployeeToGroupThunkCreator, getEmployeesListThunkCreator } from '../../../../Redux/Redusers/CommonFiles/thunks';
+import { setShiftDate, setWorkShopValue } from '../../../../Redux/Redusers/accure-reduser';
 //import { getMonthDays} from '../../../../Utils/dateTermin';
 
 class SalaryContainer extends React.Component{
@@ -36,6 +37,9 @@ class SalaryContainer extends React.Component{
                 getShiftsByMonth={this.props.getShiftsByMonth}
                 getEmployeesList={this.props.getEmployeesList}
                 saveShiftByUser={this.props.saveShiftByUser}
+                setShiftDate={this.props.setShiftDate}
+                setWorkShopValue={this.props.setWorkShopValue}
+                addEmployeeToGroup={this.props.addEmployeeToGroup}
                 destroyMandate={this.props.destroyMandate}
                 getIndividualSalaryState={this.props.getIndividualSalaryState}
                 setSalaryFormState={this.props.setSalaryFormState}
@@ -65,6 +69,15 @@ let mapDispatchToProps = (dispatch) => {
         },
         getEmployeesList: (body) => {
             dispatch(getEmployeesListThunkCreator(body))
+        },
+        setShiftDate: (date) => {
+            dispatch(setShiftDate(date))
+        },
+        setWorkShopValue: (data) => {
+            dispatch(setWorkShopValue(data))
+        },
+        addEmployeeToGroup: (data) => {
+            dispatch(addEmployeeToGroupThunkCreator(data))
         },
         destroyMandate: (body) => {
             dispatch(destroyMandate(body))

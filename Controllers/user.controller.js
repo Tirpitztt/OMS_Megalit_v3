@@ -235,6 +235,18 @@ class UserController {
             return res.status(500).json({ message: 'getUser error: ' + e.message });
         }
     }
+    async getUserSalaryInfo(req, res) {
+        try {
+            const user = await Model.users.findOne({
+                where: {
+                    id: req.body.id
+                }
+            })
+            return res.status(200).json(user)
+        } catch (e) {
+            return res.status(500).json({ message: 'getUserSalaryInfo error: ' + e.message });
+        }
+    }
 
 
 }
