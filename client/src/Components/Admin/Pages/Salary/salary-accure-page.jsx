@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import c from './salary.module.css'
 import { WORKSHOP_NAMES } from '../../../../Utils/variables-const'
-import {getShiftStatus} from "../../../../Utils/adminSupport";
+import {getSalaryList, getShiftStatus} from "../../../../Utils/adminSupport";
 
 
 const SalaryAccurePage = (props) => {
@@ -10,12 +10,16 @@ const SalaryAccurePage = (props) => {
         return <option key={i } value={item.value }>{item.text }</option>
     })
     let employeesGroup = props.accureState.shiftData.employeesShiftGroup.map((item, i) => {
+        const salaryList = getSalaryList(item.shifts[0].salarys,c)
         return <div className={c.employee_info_block}>
             <div className={c.row_title_info}>
                 <div onClick={()=>props.delEmployeeFromGroup({id:item.id})}>del</div>
                 <div>{item.id }</div><div>{item.name }</div>
                 <div>{getShiftStatus(item.shifts[0])}</div>
                 <div>sign</div>
+            </div>
+            <div>
+                {salaryList}
             </div>
         </div>
     })
@@ -45,7 +49,10 @@ const SalaryAccurePage = (props) => {
                     </div>
                     <div className={c.select_title_box}>
                         <label>цех:</label>
-                        <select onChange={(e) => selectTypeForm(e.target.value)}>{workShopOP}</select>
+                        <select onChange={(e) => selectTypeForm(e.target.value)}>
+                            <option value={null}>Выбрать цех</option>
+                            {workShopOP}
+                        </select>
                     </div>
                     <div className={c.select_title_box}>
                         <label>сотрудники:</label>

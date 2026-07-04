@@ -335,6 +335,7 @@
 .row_title_info{
     display:flex;
     flex-flow: row nowrap;
+    border-bottom:1px dotted gray;
 }
 .row_title_info>div:nth-of-type(1){
     width:4%;
