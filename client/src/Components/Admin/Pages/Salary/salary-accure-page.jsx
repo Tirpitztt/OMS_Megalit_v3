@@ -1,11 +1,26 @@
-import React, { useState } from 'react'
+import React, {useEffect, useState} from 'react'
 import c from './salary.module.css'
 import { WORKSHOP_NAMES } from '../../../../Utils/variables-const'
 import {getSalaryList, getShiftStatus} from "../../../../Utils/adminSupport";
+import {useForm} from "react-hook-form";
+import {setOperationsSum} from "../../../../Utils/support";
+import {buildFloat} from "../../../../Utils/buildNum";
 
 
 const SalaryAccurePage = (props) => {
     console.log(props)
+    const {register,handleSubmit,setValue,watch,reset} = useForm()
+    const dataSum = watch('dataSum')
+    const [operationName,setOperationName] = useState('')
+    const [operationAmount,setOperationAmount] = useState(1)
+    const [operationSumma,setOperationSumma] = useState(0)
+    const [operationNotice,setOperationNotice] = useState('')
+    useEffect(()=>{
+        setOperationSumma(setOperationsSum(props.state.individualSalaryState.formOptions.workOperationsInit,dataSum,
+            operationAmount,'dataSum.1.cost',setValue,setOperationName))
+    },[JSON.stringify(dataSum)])
+
+
     const workShopOP = WORKSHOP_NAMES.map((item, i) => {
         return <option key={i } value={item.value }>{item.text }</option>
     })
@@ -13,10 +28,13 @@ const SalaryAccurePage = (props) => {
         const salaryList = getSalaryList(item.shifts[0].salarys,c)
         return <div className={c.employee_info_block}>
             <div className={c.row_title_info}>
-                <div onClick={()=>props.delEmployeeFromGroup({id:item.id})}>del</div>
+                <div onClick={()=>props.delEmployeeFromGroup({id:item.id})}
+                className={c.del_employee_button}
+                >удалить</div>
                 <div>{item.id }</div><div>{item.name }</div>
                 <div>{getShiftStatus(item.shifts[0])}</div>
-                <div>sign</div>
+                <div className={c.sign_employee_button}
+                >подписать</div>
             </div>
             <div>
                 {salaryList}
@@ -32,6 +50,21 @@ const SalaryAccurePage = (props) => {
             props.addEmployeeToGroup({id:val,date:props.accureState.shiftData.date})
         }else{
             alert("не выбрана дата, дятел!")
+        }
+
+    }
+    const onSubmit = (body) => {
+        if(props.accureState.shiftData.employeesShiftGroup.length){
+            body.workId = dataSum[0].id
+            body.workName = operationName
+            body.notice = operationNotice
+            body.cost = dataSum[1].cost
+            body.amount = buildFloat(operationAmount/props.accureState.shiftData.employeesShiftGroup.length)
+            body.summa = buildFloat(operationSumma/props.accureState.shiftData.employeesShiftGroup.length)
+            body.signature = false
+            console.log(body)
+            reset()
+            props.addSalaryRowToShift(body)
         }
 
     }
@@ -67,21 +100,53 @@ const SalaryAccurePage = (props) => {
             </div>
             <div className={c.accure_form_box }>
                 <div className={c.form_title_box}>
-                    <div className={c.select_title_box}>
+                    <div className={c.form_title_box_item}>
                         <div>{props.accureState.shiftData.date }</div>
                     </div>
-                    <div className={c.select_title_box}>
+                    <div className={c.form_title_box_item}>
                         <div>{props.accureState.shiftData.workShop}</div>
                     </div>
-                    <div className={c.select_title_box}>
-                        <select>
-                            {props.state.individualSalaryState.formOptions.workOperations }
-                        </select>
-                    </div>
+
                 </div>
                 <div className={c.accure_form_content}>
-                    <div className={c.accure_form_block }>main block</div>
-                    <div className={c.accure_form_block}>support block</div>
+                    <form onSubmit={handleSubmit(onSubmit)} className={c.accure_form_block }>
+                        <div className={c.form_salary_row}>
+                            <div className={c.form_salary_column_box}>
+                                <label></label>
+                                <select {...register('dataSum.0.id')}
+
+                                >
+                                    <option value="null">Выбрать операцию</option>
+                                    {props.state.individualSalaryState.formOptions.workOperations }
+                                </select>
+                            </div>
+                            <div className={c.form_salary_column_box}>
+                                <label>стоимость</label>
+                                <input {...register('dataSum.1.cost')} />
+                            </div>
+                            <div className={c.form_salary_column_box}>
+                                <label>кол-во</label>
+                                <input {...register('dataSum.2.amount',{
+                                    onChange:(e)=>setOperationAmount(e.target.value)
+                                })}/>
+                            </div>
+                            <div className={c.form_salary_column_box}>
+                                <label>сумма</label>
+                                <input {...register('summa',{
+                                    onChange:(e)=>setOperationSumma(e.target.value)
+                                })} value={operationSumma} />
+                            </div>
+                            <div className={c.form_salary_column_box}>
+                                <label></label>
+                                <button type='submit' className={c.add_sal_button}>добавить</button>
+                            </div>
+                        </div>
+                    </form>
+                    <div className={c.accure_form_block}>
+                        <div className={c.accure_form_support_box}>
+
+                        </div>
+                    </div>
 
                 </div>
                 <div className={c.accure_form_table}>

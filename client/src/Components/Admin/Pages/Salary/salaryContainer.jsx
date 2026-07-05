@@ -19,6 +19,7 @@ import {
 } from '../../../../Redux/Redusers/salary-reduser';
 import { addEmployeeToGroupThunkCreator, getEmployeesListThunkCreator } from '../../../../Redux/Redusers/CommonFiles/thunks';
 import {
+    addSalaryRowToShift,
     clearAccureState, delEmployeeFromGroup,
     setShiftDate,
     setWorkShopValue
@@ -52,8 +53,10 @@ class SalaryContainer extends React.Component{
                 setWorkOperationName={this.props.setWorkOperationName}
                 getWorkOperationsGroup={this.props.getWorkOperationsGroup}
                 setSalaryFormOptionChange={this.props.setSalaryFormOptionChange}
-
+                addSalaryRowToShift={this.props.addSalaryRowToShift}
+                        //
                 pushSalaryRow={this.props.pushSalaryRow}
+                        //
                 signSalaryShift={this.props.signSalaryShift}
                 getDetailsListSort={this.props.getDetailsListSort }
                         clearFormOptions={this.props.clearFormOptions}
@@ -113,11 +116,15 @@ let mapDispatchToProps = (dispatch) => {
             dispatch(getDetailsListSort(data))
         },
         pushSalaryRow:(data) => {
-          dispatch(pushSalaryRow(data))
+          //dispatch(pushSalaryRow(data))
+        },
+        addSalaryRowToShift:(data) => {
+            dispatch(addSalaryRowToShift(data))
         },
         signSalaryShift: (data) => {
             dispatch(signSalaryOfShiftThunkCreator(data))
         },
+
         clearFormOptions:()=>{
             dispatch(clearFormOptions())
         },

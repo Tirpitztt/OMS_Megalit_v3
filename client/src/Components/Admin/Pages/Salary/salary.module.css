@@ -37,6 +37,7 @@
     justify-content: space-around;
     height:2.5rem;
     margin-top:10px;
+    border-bottom:1px dotted gray;
 }
 .page_title_box>div>p{
     margin-top:0;
@@ -291,11 +292,43 @@
 .form_title_box{
     display:flex;
     flex-flow:row nowrap;
-    justify-content:space-around;
+    justify-content:start;
 }
 .form_content_box{
 
 }
+.form_title_box_item{
+    width:18%;
+
+}
+.form_salary_row{
+    display:flex;
+    flex-flow:row nowrap;
+    justify-content:space-around;
+
+}
+.form_salary_column_box{
+    display:flex;
+    flex-flow:column nowrap;
+    justify-content:space-around;
+    align-items: center;
+    width:10%;
+}
+.form_salary_column_box:nth-of-type(1){
+    width:45%;
+}
+.form_salary_column_box:nth-of-type(5){
+    width: 15%;
+}
+.form_salary_column_box>input{
+    width: 90%;
+    height: 2.5rem;
+}
+.form_salary_column_box>select{
+    height: 2.5rem;
+    width: 90%;
+}
+
 .table_box{
     width:95%;
     margin:auto;
@@ -316,6 +349,7 @@
 /*------------ACCURE PAGE------------------------------------*/
 .accure_form_box{
     width:100%;
+    margin-top:15px;
 }
 .accure_form_content{
     width:100%;
@@ -326,19 +360,33 @@
     justify-content:space-between;
 }
 .accure_form_block{
-    width:50%;
+    width:57%;
+    background-color: honeydew;
+    display:flex;
+    flex-flow:column nowrap;
+    justify-content:space-around;
+    align-items: center;
+}
+.accure_form_support_box{
+    height: 86%;
+    width:95%;
+    background-color: white;
 }
 .employee_info_block{
+    margin-top:15px;
     width:50%;
     border-right:1px dotted gray;
 }
+
 .row_title_info{
     display:flex;
     flex-flow: row nowrap;
+    justify-content: space-between;
     border-bottom:1px dotted gray;
+    height:1.7rem;
 }
 .row_title_info>div:nth-of-type(1){
-    width:4%;
+    width:9%;
 }
 .row_title_info>div:nth-of-type(2){
     width:4%;
@@ -350,7 +398,43 @@
     width:20%;
 }
 .row_title_info>div:nth-of-type(5){
-    width:5%;
+    width:12%;
+}
+.del_employee_button{
+    background-color: #A52A2A;
+    text-align: center;
+    cursor: pointer;
+}
+.sign_employee_button{
+    background-color: #32CD32;
+    text-align: center;
+    cursor: pointer;
+}
+.add_sal_button{
+    height: 74%;
+    border-radius:3px;
+}
+.row_salary_info{
+    display:flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    font-size:.8rem;
+}
+.row_salary_info>div:nth-of-type(1){
+    width:40%;
+}
+.row_salary_info>div:nth-of-type(2){
+    width:10%;
+}
+.row_salary_info>div:nth-of-type(3){
+    width:10%;
+}
+.row_salary_info>div:nth-of-type(4) {
+    width: 10%;
+}
+.row_salary_info>div:nth-of-type(5){
+        width:10%;
+    text-align: center;
 }
 
 

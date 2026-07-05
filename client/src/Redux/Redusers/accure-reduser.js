@@ -1,6 +1,7 @@
 import {
     ADD_EMPLOYEE_TO_GROUP,
-    CLEAR_ACCURE_STATE, DEL_EMPLOYEE_FROM_GROUP, GET_EMPLOYEES_LIST, SET_SHIFT_DATE, SET_WORKSHOP_VALUE
+    CLEAR_ACCURE_STATE, DEL_EMPLOYEE_FROM_GROUP,
+    FORM_SALARY_ROW_PUSH, GET_EMPLOYEES_LIST, SET_SHIFT_DATE, SET_WORKSHOP_VALUE
 } from "../../Utils/variables-const";
 
 
@@ -55,6 +56,13 @@ const AccureReduser = (state = initialState, action) => {
                     item.id !== action.data.id)
             return newState
         }
+        case FORM_SALARY_ROW_PUSH:{
+            let newState = {...state}
+            for(let item of newState.shiftData.employeesShiftGroup){
+                item.shifts[0].salarys.push(action.data)
+            }
+            return newState
+        }
         case CLEAR_ACCURE_STATE:{
             let newState = {...state}
             newState.shiftData.employeesShiftGroup = []
@@ -70,6 +78,7 @@ export const setShiftDate = (data) => ({ type: SET_SHIFT_DATE, data })
 export const setWorkShopValue = (data) => ({ type: SET_WORKSHOP_VALUE, data })
 export const addEmployeeToGroup = (data) => ({ type: ADD_EMPLOYEE_TO_GROUP,data })
 export const delEmployeeFromGroup = (data) => ({type:DEL_EMPLOYEE_FROM_GROUP,data})
+export const addSalaryRowToShift = (data) => ({type:FORM_SALARY_ROW_PUSH,data})
 export const clearAccureState = () => ({type:CLEAR_ACCURE_STATE})
 
 export default AccureReduser;

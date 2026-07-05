@@ -157,16 +157,16 @@ export const getSalaryList = (arr,c) => {
     let result = []
     if (arr.length) {
         result = arr.map((item, i) => {
-            return <div key={i} className={c.row_title_info }>
-                <div>{item.id}</div>
-                <div>{item.workId}</div>
+            return <div key={i} className={c.row_salary_info }>
+                {/*<div>{item.id}</div>*/}
+                {/*<div>{item.workId}</div>*/}
                 <div>{item.workName}</div>
-                <div>{item.workShiftId}</div>
+                {/*<div>{item.workShiftId}</div>*/}
                 <div>{item.cost}</div>
                 <div>{item.amount}</div>
                 <div>{item.summa}</div>
-                <div>{item.notice}</div>
-                <div>{item.signature}</div>
+                {/*<div>{item.notice}</div>*/}
+                <div>{item.signature?'V':'X'}</div>
             </div>
         })
     }
