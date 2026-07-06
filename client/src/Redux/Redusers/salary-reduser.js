@@ -132,12 +132,12 @@ const SalaryReduser = (state = initialState,action) => {
             newState.individualSalaryState.formOptions.detailsListSort = [...action.data]
             return newState
         }
-        case FORM_SALARY_ROW_PUSH:{
-            let newState = {...state}
-            action.data.shiftID = newState.individualSalaryState.salaryFormState.shiftID
-            newState.individualSalaryState.salaryFormState.salary.push(action.data)
-            return newState
-        }
+        // case FORM_SALARY_ROW_PUSH:{
+        //     let newState = {...state}
+        //     action.data.shiftID = newState.individualSalaryState.salaryFormState.shiftID
+        //     newState.individualSalaryState.salaryFormState.salary.push(action.data)
+        //     return newState
+        // }
         case CLEAR_FORM_OPTIONS:{
             let newState = {...state}
             newState.individualSalaryState.salaryFormState.status = 'нет смены'

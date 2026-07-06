@@ -15,9 +15,13 @@ import {
     clearFormOptions,
     getDetailsListSort,
     pushSalaryRow,
-    signSalaryOfShiftThunkCreator
+
 } from '../../../../Redux/Redusers/salary-reduser';
-import { addEmployeeToGroupThunkCreator, getEmployeesListThunkCreator } from '../../../../Redux/Redusers/CommonFiles/thunks';
+import {
+    addEmployeeToGroupThunkCreator,
+    getEmployeesListThunkCreator,
+    signSalaryToShiftThunkCreator
+} from '../../../../Redux/Redusers/CommonFiles/thunks';
 import {
     addSalaryRowToShift,
     clearAccureState, delEmployeeFromGroup,
@@ -122,7 +126,7 @@ let mapDispatchToProps = (dispatch) => {
             dispatch(addSalaryRowToShift(data))
         },
         signSalaryShift: (data) => {
-            dispatch(signSalaryOfShiftThunkCreator(data))
+            dispatch(signSalaryToShiftThunkCreator(data))
         },
 
         clearFormOptions:()=>{

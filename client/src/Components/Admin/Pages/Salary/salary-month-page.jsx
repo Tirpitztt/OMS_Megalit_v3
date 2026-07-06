@@ -114,15 +114,15 @@ const SalaryMonthPage = (props) => {
                     </div>
                     <div className={c.form_content_box}>
                         <div className={c.table_box}>
-                            <SalaryBaseForm state={props.state}
-                                active={props.state.formOptions.baseActive}
-                                setWorkOperationName={props.setWorkOperationName}
-                                getWorkOperationsGroup={props.getWorkOperationsGroup}
-                                getDetailsList={props.getDetailsList}
-                                getDetailsListSort={props.getDetailsListSort }
-                                pushSalaryRow={props.pushSalaryRow}
-                                signSalaryShift={props.signSalaryShift}
-                            />
+                            {/*<SalaryBaseForm state={props.state}*/}
+                            {/*    active={props.state.formOptions.baseActive}*/}
+                            {/*    setWorkOperationName={props.setWorkOperationName}*/}
+                            {/*    getWorkOperationsGroup={props.getWorkOperationsGroup}*/}
+                            {/*    getDetailsList={props.getDetailsList}*/}
+                            {/*    getDetailsListSort={props.getDetailsListSort }*/}
+                            {/*    pushSalaryRow={props.pushSalaryRow}*/}
+                            {/*    signSalaryShift={props.signSalaryShift}*/}
+                            {/*/>*/}
                         </div>
                         <div className={c.table_box }>
                             <div className={c.form_table_title_row}>

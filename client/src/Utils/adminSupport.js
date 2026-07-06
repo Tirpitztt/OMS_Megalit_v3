@@ -149,12 +149,13 @@ export const getTypeOperationOnRus = (type) => {
         case FORM_POLISH:{return 'шлифовка'}
         case FORM_VARIED:{return 'разное'}
         case FORM_MONTAZ:{return 'монтаж'}
-        default:return null
+        default:return 'no data'
     }
 }
 
 export const getSalaryList = (arr,c) => {
     let result = []
+
     if (arr.length) {
         result = arr.map((item, i) => {
             return <div key={i} className={c.row_salary_info }>

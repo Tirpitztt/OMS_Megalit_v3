@@ -258,6 +258,7 @@ class UserController {
             if(user){
                  result = {
                     id:user.id,
+                     date:req.body.date,
                     name:user.full_name,
                     shifts:user.work_shifts
                 }

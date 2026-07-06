@@ -1,5 +1,5 @@
 import {
-    ADD_EMPLOYEE_TO_GROUP,
+    ADD_EMPLOYEE_TO_GROUP, ADD_SALARY_ROW,
     CLEAR_ACCURE_STATE, DEL_EMPLOYEE_FROM_GROUP,
     FORM_SALARY_ROW_PUSH, GET_EMPLOYEES_LIST, SET_SHIFT_DATE, SET_WORKSHOP_VALUE
 } from "../../Utils/variables-const";
@@ -40,6 +40,10 @@ const AccureReduser = (state = initialState, action) => {
         }
         case ADD_EMPLOYEE_TO_GROUP: {
             let newState = { ...state }
+            if(newState.shiftData.employeesShiftGroup.length){
+                newState.shiftData.employeesShiftGroup = newState.shiftData.employeesShiftGroup.filter((item)=>
+                    item.id !== action.data.id)
+            }
             newState.shiftData.employeesShiftGroup.push(action.data)
             return newState
         }
@@ -56,10 +60,12 @@ const AccureReduser = (state = initialState, action) => {
                     item.id !== action.data.id)
             return newState
         }
-        case FORM_SALARY_ROW_PUSH:{
+        case ADD_SALARY_ROW:{
             let newState = {...state}
             for(let item of newState.shiftData.employeesShiftGroup){
-                item.shifts[0].salarys.push(action.data)
+                let salaryData = {...action.data}
+                salaryData.shiftID = item.shifts[0].id
+                item.shifts[0].salarys.push(salaryData)
             }
             return newState
         }
@@ -78,7 +84,7 @@ export const setShiftDate = (data) => ({ type: SET_SHIFT_DATE, data })
 export const setWorkShopValue = (data) => ({ type: SET_WORKSHOP_VALUE, data })
 export const addEmployeeToGroup = (data) => ({ type: ADD_EMPLOYEE_TO_GROUP,data })
 export const delEmployeeFromGroup = (data) => ({type:DEL_EMPLOYEE_FROM_GROUP,data})
-export const addSalaryRowToShift = (data) => ({type:FORM_SALARY_ROW_PUSH,data})
+export const addSalaryRowToShift = (data) => ({type:ADD_SALARY_ROW,data})
 export const clearAccureState = () => ({type:CLEAR_ACCURE_STATE})
 
 export default AccureReduser;

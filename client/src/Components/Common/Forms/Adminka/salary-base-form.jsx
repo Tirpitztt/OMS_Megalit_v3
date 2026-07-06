@@ -24,10 +24,10 @@ const SalaryBaseForm = (props) => {
     const [operationAmount,setOperationAmount] = useState(1)
     const [operationSumma,setOperationSumma] = useState(0)
     const [operationNotice,setOperationNotice] = useState('')
-    useEffect(()=>{
-        setOperationSumma(setOperationsSum(props.state.formOptions.workOperationsInit, dataSum,
-            operationAmount, 'dataSum.1.cost', setValue, setOperationName))
-    },[JSON.stringify(dataSum)])
+    // useEffect(()=>{
+    //     setOperationSumma(setOperationsSum(props.state.formOptions.workOperationsInit, dataSum,
+    //         operationAmount, 'dataSum.1.cost', setValue, setOperationName))
+    // },[JSON.stringify(dataSum)])
 
     let accessorialFields = null
     if(props.state.formOptions.workShop === FORM_POLISH){

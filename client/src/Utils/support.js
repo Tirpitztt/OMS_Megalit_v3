@@ -305,7 +305,7 @@ export const detailSort = (data) => {
 export const setOperationsSum = (operations,data,amount,fieldKey,
                                 valueFunction,setNameFunction) => {
     let sum = 0
-    console.log(data)
+    //console.log(data)
     if(operations.length && data !== undefined){
         operations.forEach(item=>{
             if(item.id == data[0].id){

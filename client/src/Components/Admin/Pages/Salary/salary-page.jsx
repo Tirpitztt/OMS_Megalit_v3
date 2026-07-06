@@ -73,7 +73,7 @@ const SalaryPage = (props) => {
             getWorkOperationsGroup={props.getWorkOperationsGroup}
             getDetailsListSort={props.getDetailsListSort}
             pushSalaryRow={props.pushSalaryRow}
-            signSalaryShift={props.signSalaryShift}
+            //signSalaryShift={props.signSalaryShift}
             rate={rate}
         />,
         <SalaryAccurePage
@@ -85,6 +85,7 @@ const SalaryPage = (props) => {
             addEmployeeToGroup={props.addEmployeeToGroup}
             delEmployeeFromGroup={props.delEmployeeFromGroup}
             addSalaryRowToShift={props.addSalaryRowToShift}
+            signSalaryShift={props.signSalaryShift}
             back={setDisplayBack}
 
 
@@ -100,7 +101,7 @@ const SalaryPage = (props) => {
                 <div className={c.header_button_box}>
                     <div className={c.salary_accure_button}
                         onClick={setAccurePage}
-                    >Accure</div>
+                    >Подсчет ЗП</div>
                 </div>
             </div>
             <div className={c.content}>

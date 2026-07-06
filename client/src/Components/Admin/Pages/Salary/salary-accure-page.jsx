@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import c from './salary.module.css'
 import { WORKSHOP_NAMES } from '../../../../Utils/variables-const'
-import {getSalaryList, getShiftStatus} from "../../../../Utils/adminSupport";
+import {getSalaryList, getShiftStatus, getTypeOperationOnRus} from "../../../../Utils/adminSupport";
 import {useForm} from "react-hook-form";
 import {setOperationsSum} from "../../../../Utils/support";
 import {buildFloat} from "../../../../Utils/buildNum";
@@ -24,6 +24,12 @@ const SalaryAccurePage = (props) => {
     const workShopOP = WORKSHOP_NAMES.map((item, i) => {
         return <option key={i } value={item.value }>{item.text }</option>
     })
+    const signSalaryToShift = (salarys,id,date) => {
+        const body = {
+            salarys,id,date
+        }
+        props.signSalaryShift(body)
+    }
     let employeesGroup = props.accureState.shiftData.employeesShiftGroup.map((item, i) => {
         const salaryList = getSalaryList(item.shifts[0].salarys,c)
         return <div className={c.employee_info_block}>
@@ -33,7 +39,9 @@ const SalaryAccurePage = (props) => {
                 >удалить</div>
                 <div>{item.id }</div><div>{item.name }</div>
                 <div>{getShiftStatus(item.shifts[0])}</div>
-                <div className={c.sign_employee_button}
+                <div
+                    onClick={()=>signSalaryToShift(item.shifts[0].salarys,item.id,item.date)}
+                    className={c.sign_employee_button}
                 >подписать</div>
             </div>
             <div>
@@ -54,6 +62,7 @@ const SalaryAccurePage = (props) => {
 
     }
     const onSubmit = (body) => {
+        //console.log('body1: ',body)
         if(props.accureState.shiftData.employeesShiftGroup.length){
             body.workId = dataSum[0].id
             body.workName = operationName
@@ -62,7 +71,7 @@ const SalaryAccurePage = (props) => {
             body.amount = buildFloat(operationAmount/props.accureState.shiftData.employeesShiftGroup.length)
             body.summa = buildFloat(operationSumma/props.accureState.shiftData.employeesShiftGroup.length)
             body.signature = false
-            console.log(body)
+            //console.log('body2:',body)
             reset()
             props.addSalaryRowToShift(body)
         }
@@ -71,24 +80,24 @@ const SalaryAccurePage = (props) => {
     return (
         <div>
             <div className={c.page_title_box }>
-                <div onClick={props.back}>back</div>
+                <div className={c.back_button} onClick={props.back}><p>&#8617;</p></div>
                 <div><p>Калькуляция ЗП</p></div>
                 <div className={c.select_title_wrap }>
                     <div className={c.select_title_box}>
-                        <label>дата:</label>
+
                         <input type='date'
                                value={props.accureState.shiftData.date}
                                onChange={(e)=>props.setShiftDate(e.target.value) } />
                     </div>
                     <div className={c.select_title_box}>
-                        <label>цех:</label>
+
                         <select onChange={(e) => selectTypeForm(e.target.value)}>
                             <option value={null}>Выбрать цех</option>
                             {workShopOP}
                         </select>
                     </div>
                     <div className={c.select_title_box}>
-                        <label>сотрудники:</label>
+
                         <select
                             onChange={(e) => selectEmployee(e.target.value)}>
                             <option value={null}>Выбрать сотрудника</option>
@@ -101,10 +110,10 @@ const SalaryAccurePage = (props) => {
             <div className={c.accure_form_box }>
                 <div className={c.form_title_box}>
                     <div className={c.form_title_box_item}>
-                        <div>{props.accureState.shiftData.date }</div>
+                        <div className={c.form_title_box_item_date}>{props.accureState.shiftData.date }</div>
                     </div>
                     <div className={c.form_title_box_item}>
-                        <div>{props.accureState.shiftData.workShop}</div>
+                        <div>{getTypeOperationOnRus(props.accureState.shiftData.workShop).toUpperCase()}</div>
                     </div>
 
                 </div>
@@ -140,6 +149,11 @@ const SalaryAccurePage = (props) => {
                                 <label></label>
                                 <button type='submit' className={c.add_sal_button}>добавить</button>
                             </div>
+                        </div>
+                        <div className={c.form_salary_row}>
+                            <input {...register('notice')}
+                                onChange={(e)=>setOperationNotice(e.target.value)}
+                            />
                         </div>
                     </form>
                     <div className={c.accure_form_block}>

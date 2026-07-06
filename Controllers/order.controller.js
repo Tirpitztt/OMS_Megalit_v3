@@ -247,7 +247,7 @@ class OrderController {
             let resultObj = {customer,order,material}
             return res.json(resultObj)
         }catch (e) {
-            return res.status(500).json({message:'something huinia...'+ e.message});
+            return res.status(500).json({message:'something getOfNum huinia...'+ e.message});
         }
     }
     async getAllOrders(req,res) {
