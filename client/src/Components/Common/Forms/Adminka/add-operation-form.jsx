@@ -2,8 +2,8 @@ import React from 'react'
 import c from '../form.module.css'
 import {useForm} from "react-hook-form";
 import {buildFloat} from "../../../../Utils/buildNum";
-import {workOperationBodyBuilder} from "../../../../Utils/adminSupport";
-import {FORM_CONCREATE, FORM_MONTAZ, FORM_POLISH, FORM_VARIED} from "../../../../Utils/variables-const";
+import { workOperationBodyBuilder } from "../../../../Utils/adminSupport";
+import { FORM_CONCREATE, FORM_MONTAZ, FORM_POLISH, FORM_VARIED, FORM_CUT } from "../../../../Utils/variables-const";
 
 const AddOperationForm = (props)=> {
 
@@ -26,6 +26,7 @@ const AddOperationForm = (props)=> {
                         <option value={FORM_POLISH}>Шлифовка</option>
                         <option value={FORM_VARIED}>Разный</option>
                         <option value={FORM_MONTAZ}>Монтаж</option>
+                        <option value={FORM_CUT}>Распил</option>
                     </select>
                     {/*<input {...register('type')}/>*/}
                 </div>

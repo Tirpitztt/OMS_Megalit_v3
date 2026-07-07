@@ -1,7 +1,7 @@
 import {buildFloat, convertToInt} from "./buildNum";
 import {convertToDate, getDateEarlier} from "./dateTermin";
 import {dateFormat} from "./support";
-import {FORM_CONCREATE, FORM_MONTAZ, FORM_POLISH, FORM_VARIED} from "./variables-const";
+import {FORM_CONCREATE, FORM_CUT, FORM_MONTAZ, FORM_POLISH, FORM_VARIED} from "./variables-const";
 
 export const workOperationBodyBuilder = (body,rate,id=0)=> {
 
@@ -12,7 +12,7 @@ export const workOperationBodyBuilder = (body,rate,id=0)=> {
     body.bonus = buildFloat(body.bonus);
     let stavka = body.stavka;
 
-    body.BLR = (body.stavka + (stavka*(body.bonus/100))).toFixed(2);
+    body.BLR = (body.stavka + (stavka * (body.bonus/100))).toFixed(2);
     body.USD = (body.BLR/rate).toFixed(3);
 
     return body;
@@ -148,7 +148,8 @@ export const getTypeOperationOnRus = (type) => {
         case FORM_CONCREATE:{return 'заливка'}
         case FORM_POLISH:{return 'шлифовка'}
         case FORM_VARIED:{return 'разное'}
-        case FORM_MONTAZ:{return 'монтаж'}
+        case FORM_MONTAZ: { return 'монтаж' }
+        case FORM_CUT: {return 'распил' }
         default:return 'no data'
     }
 }

@@ -116,13 +116,15 @@ export const FORM_VARIED = 'FORM_VARIED'
 export const FORM_BASE = 'FORM_BASE'
 export const FORM_POLISH = 'FORM_POLISH'
 export const FORM_MONTAZ = 'FORM_MONTAZ'
+export const FORM_CUT = 'FORM_CUT'
 
 export const WORKSHOP_NAMES = [
     { value: FORM_CONCREATE, text: 'заливка' },
     { value: FORM_VARIED, text: 'разное' },
     { value: FORM_BASE, text: 'повременка' },
     { value: FORM_POLISH, text: 'шлифовка' },
-    { value: FORM_MONTAZ, text: 'установки' }
+    { value: FORM_MONTAZ, text: 'установки' },
+    { value: FORM_CUT,text:'распил' }
 ]
 
 export const SET_USERS_LIST = 'SET_USERS_LIST'

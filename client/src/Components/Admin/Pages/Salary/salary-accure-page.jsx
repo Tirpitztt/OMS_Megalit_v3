@@ -100,7 +100,7 @@ const SalaryAccurePage = (props) => {
 
                         <select
                             onChange={(e) => selectEmployee(e.target.value)}>
-                            <option value={null}>Выбрать сотрудника</option>
+                            <option value={null} >Выбрать сотрудника</option>
                             {props.accureState.accureData.employeesListOP}
                         </select>
                     </div>
@@ -136,7 +136,7 @@ const SalaryAccurePage = (props) => {
                             <div className={c.form_salary_column_box}>
                                 <label>кол-во</label>
                                 <input {...register('dataSum.2.amount',{
-                                    onChange:(e)=>setOperationAmount(e.target.value)
+                                    onChange:(e)=>setOperationAmount(buildFloat(e.target.value))
                                 })}/>
                             </div>
                             <div className={c.form_salary_column_box}>
