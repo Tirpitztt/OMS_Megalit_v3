@@ -392,6 +392,34 @@
     width:20%;
 }
 
+/*----------------------POLISH_FORM_SUPPORT---------------------------------*/
+.support_polish_field_box{
+    width:100%;
+}
+
+.row_form_box {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+}
+.col_form_box {
+    width:50%;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+}
+
+
+.size_row {
+    width:100%;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+}
+.size_row>input{
+    width:20%;
+}
+
 
 
 

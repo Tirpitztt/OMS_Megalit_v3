@@ -176,4 +176,12 @@ export const getSalaryList = (arr,c) => {
     return result
 }
 
+export const getSupportForm = (formsArr, key) => {
+    switch (key) {
+        case FORM_CONCREATE: { return formsArr[1] }
+        case FORM_POLISH: { return formsArr[0] }
+        default: return null
+    }
+}
+
 

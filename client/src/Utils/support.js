@@ -303,17 +303,20 @@ export const detailSort = (data) => {
 }
 
 export const setOperationsSum = (operations,data,amount,fieldKey,
-                                valueFunction,setNameFunction) => {
+                                valueFunction,setNameFunction,correctCost) => {
     let sum = 0
     //console.log(data)
-    if(operations.length && data !== undefined){
-        operations.forEach(item=>{
-            if(item.id == data[0].id){
-                valueFunction(fieldKey,item.BLR)
+    if (operations.length && data !== undefined && !correctCost) {
+        operations.forEach(item => {
+            if (item.id == data[0].id) {
+                valueFunction(fieldKey, item.BLR)
                 setNameFunction(item.name)
                 sum = item.BLR * amount
             }
         })
+    } else if (operations.length && data !== undefined && correctCost) {
+        valueFunction(fieldKey, correctCost)
+        sum = correctCost * amount
     }
     //console.log(data)
     return buildFloat(sum).toFixed(2)
