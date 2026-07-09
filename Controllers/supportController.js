@@ -142,7 +142,8 @@ class SupportController {
                 });
             }
 
-            return res.json(operations);
+
+            return res.json(operations.sort(((a,b)=>a.name.localeCompare(b.name,'ru'))));
         } catch (e) {
             return res.status(500).json({ message: 'something problem...' + e.message });
         }

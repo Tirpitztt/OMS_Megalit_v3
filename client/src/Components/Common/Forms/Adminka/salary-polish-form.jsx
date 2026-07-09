@@ -2,19 +2,19 @@ import React, {useState, useEffect } from 'react'
 import c from "../form.module.css";
 import {useForm } from 'react-hook-form'
 import { buildFloat } from '../../../../Utils/buildNum';
-import { getSizeSq, getTempCost } from '../../../../Utils/support';
+import {getSizeSq, getTempCost, getTempCostModel} from '../../../../Utils/support';
 import { SIZE_TYPE_FACE, SIZE_TYPE_FACET_AROUND, SIZE_TYPE_FACET_UP, SIZE_TYPE_FACE_AROUND } from '../../../../Utils/variables-const';
 
 
 const SalaryPolishForm = (props) => {
     const decSq = 100
-    const decV = 10000
+
     const costOfPolish = 22.63
+    const costOfFacet = 2.23
     
     const { register, watch, setValue, reset } = useForm()
     const sizeData = watch('sizeData')
-    //const checkData = watch('checkData')
-    const [detailData,setDetailData] =useState([])
+
     const [detWidth, setDetWidth] = useState(0)
     const [detHeight, setDetHeight] = useState(0)
     const [detWeight, setDetWeight] = useState(0)
@@ -35,10 +35,10 @@ const SalaryPolishForm = (props) => {
         
     }, [props.tempCost])
 
-    const onChangeAmount = (val) => {
-        props.setVal(props.amount, val)
-        props.setAmount(val)
-    }
+    // const onChangeAmount = (val) => {
+    //     props.setVal(props.amount, val)
+    //     props.setAmount(val)
+    // }
     const onChangeFaceCheck = (check) => {
         props.setTempCost(getTempCost(check, props.tempCost, costOfPolish,face))
         
@@ -52,13 +52,22 @@ const SalaryPolishForm = (props) => {
         
     }
     const onChangeFacetUpCheck = (check) => {
-        props.setTempCost(getTempCost(check, props.tempCost, 2.23, facetUp))
+        props.setTempCost(getTempCost(check, props.tempCost, costOfFacet, facetUp))
     }
     const onChangeFacetAroundCheck = (check) => {
-        props.setTempCost(getTempCost(check, props.tempCost, 2.23, facetAround))
+        props.setTempCost(getTempCost(check, props.tempCost, costOfFacet, facetAround))
     }
-    const onChangeModelCheck5 = (check) => {
-
+    const onChangeModelCheck1 = (check) => {
+        props.setTempCost(getTempCostModel(check,props.workOperations,props.tempCost,`Т-${detWeight} Iсл`))
+    }
+    const onChangeModelCheck2 = (check) => {
+        props.setTempCost(getTempCostModel(check,props.workOperations,props.tempCost,`Т-${detWeight} IIсл`))
+    }
+    const onChangeModelCheck3 = (check) => {
+        props.setTempCost(getTempCostModel(check,props.workOperations,props.tempCost,`Т-${detWeight} IIIсл`))
+    }
+    const onChangeModelCheck4 = (check) => {
+        props.setTempCost(getTempCostModel(check,props.workOperations,props.tempCost,`Т-${detWeight} IVсл`))
     }
     
     return (
@@ -75,19 +84,19 @@ const SalaryPolishForm = (props) => {
                     <div className={c.col_model_form_box}>
                         <div>Модели:</div>
                         <div className={c.row_model_form_box}>
-                            <div><input type='checkbox' /></div>
+                            <div><input type='checkbox' onChange={(e)=>onChangeModelCheck1(e.target.checked)} /></div>
                             <div>I сложность</div>
                         </div>
                         <div className={c.row_model_form_box}>
-                            <div><input type='checkbox' /></div>
+                            <div><input type='checkbox' onChange={(e)=>onChangeModelCheck2(e.target.checked)} /></div>
                             <div>II сложность</div>
                         </div>
                         <div className={c.row_model_form_box}>
-                            <div><input type='checkbox' /></div>
+                            <div><input type='checkbox' onChange={(e)=>onChangeModelCheck3(e.target.checked)} /></div>
                             <div>III сложность</div>
                         </div>
                         <div className={c.row_model_form_box}>
-                            <div><input type='checkbox' /></div>
+                            <div><input type='checkbox' onChange={(e)=>onChangeModelCheck4(e.target.checked)} /></div>
                             <div>IV сложность</div>
                         </div>
                     </div>
@@ -135,13 +144,6 @@ const SalaryPolishForm = (props) => {
                 {/*<input onChange={(e) => onChangeAmount(e.target.value)} />*/}
 
             </div>
-
-
-
-
-
-
-
             <div>
                 
 

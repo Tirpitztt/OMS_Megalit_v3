@@ -18,7 +18,7 @@ const SalaryAccurePage = (props) => {
     const [keyForm, setKeyForm] = useState(FORM_BASE)
     const [correctCost,setCorrectCost] = useState(0)
     const [operationName,setOperationName] = useState('')
-    const [operationAmount,setOperationAmount] = useState(1)
+    const [operationAmount,setOperationAmount] = useState(0)
     const [operationSumma,setOperationSumma] = useState(0)
     const [operationNotice, setOperationNotice] = useState('')
     const formsArray = [<SalaryPolishForm
@@ -28,7 +28,7 @@ const SalaryAccurePage = (props) => {
         setTempCost={setTempCost}
         setCorrectCost={setCorrectCost}
         amount={'dataSum.2.amount'}
-        setAmount={setOperationAmount}
+
         workOperations={props.state.individualSalaryState.formOptions.workOperationsInit }
         
     />,
@@ -85,6 +85,11 @@ const SalaryAccurePage = (props) => {
         }
 
     }
+    const onChangeAmountCheck = (val) => {
+        setOperationAmount(val)
+        console.log(val)
+        setValue('dataSum.2.amount',val)
+    }
     const onSubmit = (body) => {
         //console.log('body1: ',body)
         if(props.accureState.shiftData.employeesShiftGroup.length){
@@ -99,8 +104,8 @@ const SalaryAccurePage = (props) => {
             reset()
             setCorrectCost(0)
             setTempCost(0)
-            setOperationAmount(1)
-            
+            setOperationAmount(0)
+            //setValue('dataSum.2.amount',1)
             props.addSalaryRowToShift(body)
         }
 
@@ -162,8 +167,8 @@ const SalaryAccurePage = (props) => {
                             <div className={c.form_salary_column_box}>
                                 <label>кол-во</label>
                                 <input {...register('dataSum.2.amount',{
-                                    onChange:(e)=>setOperationAmount(buildFloat(e.target.value))
-                                })}/>
+                                    onChange:(e)=>onChangeAmountCheck(buildFloat(e.target.value))
+                                })} value={operationAmount}/>
                             </div>
                             <div className={c.form_salary_column_box}>
                                 <label>сумма</label>

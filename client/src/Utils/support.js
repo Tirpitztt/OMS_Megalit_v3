@@ -3,7 +3,17 @@ import {useBetonDetails} from "../Hooks/material.hook";
 import React from "react";
 import c from "../Components/PrintOrder/AdditionalAgreement/agree.module.css";
 import Detail from "./Classes/detail";
-import {DETAIL_NAMES, FENCE_NAMES, MONUMENT_NAMES, SHOP_NAMES, SIZE_TYPE_FACE, SIZE_TYPE_FACET_AROUND, SIZE_TYPE_FACET_UP, SIZE_TYPE_FACE_AROUND} from "./variables-const";
+import {
+    DETAIL_NAMES,
+    FENCE_NAMES,
+    MONUMENT_NAMES,
+    SHOP_NAMES,
+    SIZE_TYPE_FACE,
+    SIZE_TYPE_FACET_AROUND,
+    SIZE_TYPE_FACET_UP,
+    SIZE_TYPE_FACE_AROUND,
+    FORM_POLISH
+} from "./variables-const";
 import SalaryCalculateBody from "./Classes/salaryCalaculateBody";
 
 
@@ -642,15 +652,15 @@ export const getTempCostModel = (check,opArr, defaultValue,key) => {
     let cost = 0
     if (opArr.length) {
         for (let operation of opArr) {
-            if (operation.name.include(key)) {
+            if (operation.name.includes(key) && operation.type === FORM_POLISH) {
                 cost = operation.BLR
             }
         }
     }
     if (check && opArr.length) {
-
+        result = buildFloat(defaultValue + cost)
     } else if (defaultValue !== 0) {
-
+        result = buildFloat(defaultValue - cost)
     }
 
     return result

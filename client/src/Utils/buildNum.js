@@ -3,6 +3,7 @@ export const buildFloat = (num)=>{
     if(num === ''){
         return 0;
     }
+    //console.log(num)
     return parseFloat(num.replace(/,/,'.'));
 }
 
