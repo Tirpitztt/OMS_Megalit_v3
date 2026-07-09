@@ -13,6 +13,7 @@ const SalaryAccurePage = (props) => {
     console.log(props)
     const {register,handleSubmit,setValue,watch,reset} = useForm()
     const dataSum = watch('dataSum')
+    
     const [tempCost, setTempCost] = useState(0)
     const [keyForm, setKeyForm] = useState(FORM_BASE)
     const [correctCost,setCorrectCost] = useState(0)
@@ -24,10 +25,12 @@ const SalaryAccurePage = (props) => {
         setVal={setValue}
         cost={'dataSum.1.cost'}
         tempCost={tempCost}
-        setTempCost={setTempCost }
+        setTempCost={setTempCost}
         setCorrectCost={setCorrectCost}
         amount={'dataSum.2.amount'}
         setAmount={setOperationAmount}
+        workOperations={props.state.individualSalaryState.formOptions.workOperationsInit }
+        
     />,
         <SalaryConcreateForm state={props.state.individualSalaryState}
             getDetailsListSort={props.getDetailsListSort}
@@ -51,7 +54,7 @@ const SalaryAccurePage = (props) => {
     }
     let employeesGroup = props.accureState.shiftData.employeesShiftGroup.map((item, i) => {
         const salaryList = getSalaryList(item.shifts[0].salarys,c)
-        return <div className={c.employee_info_block}>
+        return <div key={ i} className={c.employee_info_block}>
             <div className={c.row_title_info}>
                 <div onClick={()=>props.delEmployeeFromGroup({id:item.id})}
                 className={c.del_employee_button}
@@ -73,6 +76,7 @@ const SalaryAccurePage = (props) => {
         props.setWorkShopValue(val)
         setKeyForm(props.accureState.shiftData.workShop)
     }
+    
     const selectEmployee = (val) => {
         if(val && props.accureState.shiftData.date){
             props.addEmployeeToGroup({id:val,date:props.accureState.shiftData.date})
@@ -96,6 +100,7 @@ const SalaryAccurePage = (props) => {
             setCorrectCost(0)
             setTempCost(0)
             setOperationAmount(1)
+            
             props.addSalaryRowToShift(body)
         }
 
@@ -145,9 +150,7 @@ const SalaryAccurePage = (props) => {
                         <div className={c.form_salary_row}>
                             <div className={c.form_salary_column_box}>
                                 <label></label>
-                                <select {...register('dataSum.0.id')}
-
-                                >
+                                <select {...register('dataSum.0.id')}>
                                     <option value="null">Выбрать операцию</option>
                                     {props.state.individualSalaryState.formOptions.workOperations }
                                 </select>

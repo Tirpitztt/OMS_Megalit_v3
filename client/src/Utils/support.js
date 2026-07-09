@@ -3,7 +3,7 @@ import {useBetonDetails} from "../Hooks/material.hook";
 import React from "react";
 import c from "../Components/PrintOrder/AdditionalAgreement/agree.module.css";
 import Detail from "./Classes/detail";
-import {DETAIL_NAMES, FENCE_NAMES, MONUMENT_NAMES, SHOP_NAMES} from "./variables-const";
+import {DETAIL_NAMES, FENCE_NAMES, MONUMENT_NAMES, SHOP_NAMES, SIZE_TYPE_FACE, SIZE_TYPE_FACET_AROUND, SIZE_TYPE_FACET_UP, SIZE_TYPE_FACE_AROUND} from "./variables-const";
 import SalaryCalculateBody from "./Classes/salaryCalaculateBody";
 
 
@@ -608,4 +608,50 @@ export const getAgreeImgArray = (array) => {
 export const getDetailId = ()=>{
     return new Date().getTime()
 
+}
+
+export const getSizeSq = (type,width, height, weight) => {
+    
+    let w = width ? width / 100 : 0
+    let h = height ? height / 100 : 0
+    let l = weight ? weight / 100 : 0
+    switch (type) {
+        case SIZE_TYPE_FACE: { return (w * h).toFixed(2) }
+        case SIZE_TYPE_FACE_AROUND: { return (((w * h) * 2) + ((h * l) * 2) + (w * l)).toFixed(2) }
+        case SIZE_TYPE_FACET_UP: { return (w * 2).toFixed(2) }
+        case SIZE_TYPE_FACET_AROUND: {return ((w * 2) + (h * 4) + (l * 2)).toFixed(2) }
+        default:return 0
+    }
+
+    
+}
+
+export const getTempCost = (check, defaultValue, defaultCost, sizeData) => {
+    let result = 0
+    if (check) {
+        result = buildFloat(defaultValue + (defaultCost * sizeData)).toFixed(2)
+    } else if (defaultValue !== 0) {
+        result = buildFloat(defaultValue - (defaultCost * sizeData)).toFixed(2)
+    }
+    //console.log('res',result)
+    return buildFloat(result)
+
+}
+export const getTempCostModel = (check,opArr, defaultValue,key) => {
+    let result = 0
+    let cost = 0
+    if (opArr.length) {
+        for (let operation of opArr) {
+            if (operation.name.include(key)) {
+                cost = operation.BLR
+            }
+        }
+    }
+    if (check && opArr.length) {
+
+    } else if (defaultValue !== 0) {
+
+    }
+
+    return result
 }

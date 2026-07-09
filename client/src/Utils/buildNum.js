@@ -1,6 +1,6 @@
 export const buildFloat = (num)=>{
     num = num.toString();
-    if(num===''){
+    if(num === ''){
         return 0;
     }
     return parseFloat(num.replace(/,/,'.'));

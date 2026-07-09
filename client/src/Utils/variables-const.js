@@ -176,3 +176,10 @@ export const STELA_CHECK_ON = { value: 'стела', checked: false, checkOn: ()
 export const TUMBA_CHECK_ON = { value: 'подставка', checked: false, checkOn: () => true, checkOff: () => false }
 export const OTHER_CHECK_ON = { value: 'другое', checked: false, checkOn: () => true, checkOff: () => false }
 export const ALL_CHECK_ON = { value: 'all', checked: false, checkOn: () => true, checkOff: () => false }
+
+export const SIZE_TYPE_FACE = 'SIZE_TYPE_FACE'
+export const SIZE_TYPE_FACE_AROUND = 'SIZE_TYPE_FACE_AROUND'
+export const SIZE_TYPE_FACET_AROUND = 'SIZE_TYPE_FACET_AROUND'
+export const SIZE_TYPE_FACET_UP = 'SIZE_TYPE_FACET_UP'
+
+export const MODEL_DIFFICULT_5 = 'Т-5 Iсл'

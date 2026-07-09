@@ -408,8 +408,65 @@
     flex-flow: column nowrap;
     justify-content: space-between;
 }
-
-
+.col_model_form_box {
+    width: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: start;
+}
+.row_polish_form_box {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    height:1.2rem;
+    padding:3px;
+}
+.row_polish_form_box > div {
+    text-align: center;
+    font-size:.9rem;
+}
+.row_polish_form_box>div:nth-of-type(1){
+    width:10%;
+}
+.row_polish_form_box > div:nth-of-type(2) {
+     width: 10%;
+}
+.row_polish_form_box > div:nth-of-type(3) {
+     width: 10%;
+}
+.row_polish_form_box > div:nth-of-type(4) {
+     width: 50%;
+     text-align:end;
+}
+.row_polish_form_box > div:nth-of-type(5) {
+     width: 20%;
+     text-align:center;
+}
+.row_polish_form_box > div:nth-of-type(5)>input {
+     width: 20%;
+     height:.7rem;
+     cursor:pointer;
+}
+.row_model_form_box {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: start;
+    height: 1.2rem;
+    padding: 3px;
+}
+.row_model_form_box > div {
+    text-align: left;
+    font-size:.9rem;
+}
+.row_model_form_box > div:nth-of-type(1) {
+    width: 20%;
+     text-align:center;
+}
+.row_model_form_box > div > input {
+    width: 20%;
+     height:.7rem;
+     cursor:pointer;
+}
 .size_row {
     width:100%;
     display: flex;
