@@ -86,8 +86,8 @@ const SalaryAccurePage = (props) => {
 
     }
     const onChangeAmountCheck = (val) => {
-        setOperationAmount(val)
-        console.log(val)
+        setOperationAmount((val))
+        console.log(typeof(val))
         setValue('dataSum.2.amount',val)
     }
     const onSubmit = (body) => {
@@ -167,7 +167,7 @@ const SalaryAccurePage = (props) => {
                             <div className={c.form_salary_column_box}>
                                 <label>кол-во</label>
                                 <input {...register('dataSum.2.amount',{
-                                    onChange:(e)=>onChangeAmountCheck(buildFloat(e.target.value))
+                                    onChange:(e)=>onChangeAmountCheck((e.target.value))
                                 })} value={operationAmount}/>
                             </div>
                             <div className={c.form_salary_column_box}>

@@ -10,7 +10,7 @@ const SalaryPolishForm = (props) => {
     const decSq = 100
 
     const costOfPolish = 22.63
-    const costOfFacet = 2.23
+    const costOfFacet = 2.62
     
     const { register, watch, setValue, reset } = useForm()
     const sizeData = watch('sizeData')
@@ -23,7 +23,7 @@ const SalaryPolishForm = (props) => {
     const faceAround = getSizeSq(SIZE_TYPE_FACE_AROUND, detWidth, detHeight, detWeight)
     const facetUp = getSizeSq(SIZE_TYPE_FACET_UP, detWidth, detHeight, detWeight)
     const facetAround = getSizeSq(SIZE_TYPE_FACET_AROUND, detWidth, detHeight, detWeight)
-    const V = ((detHeight / decSq) * (detWidth / decSq) * (detWeight / decSq)) 
+    
 
     const onChangeCost = (val) => {
         props.setVal(props.cost, val)
@@ -31,14 +31,10 @@ const SalaryPolishForm = (props) => {
     }
     useEffect(() => {
         onChangeCost(props.tempCost)
-        //console.log(props.tempCost)
         
     }, [props.tempCost])
 
-    // const onChangeAmount = (val) => {
-    //     props.setVal(props.amount, val)
-    //     props.setAmount(val)
-    // }
+    
     const onChangeFaceCheck = (check) => {
         props.setTempCost(getTempCost(check, props.tempCost, costOfPolish,face))
         
