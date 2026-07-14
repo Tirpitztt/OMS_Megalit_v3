@@ -254,13 +254,18 @@
     display:flex;
     flex-flow:row nowrap;
 }
+
+.title_item_salary_row{
+    margin: 0 7px;
+    font-weight:bold;
+}
 .salaryRow {
-    width:100%;
+    width: 100%;
     display: flex;
     flex-flow: row nowrap;
-    justify-content:start;
-    border-bottom:1px dotted gray;
-    position:relative;
+    justify-content: start;
+    border-bottom: 1px dotted gray;
+    position: relative;
 }
 .salaryRowAct {
     width: 100%;
@@ -295,6 +300,17 @@
     width:15%;
     text-align:center;
     margin-left:5px;
+}
+.row_item>span{
+    font-style:italic;
+    font-size:.9rem;
+}
+.row_item_work_table{
+    margin: 0 15px;
+    width:25%;
+}
+.row_item_work_table>span{
+    font-weight:bold;
 }
 .row_salary_box{
     width:50%;
@@ -358,9 +374,9 @@
     flex-flow: row nowrap;
     justify-content: space-around;
 }
-    .form_table_title_row > div:nth-of-type(1), .table_work_operation > div:nth-of-type(1) {
+.form_table_title_row > div:nth-of-type(1), .table_work_operation > div:nth-of-type(1) {
         width: 50%;
-    }
+}
 .table_work_operation{
     
 }
