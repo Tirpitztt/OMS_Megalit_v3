@@ -123,6 +123,7 @@ const SalaryMonthPage = (props) => {
                  
                 <div className={c.form_box}>
                     <div className={c.form_title_box}>
+                        <div className={c.row_item_work_table}>Детализация смены  </div>
                         <div className={c.row_item_work_table}>Число: <span>{props.state.salaryFormState.date}</span></div>
                         <div className={c.row_item_work_table}>Статус: <span>{props.state.salaryFormState.status}</span></div>
                     </div>
@@ -132,7 +133,7 @@ const SalaryMonthPage = (props) => {
                             <div className={c.form_table_title_row}>
                                 <div>операция</div>
                                 <div>описание</div>
-                                <div>стоимость</div>
+                                <div>стоим</div>
                                 <div>кол-во</div>
                                 <div>сумма</div>
                                 

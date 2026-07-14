@@ -90,6 +90,13 @@ const SalaryAccurePage = (props) => {
         console.log(typeof(val))
         setValue('dataSum.2.amount',val)
     }
+    const clearFormState = () => {
+        reset()
+        setCorrectCost(0)
+        setTempCost(0)
+        setOperationAmount(0)
+        setOperationNotice('')
+    }
     const onSubmit = (body) => {
         //console.log('body1: ',body)
         if(props.accureState.shiftData.employeesShiftGroup.length){
@@ -100,12 +107,7 @@ const SalaryAccurePage = (props) => {
             body.amount = buildFloat(operationAmount/props.accureState.shiftData.employeesShiftGroup.length)
             body.summa = buildFloat(operationSumma/props.accureState.shiftData.employeesShiftGroup.length)
             body.signature = false
-            //console.log('body2:',body)
-            reset()
-            setCorrectCost(0)
-            setTempCost(0)
-            setOperationAmount(0)
-            //setValue('dataSum.2.amount',1)
+            clearFormState()
             props.addSalaryRowToShift(body)
         }
 

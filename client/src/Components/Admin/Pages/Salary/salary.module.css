@@ -110,6 +110,7 @@
 }
 .table_user_box{
     width:30%;
+    cursor:pointer;
 }
 .table_timesheet {
     width: 70%;
@@ -266,6 +267,7 @@
     justify-content: start;
     border-bottom: 1px dotted gray;
     position: relative;
+    cursor:pointer;
 }
 .salaryRowAct {
     width: 100%;
@@ -322,6 +324,7 @@
     display:flex;
     flex-flow:row nowrap;
     justify-content:start;
+    height:2rem;
 }
 .form_content_box{
 
@@ -373,9 +376,26 @@
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-around;
+    background-color:beige;
+}
+.form_table_title_row > div{
+    font-style:italic;
+    border-bottom:1px solid gray;
+}
+.table_work_operation > div{
+    border-bottom:1px dotted gray;
+}
+.form_table_title_row > div, .table_work_operation > div {
+        width: 7%;
+        text-align:center;
 }
 .form_table_title_row > div:nth-of-type(1), .table_work_operation > div:nth-of-type(1) {
-        width: 50%;
+        width: 30%;
+        text-align:left;
+}
+.form_table_title_row > div:nth-of-type(2), .table_work_operation > div:nth-of-type(2) {
+        width: 40%;
+        text-align: left;
 }
 .table_work_operation{
     
