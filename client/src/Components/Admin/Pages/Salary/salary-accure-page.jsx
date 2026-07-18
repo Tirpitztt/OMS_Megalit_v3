@@ -10,7 +10,7 @@ import SalaryConcreateForm from '../../../Common/Forms/Adminka/salary-concreate-
 
 
 const SalaryAccurePage = (props) => {
-    console.log(props)
+    //console.log(props)
     const {register,handleSubmit,setValue,watch,reset} = useForm()
     const dataSum = watch('dataSum')
     
@@ -28,7 +28,8 @@ const SalaryAccurePage = (props) => {
         setTempCost={setTempCost}
         setCorrectCost={setCorrectCost}
         amount={'dataSum.2.amount'}
-
+        polishFormState={props.supportFormState.polishForm}
+        setPolishModelValue={props.setPolishModelValue}
         workOperations={props.state.individualSalaryState.formOptions.workOperationsInit }
         
     />,

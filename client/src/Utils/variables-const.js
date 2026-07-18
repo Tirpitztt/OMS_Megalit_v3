@@ -182,4 +182,8 @@ export const SIZE_TYPE_FACE_AROUND = 'SIZE_TYPE_FACE_AROUND'
 export const SIZE_TYPE_FACET_AROUND = 'SIZE_TYPE_FACET_AROUND'
 export const SIZE_TYPE_FACET_UP = 'SIZE_TYPE_FACET_UP'
 
-export const MODEL_DIFFICULT_5 = 'Т-5 Iсл'
+//--------------------FORM-REDUSER-----------------------------------------
+
+export const SET_POLISH_MODEL_VALUE = 'SET_POLISH_MODEL_VALUE'
+
+

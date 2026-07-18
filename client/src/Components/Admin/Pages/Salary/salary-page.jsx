@@ -8,7 +8,7 @@ import SalaryAccurePage from './salary-accure-page';
 
 
 const SalaryPage = (props) => {
-    //console.log(props.state.dataMonth.month)
+    //console.log(props)
     const [rate,setRate] = useState(0)
     const [materials] = useMaterials()
     const [displayNum,setDisplayNum] = useState(0)
@@ -79,6 +79,7 @@ const SalaryPage = (props) => {
         <SalaryAccurePage
             state={props.state}
             accureState={props.accureState}
+            supportFormState={props.supportFormState }
             setShiftDate={props.setShiftDate}
             setWorkShopValue={props.setWorkShopValue}
             getWorkOperationsGroup={props.getWorkOperationsGroup}
@@ -88,6 +89,7 @@ const SalaryPage = (props) => {
             getDetailsListSort={props.getDetailsListSort}
             addSalaryRowToShift={props.addSalaryRowToShift}
             signSalaryShift={props.signSalaryShift}
+            setPolishModelValue={props.setPolishModelValue}
             back={setDisplayBack}
 
 

@@ -1,4 +1,5 @@
 import {setEditDetailState} from "../../Utils/support";
+import { SET_POLISH_MODEL_VALUE } from "../../Utils/variables-const";
 
 
 const SET_STATE = 'SET_STATE';
@@ -30,6 +31,23 @@ let initialState = {
         fieldsArr:[],
         fieldsMat:[],
         fieldsWork:[]
+    },
+    supportFormState: {
+        tempCost:0,
+        polishForm: {
+            w: null,
+            h: null,
+            l: null,
+            modelValue: {
+                one: false,
+                two: false,
+                three: false,
+                four: false
+            },
+            modelVal: [
+                {val:false,cost:0}
+            ]
+        }
     }
 }
 
@@ -97,6 +115,19 @@ const FormReduser = (state=initialState,action)=>{
             //console.log('clear',newState.form.fieldsWork)
             return newState;
         }
+        case SET_POLISH_MODEL_VALUE: {
+            let newState = { ...state }
+            const keys = Object.keys(newState.supportFormState.polishForm.modelValue)
+            for (let key of keys) {
+                if (action.data.type === key) {
+                    newState.supportFormState.polishForm.modelValue[key] = action.data.value
+                } else {
+                    newState.supportFormState.polishForm.modelValue[key] = false
+                }
+            }
+            
+            return newState
+        }
         default: return state
     }
 }
@@ -110,6 +141,7 @@ export const setEditElement = (data)=>({type:SET_EDIT_ELEMENT,data});
 export const setEditDetail = (data)=>({type:SET_EDIT_DETAIL,data})
 export const fieldsArrClear = ()=>({type:FIELDS_ARR_CLEAR})
 export const setEditStone = (data)=>({type:SET_EDIT_STONE,data})
-export const setEditGds = (data)=>({type:SET_EDIT_GDS,data})
+export const setEditGds = (data) => ({ type: SET_EDIT_GDS, data })
+export const setPolishModelValue = (data) => ({ type: SET_POLISH_MODEL_VALUE,data })
 
 export default FormReduser;

@@ -28,6 +28,7 @@ import {
     setShiftDate,
     setWorkShopValue
 } from '../../../../Redux/Redusers/accure-reduser';
+import { setPolishModelValue } from '../../../../Redux/Redusers/form-reduser';
 //import { getMonthDays} from '../../../../Utils/dateTermin';
 
 class SalaryContainer extends React.Component{
@@ -42,7 +43,8 @@ class SalaryContainer extends React.Component{
     render() {
         return(
             <SalaryPage state={this.props.state.salaryPage}
-                accureState={this.props.state.accurePage }
+                accureState={this.props.state.accurePage}
+                supportFormState={this.props.state.formState.supportFormState }
                 getShiftsByMonth={this.props.getShiftsByMonth}
                 getEmployeesList={this.props.getEmployeesList}
                 saveShiftByUser={this.props.saveShiftByUser}
@@ -62,7 +64,8 @@ class SalaryContainer extends React.Component{
                 pushSalaryRow={this.props.pushSalaryRow}
                         //
                 signSalaryShift={this.props.signSalaryShift}
-                getDetailsListSort={this.props.getDetailsListSort }
+                getDetailsListSort={this.props.getDetailsListSort}
+                setPolishModelValue={this.props.setPolishModelValue}
                         clearFormOptions={this.props.clearFormOptions}
                         clearAccureState={this.props.clearAccureState}
             />
@@ -127,6 +130,9 @@ let mapDispatchToProps = (dispatch) => {
         },
         signSalaryShift: (data) => {
             dispatch(signSalaryToShiftThunkCreator(data))
+        },
+        setPolishModelValue: (data) => {
+            dispatch(setPolishModelValue(data))
         },
 
         clearFormOptions:()=>{
