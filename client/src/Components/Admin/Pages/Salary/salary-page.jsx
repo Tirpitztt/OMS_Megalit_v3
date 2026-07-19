@@ -90,6 +90,9 @@ const SalaryPage = (props) => {
             addSalaryRowToShift={props.addSalaryRowToShift}
             signSalaryShift={props.signSalaryShift}
             setPolishModelValue={props.setPolishModelValue}
+            sizeDetailChange={props.sizeDetailChange}
+            setProcessingChange={props.setProcessingChange}
+            clearSupportForm={props.clearSupportForm}
             back={setDisplayBack}
 
 

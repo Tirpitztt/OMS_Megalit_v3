@@ -178,6 +178,7 @@ export const OTHER_CHECK_ON = { value: 'другое', checked: false, checkOn: 
 export const ALL_CHECK_ON = { value: 'all', checked: false, checkOn: () => true, checkOff: () => false }
 
 export const SIZE_TYPE_FACE = 'SIZE_TYPE_FACE'
+export const SIZE_TYPE_TWO_FACES = 'SIZE_TYPE_TWO_FACES'
 export const SIZE_TYPE_FACE_AROUND = 'SIZE_TYPE_FACE_AROUND'
 export const SIZE_TYPE_FACET_AROUND = 'SIZE_TYPE_FACET_AROUND'
 export const SIZE_TYPE_FACET_UP = 'SIZE_TYPE_FACET_UP'
@@ -185,5 +186,16 @@ export const SIZE_TYPE_FACET_UP = 'SIZE_TYPE_FACET_UP'
 //--------------------FORM-REDUSER-----------------------------------------
 
 export const SET_POLISH_MODEL_VALUE = 'SET_POLISH_MODEL_VALUE'
+export const SET_PROCESSING_CHANGE = 'SET_PROCESSING_CHANGE'
+export const SIZE_DETAIL_CHANGE = 'SIZE_DETAIL_CHANGE'
+export const WIDTH = 'WIDTH'
+export const HEIGHT = 'HEIGHT'
+export const WEIGHT = 'WEIGHT'
+export const TYPE_MODEL_ONE = 'one'
+export const TYPE_MODEL_TWO = 'two'
+export const TYPE_MODEL_THREE = 'three'
+export const TYPE_MODEL_FOUR = 'four'
+export const PROCESSING_CHECK = 'PROCESSING_CHECK'
+export const CLEAR_SUPPORT_FORM_STATE = 'CLEAR_SUPPORT_FORM_STATE'
 
 

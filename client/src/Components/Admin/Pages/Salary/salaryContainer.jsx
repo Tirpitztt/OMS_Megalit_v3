@@ -28,7 +28,12 @@ import {
     setShiftDate,
     setWorkShopValue
 } from '../../../../Redux/Redusers/accure-reduser';
-import { setPolishModelValue } from '../../../../Redux/Redusers/form-reduser';
+import {
+    clearSupportFormState,
+    setPolishModelValue,
+    setProcessingChange,
+    sizeDetailChange
+} from '../../../../Redux/Redusers/form-reduser';
 //import { getMonthDays} from '../../../../Utils/dateTermin';
 
 class SalaryContainer extends React.Component{
@@ -66,8 +71,11 @@ class SalaryContainer extends React.Component{
                 signSalaryShift={this.props.signSalaryShift}
                 getDetailsListSort={this.props.getDetailsListSort}
                 setPolishModelValue={this.props.setPolishModelValue}
+                        sizeDetailChange={this.props.sizeDetailChange}
+                        setProcessingChange={this.props.setProcessingChange}
                         clearFormOptions={this.props.clearFormOptions}
                         clearAccureState={this.props.clearAccureState}
+                        clearSupportForm={this.props.clearSupportForm}
             />
         )
     }
@@ -134,12 +142,20 @@ let mapDispatchToProps = (dispatch) => {
         setPolishModelValue: (data) => {
             dispatch(setPolishModelValue(data))
         },
-
+        sizeDetailChange:(data)=>{
+            dispatch(sizeDetailChange(data))
+        },
+        setProcessingChange:(data)=>{
+            dispatch(setProcessingChange(data))
+        },
         clearFormOptions:()=>{
             dispatch(clearFormOptions())
         },
         clearAccureState:()=>{
             dispatch(clearAccureState())
+        },
+        clearSupportForm:() => {
+            dispatch(clearSupportFormState())
         }
         
 

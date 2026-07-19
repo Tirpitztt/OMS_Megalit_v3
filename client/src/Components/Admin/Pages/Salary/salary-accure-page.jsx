@@ -30,6 +30,8 @@ const SalaryAccurePage = (props) => {
         amount={'dataSum.2.amount'}
         polishFormState={props.supportFormState.polishForm}
         setPolishModelValue={props.setPolishModelValue}
+        sizeDetailChange={props.sizeDetailChange}
+        setProcessingChange={props.setProcessingChange}
         workOperations={props.state.individualSalaryState.formOptions.workOperationsInit }
         
     />,
@@ -97,6 +99,7 @@ const SalaryAccurePage = (props) => {
         setTempCost(0)
         setOperationAmount(0)
         setOperationNotice('')
+        props.clearSupportForm()
     }
     const onSubmit = (body) => {
         //console.log('body1: ',body)

@@ -1,5 +1,12 @@
-import {setEditDetailState} from "../../Utils/support";
-import { SET_POLISH_MODEL_VALUE } from "../../Utils/variables-const";
+import {getSizeSq, setEditDetailState} from "../../Utils/support";
+import {
+    CLEAR_SUPPORT_FORM_STATE,
+    HEIGHT,
+    SET_POLISH_MODEL_VALUE, SET_PROCESSING_CHANGE,
+    SIZE_DETAIL_CHANGE, SIZE_TYPE_FACE, SIZE_TYPE_FACE_AROUND, SIZE_TYPE_FACET_AROUND, SIZE_TYPE_FACET_UP,
+    WEIGHT,
+    WIDTH
+} from "../../Utils/variables-const";
 
 
 const SET_STATE = 'SET_STATE';
@@ -35,9 +42,23 @@ let initialState = {
     supportFormState: {
         tempCost:0,
         polishForm: {
-            w: null,
-            h: null,
-            l: null,
+            w: '',
+            h: '',
+            l: '',
+            sizes:{
+                face:0,
+                twoFaces:0,
+                faceAround:0,
+                facetUp:0,
+                facetAround:0
+            },
+            processing:{
+                face:false,
+                twoFaces:false,
+                faceAround:false,
+                facetUp:false,
+                facetAround:false
+            },
             modelValue: {
                 one: false,
                 two: false,
@@ -128,6 +149,35 @@ const FormReduser = (state=initialState,action)=>{
             
             return newState
         }
+        case SIZE_DETAIL_CHANGE:{
+            let newState = {...state}
+            if(action.data.type === HEIGHT){
+                newState.supportFormState.polishForm.h = action.data.val
+            }else if(action.data.type === WIDTH){
+                newState.supportFormState.polishForm.w = action.data.val
+            }else if(action.data.type === WEIGHT){
+                newState.supportFormState.polishForm.l = action.data.val
+            }
+            newState.supportFormState.polishForm.sizes.face = getSizeSq(SIZE_TYPE_FACE,newState.supportFormState.polishForm.w,newState.supportFormState.polishForm.h,newState.supportFormState.polishForm.l)
+            newState.supportFormState.polishForm.sizes.twoFaces = newState.supportFormState.polishForm.sizes.face * 2
+            newState.supportFormState.polishForm.sizes.faceAround = getSizeSq(SIZE_TYPE_FACE_AROUND,newState.supportFormState.polishForm.w,newState.supportFormState.polishForm.h,newState.supportFormState.polishForm.l)
+            newState.supportFormState.polishForm.sizes.facetUp = getSizeSq(SIZE_TYPE_FACET_UP,newState.supportFormState.polishForm.w,newState.supportFormState.polishForm.h,newState.supportFormState.polishForm.l)
+            newState.supportFormState.polishForm.sizes.facetAround = getSizeSq(SIZE_TYPE_FACET_AROUND,newState.supportFormState.polishForm.w,newState.supportFormState.polishForm.h,newState.supportFormState.polishForm.l)
+
+            return newState
+        }
+        case SET_PROCESSING_CHANGE:{
+            let newState = {...state}
+            console.log(action.data)
+            return newState
+        }
+        case CLEAR_SUPPORT_FORM_STATE:{
+            let newState = {...state}
+            newState.supportFormState.polishForm.h = ''
+            newState.supportFormState.polishForm.w = ''
+            newState.supportFormState.polishForm.l = ''
+            return newState
+        }
         default: return state
     }
 }
@@ -143,5 +193,9 @@ export const fieldsArrClear = ()=>({type:FIELDS_ARR_CLEAR})
 export const setEditStone = (data)=>({type:SET_EDIT_STONE,data})
 export const setEditGds = (data) => ({ type: SET_EDIT_GDS, data })
 export const setPolishModelValue = (data) => ({ type: SET_POLISH_MODEL_VALUE,data })
+export const setProcessingChange = (data)=>({type:SET_PROCESSING_CHANGE,data})
+export const sizeDetailChange = (data) => ({type:SIZE_DETAIL_CHANGE,data})
+export const clearSupportFormState = () => ({type:CLEAR_SUPPORT_FORM_STATE})
+
 
 export default FormReduser;
