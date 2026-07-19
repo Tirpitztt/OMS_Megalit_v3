@@ -182,11 +182,21 @@ export const SIZE_TYPE_TWO_FACES = 'SIZE_TYPE_TWO_FACES'
 export const SIZE_TYPE_FACE_AROUND = 'SIZE_TYPE_FACE_AROUND'
 export const SIZE_TYPE_FACET_AROUND = 'SIZE_TYPE_FACET_AROUND'
 export const SIZE_TYPE_FACET_UP = 'SIZE_TYPE_FACET_UP'
+export const PROCESS_TYPE_FACE = 'face'
+export const PROCESS_TYPE_TWO_FACES = 'twoFaces'
+export const PROCESS_TYPE_FACE_AROUND = 'faceAround'
+export const PROCESS_TYPE_FACET_UP = 'facetUp'
+export const PROCESS_TYPE_FACET_AROUND = 'facetAround'
+export const OPERATION_POLISH_FACE = 'полировка лица'
+export const OPERATION_POLISH_FACET = 'полировка фаски 0-10'
+export const OPERATION_POLISH_SIDE = 'полировка торца'
+
 
 //--------------------FORM-REDUSER-----------------------------------------
 
 export const SET_POLISH_MODEL_VALUE = 'SET_POLISH_MODEL_VALUE'
 export const SET_PROCESSING_CHANGE = 'SET_PROCESSING_CHANGE'
+export const SET_TEMP_COST = 'SET_TEMP_COST'
 export const SIZE_DETAIL_CHANGE = 'SIZE_DETAIL_CHANGE'
 export const WIDTH = 'WIDTH'
 export const HEIGHT = 'HEIGHT'

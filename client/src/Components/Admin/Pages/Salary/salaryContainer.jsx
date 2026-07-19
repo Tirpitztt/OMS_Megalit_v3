@@ -31,7 +31,7 @@ import {
 import {
     clearSupportFormState,
     setPolishModelValue,
-    setProcessingChange,
+    setProcessingChange, setTempCost,
     sizeDetailChange
 } from '../../../../Redux/Redusers/form-reduser';
 //import { getMonthDays} from '../../../../Utils/dateTermin';
@@ -62,6 +62,7 @@ class SalaryContainer extends React.Component{
                 setSalaryFormState={this.props.setSalaryFormState}
                 getDetailsList={this.props.getDetailsList}
                 setWorkOperationName={this.props.setWorkOperationName}
+                        setTempCost={this.props.setTempCost}
                 getWorkOperationsGroup={this.props.getWorkOperationsGroup}
                 setSalaryFormOptionChange={this.props.setSalaryFormOptionChange}
                 addSalaryRowToShift={this.props.addSalaryRowToShift}
@@ -117,6 +118,9 @@ let mapDispatchToProps = (dispatch) => {
         },
         setWorkOperationName: (data) => {
             dispatch(setWorkOperationName(data))
+        },
+        setTempCost:(data)=>{
+          dispatch(setTempCost(data))
         },
         getWorkOperationsGroup: (data) => {
             dispatch(getWorkOperationsThunkCreator(data))

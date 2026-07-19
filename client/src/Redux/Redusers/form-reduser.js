@@ -1,9 +1,10 @@
-import {getSizeSq, setEditDetailState} from "../../Utils/support";
+import {getSizeSq, getTempCost, setEditDetailState} from "../../Utils/support";
 import {
     CLEAR_SUPPORT_FORM_STATE,
     HEIGHT,
-    SET_POLISH_MODEL_VALUE, SET_PROCESSING_CHANGE,
+    SET_POLISH_MODEL_VALUE, SET_PROCESSING_CHANGE, SET_TEMP_COST,
     SIZE_DETAIL_CHANGE, SIZE_TYPE_FACE, SIZE_TYPE_FACE_AROUND, SIZE_TYPE_FACET_AROUND, SIZE_TYPE_FACET_UP,
+    SIZE_TYPE_TWO_FACES,
     WEIGHT,
     WIDTH
 } from "../../Utils/variables-const";
@@ -168,7 +169,20 @@ const FormReduser = (state=initialState,action)=>{
         }
         case SET_PROCESSING_CHANGE:{
             let newState = {...state}
-            console.log(action.data)
+            const keys = Object.keys(newState.supportFormState.polishForm.processing)
+            for(let key of keys){
+                if(action.data.type === key){
+                    newState.supportFormState.polishForm.processing[key] = action.data.val
+                    newState.supportFormState.tempCost =
+                        getTempCost(action.data.val,newState.supportFormState.tempCost,action.data.operations,action.data.operationType,newState.supportFormState.polishForm.sizes[key])
+                }
+            }
+
+            return newState
+        }
+        case SET_TEMP_COST:{
+            let newState = {...state}
+            newState.supportFormState.tempCost = action.data
             return newState
         }
         case CLEAR_SUPPORT_FORM_STATE:{
@@ -176,6 +190,17 @@ const FormReduser = (state=initialState,action)=>{
             newState.supportFormState.polishForm.h = ''
             newState.supportFormState.polishForm.w = ''
             newState.supportFormState.polishForm.l = ''
+            newState.supportFormState.tempCost = 0
+            // newState.supportFormState.polishForm.sizes.face = 0
+            // newState.supportFormState.polishForm.sizes.twoFaces = 0
+            // newState.supportFormState.polishForm.sizes.faceAround = 0
+            // newState.supportFormState.polishForm.sizes.facetUp = 0
+            // newState.supportFormState.polishForm.sizes.facetAround = 0
+            // newState.supportFormState.polishForm.processing.face = false
+            for (const key of Object.entries(newState.supportFormState.polishForm.processing)) {
+                newState.supportFormState.polishForm.processing[key] = false
+                newState.supportFormState.polishForm.sizes[key] = 0
+            }
             return newState
         }
         default: return state
@@ -184,6 +209,7 @@ const FormReduser = (state=initialState,action)=>{
 
 export const setState = (data)=>({type:SET_STATE,data});
 export const setFieldsArray = (data)=>({type:SET_FIELDS_ARR,data});
+export const setTempCost = (data) => ({type:SET_TEMP_COST,data})
 export const addFieldToArray = (data)=>({type:ADD_FIELD_TO_ARR,data});
 export const addFieldToMat = (data)=>({type:ADD_FIELD_TO_MAT,data});
 export const addFieldToWork = (data)=>({type:ADD_FIELD_TO_WORK,data});

@@ -636,15 +636,22 @@ export const getSizeSq = (type,width, height, weight) => {
     
 }
 
-export const getTempCost = (check, defaultValue, defaultCost, sizeData) => {
+export const getTempCost = (check, defaultValue, operations,typeOperation, sizeData) => {
     let result = 0
+    let defaultCost = 0
+    for(let op of operations){
+        if(op.name.includes(typeOperation)){
+            defaultCost = op.BLR
+        }
+    }
     if (check) {
-        result = buildFloat(defaultValue + (defaultCost * sizeData)).toFixed(2)
+        result = buildFloat(defaultValue + (defaultCost * (+sizeData)))
     } else if (defaultValue !== 0) {
-        result = buildFloat(defaultValue - (defaultCost * sizeData)).toFixed(2)
+        result = buildFloat(defaultValue - (defaultCost * (+sizeData)))
     }
     //console.log('res',result)
     return buildFloat(result)
+    //return Math.floor((result * 100) / 100)
 
 }
 export const getTempCostModel = (check,opArr, defaultValue,key) => {

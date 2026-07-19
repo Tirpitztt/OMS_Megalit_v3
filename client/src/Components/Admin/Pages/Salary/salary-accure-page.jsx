@@ -10,11 +10,11 @@ import SalaryConcreateForm from '../../../Common/Forms/Adminka/salary-concreate-
 
 
 const SalaryAccurePage = (props) => {
-    //console.log(props)
+    console.log('accure',props)
     const {register,handleSubmit,setValue,watch,reset} = useForm()
     const dataSum = watch('dataSum')
     
-    const [tempCost, setTempCost] = useState(0)
+    //const [tempCost, setTempCost] = useState(0)
     const [keyForm, setKeyForm] = useState(FORM_BASE)
     const [correctCost,setCorrectCost] = useState(0)
     const [operationName,setOperationName] = useState('')
@@ -24,8 +24,8 @@ const SalaryAccurePage = (props) => {
     const formsArray = [<SalaryPolishForm
         setVal={setValue}
         cost={'dataSum.1.cost'}
-        tempCost={tempCost}
-        setTempCost={setTempCost}
+        tempCost={props.supportFormState.tempCost}
+        setTempCost={props.setTempCost}
         setCorrectCost={setCorrectCost}
         amount={'dataSum.2.amount'}
         polishFormState={props.supportFormState.polishForm}
@@ -40,6 +40,7 @@ const SalaryAccurePage = (props) => {
             getDetailsList={props.getDetailsList}
         />]
     const supportForm = getSupportForm(formsArray,keyForm)
+
     useEffect(()=>{
         setOperationSumma(setOperationsSum(props.state.individualSalaryState.formOptions.workOperationsInit,dataSum,
             operationAmount,'dataSum.1.cost',setValue,setOperationName,correctCost))
@@ -90,13 +91,13 @@ const SalaryAccurePage = (props) => {
     }
     const onChangeAmountCheck = (val) => {
         setOperationAmount((val))
-        console.log(typeof(val))
+        //console.log(typeof(val))
         setValue('dataSum.2.amount',val)
     }
     const clearFormState = () => {
         reset()
         setCorrectCost(0)
-        setTempCost(0)
+        //setTempCost(0)
         setOperationAmount(0)
         setOperationNotice('')
         props.clearSupportForm()
@@ -168,7 +169,7 @@ const SalaryAccurePage = (props) => {
                             </div>
                             <div className={c.form_salary_column_box}>
                                 <label>стоимость</label>
-                                <input {...register('dataSum.1.cost')} />
+                                <input {...register('dataSum.1.cost')}  />
                             </div>
                             <div className={c.form_salary_column_box}>
                                 <label>кол-во</label>

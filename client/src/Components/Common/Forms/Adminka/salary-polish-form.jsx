@@ -8,12 +8,14 @@ import {
     SIZE_TYPE_FACET_AROUND,
     SIZE_TYPE_FACET_UP,
     SIZE_TYPE_FACE_AROUND,
-    HEIGHT, WIDTH, WEIGHT, TYPE_MODEL_ONE, TYPE_MODEL_TWO, TYPE_MODEL_THREE, TYPE_MODEL_FOUR, SIZE_TYPE_TWO_FACES
+    HEIGHT, WIDTH, WEIGHT, TYPE_MODEL_ONE, TYPE_MODEL_TWO, TYPE_MODEL_THREE, TYPE_MODEL_FOUR, SIZE_TYPE_TWO_FACES,
+    PROCESS_TYPE_FACE, PROCESS_TYPE_FACET_AROUND, PROCESS_TYPE_FACET_UP, PROCESS_TYPE_FACE_AROUND,
+    PROCESS_TYPE_TWO_FACES, OPERATION_POLISH_FACE, OPERATION_POLISH_FACET
 } from '../../../../Utils/variables-const';
 
 
 const SalaryPolishForm = (props) => {
-    console.log('polish',props)
+   // console.log('polish',props.tempCost)
     const decSq = 100
 
 
@@ -26,16 +28,16 @@ const SalaryPolishForm = (props) => {
     const [detWidth, setDetWidth] = useState(0)
     const [detHeight, setDetHeight] = useState(0)
     const [detWeight, setDetWeight] = useState(0)
-    const face = getSizeSq(SIZE_TYPE_FACE, detWidth, detHeight, detWeight)
-    const twoFaces = face * 2
-    const faceAround = getSizeSq(SIZE_TYPE_FACE_AROUND, detWidth, detHeight, detWeight)
-    const facetUp = getSizeSq(SIZE_TYPE_FACET_UP, detWidth, detHeight, detWeight)
-    const facetAround = getSizeSq(SIZE_TYPE_FACET_AROUND, detWidth, detHeight, detWeight)
+    //const face = getSizeSq(SIZE_TYPE_FACE, detWidth, detHeight, detWeight)
+    // const twoFaces = face * 2
+    // const faceAround = getSizeSq(SIZE_TYPE_FACE_AROUND, detWidth, detHeight, detWeight)
+    // const facetUp = getSizeSq(SIZE_TYPE_FACET_UP, detWidth, detHeight, detWeight)
+    // const facetAround = getSizeSq(SIZE_TYPE_FACET_AROUND, detWidth, detHeight, detWeight)
     
 
     const onChangeCost = (val) => {
-        props.setVal(props.cost, val)
-        props.setCorrectCost(val)
+        props.setVal(props.cost, val.toFixed(2))
+        props.setCorrectCost(val.toFixed(2))
     }
     useEffect(() => {
         onChangeCost(props.tempCost)
@@ -52,32 +54,32 @@ const SalaryPolishForm = (props) => {
         }
         props.sizeDetailChange({type,val})
     }
-    const onChangeFaceCheck = (check) => {
-        props.setTempCost(getTempCost(check, props.tempCost, costOfPolish,face))
-        
-    }
-    const onChangeTwoFacesCheck = (check) => {
-        props.setTempCost(getTempCost(check, props.tempCost, costOfPolish, twoFaces))
-        
-    }
-    const onChangeFaceAroundCheck = (check) => {
-        props.setTempCost(getTempCost(check, props.tempCost, costOfPolish, faceAround))
-        
-    }
-    const onChangeFacetUpCheck = (check) => {
-        props.setTempCost(getTempCost(check, props.tempCost, costOfFacet, facetUp))
-    }
-    const onChangeFacetAroundCheck = (check) => {
-        props.setTempCost(getTempCost(check, props.tempCost, costOfFacet, facetAround))
-    }
+    // const onChangeFaceCheck = (check) => {
+    //     props.setTempCost(getTempCost(check, props.tempCost, costOfPolish,face))
+    //
+    // }
+    // const onChangeTwoFacesCheck = (check) => {
+    //     props.setTempCost(getTempCost(check, props.tempCost, costOfPolish, twoFaces))
+    //
+    // }
+    // const onChangeFaceAroundCheck = (check) => {
+    //     props.setTempCost(getTempCost(check, props.tempCost, costOfPolish, faceAround))
+    //
+    // }
+    // const onChangeFacetUpCheck = (check) => {
+    //     props.setTempCost(getTempCost(check, props.tempCost, costOfFacet, facetUp))
+    // }
+    // const onChangeFacetAroundCheck = (check) => {
+    //     props.setTempCost(getTempCost(check, props.tempCost, costOfFacet, facetAround))
+    // }
 
     const onChangeModelCheck = (check,key,type) => {
         const recCost = getTempCostModel(check, props.workOperations, props.tempCost, key)
         props.setTempCost(recCost)
         props.setPolishModelValue({type,value:check})
     }
-    const onChangeProcessingGroup = (check,type) => {
-        props.setProcessingChange({type,check})
+    const onChangeProcessingGroup = (check,type,operationType) => {
+        props.setProcessingChange({val:check,type,operationType,operations:props.workOperations})
     }
 
     // const onChangeModelCheck1 = (check) => {
@@ -150,7 +152,7 @@ const SalaryPolishForm = (props) => {
                         <div>лицо</div>
                         <div><input type='checkbox'
                                     checked={props.polishFormState.processing.face}
-                                    onChange={(e) => onChangeProcessingGroup(e.target.checked,SIZE_TYPE_FACE)} /></div>
+                                    onChange={(e) => onChangeProcessingGroup(e.target.checked,PROCESS_TYPE_FACE,OPERATION_POLISH_FACE)} /></div>
                     </div>
                     <div className={c.row_polish_form_box}>
                         <div>=</div>
@@ -159,7 +161,7 @@ const SalaryPolishForm = (props) => {
                         <div>2 лица</div>
                         <div><input type='checkbox'
                                     checked={props.polishFormState.processing.twoFaces}
-                                    onChange={(e) => onChangeProcessingGroup(e.target.checked,SIZE_TYPE_TWO_FACES)} /></div>
+                                    onChange={(e) => onChangeProcessingGroup(e.target.checked,PROCESS_TYPE_TWO_FACES,OPERATION_POLISH_FACE)} /></div>
                     </div>
                     <div className={c.row_polish_form_box}>
                         <div>=</div>
@@ -168,7 +170,7 @@ const SalaryPolishForm = (props) => {
                         <div>лица в круг</div>
                         <div><input type='checkbox'
                                     checked={props.polishFormState.processing.faceAround}
-                                    onChange={(e) => onChangeProcessingGroup(e.target.checked,SIZE_TYPE_FACE_AROUND)} /></div>
+                                    onChange={(e) => onChangeProcessingGroup(e.target.checked,PROCESS_TYPE_FACE_AROUND,OPERATION_POLISH_FACE)} /></div>
                     </div>
                     <div className={c.row_polish_form_box}>
                         <div>=</div>
@@ -177,7 +179,7 @@ const SalaryPolishForm = (props) => {
                         <div>фаска верх</div>
                         <div><input type='checkbox'
                                     checked={props.polishFormState.processing.facetUp}
-                                    onChange={(e) => onChangeProcessingGroup(e.target.checked,SIZE_TYPE_FACET_UP)} /></div>
+                                    onChange={(e) => onChangeProcessingGroup(e.target.checked,PROCESS_TYPE_FACET_UP,OPERATION_POLISH_FACET)} /></div>
                     </div>
                     <div className={c.row_polish_form_box}>
                         <div>=</div>
@@ -186,7 +188,7 @@ const SalaryPolishForm = (props) => {
                         <div>фаска в круг</div>
                         <div><input type='checkbox'
                                     checked={props.polishFormState.processing.facetAround}
-                                    onChange={(e) => onChangeProcessingGroup(e.target.checked,SIZE_TYPE_FACET_AROUND)} /></div>
+                                    onChange={(e) => onChangeProcessingGroup(e.target.checked,PROCESS_TYPE_FACET_AROUND,OPERATION_POLISH_FACET)} /></div>
                     </div>
                 </div>
             </div>

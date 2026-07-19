@@ -85,6 +85,7 @@ const SalaryPage = (props) => {
             getWorkOperationsGroup={props.getWorkOperationsGroup}
             addEmployeeToGroup={props.addEmployeeToGroup}
             getDetailsList={props.getDetailsList}
+            setTempCost={props.setTempCost}
             delEmployeeFromGroup={props.delEmployeeFromGroup}
             getDetailsListSort={props.getDetailsListSort}
             addSalaryRowToShift={props.addSalaryRowToShift}
