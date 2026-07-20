@@ -182,14 +182,18 @@ export const SIZE_TYPE_TWO_FACES = 'SIZE_TYPE_TWO_FACES'
 export const SIZE_TYPE_FACE_AROUND = 'SIZE_TYPE_FACE_AROUND'
 export const SIZE_TYPE_FACET_AROUND = 'SIZE_TYPE_FACET_AROUND'
 export const SIZE_TYPE_FACET_UP = 'SIZE_TYPE_FACET_UP'
+export const SIZE_TYPE_SIDE_AROUND = 'SIZE_TYPE_SIDE_AROUND'
 export const PROCESS_TYPE_FACE = 'face'
 export const PROCESS_TYPE_TWO_FACES = 'twoFaces'
 export const PROCESS_TYPE_FACE_AROUND = 'faceAround'
 export const PROCESS_TYPE_FACET_UP = 'facetUp'
 export const PROCESS_TYPE_FACET_AROUND = 'facetAround'
+export const PROCESS_TYPE_SIDE_AROUND = 'sideAround'
+export const PROCESS_TYPE_DETAIL_AROUND = 'detailAround'
 export const OPERATION_POLISH_FACE = 'полировка лица'
 export const OPERATION_POLISH_FACET = 'полировка фаски 0-10'
 export const OPERATION_POLISH_SIDE = 'полировка торца'
+export const OPERATION_POLISH_AROUND = 'OPERATION_POLISH_AROUND'
 
 
 //--------------------FORM-REDUSER-----------------------------------------
@@ -206,6 +210,8 @@ export const TYPE_MODEL_TWO = 'two'
 export const TYPE_MODEL_THREE = 'three'
 export const TYPE_MODEL_FOUR = 'four'
 export const PROCESSING_CHECK = 'PROCESSING_CHECK'
+export const OPERATION_CHANGE = 'OPERATION_CHANGE'
 export const CLEAR_SUPPORT_FORM_STATE = 'CLEAR_SUPPORT_FORM_STATE'
+
 
 

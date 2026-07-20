@@ -406,7 +406,7 @@
     width:50%;
     display: flex;
     flex-flow: column nowrap;
-    justify-content: space-between;
+    margin-top:5px;
 }
 .col_model_form_box {
     width: 100%;

@@ -3,7 +3,7 @@ import c from './salary.module.css'
 import { FORM_BASE, FORM_CONCREATE, WORKSHOP_NAMES } from '../../../../Utils/variables-const'
 import {getSalaryList, getShiftStatus, getSupportForm, getTypeOperationOnRus} from "../../../../Utils/adminSupport";
 import {useForm} from "react-hook-form";
-import {setOperationsSum} from "../../../../Utils/support";
+import {setOperationName, setOperationsSum} from "../../../../Utils/support";
 import {buildFloat} from "../../../../Utils/buildNum";
 import SalaryPolishForm from '../../../Common/Forms/Adminka/salary-polish-form';
 import SalaryConcreateForm from '../../../Common/Forms/Adminka/salary-concreate-form';
@@ -17,7 +17,7 @@ const SalaryAccurePage = (props) => {
     //const [tempCost, setTempCost] = useState(0)
     const [keyForm, setKeyForm] = useState(FORM_BASE)
     const [correctCost,setCorrectCost] = useState(0)
-    const [operationName,setOperationName] = useState('')
+    //const [opName,setOpName] = useState('')
     const [operationAmount,setOperationAmount] = useState(0)
     const [operationSumma,setOperationSumma] = useState(0)
     const [operationNotice, setOperationNotice] = useState('')
@@ -41,12 +41,17 @@ const SalaryAccurePage = (props) => {
         />]
     const supportForm = getSupportForm(formsArray,keyForm)
 
-    useEffect(()=>{
-        setOperationSumma(setOperationsSum(props.state.individualSalaryState.formOptions.workOperationsInit,dataSum,
-            operationAmount,'dataSum.1.cost',setValue,setOperationName,correctCost))
+    useEffect(() => {
+        console.log('useEffect:')
+        setOperationSumma((props.supportFormState.tempCost * operationAmount).toFixed(2))
+        //setOperationSumma(setOperationsSum(props.state.individualSalaryState.formOptions.workOperationsInit,dataSum,
+        //    operationAmount,'dataSum.1.cost',setValue,setOperationName,correctCost))
     },[JSON.stringify(dataSum)])
 
-
+    const onChangeOperation = (id) => {
+        props.operationChange({ id, operations: props.state.individualSalaryState.formOptions.workOperationsInit })
+        //setOpName(setOperationName({ id, operations: props.state.individualSalaryState.formOptions.workOperationsInit }))
+    }
     const workShopOP = WORKSHOP_NAMES.map((item, i) => {
         return <option key={i } value={item.value }>{item.text }</option>
     })
@@ -106,9 +111,9 @@ const SalaryAccurePage = (props) => {
         //console.log('body1: ',body)
         if(props.accureState.shiftData.employeesShiftGroup.length){
             body.workId = dataSum[0].id
-            body.workName = operationName
+            body.workName = props.supportFormState.tempName + props.supportFormState.additName
             body.notice = operationNotice
-            body.cost = dataSum[1].cost
+            body.cost = (props.supportFormState.tempCost).toFixed(2)
             body.amount = buildFloat(operationAmount/props.accureState.shiftData.employeesShiftGroup.length)
             body.summa = buildFloat(operationSumma/props.accureState.shiftData.employeesShiftGroup.length)
             body.signature = false
@@ -162,14 +167,16 @@ const SalaryAccurePage = (props) => {
                         <div className={c.form_salary_row}>
                             <div className={c.form_salary_column_box}>
                                 <label></label>
-                                <select {...register('dataSum.0.id')}>
+                                <select {...register('dataSum.0.id')}
+                                    onChange={(e) => onChangeOperation(e.target.value)}>
                                     <option value="null">Выбрать операцию</option>
                                     {props.state.individualSalaryState.formOptions.workOperations }
                                 </select>
                             </div>
                             <div className={c.form_salary_column_box}>
                                 <label>стоимость</label>
-                                <input {...register('dataSum.1.cost')}  />
+                                <input {...register('dataSum.1.cost')}
+                                    value={(props.supportFormState.tempCost).toFixed(2)} />
                             </div>
                             <div className={c.form_salary_column_box}>
                                 <label>кол-во</label>

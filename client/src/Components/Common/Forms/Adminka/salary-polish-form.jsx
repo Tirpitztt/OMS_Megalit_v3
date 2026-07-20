@@ -10,7 +10,7 @@ import {
     SIZE_TYPE_FACE_AROUND,
     HEIGHT, WIDTH, WEIGHT, TYPE_MODEL_ONE, TYPE_MODEL_TWO, TYPE_MODEL_THREE, TYPE_MODEL_FOUR, SIZE_TYPE_TWO_FACES,
     PROCESS_TYPE_FACE, PROCESS_TYPE_FACET_AROUND, PROCESS_TYPE_FACET_UP, PROCESS_TYPE_FACE_AROUND,
-    PROCESS_TYPE_TWO_FACES, OPERATION_POLISH_FACE, OPERATION_POLISH_FACET
+    PROCESS_TYPE_TWO_FACES, OPERATION_POLISH_FACE, OPERATION_POLISH_FACET, PROCESS_TYPE_SIDE_AROUND, OPERATION_POLISH_SIDE, OPERATION_POLISH_AROUND, PROCESS_TYPE_DETAIL_AROUND
 } from '../../../../Utils/variables-const';
 
 
@@ -37,7 +37,7 @@ const SalaryPolishForm = (props) => {
 
     const onChangeCost = (val) => {
         props.setVal(props.cost, val.toFixed(2))
-        props.setCorrectCost(val.toFixed(2))
+        //props.setCorrectCost(val.toFixed(2))
     }
     useEffect(() => {
         onChangeCost(props.tempCost)
@@ -73,11 +73,11 @@ const SalaryPolishForm = (props) => {
     //     props.setTempCost(getTempCost(check, props.tempCost, costOfFacet, facetAround))
     // }
 
-    const onChangeModelCheck = (check,key,type) => {
-        const recCost = getTempCostModel(check, props.workOperations, props.tempCost, key)
-        props.setTempCost(recCost)
-        props.setPolishModelValue({type,value:check})
-    }
+    //const onChangeModelCheck = (check,key,type) => {
+    //    const recCost = getTempCostModel(check, props.workOperations, props.tempCost, key)
+    //    props.setTempCost(recCost)
+    //    props.setPolishModelValue({type,value:check})
+    //}
     const onChangeProcessingGroup = (check,type,operationType) => {
         props.setProcessingChange({val:check,type,operationType,operations:props.workOperations})
     }
@@ -117,31 +117,49 @@ const SalaryPolishForm = (props) => {
                         />
                     </div>
                     <div className={c.col_model_form_box}>
-                        <div>Модели:</div>
-                        <div className={c.row_model_form_box}>
+                        <div className={c.row_polish_form_box}>
+                            <div>=</div>
+                            <div>{props.polishFormState.sizes.sideAround}</div>
+                            <div>,м.п.</div>
+                            <div>торцы в круг</div>
                             <div><input type='checkbox'
-                                        onChange={(e) => onChangeModelCheck(e.target.checked, `Т-${detWeight} Iсл`,TYPE_MODEL_ONE)}
-                                        checked={props.polishFormState.modelValue.one} /></div>
-                            <div>I сложность</div>
+                                checked={props.polishFormState.processing.sideAround}
+                                onChange={(e) => onChangeProcessingGroup(e.target.checked, PROCESS_TYPE_SIDE_AROUND, OPERATION_POLISH_SIDE)} /></div>
                         </div>
-                        <div className={c.row_model_form_box}>
+                        <div className={c.row_polish_form_box}>
+                            <div>=</div>
+                            <div>{props.polishFormState.sizes.faceAround}</div>
+                            <div>,m2</div>
+                            <div>деталь в круг</div>
                             <div><input type='checkbox'
-                                        onChange={(e) => onChangeModelCheck(e.target.checked,`Т-${detWeight} IIсл`,TYPE_MODEL_TWO)}
-                                        checked={props.polishFormState.modelValue.two} /></div>
-                            <div>II сложность</div>
+                                checked={props.polishFormState.processing.detailAround}
+                                onChange={(e) => onChangeProcessingGroup(e.target.checked, PROCESS_TYPE_DETAIL_AROUND, OPERATION_POLISH_AROUND)} /></div>
                         </div>
-                        <div className={c.row_model_form_box}>
-                            <div><input type='checkbox'
-                                        onChange={(e) => onChangeModelCheck(e.target.checked,`Т-${detWeight} IIIсл`,TYPE_MODEL_THREE)}
-                                        checked={props.polishFormState.modelValue.three} /></div>
-                            <div>III сложность</div>
-                        </div>
-                        <div className={c.row_model_form_box}>
-                            <div><input type='checkbox'
-                                        onChange={(e) => onChangeModelCheck(e.target.checked,`Т-${detWeight} IVсл`,TYPE_MODEL_FOUR)}
-                                        checked={props.polishFormState.modelValue.four} /></div>
-                            <div>IV сложность</div>
-                        </div>
+                        {/*<div>Модели:</div>*/}
+                        {/*<div className={c.row_model_form_box}>*/}
+                        {/*    <div><input type='checkbox'*/}
+                        {/*                onChange={(e) => onChangeModelCheck(e.target.checked, `Т-${detWeight} Iсл`,TYPE_MODEL_ONE)}*/}
+                        {/*                checked={props.polishFormState.modelValue.one} /></div>*/}
+                        {/*    <div>I сложность</div>*/}
+                        {/*</div>*/}
+                        {/*<div className={c.row_model_form_box}>*/}
+                        {/*    <div><input type='checkbox'*/}
+                        {/*                onChange={(e) => onChangeModelCheck(e.target.checked,`Т-${detWeight} IIсл`,TYPE_MODEL_TWO)}*/}
+                        {/*                checked={props.polishFormState.modelValue.two} /></div>*/}
+                        {/*    <div>II сложность</div>*/}
+                        {/*</div>*/}
+                        {/*<div className={c.row_model_form_box}>*/}
+                        {/*    <div><input type='checkbox'*/}
+                        {/*                onChange={(e) => onChangeModelCheck(e.target.checked,`Т-${detWeight} IIIсл`,TYPE_MODEL_THREE)}*/}
+                        {/*                checked={props.polishFormState.modelValue.three} /></div>*/}
+                        {/*    <div>III сложность</div>*/}
+                        {/*</div>*/}
+                        {/*<div className={c.row_model_form_box}>*/}
+                        {/*    <div><input type='checkbox'*/}
+                        {/*                onChange={(e) => onChangeModelCheck(e.target.checked,`Т-${detWeight} IVсл`,TYPE_MODEL_FOUR)}*/}
+                        {/*                checked={props.polishFormState.modelValue.four} /></div>*/}
+                        {/*    <div>IV сложность</div>*/}
+                        {/*</div>*/}
                     </div>
                 </div>
                 <div className={c.col_form_box}>

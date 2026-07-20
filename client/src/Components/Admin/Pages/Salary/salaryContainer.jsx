@@ -30,6 +30,7 @@ import {
 } from '../../../../Redux/Redusers/accure-reduser';
 import {
     clearSupportFormState,
+    operationChange,
     setPolishModelValue,
     setProcessingChange, setTempCost,
     sizeDetailChange
@@ -62,7 +63,8 @@ class SalaryContainer extends React.Component{
                 setSalaryFormState={this.props.setSalaryFormState}
                 getDetailsList={this.props.getDetailsList}
                 setWorkOperationName={this.props.setWorkOperationName}
-                        setTempCost={this.props.setTempCost}
+                setTempCost={this.props.setTempCost}
+                operationChange={this.props.operationChange }
                 getWorkOperationsGroup={this.props.getWorkOperationsGroup}
                 setSalaryFormOptionChange={this.props.setSalaryFormOptionChange}
                 addSalaryRowToShift={this.props.addSalaryRowToShift}
@@ -121,6 +123,9 @@ let mapDispatchToProps = (dispatch) => {
         },
         setTempCost:(data)=>{
           dispatch(setTempCost(data))
+        },
+        operationChange: (data) => {
+            dispatch(operationChange(data))
         },
         getWorkOperationsGroup: (data) => {
             dispatch(getWorkOperationsThunkCreator(data))

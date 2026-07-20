@@ -12,7 +12,18 @@ import {
     SIZE_TYPE_FACET_AROUND,
     SIZE_TYPE_FACET_UP,
     SIZE_TYPE_FACE_AROUND,
-    FORM_POLISH
+    FORM_POLISH,
+    PROCESS_TYPE_FACE,
+    PROCESS_TYPE_TWO_FACES,
+    PROCESS_TYPE_FACE_AROUND,
+    PROCESS_TYPE_FACET_UP,
+    PROCESS_TYPE_FACET_AROUND,
+    PROCESS_TYPE_SIDE_AROUND,
+    PROCESS_TYPE_DETAIL_AROUND,
+    SIZE_TYPE_SIDE_AROUND,
+    OPERATION_POLISH_FACE,
+    OPERATION_POLISH_FACET,
+    OPERATION_POLISH_SIDE
 } from "./variables-const";
 import SalaryCalculateBody from "./Classes/salaryCalaculateBody";
 
@@ -312,26 +323,48 @@ export const detailSort = (data) => {
     }
 }
 
-export const setOperationsSum = (operations,data,amount,fieldKey,
-                                valueFunction,setNameFunction,correctCost) => {
-    let sum = 0
-    //console.log(data)
-    if (operations.length && data !== undefined && !correctCost) {
-        operations.forEach(item => {
-            if (item.id == data[0].id) {
-                valueFunction(fieldKey, item.BLR)
-                setNameFunction(item.name)
-                sum = item.BLR * amount
-            }
-        })
-    } else if (operations.length && data !== undefined && correctCost) {
-        valueFunction(fieldKey, correctCost)
-        sum = correctCost * amount
+//export const setOperationsSum = (operations,data,amount,fieldKey,
+//                                valueFunction,setNameFunction,correctCost) => {
+//    let sum = 0
+//    //console.log(data)
+//    if (operations.length && data !== undefined && !correctCost) {
+//        operations.forEach(item => {
+//            if (item.id == data[0].id) {
+//                valueFunction(fieldKey, item.BLR)
+//                setNameFunction(item.name)
+//                sum = item.BLR * amount
+//            }
+//        })
+//    } else if (operations.length && data !== undefined && correctCost) {
+//        valueFunction(fieldKey, correctCost)
+//        sum = correctCost * amount
+//    }
+//    //console.log(data)
+//    return buildFloat(sum).toFixed(2)
+//}
+//export const setOperationName = (id, operations) => {
+//    let result = ''
+//    if (operations.length) {
+//        for (let op of operations) {
+//            if (op.id == id) {
+//                result = op.name
+//            }
+//        }
+//    }
+//    return result
+//}
+export const getOpAdditName = (type) => {
+    switch (type) {
+        case PROCESS_TYPE_FACE: { return ' +л' }
+        case PROCESS_TYPE_TWO_FACES: { return ' +л +с' }
+        case PROCESS_TYPE_FACE_AROUND: { return ' +л в круг' }
+        case PROCESS_TYPE_FACET_UP: { return ' +ф верх' }
+        case PROCESS_TYPE_FACET_AROUND: { return ' +ф в круг' }
+        case PROCESS_TYPE_SIDE_AROUND: { return ' +т в круг' }
+        case PROCESS_TYPE_DETAIL_AROUND: {return ' +л+т+ф' }
+        default:return ''
     }
-    //console.log(data)
-    return buildFloat(sum).toFixed(2)
 }
-
 export const setMixName = (id,mixes) => {
     let name;
     if(mixes){
@@ -629,7 +662,8 @@ export const getSizeSq = (type,width, height, weight) => {
         case SIZE_TYPE_FACE: { return (w * h).toFixed(2) }
         case SIZE_TYPE_FACE_AROUND: { return (((w * h) * 2) + ((h * l) * 2) + (w * l)).toFixed(2) }
         case SIZE_TYPE_FACET_UP: { return (w * 2).toFixed(2) }
-        case SIZE_TYPE_FACET_AROUND: {return ((w * 2) + (h * 4) + (l * 2)).toFixed(2) }
+        case SIZE_TYPE_FACET_AROUND: { return ((w * 2) + (h * 4) + (l * 2)).toFixed(2) }
+        case SIZE_TYPE_SIDE_AROUND: { return ((h * 2) +  w).toFixed(2) }
         default:return 0
     }
 
@@ -651,7 +685,27 @@ export const getTempCost = (check, defaultValue, operations,typeOperation, sizeD
     }
     //console.log('res',result)
     return buildFloat(result)
-    //return Math.floor((result * 100) / 100)
+}
+export const getTempCostOfAround = (check, defaultValue, operations, sizeData) => {
+    let result = 0
+    let defaultCost = 0
+    for (let op of operations) {
+        if (op.name.includes(OPERATION_POLISH_FACE)) {
+            defaultCost += op.BLR * sizeData.faces
+        }
+        if (op.name.includes(OPERATION_POLISH_FACET)) {
+            defaultCost += op.BLR * sizeData.facet
+        }
+        if (op.name.includes(OPERATION_POLISH_SIDE)) {
+            defaultCost += op.BLR * sizeData.side
+        }
+    }
+    if (check) {
+        result = buildFloat(defaultValue + (defaultCost))
+    } else if (defaultValue !== 0) {
+        result = buildFloat(defaultValue - (defaultCost))
+    }
+    return buildFloat(result)
 
 }
 export const getTempCostModel = (check,opArr, defaultValue,key) => {
