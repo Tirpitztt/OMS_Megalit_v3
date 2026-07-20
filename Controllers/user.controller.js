@@ -257,10 +257,11 @@ class UserController {
             })
             if(user){
                  result = {
-                    id:user.id,
+                     id:user.id,
                      date:req.body.date,
-                    name:user.full_name,
-                    shifts:user.work_shifts
+                     name:user.full_name,
+                     share:1,
+                     shifts:user.work_shifts
                 }
             }
             return res.status(200).json(result)

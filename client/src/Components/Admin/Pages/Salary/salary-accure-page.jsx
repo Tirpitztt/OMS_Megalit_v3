@@ -14,7 +14,6 @@ const SalaryAccurePage = (props) => {
     const {register,handleSubmit,setValue,watch,reset} = useForm()
     const dataSum = watch('dataSum')
 
-    //const [keyForm, setKeyForm] = useState(FORM_BASE)
     const [operationAmount,setOperationAmount] = useState('')
     const [operationSumma,setOperationSumma] = useState(0)
     const [operationNotice, setOperationNotice] = useState('')
@@ -50,9 +49,7 @@ const SalaryAccurePage = (props) => {
         return <option key={i } value={item.value }>{item.text }</option>
     })
     const signSalaryToShift = (salarys,id,date) => {
-        const body = {
-            salarys,id,date
-        }
+        const body = {salarys,id,date}
         props.signSalaryShift(body)
     }
     let employeesGroup = props.accureState.shiftData.employeesShiftGroup.map((item, i) => {
@@ -64,6 +61,7 @@ const SalaryAccurePage = (props) => {
                 >удалить</div>
                 <div>{item.id }</div><div>{item.name }</div>
                 <div>{getShiftStatus(item.shifts[0])}</div>
+                <div>{item.share}</div>
                 <div
                     onClick={()=>signSalaryToShift(item.shifts[0].salarys,item.id,item.date)}
                     className={c.sign_employee_button}
@@ -79,7 +77,6 @@ const SalaryAccurePage = (props) => {
         props.getWorkOperationsGroup({ type: props.accureState.shiftData.workShop })
         reset()
         props.clearSupportForm()
-        //setKeyForm(props.accureState.shiftData.workShop)
     }
     
     const selectEmployee = (val) => {
@@ -108,8 +105,8 @@ const SalaryAccurePage = (props) => {
             body.workName = props.supportFormState.tempName + props.supportFormState.additName
             body.notice = operationNotice
             body.cost = (props.supportFormState.tempCost).toFixed(2)
-            body.amount = buildFloat(operationAmount/props.accureState.shiftData.employeesShiftGroup.length)
-            body.summa = buildFloat(operationSumma/props.accureState.shiftData.employeesShiftGroup.length)
+            body.amount = buildFloat(operationAmount)
+            body.summa = buildFloat(operationSumma)
             body.signature = false
             clearFormState()
             props.addSalaryRowToShift(body)
