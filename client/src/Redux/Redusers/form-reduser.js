@@ -205,7 +205,7 @@ const FormReduser = (state=initialState,action)=>{
         }
         case OPERATION_CHANGE: {
             let newState = { ...state }
-            console.log(action.data)
+            //console.log(action.data)
             if (action.data.operations.length) {
                 for (let op of action.data.operations) {
                     if (op.id == action.data.id) {

@@ -73,9 +73,6 @@ export const setWeightOptions = (stoneArr,stoneID,setVal,setName) => {
     })
     setVal(optionRes)
 }
-export const setWorkOperationsOptions = (workArr,setValFunc,key) => {
-
-}
 
 export const setNameDetailList = (type,func)=>{
     let nameList;
@@ -111,13 +108,13 @@ export const setNameDetailList = (type,func)=>{
     func(nameList);
 }
 
-export const exchangeBlr = (blr,currency)=>{
-    if(currency===0){
-        throw new Error('error: currency = 0');
-        return 1;
-    }
-    return (blr/currency).toFixed(2);
-}
+// export const exchangeBlr = (blr,currency)=>{
+//     if(currency===0){
+//         throw new Error('error: currency = 0');
+//         return 1;
+//     }
+//     return (blr/currency).toFixed(2);
+// }
 
 export const getBetonMixPrice = (mix,mat,rate) => {
 
@@ -497,120 +494,7 @@ export const sortDetails = (obj) => {
     }
     return {added,deleted}
 }
-// export const getAdditionalAgreeBody = (order,oldOrder) => {
-//     let body = {
-//         termin:false,
-//         text:false,
-//         size:false,
-//         delivery:false,
-//         totalCost:false,
-//         deleted:[],
-//         added:[]
-//     }
-//     if(order.termin.date_finish !== oldOrder.termin.date_finish){
-//         body.termin = {
-//             before:oldOrder.termin.date_finish,
-//             after:order.termin.date_finish}
-//     }
-//     if(order.handling.text_grav !== oldOrder.handling.text_grav){
-//         body.text = {
-//             before:oldOrder.handling.text_grav,
-//             after:order.handling.text_grav}
-//     }
-//     if(order.calculation.total_cost !== oldOrder.calculation.total_cost){
-//         body.totalCost = {
-//             before:oldOrder.calculation.total_cost * oldOrder.calculation.rate,
-//             after:order.calculation.total_cost * order.calculation.rate
-//         }
-//     }
-//     if(order.montaz.height !== oldOrder.montaz.height ||
-//         order.montaz.weight !== oldOrder.montaz.weight ||
-//         order.montaz.width !== oldOrder.montaz.width){
-//         body.size = {
-//             before:`${oldOrder.montaz.weight} x ${oldOrder.montaz.width} x ${oldOrder.montaz.height},m`,
-//             after:`${order.montaz.weight} x ${order.montaz.width} x ${order.montaz.height},m`
-//         }
-//     }
-//     if(order.montaz.delivery !== oldOrder.montaz.delivery){
-//         body.delivery = {
-//             before:oldOrder.montaz.delivery,
-//             after:order.montaz.delivery
-//         }
-//     }
-//     let allDetails = []
-//     let oldDetails = []
-//     let newDetails = []
-//     if(order.complects.length){
-//        order.complects.forEach((item)=>{
-//           item.complect_items.forEach(detail=>{
-//               allDetails.push(detail)
-//               newDetails.push(detail)
-//           })
-//        })
-//     }
-//     if(oldOrder.complects.length){
-//         oldOrder.complects.forEach((item)=>{
-//             item.complect_items.forEach(detail=>{
-//                 allDetails.push(detail)
-//                 oldDetails.push(detail)
-//             })
-//         })
-//     }
-//     if(order.handling.handling_items.length){
-//         order.handling.handling_items.forEach(detail=>{
-//             allDetails.push(detail)
-//             newDetails.push(detail)
-//         })
-//     }
-//     if(oldOrder.handling.handling_items.length){
-//         oldOrder.handling.handling_items.forEach(detail=>{
-//             allDetails.push(detail)
-//             oldDetails.push(detail)
-//         })
-//     }
-//     if(order.montaz.montaz_items.length){
-//         order.montaz.montaz_items.forEach(detail=>{
-//             allDetails.push(detail)
-//             newDetails.push(detail)
-//         })
-//     }
-//     if(oldOrder.montaz.montaz_items.length){
-//         oldOrder.montaz.montaz_items.forEach(detail=>{
-//             allDetails.push(detail)
-//             oldDetails.push(detail)
-//         })
-//     }
-//     let originDet = []   // позиции без пар
-//     for(let i = 0; i<allDetails.length;i++){
-//         let count = 0
-//         for(let j = 0;j<allDetails.length;j++){
-//             if(allDetails[i].id === allDetails[j].id && i !== j){ // если пара нашлась
-//                 count++
-//             }
-//         }
-//         if(count === 0){ // если нет пары
-//             originDet.push(allDetails[i])
-//         }
-//     }
-//     newDetails.forEach((item)=>{
-//         originDet.forEach((origin)=>{
-//             if(JSON.stringify(item) === JSON.stringify(origin)){
-//                 //item.price = item.price * order.calculation.rate
-//                 body.added.push(item)
-//             }
-//         })
-//     })
-//     oldDetails.forEach((item)=>{
-//         originDet.forEach((origin)=>{
-//             if(JSON.stringify(item) === JSON.stringify(origin)){
-//                 item.price = item.price * oldOrder.calculation.rate
-//                 body.deleted.push(item)
-//             }
-//         })
-//     })
-//     console.log('support:',body)
-//     return body;
-// }
+
 export const agreeDetailsBodyCreator = (detailsArr) => {
     return detailsArr.map((item,i)=>{
         let detType = <span>{item.type} - {item.category}</span>
@@ -708,21 +592,4 @@ export const getTempCostOfAround = (check, defaultValue, operations, sizeData) =
     return buildFloat(result)
 
 }
-export const getTempCostModel = (check,opArr, defaultValue,key) => {
-    let result = 0
-    let cost = 0
-    if (opArr.length) {
-        for (let operation of opArr) {
-            if (operation.name.includes(key) && operation.type === FORM_POLISH) {
-                cost = operation.BLR
-            }
-        }
-    }
-    if (check && opArr.length) {
-        result = buildFloat(defaultValue + cost)
-    } else if (defaultValue !== 0) {
-        result = buildFloat(defaultValue - cost)
-    }
 
-    return result
-}

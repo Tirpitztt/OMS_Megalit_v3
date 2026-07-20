@@ -1,14 +1,9 @@
 import React, {useState, useEffect } from 'react'
 import c from "../form.module.css";
-import {useForm } from 'react-hook-form'
-import { buildFloat } from '../../../../Utils/buildNum';
-import {getSizeSq, getTempCost, getTempCostModel} from '../../../../Utils/support';
+
 import {
-    SIZE_TYPE_FACE,
-    SIZE_TYPE_FACET_AROUND,
-    SIZE_TYPE_FACET_UP,
-    SIZE_TYPE_FACE_AROUND,
-    HEIGHT, WIDTH, WEIGHT, TYPE_MODEL_ONE, TYPE_MODEL_TWO, TYPE_MODEL_THREE, TYPE_MODEL_FOUR, SIZE_TYPE_TWO_FACES,
+
+    HEIGHT, WIDTH, WEIGHT,
     PROCESS_TYPE_FACE, PROCESS_TYPE_FACET_AROUND, PROCESS_TYPE_FACET_UP, PROCESS_TYPE_FACE_AROUND,
     PROCESS_TYPE_TWO_FACES, OPERATION_POLISH_FACE, OPERATION_POLISH_FACET, PROCESS_TYPE_SIDE_AROUND, OPERATION_POLISH_SIDE, OPERATION_POLISH_AROUND, PROCESS_TYPE_DETAIL_AROUND
 } from '../../../../Utils/variables-const';
@@ -16,89 +11,20 @@ import {
 
 const SalaryPolishForm = (props) => {
    // console.log('polish',props.tempCost)
-    const decSq = 100
-
-
-    const costOfPolish = 22.63
-    const costOfFacet = 2.62
-    
-    // const { register, watch, setValue, reset } = useForm()
-    // const sizeData = watch('sizeData')
-
-    const [detWidth, setDetWidth] = useState(0)
-    const [detHeight, setDetHeight] = useState(0)
-    const [detWeight, setDetWeight] = useState(0)
-    //const face = getSizeSq(SIZE_TYPE_FACE, detWidth, detHeight, detWeight)
-    // const twoFaces = face * 2
-    // const faceAround = getSizeSq(SIZE_TYPE_FACE_AROUND, detWidth, detHeight, detWeight)
-    // const facetUp = getSizeSq(SIZE_TYPE_FACET_UP, detWidth, detHeight, detWeight)
-    // const facetAround = getSizeSq(SIZE_TYPE_FACET_AROUND, detWidth, detHeight, detWeight)
-    
 
     const onChangeCost = (val) => {
         props.setVal(props.cost, val.toFixed(2))
-        //props.setCorrectCost(val.toFixed(2))
     }
     useEffect(() => {
         onChangeCost(props.tempCost)
-        
     }, [props.tempCost])
 
     const onChangeSize = (type,val) => {
-        if(type === HEIGHT){
-            setDetHeight(val)
-        }else if(type === WIDTH){
-            setDetWidth(val)
-        }else if(type === WEIGHT){
-            setDetWeight(val)
-        }
         props.sizeDetailChange({type,val})
     }
-    // const onChangeFaceCheck = (check) => {
-    //     props.setTempCost(getTempCost(check, props.tempCost, costOfPolish,face))
-    //
-    // }
-    // const onChangeTwoFacesCheck = (check) => {
-    //     props.setTempCost(getTempCost(check, props.tempCost, costOfPolish, twoFaces))
-    //
-    // }
-    // const onChangeFaceAroundCheck = (check) => {
-    //     props.setTempCost(getTempCost(check, props.tempCost, costOfPolish, faceAround))
-    //
-    // }
-    // const onChangeFacetUpCheck = (check) => {
-    //     props.setTempCost(getTempCost(check, props.tempCost, costOfFacet, facetUp))
-    // }
-    // const onChangeFacetAroundCheck = (check) => {
-    //     props.setTempCost(getTempCost(check, props.tempCost, costOfFacet, facetAround))
-    // }
-
-    //const onChangeModelCheck = (check,key,type) => {
-    //    const recCost = getTempCostModel(check, props.workOperations, props.tempCost, key)
-    //    props.setTempCost(recCost)
-    //    props.setPolishModelValue({type,value:check})
-    //}
     const onChangeProcessingGroup = (check,type,operationType) => {
         props.setProcessingChange({val:check,type,operationType,operations:props.workOperations})
     }
-
-    // const onChangeModelCheck1 = (check) => {
-    //     props.setTempCost(getTempCostModel(check, props.workOperations, props.tempCost, `Т-${detWeight} Iсл`))
-    //     props.setPolishModelValue({type:'one',value:check})
-    // }
-    // const onChangeModelCheck2 = (check) => {
-    //     props.setTempCost(getTempCostModel(check, props.workOperations, props.tempCost, `Т-${detWeight} IIсл`))
-    //     props.setPolishModelValue({ type: 'two', value: check })
-    // }
-    // const onChangeModelCheck3 = (check) => {
-    //     props.setTempCost(getTempCostModel(check, props.workOperations, props.tempCost, `Т-${detWeight} IIIсл`))
-    //     props.setPolishModelValue({ type: 'three', value: check })
-    // }
-    // const onChangeModelCheck4 = (check) => {
-    //     props.setTempCost(getTempCostModel(check, props.workOperations, props.tempCost, `Т-${detWeight} IVсл`))
-    //     props.setPolishModelValue({ type: 'four', value: check })
-    // }
-    
     return (
         <form className={c.support_polish_field_box}>
             <div className={c.row_form_box}>
@@ -135,31 +61,7 @@ const SalaryPolishForm = (props) => {
                                 checked={props.polishFormState.processing.detailAround}
                                 onChange={(e) => onChangeProcessingGroup(e.target.checked, PROCESS_TYPE_DETAIL_AROUND, OPERATION_POLISH_AROUND)} /></div>
                         </div>
-                        {/*<div>Модели:</div>*/}
-                        {/*<div className={c.row_model_form_box}>*/}
-                        {/*    <div><input type='checkbox'*/}
-                        {/*                onChange={(e) => onChangeModelCheck(e.target.checked, `Т-${detWeight} Iсл`,TYPE_MODEL_ONE)}*/}
-                        {/*                checked={props.polishFormState.modelValue.one} /></div>*/}
-                        {/*    <div>I сложность</div>*/}
-                        {/*</div>*/}
-                        {/*<div className={c.row_model_form_box}>*/}
-                        {/*    <div><input type='checkbox'*/}
-                        {/*                onChange={(e) => onChangeModelCheck(e.target.checked,`Т-${detWeight} IIсл`,TYPE_MODEL_TWO)}*/}
-                        {/*                checked={props.polishFormState.modelValue.two} /></div>*/}
-                        {/*    <div>II сложность</div>*/}
-                        {/*</div>*/}
-                        {/*<div className={c.row_model_form_box}>*/}
-                        {/*    <div><input type='checkbox'*/}
-                        {/*                onChange={(e) => onChangeModelCheck(e.target.checked,`Т-${detWeight} IIIсл`,TYPE_MODEL_THREE)}*/}
-                        {/*                checked={props.polishFormState.modelValue.three} /></div>*/}
-                        {/*    <div>III сложность</div>*/}
-                        {/*</div>*/}
-                        {/*<div className={c.row_model_form_box}>*/}
-                        {/*    <div><input type='checkbox'*/}
-                        {/*                onChange={(e) => onChangeModelCheck(e.target.checked,`Т-${detWeight} IVсл`,TYPE_MODEL_FOUR)}*/}
-                        {/*                checked={props.polishFormState.modelValue.four} /></div>*/}
-                        {/*    <div>IV сложность</div>*/}
-                        {/*</div>*/}
+
                     </div>
                 </div>
                 <div className={c.col_form_box}>

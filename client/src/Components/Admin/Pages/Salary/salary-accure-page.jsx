@@ -10,15 +10,12 @@ import SalaryConcreateForm from '../../../Common/Forms/Adminka/salary-concreate-
 
 
 const SalaryAccurePage = (props) => {
-    console.log('accure',props)
+    //console.log('accure',props)
     const {register,handleSubmit,setValue,watch,reset} = useForm()
     const dataSum = watch('dataSum')
-    
-    //const [tempCost, setTempCost] = useState(0)
-    const [keyForm, setKeyForm] = useState(FORM_BASE)
-    const [correctCost,setCorrectCost] = useState(0)
-    //const [opName,setOpName] = useState('')
-    const [operationAmount,setOperationAmount] = useState(0)
+
+    //const [keyForm, setKeyForm] = useState(FORM_BASE)
+    const [operationAmount,setOperationAmount] = useState('')
     const [operationSumma,setOperationSumma] = useState(0)
     const [operationNotice, setOperationNotice] = useState('')
     const formsArray = [<SalaryPolishForm
@@ -26,7 +23,6 @@ const SalaryAccurePage = (props) => {
         cost={'dataSum.1.cost'}
         tempCost={props.supportFormState.tempCost}
         setTempCost={props.setTempCost}
-        setCorrectCost={setCorrectCost}
         amount={'dataSum.2.amount'}
         polishFormState={props.supportFormState.polishForm}
         setPolishModelValue={props.setPolishModelValue}
@@ -39,18 +35,16 @@ const SalaryAccurePage = (props) => {
             getDetailsListSort={props.getDetailsListSort}
             getDetailsList={props.getDetailsList}
         />]
-    const supportForm = getSupportForm(formsArray,keyForm)
+    const supportForm = getSupportForm(formsArray,props.accureState.shiftData.workShop)
 
     useEffect(() => {
-        console.log('useEffect:')
-        setOperationSumma((props.supportFormState.tempCost * operationAmount).toFixed(2))
-        //setOperationSumma(setOperationsSum(props.state.individualSalaryState.formOptions.workOperationsInit,dataSum,
-        //    operationAmount,'dataSum.1.cost',setValue,setOperationName,correctCost))
+        //console.log('useEffect:')
+        setOperationSumma((props.supportFormState.tempCost * (operationAmount === '' ? 0 : operationAmount)).toFixed(2))
+        props.getWorkOperationsGroup({ type: props.accureState.shiftData.workShop })
     },[JSON.stringify(dataSum)])
 
     const onChangeOperation = (id) => {
         props.operationChange({ id, operations: props.state.individualSalaryState.formOptions.workOperationsInit })
-        //setOpName(setOperationName({ id, operations: props.state.individualSalaryState.formOptions.workOperationsInit }))
     }
     const workShopOP = WORKSHOP_NAMES.map((item, i) => {
         return <option key={i } value={item.value }>{item.text }</option>
@@ -81,9 +75,11 @@ const SalaryAccurePage = (props) => {
         </div>
     })
     const selectTypeForm = (val) => {
-        props.getWorkOperationsGroup({ type: val })
         props.setWorkShopValue(val)
-        setKeyForm(props.accureState.shiftData.workShop)
+        props.getWorkOperationsGroup({ type: props.accureState.shiftData.workShop })
+        reset()
+        props.clearSupportForm()
+        //setKeyForm(props.accureState.shiftData.workShop)
     }
     
     const selectEmployee = (val) => {
@@ -101,9 +97,7 @@ const SalaryAccurePage = (props) => {
     }
     const clearFormState = () => {
         reset()
-        setCorrectCost(0)
-        //setTempCost(0)
-        setOperationAmount(0)
+        setOperationAmount('')
         setOperationNotice('')
         props.clearSupportForm()
     }

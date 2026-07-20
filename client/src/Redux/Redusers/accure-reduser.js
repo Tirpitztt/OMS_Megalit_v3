@@ -14,7 +14,7 @@ let initialState = {
 
     },
     shiftData: {
-        date: null,
+        date: '',
         workShop: null,
         employeesShiftGroup: []
     }

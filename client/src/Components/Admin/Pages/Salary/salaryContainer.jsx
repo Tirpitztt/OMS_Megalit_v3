@@ -69,7 +69,7 @@ class SalaryContainer extends React.Component{
                 setSalaryFormOptionChange={this.props.setSalaryFormOptionChange}
                 addSalaryRowToShift={this.props.addSalaryRowToShift}
                         //
-                pushSalaryRow={this.props.pushSalaryRow}
+                //pushSalaryRow={this.props.pushSalaryRow}
                         //
                 signSalaryShift={this.props.signSalaryShift}
                 getDetailsListSort={this.props.getDetailsListSort}

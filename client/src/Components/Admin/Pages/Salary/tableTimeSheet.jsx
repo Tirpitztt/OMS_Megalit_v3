@@ -57,7 +57,7 @@ const TableTimeSheet = (props) => {
     }
     const goToIndividualSalaryPage = (obj) => {
         props.getIndividualSalaryState(obj)
-        console.log(obj)
+        //console.log(obj)
         props.changePage(1)
     }
     
@@ -65,20 +65,20 @@ const TableTimeSheet = (props) => {
     if (props.state.dataMonth.monthDays.length) {
         monthTitle = getMonthName((props.state.dataMonth.month)-1)
         titleDaysBlock = props.state.dataMonth.monthDays.map((item, i) => { //создаем шапку таблицы
-            let dayOfWeek = <div>{item.dayOfWeek}</div>
+            let dayOfWeek = <div key={i+200}>{item.dayOfWeek}</div>
             if (item.dayOfWeek === 'СБ' || item.dayOfWeek === 'ВС') {
                 dayOfWeek = <div className={c.dayOutlet }>{item.dayOfWeek}</div>
             }
-            return <div className={c.table_title_day_box} key={i}>
+            return <div key={i+300} className={c.table_title_day_box} >
                 <div>{item.day}</div>
                 <div>{dayOfWeek}</div>
             </div>
         })
-        fullRow = props.state.dataMonth.users.map((item, i) => { //создаем таблицу
+        fullRow = props.state.dataMonth.users.map((item, z) => { //создаем таблицу
             //console.log(item)
             let daysArray = new Array(props.state.dataMonth.monthDays.length).fill('.')
             const daysMonth = daysArray.map((day, i) => {  //создается строка дней
-                return <div className={c.dayShift} onClick={() => clickDay(item, i + 1)} key={i}>
+                return <div key={i} className={c.dayShift} onClick={() => clickDay(item, i + 1)} >
                     <div className={ALLDAY.class}>{ALLDAY.text}</div>
                 </div>
             })
@@ -89,31 +89,31 @@ const TableTimeSheet = (props) => {
                     if (y + 1 == shift.date.slice(-2)) {
                         if (shift.absence) {
                             daysMonth.splice(y, 1,
-                                <div className={c.dayShift } onClick={() => clickDay(item,y+1,shift.id)}>
+                                <div key={i+5000} className={c.dayShift } onClick={() => clickDay(item,y+1,shift.id)}>
                                     <div className={ABSENCE.class}>{shift.end - shift.start}</div>
                                 </div>)
                         }
                         if (shift.hooky) {
                             daysMonth.splice(y, 1,
-                                <div className={c.dayShift} onClick={() => clickDay(item,y+1,shift.id)}>
+                                <div key={i+4000} className={c.dayShift} onClick={() => clickDay(item,y+1,shift.id)}>
                                     <div className={HOOKY.class}>{HOOKY.text}</div>
                                 </div>)
                         }
                         if (shift.outlet) {
                             daysMonth.splice(y, 1,
-                                <div className={c.dayShift} onClick={() => clickDay(item,y+1,shift.id)}>
+                                <div key={i+3000} className={c.dayShift} onClick={() => clickDay(item,y+1,shift.id)}>
                                     <div className={OUTLET.class}>{OUTLET.text}</div>
                                 </div>)
                         }
                         if (shift.sick) {
                             daysMonth.splice(y, 1,
-                                <div className={c.dayShift} onClick={() => clickDay(item,y+1,shift.id)}>
+                                <div key={i+2000} className={c.dayShift} onClick={() => clickDay(item,y+1,shift.id)}>
                                     <div className={SICK.class}>{SICK.text}</div>
                                 </div>)
                         }
                         if (shift.full) {
                             daysMonth.splice(y, 1,
-                                <div className={c.dayShift} onClick={() => clickDay(item,y+1,shift.id)}>
+                                <div key={i+1000} className={c.dayShift} onClick={() => clickDay(item,y+1,shift.id)}>
                                     <div className={FULL.class}>{FULL.text}</div>
                                 </div>)
                         }
@@ -122,7 +122,7 @@ const TableTimeSheet = (props) => {
                 })
             })
             //возвращается готовая строка с днями
-            return <div key={i} className={c.full_row} >
+            return <div key={z+100} className={c.full_row} >
                 <div className={c.table_user_box} onClick={() => goToIndividualSalaryPage(item)}>{item.userName}</div>
                 {daysMonth}
             </div>

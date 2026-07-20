@@ -11,7 +11,7 @@ export const getEmployeesListThunkCreator = (body) => {
 
 export const addEmployeeToGroupThunkCreator = (body) => {
     return (dispatch) => {
-        console.log(body)
+        //console.log(body)
         usersAPI.getUserSalaryInfo(body).then(data => {
             if(data){
                 dispatch(addEmployeeToGroup(data))
@@ -24,7 +24,7 @@ export const addEmployeeToGroupThunkCreator = (body) => {
 export const signSalaryToShiftThunkCreator = (body) => {
     return(dispatch) => {
         salaryAPI.signSalaryShift(body).then(data=>{
-            console.log(data)
+            //console.log(data)
             if(data){
                 usersAPI.getUserSalaryInfo({id:body.id,date:body.date}).then(data=>{
                     dispatch(addEmployeeToGroup(data))
