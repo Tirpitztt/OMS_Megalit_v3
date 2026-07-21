@@ -44,7 +44,7 @@ const AccureReduser = (state = initialState, action) => {
                 newState.shiftData.employeesShiftGroup = newState.shiftData.employeesShiftGroup.filter((item)=>
                     item.id !== action.data.id)
             }
-            console.log(action.data)
+            //console.log(action.data)
             newState.shiftData.employeesShiftGroup.push(action.data)
             if(newState.shiftData.employeesShiftGroup.length > 0){
                 for(let item of newState.shiftData.employeesShiftGroup){
@@ -75,7 +75,7 @@ const AccureReduser = (state = initialState, action) => {
             let newState = {...state}
             for(let item of newState.shiftData.employeesShiftGroup){
                 let salaryData = {...action.data}
-                console.log(salaryData)
+                //console.log(salaryData)
                 salaryData.shiftID = item.shifts[0].id
                 salaryData.amount = salaryData.amount * item.share
                 salaryData.summa = salaryData.summa * item.share

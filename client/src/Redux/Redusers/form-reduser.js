@@ -189,7 +189,7 @@ const FormReduser = (state=initialState,action)=>{
             for(let key of keys){
                 if(action.data.type === key){
                     newState.supportFormState.polishForm.processing[key] = action.data.val
-                    newState.supportFormState.additName = getOpAdditName(action.data.type)
+                    newState.supportFormState.additName += getOpAdditName(action.data.type)
                     if (action.data.type === PROCESS_TYPE_DETAIL_AROUND) {
                         newState.supportFormState.tempCost =
                             getTempCostOfAround(action.data.val, newState.supportFormState.tempCost, action.data.operations, sizeData)

@@ -38,7 +38,7 @@ const SalaryAccurePage = (props) => {
 
     useEffect(() => {
         //console.log('useEffect:')
-        setOperationSumma((props.supportFormState.tempCost * (operationAmount === '' ? 0 : operationAmount)).toFixed(2))
+        setOperationSumma((props.supportFormState.tempCost * (operationAmount === '' ? 0 : buildFloat(operationAmount))).toFixed(2))
         props.getWorkOperationsGroup({ type: props.accureState.shiftData.workShop })
     },[JSON.stringify(dataSum)])
 
