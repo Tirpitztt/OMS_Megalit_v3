@@ -205,12 +205,9 @@ export const SIZE_DETAIL_CHANGE = 'SIZE_DETAIL_CHANGE'
 export const WIDTH = 'WIDTH'
 export const HEIGHT = 'HEIGHT'
 export const WEIGHT = 'WEIGHT'
-// export const TYPE_MODEL_ONE = 'one'
-// export const TYPE_MODEL_TWO = 'two'
-// export const TYPE_MODEL_THREE = 'three'
-// export const TYPE_MODEL_FOUR = 'four'
-// export const PROCESSING_CHECK = 'PROCESSING_CHECK'
 export const OPERATION_CHANGE = 'OPERATION_CHANGE'
+export const ADD_DETAIL_TO_KIT = 'ADD_DETAIL_TO_KIT'
+
 export const CLEAR_SUPPORT_FORM_STATE = 'CLEAR_SUPPORT_FORM_STATE'
 
 

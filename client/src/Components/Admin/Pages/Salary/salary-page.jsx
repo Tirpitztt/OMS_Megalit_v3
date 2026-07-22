@@ -94,6 +94,7 @@ const SalaryPage = (props) => {
             setPolishModelValue={props.setPolishModelValue}
             sizeDetailChange={props.sizeDetailChange}
             setProcessingChange={props.setProcessingChange}
+            addDetailToKit={props.addDetailToKit }
             clearSupportForm={props.clearSupportForm}
             back={setDisplayBack}
 

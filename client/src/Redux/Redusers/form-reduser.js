@@ -1,5 +1,6 @@
 import {getOpAdditName, getSizeSq, getTempCost, getTempCostOfAround, setEditDetailState} from "../../Utils/support";
 import {
+    ADD_DETAIL_TO_KIT,
     CLEAR_SUPPORT_FORM_STATE,
     HEIGHT,
     OPERATION_CHANGE,
@@ -77,6 +78,9 @@ let initialState = {
             modelVal: [
                 {val:false,cost:0}
             ]
+        },
+        concreateForm: {
+            detailsShiftKit:[]
         }
     }
 }
@@ -177,7 +181,7 @@ const FormReduser = (state=initialState,action)=>{
             return newState
         }
         case SET_PROCESSING_CHANGE: {
-            console.log(action.data)
+            //console.log(action.data)
             
             let newState = { ...state }
             const sizeData = {
@@ -221,6 +225,25 @@ const FormReduser = (state=initialState,action)=>{
             newState.supportFormState.tempCost = action.data
             return newState
         }
+        case ADD_DETAIL_TO_KIT: {
+            let newState = { ...state }
+            let detail = {}
+            console.log(action.data)
+            if (newState.supportFormState.concreateForm.detailsShiftKit.length) {
+                for (let d of newState.supportFormState.concreateForm.detailsShiftKit) {
+                    if (d.id == action.data.id) {
+                        d.amount += action.data.amount
+                    } else {
+                        newState.supportFormState.concreateForm.detailsShiftKit.push({ ...action.data })
+                    }
+                }
+            } else {
+                newState.supportFormState.concreateForm.detailsShiftKit.push({ ...action.data })
+            }
+            
+            return newState
+        }
+
         case CLEAR_SUPPORT_FORM_STATE:{
             let newState = {...state}
             newState.supportFormState.polishForm.h = ''
@@ -253,7 +276,8 @@ export const setEditStone = (data)=>({type:SET_EDIT_STONE,data})
 export const setEditGds = (data) => ({ type: SET_EDIT_GDS, data })
 export const setPolishModelValue = (data) => ({ type: SET_POLISH_MODEL_VALUE,data })
 export const setProcessingChange = (data)=>({type:SET_PROCESSING_CHANGE,data})
-export const sizeDetailChange = (data) => ({type:SIZE_DETAIL_CHANGE,data})
+export const sizeDetailChange = (data) => ({ type: SIZE_DETAIL_CHANGE, data })
+export const addDetailToKit = (data) => ({ type: ADD_DETAIL_TO_KIT,data })
 export const clearSupportFormState = () => ({type:CLEAR_SUPPORT_FORM_STATE})
 
 

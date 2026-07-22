@@ -29,6 +29,7 @@ import {
     setWorkShopValue
 } from '../../../../Redux/Redusers/accure-reduser';
 import {
+    addDetailToKit,
     clearSupportFormState,
     operationChange,
     setPolishModelValue,
@@ -68,14 +69,13 @@ class SalaryContainer extends React.Component{
                 getWorkOperationsGroup={this.props.getWorkOperationsGroup}
                 setSalaryFormOptionChange={this.props.setSalaryFormOptionChange}
                 addSalaryRowToShift={this.props.addSalaryRowToShift}
-                        //
-                //pushSalaryRow={this.props.pushSalaryRow}
-                        //
+                
                 signSalaryShift={this.props.signSalaryShift}
                 getDetailsListSort={this.props.getDetailsListSort}
-                setPolishModelValue={this.props.setPolishModelValue}
+                //setPolishModelValue={this.props.setPolishModelValue}
                         sizeDetailChange={this.props.sizeDetailChange}
-                        setProcessingChange={this.props.setProcessingChange}
+                setProcessingChange={this.props.setProcessingChange}
+                addDetailToKit={this.props.addDetailToKit }
                         clearFormOptions={this.props.clearFormOptions}
                         clearAccureState={this.props.clearAccureState}
                         clearSupportForm={this.props.clearSupportForm}
@@ -156,6 +156,9 @@ let mapDispatchToProps = (dispatch) => {
         },
         setProcessingChange:(data)=>{
             dispatch(setProcessingChange(data))
+        },
+        addDetailToKit: (data) => {
+            dispatch(addDetailToKit(data))
         },
         clearFormOptions:()=>{
             dispatch(clearFormOptions())

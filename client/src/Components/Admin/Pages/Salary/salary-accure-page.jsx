@@ -31,8 +31,10 @@ const SalaryAccurePage = (props) => {
         
     />,
         <SalaryConcreateForm state={props.state.individualSalaryState}
+            concreateFormState={props.supportFormState.concreateForm }
             getDetailsListSort={props.getDetailsListSort}
             getDetailsList={props.getDetailsList}
+            addDetailToKit={props.addDetailToKit}
         />]
     const supportForm = getSupportForm(formsArray,props.accureState.shiftData.workShop)
 

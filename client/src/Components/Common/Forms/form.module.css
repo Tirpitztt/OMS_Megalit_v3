@@ -356,9 +356,17 @@
 .field_box{
     width:38%;
 }
+.field_concreate_box{
+    width:100%;
+    display:flex;
+    flex-flow:row nowrap;
+}
+.sup_concr_item{
+    width:50%;
+}
 .details_list_box{
     overflow-y:scroll;
-    height:12rem;
+    max-height:10rem;
     
 }
 .details_list_box::-webkit-scrollbar {
@@ -383,10 +391,21 @@
     width:20%;
 }
 .details_check_row{
-    
+    height:1.4rem;
     display:flex;
     flex-flow:row nowrap;
     justify-content:space-between;
+}
+.concreate_checkbox_wrap{
+    width:25%;
+    display:flex;
+    flex-flow:row nowrap;
+    justify-content:center;
+
+}
+.concreate_checkbox_wrap>input{
+    width:25%;
+    height:.9rem;
 }
 .salary_button_wrap{
     width:20%;
