@@ -9,6 +9,9 @@ const SalaryConcreateForm = (props) => {
     const checkList = [STELA_CHECK_ON, TUMBA_CHECK_ON, OTHER_CHECK_ON, ALL_CHECK_ON]
     let detailsList = []
     let detailsShiftKit = []
+    const delDetFromKit = (id) => {
+        props.delDetailFromKit({id})
+    }
 
     useEffect(() => {
         props.getDetailsList()
@@ -22,7 +25,10 @@ const SalaryConcreateForm = (props) => {
     }
     if (props.concreateFormState.detailsShiftKit.length) {
         detailsShiftKit = props.concreateFormState.detailsShiftKit.map((item, i) => {
-            return <div key={i}>{item.id} - {item.articul} - {item.amount}</div>
+            return <div key={i} className={c.field_concreate_box }>
+                <div>{item.id} - {item.articul} - {item.amount}</div>
+                <div onClick={() => delDetFromKit(item.id)}>X</div>
+            </div>
         })
     }
     const sortDetailsList = (val) => {

@@ -2,6 +2,7 @@ import {getOpAdditName, getSizeSq, getTempCost, getTempCostOfAround, setEditDeta
 import {
     ADD_DETAIL_TO_KIT,
     CLEAR_SUPPORT_FORM_STATE,
+    DEL_DETAIL_FROM_KIT,
     HEIGHT,
     OPERATION_CHANGE,
     PROCESS_TYPE_DETAIL_AROUND,
@@ -230,17 +231,28 @@ const FormReduser = (state=initialState,action)=>{
             let detail = {}
             console.log(action.data)
             if (newState.supportFormState.concreateForm.detailsShiftKit.length) {
+                let flag = false
                 for (let d of newState.supportFormState.concreateForm.detailsShiftKit) {
+                    
                     if (d.id == action.data.id) {
                         d.amount += action.data.amount
-                    } else {
-                        newState.supportFormState.concreateForm.detailsShiftKit.push({ ...action.data })
+                        flag = true
                     }
+                }
+                if (!flag) {
+                    newState.supportFormState.concreateForm.detailsShiftKit.push({ ...action.data })
                 }
             } else {
                 newState.supportFormState.concreateForm.detailsShiftKit.push({ ...action.data })
             }
-            
+            return newState
+        }
+        case DEL_DETAIL_FROM_KIT: {
+            let newState = { ...state }
+            newState.supportFormState.concreateForm.detailsShiftKit =
+                newState.supportFormState.concreateForm.detailsShiftKit.filter((item) => {
+                    return item.id !== action.data.id
+                })
             return newState
         }
 
@@ -277,7 +289,8 @@ export const setEditGds = (data) => ({ type: SET_EDIT_GDS, data })
 export const setPolishModelValue = (data) => ({ type: SET_POLISH_MODEL_VALUE,data })
 export const setProcessingChange = (data)=>({type:SET_PROCESSING_CHANGE,data})
 export const sizeDetailChange = (data) => ({ type: SIZE_DETAIL_CHANGE, data })
-export const addDetailToKit = (data) => ({ type: ADD_DETAIL_TO_KIT,data })
+export const addDetailToKit = (data) => ({ type: ADD_DETAIL_TO_KIT, data })
+export const delDetailFromKit = (data) => ({ type: DEL_DETAIL_FROM_KIT,data })
 export const clearSupportFormState = () => ({type:CLEAR_SUPPORT_FORM_STATE})
 
 

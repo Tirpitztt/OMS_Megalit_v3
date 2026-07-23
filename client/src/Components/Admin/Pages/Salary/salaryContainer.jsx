@@ -31,6 +31,7 @@ import {
 import {
     addDetailToKit,
     clearSupportFormState,
+    delDetailFromKit,
     operationChange,
     setPolishModelValue,
     setProcessingChange, setTempCost,
@@ -75,7 +76,8 @@ class SalaryContainer extends React.Component{
                 //setPolishModelValue={this.props.setPolishModelValue}
                         sizeDetailChange={this.props.sizeDetailChange}
                 setProcessingChange={this.props.setProcessingChange}
-                addDetailToKit={this.props.addDetailToKit }
+                addDetailToKit={this.props.addDetailToKit}
+                delDetailFromKit={this.props.delDetailFromKit}
                         clearFormOptions={this.props.clearFormOptions}
                         clearAccureState={this.props.clearAccureState}
                         clearSupportForm={this.props.clearSupportForm}
@@ -159,6 +161,9 @@ let mapDispatchToProps = (dispatch) => {
         },
         addDetailToKit: (data) => {
             dispatch(addDetailToKit(data))
+        },
+        delDetailFromKit: (data) => {
+            dispatch(delDetailFromKit(data))
         },
         clearFormOptions:()=>{
             dispatch(clearFormOptions())
