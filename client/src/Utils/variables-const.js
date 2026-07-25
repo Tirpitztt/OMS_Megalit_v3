@@ -167,7 +167,7 @@ export const ADD_EMPLOYEE_TO_GROUP = 'ADD_EMPLOYEE_TO_GROUP'
 export const DEL_EMPLOYEE_FROM_GROUP = 'DEL_EMPLOYEE_FROM_GROUP'
 export const SET_SHIFT_DATE = 'SET_SHIFT_DATE'
 export const CLEAR_ACCURE_STATE = 'CLEAR_ACCURE_STATE'
-export const ADD_SALARY_ROW = 'ADD_SALARY_ROW'
+export const ADD_SALARY_ROW = 'ADD_SALARY_ROW'                 
 
 export const FORM_SALARY_ROW_PUSH = 'FORM_SALARY_ROW_PUSH'
 //export const SIGN_SALARY_OF_SHIFT = 'SIGN_SALARY_OF_SHIFT'
@@ -176,6 +176,11 @@ export const STELA_CHECK_ON = { value: 'стела', checked: false, checkOn: ()
 export const TUMBA_CHECK_ON = { value: 'подставка', checked: false, checkOn: () => true, checkOff: () => false }
 export const OTHER_CHECK_ON = { value: 'другое', checked: false, checkOn: () => true, checkOff: () => false }
 export const ALL_CHECK_ON = { value: 'all', checked: false, checkOn: () => true, checkOff: () => false }
+export const BLACK_CHECK_ON = { value: 'ч', checked: false, checkOn: () => true, checkOFF: () => false }
+export const RED_CHECK_ON = { value: 'к', checked: false, checkOn: () => true, checkOFF: () => false }
+export const WHITE_CHECK_ON = { value: 'б', checked: false, checkOn: () => true, checkOFF: () => false }
+export const GRAY_CHECK_ON = { value: 'с', checked: false, checkOn: () => true, checkOFF: () => false }
+export const ALL_COLORS_CHECK_ON = { value: 'allColors', checked: false, checkOn: () => true, checkOFF: () => false }
 
 export const SIZE_TYPE_FACE = 'SIZE_TYPE_FACE'
 export const SIZE_TYPE_TWO_FACES = 'SIZE_TYPE_TWO_FACES'

@@ -1,12 +1,13 @@
 import React, { useEffect,useState} from 'react'
 import c from '../form.module.css'
 import { detailSort } from '../../../../Utils/support'
-import { ALL_CHECK_ON, OTHER_CHECK_ON, STELA_CHECK_ON, TUMBA_CHECK_ON } from '../../../../Utils/variables-const'
+import { ALL_CHECK_ON, ALL_COLORS_CHECK_ON, BLACK_CHECK_ON, GRAY_CHECK_ON, OTHER_CHECK_ON, RED_CHECK_ON, STELA_CHECK_ON, TUMBA_CHECK_ON, WHITE_CHECK_ON } from '../../../../Utils/variables-const'
 
 
 const SalaryConcreateForm = (props) => {
     console.log(props.concreateFormState.detailsShiftKit)
     const checkList = [STELA_CHECK_ON, TUMBA_CHECK_ON, OTHER_CHECK_ON, ALL_CHECK_ON]
+    const checkColorList = [BLACK_CHECK_ON, GRAY_CHECK_ON, WHITE_CHECK_ON, RED_CHECK_ON, ALL_COLORS_CHECK_ON]
     let detailsList = []
     let detailsShiftKit = []
     const delDetFromKit = (id) => {
@@ -20,14 +21,21 @@ const SalaryConcreateForm = (props) => {
     if (props.state.formOptions.detailsList.length) {
         detailsList = props.state.formOptions.detailsListSort.map((item, i) => {
             return <div key={i}
-                onClick={() => props.addDetailToKit({ id: item.id, articul: item.articul,amount:1 })}>{item.id} {item.articul}</div>
+                className={c.field_concreate_box }
+                onClick={() => props.addDetailToKit({ id: item.id, articul: item.articul,amount:1 })}>{item.articul}</div>
         })
     }
     if (props.concreateFormState.detailsShiftKit.length) {
         detailsShiftKit = props.concreateFormState.detailsShiftKit.map((item, i) => {
-            return <div key={i} className={c.field_concreate_box }>
-                <div>{item.id} - {item.articul} - {item.amount}</div>
-                <div onClick={() => delDetFromKit(item.id)}>X</div>
+            return <div key={i} className={c.field_concreate_box}>
+                <div className={c.field_concreate_box_item }>
+                    <div>{item.articul} - </div>
+                    <div>{item.amount} шт</div>
+                </div>
+                <div className={c.field_concreate_box_item_button}>
+                    <div onClick={() => delDetFromKit(item.id)}>X</div>
+                </div>
+                
             </div>
         })
     }
@@ -48,7 +56,7 @@ const SalaryConcreateForm = (props) => {
     }
 
     return (
-        <div className={c.field_concreate_box }>
+        <div className={c.concreate_main_wrap }>
 
             <div className={c.sup_concr_item }>
                 <div className={c.details_check_row}>
@@ -78,8 +86,42 @@ const SalaryConcreateForm = (props) => {
                     </div>
                 </div>
                 <div className={c.details_list_box}>
+                    <div className={c.check_list_col}>
+                        <div className={c.concreate_checkbox_color_wrap}>
+                            <label>Ч</label>
+                            <input type='checkbox' value='ч'
+                                checked={checkColorList[0].checked}
+                                //onChange={(e) => sortDetailsList(e.target.value)}
+                            />
+                        </div>
+                        <div className={c.concreate_checkbox_color_wrap}>
+                            <label>Б</label>
+                            <input type='checkbox' value='б'
+                                checked={checkColorList[2].checked}
+                            //onChange={(e) => sortDetailsList(e.target.value)} 
+                            />
+                        </div>
+                        <div className={c.concreate_checkbox_color_wrap}>
+                            <label>С</label>
+                            <input type='checkbox' value='с'
+                                checked={checkColorList[1].checked}
+                            //onChange={(e) => sortDetailsList(e.target.value)} 
+                            />
+                        </div>
+                        <div className={c.concreate_checkbox_color_wrap}>
+                            <label>К</label>
+                            <input type='checkbox' value='к'
+                                checked={checkColorList[3].checked}
+                            //onChange={(e) => sortDetailsList(e.target.value)} 
+                            />
+                        </div>
 
-                    {detailsList}
+                    </div>
+                    <div className={c.list_box_col }>
+                        {detailsList}
+
+                    </div>
+                    
                 </div>
             </div>
             <div className={c.sup_concr_item}>

@@ -249,6 +249,7 @@ const FormReduser = (state=initialState,action)=>{
         }
         case DEL_DETAIL_FROM_KIT: {
             let newState = { ...state }
+
             newState.supportFormState.concreateForm.detailsShiftKit =
                 newState.supportFormState.concreateForm.detailsShiftKit.filter((item) => {
                     return item.id !== action.data.id

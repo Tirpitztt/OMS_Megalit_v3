@@ -356,27 +356,60 @@
 .field_box{
     width:38%;
 }
+.concreate_main_wrap {
+    width: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+}
 .field_concreate_box{
-    width:100%;
+    width:90%;
     display:flex;
     flex-flow:row nowrap;
+    padding:3px 10px;
+    cursor:pointer;
+}
+.field_concreate_box:hover{
+    background-color:beige;
+}
+.field_concreate_box_item {
+    width: 80%;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content:space-between;
+}
+.field_concreate_box_item_button{
+    text-align:center;
+    width:20%;
 }
 .sup_concr_item{
     width:50%;
 }
 .details_list_box{
-    overflow-y:scroll;
-    max-height:10rem;
+    display:flex;
+    flex-flow:row nowrap;
     
 }
-.details_list_box::-webkit-scrollbar {
+.list_box_col {
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+    overflow-y: scroll;
+    max-height: 10rem;
+}
+.check_list_col{
+    width:20%;
+    display:flex;
+    flex-flow:column;
+    
+}
+.list_box_col::-webkit-scrollbar {
     width: 5px;
 }
-.details_list_box::-webkit-scrollbar-track {
+.list_box_col::-webkit-scrollbar-track {
     background: #f1f1f1;
 }
 
-.details_list_box::-webkit-scrollbar-thumb {
+.list_box_col::-webkit-scrollbar-thumb {
     background: #888;
     border-radius: 3px;
 }
@@ -402,6 +435,19 @@
     flex-flow:row nowrap;
     justify-content:center;
 
+}
+.concreate_checkbox_color_wrap {
+    width: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: start;
+}
+.concreate_checkbox_color_wrap > input {
+    width: 25%;
+    height: .9rem;
+}
+.concreate_checkbox_color_wrap > label {
+    width: 25%;
 }
 .concreate_checkbox_wrap>input{
     width:25%;
