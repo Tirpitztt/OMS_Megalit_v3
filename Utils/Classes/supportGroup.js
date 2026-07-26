@@ -8,7 +8,7 @@ class SupportGroup {
         }
 
     }
-    getKeyOfWorkOperation(id){
+    getKeyOfWorkOperation(id){ //не подключено
         switch(id){
             case '1':{return DETAIL_TYPE_OF_MONUMENT}
             case '2':{return DETAIL_TYPE_OF_FLOOR}
