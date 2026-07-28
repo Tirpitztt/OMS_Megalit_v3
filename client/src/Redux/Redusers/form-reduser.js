@@ -1,15 +1,15 @@
 import {getOpAdditName, getSizeSq, getTempCost, getTempCostOfAround, setEditDetailState} from "../../Utils/support";
 import {
-    ADD_DETAIL_TO_KIT,
+    ADD_DETAIL_TO_KIT, ALL_SORT_CHECK,
     CLEAR_SUPPORT_FORM_STATE,
     DEL_DETAIL_FROM_KIT,
     HEIGHT,
-    OPERATION_CHANGE,
+    OPERATION_CHANGE, OTHER_SORT_CHECK,
     PROCESS_TYPE_DETAIL_AROUND,
     SET_POLISH_MODEL_VALUE, SET_PROCESSING_CHANGE, SET_TEMP_COST,
     SIZE_DETAIL_CHANGE, SIZE_TYPE_FACE, SIZE_TYPE_FACE_AROUND, SIZE_TYPE_FACET_AROUND, SIZE_TYPE_FACET_UP,
     SIZE_TYPE_SIDE_AROUND,
-    SIZE_TYPE_TWO_FACES,
+    SIZE_TYPE_TWO_FACES, STELA_SORT_CHECK, TUMB_SORT_CHECK,
     WEIGHT,
     WIDTH
 } from "../../Utils/variables-const";
@@ -81,7 +81,12 @@ let initialState = {
             ]
         },
         concreateForm: {
-            detailsShiftKit:[]
+            detailsShiftKit:[],
+            detailsInitList:[],
+            detailsSortList:[],
+            sortCheckBoxList:[
+                STELA_SORT_CHECK,TUMB_SORT_CHECK,OTHER_SORT_CHECK,ALL_SORT_CHECK
+            ]
         }
     }
 }

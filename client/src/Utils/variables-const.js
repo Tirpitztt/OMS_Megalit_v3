@@ -1,4 +1,5 @@
 import React from "react";
+import CheckBox from "./Classes/checkBox";
 
 
 export const WORKERS = 'рабочие'
@@ -181,6 +182,12 @@ export const RED_CHECK_ON = { value: 'к', checked: false, checkOn: () => true, 
 export const WHITE_CHECK_ON = { value: 'б', checked: false, checkOn: () => true, checkOFF: () => false }
 export const GRAY_CHECK_ON = { value: 'с', checked: false, checkOn: () => true, checkOFF: () => false }
 export const ALL_COLORS_CHECK_ON = { value: 'allColors', checked: false, checkOn: () => true, checkOFF: () => false }
+
+export const STELA_SORT_CHECK = new CheckBox('стела')
+export const TUMB_SORT_CHECK = new CheckBox('подставка')
+export const OTHER_SORT_CHECK = new CheckBox('другое')
+export const ALL_SORT_CHECK = new CheckBox('all')
+
 
 export const SIZE_TYPE_FACE = 'SIZE_TYPE_FACE'
 export const SIZE_TYPE_TWO_FACES = 'SIZE_TYPE_TWO_FACES'

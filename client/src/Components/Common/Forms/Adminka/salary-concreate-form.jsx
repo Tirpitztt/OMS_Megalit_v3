@@ -6,7 +6,7 @@ import { ALL_CHECK_ON, ALL_COLORS_CHECK_ON, BLACK_CHECK_ON, GRAY_CHECK_ON, OTHER
 
 const SalaryConcreateForm = (props) => {
     console.log(props.concreateFormState.detailsShiftKit)
-    const checkList = [STELA_CHECK_ON, TUMBA_CHECK_ON, OTHER_CHECK_ON, ALL_CHECK_ON]
+    //const checkList = [STELA_CHECK_ON, TUMBA_CHECK_ON, OTHER_CHECK_ON, ALL_CHECK_ON]
     const checkColorList = [BLACK_CHECK_ON, GRAY_CHECK_ON, WHITE_CHECK_ON, RED_CHECK_ON, ALL_COLORS_CHECK_ON]
     let detailsList = []
     let detailsShiftKit = []
@@ -39,24 +39,43 @@ const SalaryConcreateForm = (props) => {
             </div>
         })
     }
+    // const sortDetailsList = (val) => {
+    //     //console.log(val)
+    //     checkList.forEach(item => {
+    //         if (val === item.value) {
+    //             item.checked = item.checkOn()
+    //             let arr = detailSort({
+    //                    category: item.value,
+    //                    details: props.state.formOptions.detailsList
+    //             })
+    //             props.getDetailsListSort(arr)
+    //         } else {
+    //            item.checked =  item.checkOff()
+    //         }
+    //     })
+    // }
     const sortDetailsList = (val) => {
-        //console.log(val)
-        checkList.forEach(item => {
-            if (val === item.value) {
-                item.checked = item.checkOn()
+        props.concreateFormState.sortCheckBoxList.forEach(item => {
+            if(val === item.value){
+                item.checkON()
                 let arr = detailSort({
-                       category: item.value,
-                       details: props.state.formOptions.detailsList
+                    category: item.value,
+                    details:props.state.formOptions.detailsList
                 })
                 props.getDetailsListSort(arr)
-            } else {
-               item.checked =  item.checkOff()
+            }else{
+                item.checkOFF()
             }
         })
     }
-    const sortColorDetailsList = (val) => {
-        checkColorList.forEach(item => {
 
+
+    const sortColorDetailsList = (val) => {
+        console.log(val)
+        checkColorList.forEach(item => {
+            if(val === item.value){
+                item.checked = item.checkOn()
+            }
         })
     }
 
@@ -68,25 +87,25 @@ const SalaryConcreateForm = (props) => {
                     <div className={c.concreate_checkbox_wrap}>
                         <label>все</label>
                         <input type='checkbox' value='all'
-                            checked={checkList[3].checked}
+                            checked={props.concreateFormState.sortCheckBoxList[3].checked}
                             onChange={(e) => sortDetailsList(e.target.value)} />
                     </div>
                     <div className={c.concreate_checkbox_wrap}>
                         <label>стела</label>
                         <input type='checkbox' value='стела'
-                            checked={checkList[0].checked}
+                            checked={props.concreateFormState.sortCheckBoxList[0].checked}
                             onChange={(e) => sortDetailsList(e.target.value)} />
                     </div>
                     <div className={c.concreate_checkbox_wrap}>
                         <label>подст</label>
                         <input type='checkbox' value='подставка'
-                            checked={checkList[1].checked}
+                            checked={props.concreateFormState.sortCheckBoxList[1].checked}
                             onChange={(e) => sortDetailsList(e.target.value)} />
                     </div>
                     <div className={c.concreate_checkbox_wrap}>
                         <label>другое</label>
                         <input type='checkbox' value='другое'
-                            checked={checkList[2].checked}
+                            checked={props.concreateFormState.sortCheckBoxList[2].checked}
                             onChange={(e) => sortDetailsList(e.target.value)} />
                     </div>
                 </div>
@@ -96,28 +115,28 @@ const SalaryConcreateForm = (props) => {
                             <label>Ч</label>
                             <input type='checkbox' value='ч'
                                 checked={checkColorList[0].checked}
-                                //onChange={(e) => sortDetailsList(e.target.value)}
+                                onChange={(e) => sortColorDetailsList(e.target.value)}
                             />
                         </div>
                         <div className={c.concreate_checkbox_color_wrap}>
                             <label>Б</label>
                             <input type='checkbox' value='б'
                                 checked={checkColorList[2].checked}
-                            //onChange={(e) => sortDetailsList(e.target.value)} 
+                            onChange={(e) => sortColorDetailsList(e.target.value)}
                             />
                         </div>
                         <div className={c.concreate_checkbox_color_wrap}>
                             <label>С</label>
                             <input type='checkbox' value='с'
                                 checked={checkColorList[1].checked}
-                            //onChange={(e) => sortDetailsList(e.target.value)} 
+                            onChange={(e) => sortColorDetailsList(e.target.value)}
                             />
                         </div>
                         <div className={c.concreate_checkbox_color_wrap}>
                             <label>К</label>
                             <input type='checkbox' value='к'
                                 checked={checkColorList[3].checked}
-                            //onChange={(e) => sortDetailsList(e.target.value)} 
+                            onChange={(e) => sortColorDetailsList(e.target.value)}
                             />
                         </div>
 

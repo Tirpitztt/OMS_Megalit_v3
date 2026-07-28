@@ -12,7 +12,7 @@ import { buildFloat } from "../../../../Utils/buildNum"
 
 
 
-const SalaryBaseForm = (props) => {
+const SalaryBaseForm = (props) => { //не используется
     console.log('form state:',props.state)
 
     const {register,handleSubmit,setValue,watch,reset} = useForm()
