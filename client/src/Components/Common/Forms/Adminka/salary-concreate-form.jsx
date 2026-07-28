@@ -54,6 +54,11 @@ const SalaryConcreateForm = (props) => {
             }
         })
     }
+    const sortColorDetailsList = (val) => {
+        checkColorList.forEach(item => {
+
+        })
+    }
 
     return (
         <div className={c.concreate_main_wrap }>
