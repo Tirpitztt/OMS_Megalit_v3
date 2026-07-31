@@ -15,14 +15,20 @@ const SalaryConcreateForm = (props) => {
     }
 
     useEffect(() => {
-        props.getDetailsList()
+        props.getDetailsList(props.state.formOptions.sortParams)
     }, [])
 
+    //if (props.state.formOptions.detailsList.length) {
+    //    detailsList = props.state.formOptions.detailsListSort.map((item, i) => {
+    //        return <div key={i}
+    //            className={c.field_concreate_box }
+    //            onClick={() => props.addDetailToKit({ id: item.id, articul: item.articul,amount:1 })}>{item.articul}</div>
+    //    })
+    //}
+
     if (props.state.formOptions.detailsList.length) {
-        detailsList = props.state.formOptions.detailsListSort.map((item, i) => {
-            return <div key={i}
-                className={c.field_concreate_box }
-                onClick={() => props.addDetailToKit({ id: item.id, articul: item.articul,amount:1 })}>{item.articul}</div>
+        detailsList = props.state.formOptions.detailsList.map((item, i) => {
+            return <div key={i} className={c.field_concreate_box}>{item.articul }</div>
         })
     }
     if (props.concreateFormState.detailsShiftKit.length) {

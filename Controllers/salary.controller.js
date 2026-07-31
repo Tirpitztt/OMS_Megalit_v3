@@ -5,12 +5,23 @@ const supportGroup = require('../Utils/Classes/supportGroup')
 
 class SalaryController {
     async getDetailsGroup(req,res){
-        try{
+        try {
+            console.log('serv:',req.body)
             const key = supportGroup.getKeyOfWorkOperation(req.body.operationID)
+            //const allDetails = await Model.beton_details.findAll({
+            //    where:{
+            //        name:{
+            //            [Op.or]:key
+            //        }
+            //    }
+            //})
             const allDetails = await Model.beton_details.findAll({
-                where:{
-                    name:{
-                        [Op.or]:key
+                where: {
+                    name: {
+                        [Op.or]:req.body.det
+                    },
+                    articul: {
+                        [Op.startsWith]: 'ч'
                     }
                 }
             })

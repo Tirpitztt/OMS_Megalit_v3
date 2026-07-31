@@ -33,7 +33,8 @@ let initialState = {
             workOperationsInit:[],
             workOperations:[],
             detailsList: [],
-            detailsListSort:[]
+            detailsListSort: [],
+            sortParams: {det:['стела'],color:['ч','б']}
 
         },
         salaryCalculateBody: {
@@ -195,8 +196,10 @@ export const saveShiftByUserThunkCreator = (body) => {
     }
 }
 export const getDetailsListThunkCreator = (body) => {
-    return(dispatch)=>{
+    return (dispatch) => {
+        console.log('body',body)
         salaryAPI.getDetailsGroup(body).then(data => {
+            console.log('data',data)
             dispatch(selectWorkOperation(data))
         })
 
