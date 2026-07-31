@@ -21,14 +21,16 @@ class SalaryController {
                         [Op.or]:req.body.det
                     },
                     articul: {
-                        [Op.startsWith]: 'ч'
+                        [Op.or]:req.body.colors.map(color => ({
+                            [Op.startsWith] : color
+                        }))
                     }
                 }
             })
 
             return res.status(200).json(allDetails)
         }catch (e) {
-            return res.status(500).json({message:'shift create error' + e.message})
+            return res.status(500).json({message:'sort detail group error' + e.message})
         }
     }
     async signSalaryOfShift(req, res) {

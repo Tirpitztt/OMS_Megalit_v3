@@ -7,8 +7,9 @@ import {
     FORM_OPTIONS_CHANGE,
     SET_WORK_OPERATION_NAME,
     GET_WORK_OPERATIONS, FORM_BASE, SELECT_WORK_OPERATION, CLEAR_FORM_OPTIONS, DETAILS_LIST_SORT,
-    GET_WORK_OPERATIONS_INIT, FORM_SALARY_ROW_PUSH
+    GET_WORK_OPERATIONS_INIT, FORM_SALARY_ROW_PUSH, STELA_SORT_CHECK, TUMB_SORT_CHECK, OTHER_SORT_CHECK, ALL_SORT_CHECK
 } from "../../Utils/variables-const"
+import {sortDetailParamsBuilder} from "../../Utils/support";
 
 
 let initialState = {
@@ -34,7 +35,10 @@ let initialState = {
             workOperations:[],
             detailsList: [],
             detailsListSort: [],
-            sortParams: {det:['стела'],color:['ч','б']}
+            sortParams: {det:[],colors:[]},
+            sortCheckBoxList:[
+                STELA_SORT_CHECK,TUMB_SORT_CHECK,OTHER_SORT_CHECK,ALL_SORT_CHECK
+            ]
 
         },
         salaryCalculateBody: {
@@ -125,20 +129,26 @@ const SalaryReduser = (state = initialState,action) => {
         case SELECT_WORK_OPERATION:{
             let newState = {...state}
             newState.individualSalaryState.formOptions.detailsList = [...action.data]
-            newState.individualSalaryState.formOptions.detailsListSort = [...action.data]
+            //newState.individualSalaryState.formOptions.detailsListSort = [...action.data]
             return newState
         }
         case DETAILS_LIST_SORT: {
             let newState = { ...state }
-            newState.individualSalaryState.formOptions.detailsListSort = [...action.data]
+            console.log(action.data)
+            let params = newState.individualSalaryState.formOptions.sortParams
+            for(const item of newState.individualSalaryState.formOptions.sortCheckBoxList){
+                if(item.value === action.data){
+                    item.checkON()
+                    params = sortDetailParamsBuilder(action.data)
+                }else{
+                    item.checkOFF()
+                }
+            }
+            newState.individualSalaryState.formOptions.sortParams = {...params}
+
             return newState
         }
-        // case FORM_SALARY_ROW_PUSH:{
-        //     let newState = {...state}
-        //     action.data.shiftID = newState.individualSalaryState.salaryFormState.shiftID
-        //     newState.individualSalaryState.salaryFormState.salary.push(action.data)
-        //     return newState
-        // }
+
         case CLEAR_FORM_OPTIONS:{
             let newState = {...state}
             newState.individualSalaryState.salaryFormState.status = 'нет смены'

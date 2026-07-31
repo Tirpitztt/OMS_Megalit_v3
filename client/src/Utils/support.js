@@ -320,6 +320,14 @@ export const detailSort = (data) => {
     }
 }
 
+export const sortDetailParamsBuilder = (det) => {
+    //используя тип параметра установить для каждого поля свой параметр
+    if(det === 'all'){
+        return {det:[],colors:[]}
+    }
+    return {det:[det],colors:[]}
+}
+
 //export const setOperationsSum = (operations,data,amount,fieldKey,
 //                                valueFunction,setNameFunction,correctCost) => {
 //    let sum = 0

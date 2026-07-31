@@ -84,9 +84,7 @@ let initialState = {
             detailsShiftKit:[],
             detailsInitList:[],
             detailsSortList:[],
-            sortCheckBoxList:[
-                STELA_SORT_CHECK,TUMB_SORT_CHECK,OTHER_SORT_CHECK,ALL_SORT_CHECK
-            ]
+
         }
     }
 }
