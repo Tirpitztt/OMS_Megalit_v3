@@ -320,12 +320,23 @@ export const detailSort = (data) => {
     }
 }
 
-export const sortDetailParamsBuilder = (det) => {
+export const sortDetailParamsBuilder = (state,data) => {
     //используя тип параметра установить для каждого поля свой параметр
-    if(det === 'all'){
-        return {det:[],colors:[]}
+    let params = {...state}
+    if (data.val === 'all') {
+        return { det: [], colors: [] }
     }
-    return {det:[det],colors:[]}
+    switch (data.type) {
+        case 1: {
+            for (const item of params.det) {
+                
+            }
+            return params
+        }
+        default: return { det: [data.val], colors: [] }
+    }
+    
+   
 }
 
 //export const setOperationsSum = (operations,data,amount,fieldKey,

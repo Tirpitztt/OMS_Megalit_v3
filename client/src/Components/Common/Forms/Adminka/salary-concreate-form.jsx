@@ -1,13 +1,13 @@
 import React, { useEffect,useState} from 'react'
 import c from '../form.module.css'
 import {detailSort, sortDetailParamsBuilder} from '../../../../Utils/support'
-import { ALL_CHECK_ON, ALL_COLORS_CHECK_ON, BLACK_CHECK_ON, GRAY_CHECK_ON, OTHER_CHECK_ON, RED_CHECK_ON, STELA_CHECK_ON, TUMBA_CHECK_ON, WHITE_CHECK_ON } from '../../../../Utils/variables-const'
+//import { ALL_CHECK_ON, ALL_COLORS_CHECK_ON, BLACK_CHECK_ON, GRAY_CHECK_ON, OTHER_CHECK_ON, RED_CHECK_ON, STELA_CHECK_ON, TUMBA_CHECK_ON, WHITE_CHECK_ON } from '../../../../Utils/variables-const'
 
 
 const SalaryConcreateForm = (props) => {
     console.log(props.concreateFormState.detailsShiftKit)
     //const checkList = [STELA_CHECK_ON, TUMBA_CHECK_ON, OTHER_CHECK_ON, ALL_CHECK_ON]
-    const checkColorList = [BLACK_CHECK_ON, GRAY_CHECK_ON, WHITE_CHECK_ON, RED_CHECK_ON, ALL_COLORS_CHECK_ON]
+    //const checkColorList = [BLACK_CHECK_ON, GRAY_CHECK_ON, WHITE_CHECK_ON, RED_CHECK_ON, ALL_COLORS_CHECK_ON]
     let detailsList = []
     let detailsShiftKit = []
     const delDetFromKit = (id) => {
@@ -85,10 +85,10 @@ const SalaryConcreateForm = (props) => {
     //     })
     // }
 
-    const sortDetailList = (val) => {
+    const sortDetailList = (param) => {
         //props.getDetailsListSort({det:['стела'],colors:['с','ч']})
         //ввести тип параметра? {type:'',val:val}
-        props.getDetailsListSort(val)
+        props.getDetailsListSort(param)
     }
 
     return (
@@ -100,25 +100,25 @@ const SalaryConcreateForm = (props) => {
                         <label>все</label>
                         <input type='checkbox' value='all'
                             checked={props.state.formOptions.sortCheckBoxList[3].checked}
-                            onChange={(e) => sortDetailList(e.target.value)} />
+                            onChange={(e) => sortDetailList({ type: 1, val: e.target.value })} />
                     </div>
                     <div className={c.concreate_checkbox_wrap}>
                         <label>стела</label>
                         <input type='checkbox' value='стела'
                             checked={props.state.formOptions.sortCheckBoxList[0].checked}
-                            onChange={(e) => sortDetailList(e.target.value)} />
+                            onChange={(e) => sortDetailList({ type: 1, val: e.target.value })} />
                     </div>
                     <div className={c.concreate_checkbox_wrap}>
                         <label>подст</label>
                         <input type='checkbox' value='подставка'
                             checked={props.state.formOptions.sortCheckBoxList[1].checked}
-                            onChange={(e) => sortDetailList(e.target.value)} />
+                            onChange={(e) => sortDetailList({ type: 1, val: e.target.value })} />
                     </div>
                     <div className={c.concreate_checkbox_wrap}>
                         <label>другое</label>
                         <input type='checkbox' value='другое'
                             checked={props.state.formOptions.sortCheckBoxList[2].checked}
-                            onChange={(e) => sortDetailList(e.target.value)} />
+                            onChange={(e) => sortDetailList({ type: 1, val: e.target.value })} />
                     </div>
                 </div>
                 <div className={c.details_list_box}>
@@ -126,29 +126,29 @@ const SalaryConcreateForm = (props) => {
                         <div className={c.concreate_checkbox_color_wrap}>
                             <label>Ч</label>
                             <input type='checkbox' value='ч'
-                                checked={checkColorList[0].checked}
-                                //onChange={(e) => sortColorDetailsList(e.target.value)}
+                                checked={props.state.formOptions.sortColorCheckBoxList[0].checked}
+                                onChange={(e) => sortDetailList({ type: 2, val: e.target.value })}
                             />
                         </div>
                         <div className={c.concreate_checkbox_color_wrap}>
                             <label>Б</label>
                             <input type='checkbox' value='б'
-                                checked={checkColorList[2].checked}
-                            //onChange={(e) => sortColorDetailsList(e.target.value)}
+                                checked={props.state.formOptions.sortColorCheckBoxList[1].checked}
+                                onChange={(e) => sortDetailList({ type: 2, val: e.target.value })}
                             />
                         </div>
                         <div className={c.concreate_checkbox_color_wrap}>
                             <label>С</label>
                             <input type='checkbox' value='с'
-                                checked={checkColorList[1].checked}
-                            //onChange={(e) => sortColorDetailsList(e.target.value)}
+                                checked={props.state.formOptions.sortColorCheckBoxList[2].checked}
+                                onChange={(e) => sortDetailList({ type: 2, val: e.target.value })}
                             />
                         </div>
                         <div className={c.concreate_checkbox_color_wrap}>
                             <label>К</label>
                             <input type='checkbox' value='к'
-                                checked={checkColorList[3].checked}
-                            //onChange={(e) => sortColorDetailsList(e.target.value)}
+                                checked={props.state.formOptions.sortColorCheckBoxList[3].checked}
+                                onChange={(e) => sortDetailList({ type: 2, val: e.target.value })}
                             />
                         </div>
 

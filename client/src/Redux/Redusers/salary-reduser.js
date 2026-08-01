@@ -7,7 +7,7 @@ import {
     FORM_OPTIONS_CHANGE,
     SET_WORK_OPERATION_NAME,
     GET_WORK_OPERATIONS, FORM_BASE, SELECT_WORK_OPERATION, CLEAR_FORM_OPTIONS, DETAILS_LIST_SORT,
-    GET_WORK_OPERATIONS_INIT, FORM_SALARY_ROW_PUSH, STELA_SORT_CHECK, TUMB_SORT_CHECK, OTHER_SORT_CHECK, ALL_SORT_CHECK
+    GET_WORK_OPERATIONS_INIT, FORM_SALARY_ROW_PUSH, STELA_SORT_CHECK, TUMB_SORT_CHECK, OTHER_SORT_CHECK, ALL_SORT_CHECK, BLACK_SORT_CHECK, WHITE_SORT_CHECK, GRAY_SORT_CHECK, RED_SORT_CHECK
 } from "../../Utils/variables-const"
 import {sortDetailParamsBuilder} from "../../Utils/support";
 
@@ -38,6 +38,9 @@ let initialState = {
             sortParams: {det:[],colors:[]},
             sortCheckBoxList:[
                 STELA_SORT_CHECK,TUMB_SORT_CHECK,OTHER_SORT_CHECK,ALL_SORT_CHECK
+            ],
+            sortColorCheckBoxList: [
+                BLACK_SORT_CHECK, WHITE_SORT_CHECK, GRAY_SORT_CHECK, RED_SORT_CHECK
             ]
 
         },
@@ -136,15 +139,25 @@ const SalaryReduser = (state = initialState,action) => {
             let newState = { ...state }
             console.log(action.data)
             let params = newState.individualSalaryState.formOptions.sortParams
-            for(const item of newState.individualSalaryState.formOptions.sortCheckBoxList){
-                if(item.value === action.data){
-                    item.checkON()
-                    params = sortDetailParamsBuilder(action.data)
-                }else{
-                    item.checkOFF()
+            if (action.data.type === 1) {
+                for (const item of newState.individualSalaryState.formOptions.sortCheckBoxList) {
+                    if (item.value === action.data.val) {
+                        item.checkON()
+                        //params = sortDetailParamsBuilder(newState.individualSalaryState.formOptions.sortParams, action.data)
+                    } else {
+                        item.checkOFF()
+                    }
+                }
+            } else if (action.data.type === 2) {
+                for (const item of newState.individualSalaryState.formOptions.sortColorCheckBoxList) {
+                    if (item.value === action.data.val) {
+                        item.checkON()
+                        //params = sortDetailParamsBuilder(newState.individualSalaryState.formOptions.sortParams, action.data)
+                    } 
                 }
             }
-            newState.individualSalaryState.formOptions.sortParams = {...params}
+            
+            //newState.individualSalaryState.formOptions.sortParams = {...params}
 
             return newState
         }

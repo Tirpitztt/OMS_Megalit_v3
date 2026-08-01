@@ -173,20 +173,25 @@ export const ADD_SALARY_ROW = 'ADD_SALARY_ROW'
 export const FORM_SALARY_ROW_PUSH = 'FORM_SALARY_ROW_PUSH'
 //export const SIGN_SALARY_OF_SHIFT = 'SIGN_SALARY_OF_SHIFT'
 
-export const STELA_CHECK_ON = { value: 'стела', checked: false, checkOn: () => true, checkOff: () => false }
-export const TUMBA_CHECK_ON = { value: 'подставка', checked: false, checkOn: () => true, checkOff: () => false }
-export const OTHER_CHECK_ON = { value: 'другое', checked: false, checkOn: () => true, checkOff: () => false }
-export const ALL_CHECK_ON = { value: 'all', checked: false, checkOn: () => true, checkOff: () => false }
-export const BLACK_CHECK_ON = { value: 'ч', checked: false, checkOn: () => true, checkOFF: () => false }
-export const RED_CHECK_ON = { value: 'к', checked: false, checkOn: () => true, checkOFF: () => false }
-export const WHITE_CHECK_ON = { value: 'б', checked: false, checkOn: () => true, checkOFF: () => false }
-export const GRAY_CHECK_ON = { value: 'с', checked: false, checkOn: () => true, checkOFF: () => false }
-export const ALL_COLORS_CHECK_ON = { value: 'allColors', checked: false, checkOn: () => true, checkOFF: () => false }
+//export const STELA_CHECK_ON = { value: 'стела', checked: false, checkOn: () => true, checkOff: () => false }
+//export const TUMBA_CHECK_ON = { value: 'подставка', checked: false, checkOn: () => true, checkOff: () => false }
+//export const OTHER_CHECK_ON = { value: 'другое', checked: false, checkOn: () => true, checkOff: () => false }
+//export const ALL_CHECK_ON = { value: 'all', checked: false, checkOn: () => true, checkOff: () => false }
+//export const BLACK_CHECK_ON = { value: 'ч', checked: false, checkOn: () => true, checkOFF: () => false }
+//export const RED_CHECK_ON = { value: 'к', checked: false, checkOn: () => true, checkOFF: () => false }
+//export const WHITE_CHECK_ON = { value: 'б', checked: false, checkOn: () => true, checkOFF: () => false }
+//export const GRAY_CHECK_ON = { value: 'с', checked: false, checkOn: () => true, checkOFF: () => false }
+//export const ALL_COLORS_CHECK_ON = { value: 'allColors', checked: false, checkOn: () => true, checkOFF: () => false }
 
 export const STELA_SORT_CHECK = new CheckBox('стела')
 export const TUMB_SORT_CHECK = new CheckBox('подставка')
 export const OTHER_SORT_CHECK = new CheckBox('другое')
 export const ALL_SORT_CHECK = new CheckBox('all')
+export const BLACK_SORT_CHECK = new CheckBox('ч')
+export const WHITE_SORT_CHECK = new CheckBox('б')
+export const GRAY_SORT_CHECK = new CheckBox('с')
+export const RED_SORT_CHECK = new CheckBox('к')
+
 
 
 export const SIZE_TYPE_FACE = 'SIZE_TYPE_FACE'
