@@ -93,10 +93,10 @@ const SalaryConcreateForm = (props) => {
         //ввести тип параметра? {type:'',val:val}
         props.getDetailsListSort(param)
     }
-    const addListToStorage = () => {
-        console.log(props.concreateFormState.detailsShiftKit)
-        props.addDetailsListToStorage(props.concreateFormState.detailsShiftKit)
-    }
+    // const addListToStorage = () => {
+    //     console.log(props.concreateFormState.detailsShiftKit)
+    //     props.addDetailsListToStorage(props.concreateFormState.detailsShiftKit)
+    // }
 
     return (
         <div className={c.concreate_main_wrap }>
@@ -168,8 +168,8 @@ const SalaryConcreateForm = (props) => {
                 </div>
             </div>
             <div className={c.sup_concr_item}>
-                <div onClick={()=>addListToStorage()}
-                    className={c.concreate_detail_button}>add to storage</div>
+                <div
+                    className={c.concreate_detail_button}>Изготовлено</div>
                 <div className={c.list_box_col}>
                     {detailsShiftKit}
                 </div>

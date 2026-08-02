@@ -1,6 +1,6 @@
 import {getOpAdditName, getSizeSq, getTempCost, getTempCostOfAround, setEditDetailState} from "../../Utils/support";
 import {
-    ADD_DETAIL_TO_KIT, ALL_SORT_CHECK,
+    ADD_DETAIL_TO_KIT, ALL_SORT_CHECK, CLEAR_DETAILS_LIST,
     CLEAR_SUPPORT_FORM_STATE,
     DEL_DETAIL_FROM_KIT,
     HEIGHT,
@@ -259,7 +259,11 @@ const FormReduser = (state=initialState,action)=>{
                 })
             return newState
         }
-
+        case CLEAR_DETAILS_LIST:{
+            let newState = {...state}
+            newState.supportFormState.concreateForm.detailsShiftKit = []
+            return newState
+        }
         case CLEAR_SUPPORT_FORM_STATE:{
             let newState = {...state}
             newState.supportFormState.polishForm.h = ''
@@ -296,6 +300,7 @@ export const setProcessingChange = (data)=>({type:SET_PROCESSING_CHANGE,data})
 export const sizeDetailChange = (data) => ({ type: SIZE_DETAIL_CHANGE, data })
 export const addDetailToKit = (data) => ({ type: ADD_DETAIL_TO_KIT, data })
 export const delDetailFromKit = (data) => ({ type: DEL_DETAIL_FROM_KIT,data })
+export const clearDetailsListOnly = () => ({type:CLEAR_DETAILS_LIST})
 export const clearSupportFormState = () => ({type:CLEAR_SUPPORT_FORM_STATE})
 
 

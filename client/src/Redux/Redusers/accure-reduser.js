@@ -73,6 +73,7 @@ const AccureReduser = (state = initialState, action) => {
         }
         case ADD_SALARY_ROW:{
             let newState = {...state}
+
             for(let item of newState.shiftData.employeesShiftGroup){
                 let salaryData = {...action.data}
                 console.log(salaryData)

@@ -1,6 +1,6 @@
 import {betonAPI, salaryAPI, usersAPI} from "../../../Api/api"
 import { addEmployeeToGroup, getEmployeesList } from "../accure-reduser"
-import {clearSupportFormState} from "../form-reduser";
+import {clearDetailsListOnly, clearSupportFormState} from "../form-reduser";
 
 export const getEmployeesListThunkCreator = (body) => {
     return (dispatch) => {
@@ -39,7 +39,7 @@ export const signSalaryToShiftThunkCreator = (body) => {
 export const addDetailsListToStorageThunkCreator = (body) => {
     return(dispatch) => {
         betonAPI.addDetailsListToStorage(body).then(data=>{
-            dispatch(clearSupportFormState())
+            dispatch(clearDetailsListOnly())
         })
     }
 }

@@ -252,6 +252,7 @@
     text-align: center;
     margin: 1rem;
     background-color: gray;
+    align-content: center;
 }
 .folder_box{
     margin: 3rem;

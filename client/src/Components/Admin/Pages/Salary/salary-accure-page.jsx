@@ -7,13 +7,14 @@ import {setOperationName, setOperationsSum} from "../../../../Utils/support";
 import {buildFloat} from "../../../../Utils/buildNum";
 import SalaryPolishForm from '../../../Common/Forms/Adminka/salary-polish-form';
 import SalaryConcreateForm from '../../../Common/Forms/Adminka/salary-concreate-form';
+import DetailsListModal from "../../../Common/detailsListModal";
 
 
 const SalaryAccurePage = (props) => {
     //console.log('accure',props)
     const {register,handleSubmit,setValue,watch,reset} = useForm()
     const dataSum = watch('dataSum')
-
+    const [mActive,setMActive] = useState(false)
     const [operationAmount,setOperationAmount] = useState('')
     const [operationSumma,setOperationSumma] = useState(0)
     const [operationNotice, setOperationNotice] = useState('')
@@ -103,19 +104,21 @@ const SalaryAccurePage = (props) => {
         props.clearSupportForm()
     }
     const onSubmit = (body) => {
+        body.detailsKit = props.supportFormState.concreateForm.detailsShiftKit
+        body.workId = dataSum[0].id
+        body.workName = props.supportFormState.tempName + props.supportFormState.additName
+        body.notice = operationNotice
+        body.cost = (props.supportFormState.tempCost).toFixed(2)
+        body.amount = buildFloat(operationAmount)
+        body.summa = buildFloat(operationSumma)
+        body.signature = false
 
-        if(props.accureState.shiftData.employeesShiftGroup.length){
-            body.workId = dataSum[0].id
-            body.workName = props.supportFormState.tempName + props.supportFormState.additName
-            body.notice = operationNotice
-            body.cost = (props.supportFormState.tempCost).toFixed(2)
-            body.amount = buildFloat(operationAmount)
-            body.summa = buildFloat(operationSumma)
-            body.signature = false
+        if(props.supportFormState.concreateForm.detailsShiftKit.length){
+            setMActive(true)
+        }else if(props.accureState.shiftData.employeesShiftGroup.length){
             clearFormState()
             props.addSalaryRowToShift(body)
         }
-
     }
     return (
         <div>
@@ -209,7 +212,14 @@ const SalaryAccurePage = (props) => {
                 </div>
             </div>
             
-
+            <DetailsListModal
+                active={mActive}
+                close={setMActive}
+                workName={props.supportFormState.tempName}
+                amount={operationAmount}
+                kit={props.supportFormState.concreateForm.detailsShiftKit}
+                agreeFunc={props.addDetailsListToStorage}
+            />
         </div>
     )
 }
