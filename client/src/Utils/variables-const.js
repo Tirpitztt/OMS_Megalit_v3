@@ -183,14 +183,22 @@ export const FORM_SALARY_ROW_PUSH = 'FORM_SALARY_ROW_PUSH'
 //export const GRAY_CHECK_ON = { value: 'с', checked: false, checkOn: () => true, checkOFF: () => false }
 //export const ALL_COLORS_CHECK_ON = { value: 'allColors', checked: false, checkOn: () => true, checkOFF: () => false }
 
-export const STELA_SORT_CHECK = new CheckBox('стела')
-export const TUMB_SORT_CHECK = new CheckBox('подставка')
-export const OTHER_SORT_CHECK = new CheckBox('другое')
-export const ALL_SORT_CHECK = new CheckBox('all')
+export const STELA = 'стела'
+export const TUMBA = 'подставка'
+export const ALL = 'all'
+export const OTHER = 'другое'
+
+
+
+export const STELA_SORT_CHECK = new CheckBox(STELA)
+export const TUMB_SORT_CHECK = new CheckBox(TUMBA)
+export const OTHER_SORT_CHECK = new CheckBox(OTHER)
+export const ALL_SORT_CHECK = new CheckBox(ALL)
 export const BLACK_SORT_CHECK = new CheckBox('ч')
 export const WHITE_SORT_CHECK = new CheckBox('б')
 export const GRAY_SORT_CHECK = new CheckBox('с')
 export const RED_SORT_CHECK = new CheckBox('к')
+
 
 
 

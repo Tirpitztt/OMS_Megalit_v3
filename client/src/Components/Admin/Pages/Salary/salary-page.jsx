@@ -96,6 +96,7 @@ const SalaryPage = (props) => {
             setProcessingChange={props.setProcessingChange}
             addDetailToKit={props.addDetailToKit}
             delDetailFromKit={props.delDetailFromKit }
+            addDetailsListToStorage={props.addDetailsListToStorage}
             clearSupportForm={props.clearSupportForm}
             back={setDisplayBack}
 

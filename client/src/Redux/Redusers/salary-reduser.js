@@ -137,14 +137,27 @@ const SalaryReduser = (state = initialState,action) => {
         }
         case DETAILS_LIST_SORT: {
             let newState = { ...state }
-            console.log(action.data)
+            //console.log(action.data)
             let params = newState.individualSalaryState.formOptions.sortParams
+            if(action.data.val === 'all'){
+                newState.individualSalaryState.formOptions.sortParams = {det:[],colors:[]}
+                for (const item of newState.individualSalaryState.formOptions.sortCheckBoxList){
+                    if(item.value === action.data.val){
+                        item.checkON()
+                    }else{
+                        item.checkOFF()
+                    }
+                }
+                for (const item of newState.individualSalaryState.formOptions.sortColorCheckBoxList){
+                    item.checkOFF()
+                }
+                return newState
+            }
             if (action.data.type === 1 && action.data.val !== 'all') {
                 for (const item of newState.individualSalaryState.formOptions.sortCheckBoxList) {
                     if (item.value === action.data.val) {
                         item.checkON()
-                        params.det = [action.data.val]
-                        //params = sortDetailParamsBuilder(newState.individualSalaryState.formOptions.sortParams, action.data)
+                        params.det = [...sortDetailParamsBuilder(action.data.val)]
                     } else {
                         item.checkOFF()
                     }
@@ -161,8 +174,8 @@ const SalaryReduser = (state = initialState,action) => {
                     }
                 }
             }
-            console.log(params)
-            //newState.individualSalaryState.formOptions.sortParams = {...params}
+            //console.log(params)
+            newState.individualSalaryState.formOptions.sortParams = {...params}
 
             return newState
         }

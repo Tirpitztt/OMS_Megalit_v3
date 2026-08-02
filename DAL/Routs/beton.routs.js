@@ -20,5 +20,6 @@ router.post('/addBetonDetail',urlencodedParser,detController.addBetonDetail);
 router.post('/updateBetonDetail',urlencodedParser,detController.updateBetonDetail);
 router.post('/deleteBetonDetail',urlencodedParser,detController.deleteBetonDetail);
 router.post('/deleteAdditionalMat',urlencodedParser,detController.deleteAdditionalMat);
+router.post('/addDetailsList',urlencodedParser,detController.addDetailsListToStorage)
 
 module.exports = router;

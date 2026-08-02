@@ -531,6 +531,13 @@ export const betonAPI = {
                 return response.data
             }
         )
+    },
+    addDetailsListToStorage(body){
+        return instance.post('/beton/addDetailsList',body).then(
+            response => {
+                return response.data
+            }
+        )
     }
 
 }

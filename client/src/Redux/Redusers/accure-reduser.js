@@ -75,7 +75,7 @@ const AccureReduser = (state = initialState, action) => {
             let newState = {...state}
             for(let item of newState.shiftData.employeesShiftGroup){
                 let salaryData = {...action.data}
-                //console.log(salaryData)
+                console.log(salaryData)
                 salaryData.shiftID = item.shifts[0].id
                 salaryData.amount = salaryData.amount * item.share
                 salaryData.summa = salaryData.summa * item.share

@@ -541,6 +541,16 @@
 .size_row>input{
     width:20%;
 }
+.concreate_detail_button{
+    width: 50%;
+    border: 1px dotted gray;
+    text-align: center;
+    cursor: pointer;
+    margin: 0 auto;
+}
+.concreate_detail_button:active{
+    background-color: #555555;
+}
 
 
 

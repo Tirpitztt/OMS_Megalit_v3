@@ -5,7 +5,7 @@ import {detailSort, sortDetailParamsBuilder} from '../../../../Utils/support'
 
 
 const SalaryConcreateForm = (props) => {
-    console.log(props.concreateFormState.detailsShiftKit)
+    //console.log(props.concreateFormState.detailsShiftKit)
     //const checkList = [STELA_CHECK_ON, TUMBA_CHECK_ON, OTHER_CHECK_ON, ALL_CHECK_ON]
     //const checkColorList = [BLACK_CHECK_ON, GRAY_CHECK_ON, WHITE_CHECK_ON, RED_CHECK_ON, ALL_COLORS_CHECK_ON]
     let detailsList = []
@@ -28,7 +28,10 @@ const SalaryConcreateForm = (props) => {
 
     if (props.state.formOptions.detailsList.length) {
         detailsList = props.state.formOptions.detailsList.map((item, i) => {
-            return <div key={i} className={c.field_concreate_box}>{item.articul }</div>
+            return <div key={i}
+                        className={c.field_concreate_box}
+                        onClick={()=>props.addDetailToKit({id:item.id,articul:item.articul,amount:1})}
+            >{item.articul }</div>
         })
     }
     if (props.concreateFormState.detailsShiftKit.length) {
@@ -89,6 +92,10 @@ const SalaryConcreateForm = (props) => {
         //props.getDetailsListSort({det:['стела'],colors:['с','ч']})
         //ввести тип параметра? {type:'',val:val}
         props.getDetailsListSort(param)
+    }
+    const addListToStorage = () => {
+        console.log(props.concreateFormState.detailsShiftKit)
+        props.addDetailsListToStorage(props.concreateFormState.detailsShiftKit)
     }
 
     return (
@@ -161,7 +168,12 @@ const SalaryConcreateForm = (props) => {
                 </div>
             </div>
             <div className={c.sup_concr_item}>
-                {detailsShiftKit}
+                <div onClick={()=>addListToStorage()}
+                    className={c.concreate_detail_button}>add to storage</div>
+                <div className={c.list_box_col}>
+                    {detailsShiftKit}
+                </div>
+
             </div>
             
         </div>

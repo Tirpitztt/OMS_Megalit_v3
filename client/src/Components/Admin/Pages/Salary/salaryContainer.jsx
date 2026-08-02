@@ -18,6 +18,7 @@ import {
 
 } from '../../../../Redux/Redusers/salary-reduser';
 import {
+    addDetailsListToStorageThunkCreator,
     addEmployeeToGroupThunkCreator,
     getEmployeesListThunkCreator,
     signSalaryToShiftThunkCreator
@@ -78,6 +79,7 @@ class SalaryContainer extends React.Component{
                 setProcessingChange={this.props.setProcessingChange}
                 addDetailToKit={this.props.addDetailToKit}
                 delDetailFromKit={this.props.delDetailFromKit}
+                        addDetailsListToStorage={this.props.addDetailsListToStorage}
                         clearFormOptions={this.props.clearFormOptions}
                         clearAccureState={this.props.clearAccureState}
                         clearSupportForm={this.props.clearSupportForm}
@@ -164,6 +166,9 @@ let mapDispatchToProps = (dispatch) => {
         },
         delDetailFromKit: (data) => {
             dispatch(delDetailFromKit(data))
+        },
+        addDetailsListToStorage:(data)=>{
+            dispatch(addDetailsListToStorageThunkCreator(data))
         },
         clearFormOptions:()=>{
             dispatch(clearFormOptions())

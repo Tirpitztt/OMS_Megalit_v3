@@ -23,7 +23,7 @@ import {
     SIZE_TYPE_SIDE_AROUND,
     OPERATION_POLISH_FACE,
     OPERATION_POLISH_FACET,
-    OPERATION_POLISH_SIDE
+    OPERATION_POLISH_SIDE, STELA, OTHER, TUMBA
 } from "./variables-const";
 import SalaryCalculateBody from "./Classes/salaryCalaculateBody";
 
@@ -320,20 +320,20 @@ export const detailSort = (data) => {
     }
 }
 
-export const sortDetailParamsBuilder = (state,data) => {
+export const sortDetailParamsBuilder = (val) => {
     //используя тип параметра установить для каждого поля свой параметр
-    let params = {...state}
-    if (data.val === 'all') {
-        return { det: [], colors: [] }
-    }
-    switch (data.type) {
-        case 1: {
-            for (const item of params.det) {
-                
-            }
-            return params
+
+    switch (val) {
+        case OTHER: {
+            let result = []
+            DETAIL_NAMES.forEach((item)=>{
+                if(item.value !== STELA && item.value !== TUMBA){
+                    result.push(item.value)
+                }
+            })
+            return result
         }
-        default: return { det: [data.val], colors: [] }
+        default: return [val]
     }
     
    

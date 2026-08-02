@@ -36,6 +36,7 @@ const SalaryAccurePage = (props) => {
             getDetailsList={props.getDetailsList}
             addDetailToKit={props.addDetailToKit}
             delDetailFromKit={props.delDetailFromKit}
+                             addDetailsListToStorage={props.addDetailsListToStorage}
         />]
     const supportForm = getSupportForm(formsArray,props.accureState.shiftData.workShop)
 
@@ -102,7 +103,7 @@ const SalaryAccurePage = (props) => {
         props.clearSupportForm()
     }
     const onSubmit = (body) => {
-        //console.log('body1: ',body)
+
         if(props.accureState.shiftData.employeesShiftGroup.length){
             body.workId = dataSum[0].id
             body.workName = props.supportFormState.tempName + props.supportFormState.additName

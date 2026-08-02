@@ -220,7 +220,14 @@ class BetonDetailController {
             return res.status(500).json({message:'NOT deleted'+e.message})
         }
     }
-
+    async addDetailsListToStorage(req,res){
+        try{
+            console.log(req.body)
+            return res.status(200).json({message:'added'})
+        }catch (e) {
+            return res.status(500).json({message:'addList is error'+e.message})
+        }
+    }
 
 }
 

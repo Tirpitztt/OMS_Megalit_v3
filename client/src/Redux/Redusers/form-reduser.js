@@ -47,7 +47,7 @@ let initialState = {
     },
     supportFormState: {
         tempCost: 0,
-        tempName: '',
+        tempName: '', //название текущей операции
         additName: '',
         polishForm: {
             w: '',
@@ -82,8 +82,8 @@ let initialState = {
         },
         concreateForm: {
             detailsShiftKit:[],
-            detailsInitList:[],
-            detailsSortList:[],
+            //detailsInitList:[],
+           // detailsSortList:[],
 
         }
     }
@@ -218,7 +218,7 @@ const FormReduser = (state=initialState,action)=>{
                 for (let op of action.data.operations) {
                     if (op.id == action.data.id) {
                         newState.supportFormState.tempCost = op.BLR
-                        newState.supportFormState.tempName = op.name
+                        newState.supportFormState.tempName = op.name //меняем название тек операции
                     }
                 }
             }
@@ -231,15 +231,15 @@ const FormReduser = (state=initialState,action)=>{
         }
         case ADD_DETAIL_TO_KIT: {
             let newState = { ...state }
-            let detail = {}
-            console.log(action.data)
+            //let detail = {}
+            //console.log(action.data)
             if (newState.supportFormState.concreateForm.detailsShiftKit.length) {
                 let flag = false
                 for (let d of newState.supportFormState.concreateForm.detailsShiftKit) {
                     
                     if (d.id == action.data.id) {
                         d.amount += action.data.amount
-                        flag = true
+                        flag = true //флаг что деталь уже есть, изменили кол-во и больше ничего не добавляем
                     }
                 }
                 if (!flag) {
@@ -268,6 +268,7 @@ const FormReduser = (state=initialState,action)=>{
             newState.supportFormState.tempCost = 0
             newState.supportFormState.tempName = ''
             newState.supportFormState.additName = ''
+            newState.supportFormState.concreateForm.detailsShiftKit = []
             for (const key of Object.keys(newState.supportFormState.polishForm.processing)) {
                 newState.supportFormState.polishForm.processing[key] = false
                 newState.supportFormState.polishForm.sizes[key] = 0
