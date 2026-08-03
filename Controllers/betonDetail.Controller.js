@@ -221,7 +221,25 @@ class BetonDetailController {
         }
     }
     async addDetailsListToStorage(req,res){
-        try{
+        try {
+            if (req.body.length) {
+                for (const item of req.body) {
+                    const detail = await Model.beton_details.findOne({
+                        where: {
+                            id:item.id
+                        }
+                    })
+                    const newAmount = (detail.amount?detail.amount:0) + (+item.amount)
+                    await Model.beton_details.update({
+                        amount:newAmount
+                    }, {
+                        where: {
+                            id:item.id
+                        }
+                    })
+                }
+            }
+           
             console.log(req.body)
             return res.status(200).json({message:'added'})
         }catch (e) {

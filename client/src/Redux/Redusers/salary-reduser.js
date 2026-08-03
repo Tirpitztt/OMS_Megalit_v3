@@ -123,16 +123,11 @@ const SalaryReduser = (state = initialState,action) => {
             newState.individualSalaryState.formOptions.workShop = action.data
             return newState
         }
-        // case SET_WORK_OPERATION_NAME: {
-        //     let newState = { ...state }
-        //     newState.individualSalaryState.salaryCalculateBody.workOperationID = action.data.wopID
-        //     newState.individualSalaryState.salaryCalculateBody.workOperationName = action.data.wopName
-        //     return newState
-        // }
+        
         case SELECT_WORK_OPERATION:{
             let newState = {...state}
             newState.individualSalaryState.formOptions.detailsList = [...action.data]
-            //newState.individualSalaryState.formOptions.detailsListSort = [...action.data]
+            
             return newState
         }
         case DETAILS_LIST_SORT: {
@@ -205,7 +200,7 @@ export const clearFormOptions = ()=>({type:CLEAR_FORM_OPTIONS})
 
 
 export const getShiftsByMonthThunkCreator = (body) => { //создание состояния
-    //console.log(body)
+    
     return (dispatch) => {
         salaryAPI.getShiftsByMonth(body).then(data => {
             //console.log('main state',data)
@@ -238,9 +233,9 @@ export const saveShiftByUserThunkCreator = (body) => {
 }
 export const getDetailsListThunkCreator = (body) => {
     return (dispatch) => {
-        console.log('body',body)
+        
         salaryAPI.getDetailsGroup(body).then(data => {
-            console.log('data',data)
+            
             dispatch(selectWorkOperation(data))
         })
 
@@ -250,7 +245,7 @@ export const getDetailsListThunkCreator = (body) => {
 export const signSalaryOfShiftThunkCreator = (body) => {
     return (dispatch) => {
         salaryAPI.signSalaryShift(body).then(data => {
-            console.log('res:',data)
+            
             if (data.length) {
                 salaryAPI.getShiftsByMonth(body.period).then(data => {
                     let salaryDataUser = { shifts: [], userId: body.salaryOfPeriod.userId, userName: body.salaryOfPeriod.userName }

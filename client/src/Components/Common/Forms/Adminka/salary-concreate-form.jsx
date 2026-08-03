@@ -1,13 +1,10 @@
 import React, { useEffect,useState} from 'react'
 import c from '../form.module.css'
-import {detailSort, sortDetailParamsBuilder} from '../../../../Utils/support'
-//import { ALL_CHECK_ON, ALL_COLORS_CHECK_ON, BLACK_CHECK_ON, GRAY_CHECK_ON, OTHER_CHECK_ON, RED_CHECK_ON, STELA_CHECK_ON, TUMBA_CHECK_ON, WHITE_CHECK_ON } from '../../../../Utils/variables-const'
+//import {detailSort, sortDetailParamsBuilder} from '../../../../Utils/support'
 
 
 const SalaryConcreateForm = (props) => {
-    //console.log(props.concreateFormState.detailsShiftKit)
-    //const checkList = [STELA_CHECK_ON, TUMBA_CHECK_ON, OTHER_CHECK_ON, ALL_CHECK_ON]
-    //const checkColorList = [BLACK_CHECK_ON, GRAY_CHECK_ON, WHITE_CHECK_ON, RED_CHECK_ON, ALL_COLORS_CHECK_ON]
+    
     let detailsList = []
     let detailsShiftKit = []
     const delDetFromKit = (id) => {
@@ -17,14 +14,6 @@ const SalaryConcreateForm = (props) => {
     useEffect(() => {
         props.getDetailsList(props.state.formOptions.sortParams)
     }, [props.state.formOptions.sortParams])
-
-    //if (props.state.formOptions.detailsList.length) {
-    //    detailsList = props.state.formOptions.detailsListSort.map((item, i) => {
-    //        return <div key={i}
-    //            className={c.field_concreate_box }
-    //            onClick={() => props.addDetailToKit({ id: item.id, articul: item.articul,amount:1 })}>{item.articul}</div>
-    //    })
-    //}
 
     if (props.state.formOptions.detailsList.length) {
         detailsList = props.state.formOptions.detailsList.map((item, i) => {
@@ -48,55 +37,11 @@ const SalaryConcreateForm = (props) => {
             </div>
         })
     }
-    // const sortDetailsList = (val) => {
-    //     //console.log(val)
-    //     checkList.forEach(item => {
-    //         if (val === item.value) {
-    //             item.checked = item.checkOn()
-    //             let arr = detailSort({
-    //                    category: item.value,
-    //                    details: props.state.formOptions.detailsList
-    //             })
-    //             props.getDetailsListSort(arr)
-    //         } else {
-    //            item.checked =  item.checkOff()
-    //         }
-    //     })
-    // }
-    // const sortDetailsList = (val) => {
-    //     props.concreateFormState.sortCheckBoxList.forEach(item => {
-    //         if(val === item.value){
-    //             item.checkON()
-    //             let arr = detailSort({
-    //                 category: item.value,
-    //                 details:props.state.formOptions.detailsList
-    //             })
-    //             props.getDetailsListSort(arr)
-    //         }else{
-    //             item.checkOFF()
-    //         }
-    //     })
-    // }
-
-
-    // const sortColorDetailsList = (val) => {
-    //     console.log(val)
-    //     checkColorList.forEach(item => {
-    //         if(val === item.value){
-    //             item.checked = item.checkOn()
-    //         }
-    //     })
-    // }
-
-    const sortDetailList = (param) => {
-        //props.getDetailsListSort({det:['стела'],colors:['с','ч']})
+   const sortDetailList = (param) => {
         //ввести тип параметра? {type:'',val:val}
         props.getDetailsListSort(param)
     }
-    // const addListToStorage = () => {
-    //     console.log(props.concreateFormState.detailsShiftKit)
-    //     props.addDetailsListToStorage(props.concreateFormState.detailsShiftKit)
-    // }
+    
 
     return (
         <div className={c.concreate_main_wrap }>

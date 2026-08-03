@@ -6,12 +6,24 @@ const DetailsListModal = (props) => {
     const closeModal = () => {
         props.close(false)
     }
-    let kit = props.kit.map((item,i)=>{
-        if(props.workName !== 'Заливка дет памятника' ){
-            item.amount = props.amount
+    
+    const tempKit = [...props.kit]
+    let kit = []
+    if (props.workName && props.amount) {
+        console.log(props)
+        if (props.workName === 'Заливка дет памятника') {
+            kit = tempKit.map((item, i) => {
+                return <div key={i}>{item.articul} - {item.amount} шт</div>
+            })
+        } else {
+            kit = tempKit.map((item, i) => {
+                item.amount = props.amount
+                return <div key={i}>{item.articul} - {item.amount} шт</div>
+            })
         }
-        return <div key={i}>{item.articul} - {item.amount} шт</div>
-    })
+        
+    }
+    
     const agreeFunction = () => {
         props.agreeFunc(props.kit)
         closeModal()
